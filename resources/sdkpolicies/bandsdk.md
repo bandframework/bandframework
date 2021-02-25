@@ -10,7 +10,7 @@ New code can be included in the `bandframework` repository via a pull request to
 
 BAND packages should include a compatibility document and a [template](https://raw.githubusercontent.com/bandframework/bandframework/main/resources/sdk/template.md) is provided. The compatibility  file should be placed in the root directory of the new subdirectory and labeled by the software name appended by SDKcompatibility.  For example, if you have a software `foo`, you should create a directory `/software/foo` and place the compatibility file named `fooSDKcompatibility.md` in the directory `/software/foo` alongside contributed code.  All pull requests for inclusion of a new `/software` directory  that do not include this document will be rejected.
 
-## BAND SDK v0.1
+## BAND SDK v0.1 Community Policies
 
 The BAND Framework will conform with BAND Software Development Kit (SDK) requirements, summarized below. By using such requirements we envision ready interoperability across the BANDIT software ecosystem, large-scale scientific simulation codes, and other numerical libraries.
 

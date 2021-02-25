@@ -1,7 +1,7 @@
-# BAND SDK v0.1 Community Policy Compatibility for \<package\>
+# BAND SDK v0.1 Community Policy Compatibility for surmise
 
 
-> This document summarizes the efforts of current and future BAND member packages to achieve compatibility with the BAND SDK community policies.  Additional details on the BAND SDK are available [here](https://github.com/bandframework/bandframework/resources/sdk/bandsdk.md) and should be considered when filling out this form. The most recent copy of this template exists [here](https://github.com/bandframework/bandframework/resources/sdk/template.md).
+> This document summarizes the efforts of current and future BAND member packages to achieve compatibility with the BAND SDK community policies.  Additional details on the BAND SDK are available [here](https://github.com/bandframework/bandframework/resources/sdkpolicies/bandsdk.md) and should be considered when filling out this form. The most recent copy of this template exists [here](https://github.com/bandframework/bandframework/resources/sdkpolicies/template.md).
 >
 > This file should filled out and placed in the directory in the `bandframework` repository representing the software name appended by `SDKcompatibility`.  For example, if you have a software `foo`, the compatibility file should be named `fooSDKcompatibility.md` and placed in the directory housing the software in the `bandframework` repository. No open source code can be included without this file.
 >
@@ -14,7 +14,7 @@
 
 
 **Website:** https://github.com/surmising/surmise
-**Contact:** mplumlee@northwestern.edu
+**Contact:** ozgesurer2019@u.northwestern.edu
 
 ### Mandatory Policies
 
