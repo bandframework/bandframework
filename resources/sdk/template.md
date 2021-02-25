@@ -1,7 +1,7 @@
 # BAND SDK v0.1 Community Policy Compatibility for \<package\>
 
 
-> This document summarizes the efforts of current and future BAND member packages to achieve compatibility with the BAND SDK community policies.  Additional details on the BAND SDK are available [here](https://github.com/bandframework/bandframework/resources/sdk/bandsdk.md) and should be considered when filling out this form. The most recent copy of this template exists [here](https://github.com/bandframework/bandframework/resources/sdk/template.md).
+> This document summarizes the efforts of current and future BAND member packages to achieve compatibility with the BAND SDK community policies.  Additional details on the BAND SDK are available [here](https://raw.githubusercontent.com/bandframework/bandframework/main/resources/sdk/bandsdk.md) and should be considered when filling out this form. The most recent copy of this template exists [here](https://raw.githubusercontent.com/bandframework/bandframework/main/resources/sdk/template.md).
 >
 > This file should filled out and placed in the directory in the `bandframework` repository representing the software name appended by `SDKcompatibility`.  For example, if you have a software `foo`, the compatibility file should be named `fooSDKcompatibility.md` and placed in the directory housing the software in the `bandframework` repository. No open source code can be included without this file.
 >
@@ -9,7 +9,7 @@
 >
 > Please provide information on your compatibility status for each mandatory policy and, if possible, also for recommended policies. If you are not compatible, state what is lacking and what are your plans on how to achieve compliance. For current BAND SDK packages: If you were not fully compatible at some point, please describe the steps you undertook to fulfill the policy. This information will be helpful for future BAND member packages.
 >
-> To suggest changes to these requirements or obtain more information, please contact [BAND](https://bandframework.github.io).
+> To suggest changes to these requirements or obtain more information, please contact [BAND](https://bandframework.github.io/team).
 
 
 **Website:** \<package website\>
