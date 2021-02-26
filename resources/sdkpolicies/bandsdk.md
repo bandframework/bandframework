@@ -12,7 +12,7 @@ BAND packages should include a compatibility document and a [template](https://r
 
 ## BAND SDK v0.1 Community Policies
 
-The BAND Framework will conform with BAND Software Development Kit (SDK) requirements, summarized below. By using such requirements we envision ready interoperability across the BANDIT software ecosystem, large-scale scientific simulation codes, and other numerical libraries.
+The BAND Framework will conform with BAND Software Development Kit (SDK) requirements, summarized below. By using such requirements we envision ready interoperability across the BAND software ecosystem, large-scale scientific simulation codes, and other numerical libraries.
 
 ### Mandatory Policies
 
