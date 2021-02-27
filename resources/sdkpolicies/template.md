@@ -12,9 +12,10 @@
 > To suggest changes to these requirements or obtain more information, please contact [BAND](https://bandframework.github.io/team).
 
 
-**Website:** \<package website\>
+**Website:** \<package website\>\
 **Contact:** \<contact information\>
-
+**Icon:** \<url of icon you would like to display\>
+**Description:**  \<a short description of the code\>
 
 ### Mandatory Policies
 
