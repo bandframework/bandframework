@@ -1,0 +1,3 @@
+[submodule "software/surmise"]
+	path = software/surmise
+	url = https://github.com/surmising/surmise
