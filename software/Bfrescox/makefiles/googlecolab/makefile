@@ -94,7 +94,7 @@ FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
 LINK = $(F90C) $(FFLAGS) -o frescox $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
 LINKS = $(F90C) $(FFLAGS) -o sfrescox $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
 # INST = install sfrescox frescox $(FRESCOXLIB)
-INST = cp  sfrescox frescox fr2nl /content/FrescoX/ota ; chmod a+rx /content/FrescoX/otb  /content/FrescoX/otc 
+INST = cp  sfrescox frescox fr2nl /content/Frescoxex ; chmod a+rx /content/Frescoxex  /content/Frescoxex 
 RM = rm -f
 
 # (or edit in the required file if your 'make' does not do 'include's)
