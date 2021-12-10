@@ -9,11 +9,11 @@ In order to install `frescox`:
 
 - Clone or download the repo  https://github.com/LLNL/Frescox to your machine
 
-- Go to `Frescox/source` directory, in which you will find a `makefile` 
+- Go to directory `Frescox/source`, in which you will find a `makefile` 
 
-- Open `makefile` and remove one of comment prefix `#`s between lines 39-60 to select appropriate machine type
+- Open `makefile` and remove one of comment prefix `#`s between lines 39-60 to select the appropriate machine type
 
-  - `MACH=i386` and `MACH=intel` have been BAND tested for macOS and intel machines, and accurately work for these architectures
+  - `MACH=i386` and `MACH=intel` have been BAND tested for macOS and intel machines
 
 - To compile `frescox`, go to `Frescox/source` and issue the following from your terminal:
 
