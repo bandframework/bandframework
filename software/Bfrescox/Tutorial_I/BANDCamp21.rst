@@ -9,7 +9,7 @@ This tutorial has four sections to illustrate how `frescox` interfaces with `sur
 In this tutorial, we use a Colab notebook, which allows you to run the code in an interactive and consistent environment. You can then modify this code and run it on your preferred system(s).
 
 
-* `Tutorial I-Section II <https://colab.research.google.com/drive/1JEwswrMnw3hVzeqyTsUrJH6wKY27N81f?usp=sharing#scrollTo=631V60C-TSHh>`_
+* `Tutorial I-Section I <https://colab.research.google.com/drive/1JEwswrMnw3hVzeqyTsUrJH6wKY27N81f?usp=sharing#scrollTo=631V60C-TSHh>`_
 
 To verify that the code works as expected.
 
