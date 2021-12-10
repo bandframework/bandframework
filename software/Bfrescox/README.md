@@ -48,3 +48,8 @@ In order to install `frescox`:
   - If you obtain an error such as `frescox: command not found`, this means that the `frescox` executable is not in your path. You should add the location of this executable (see above reference to a subdirectory of `$(HOME)/binw`)
 
 - In order to verify the code works as expected and perform Bayesian calibration, go to https://github.com/bandframework/privateband/tree/team/Software/Frescox/Tutorial_I
+
+
+There is another file over here: https://github.com/bandframework/bandframework/blob/test_temp/software/testingnewbranch.rst
+
+Why don't you try this 
