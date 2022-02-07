@@ -38,7 +38,7 @@ Contributions
 The BAND Framework is distributed under a 2-clause BSD license (see `LICENSE <https://github.com/bandframework/bandframework/blob/main/LICENSE>`_).  
 The act of submitting a pull request or patch will be understood as an 
 affirmation of the following:
-
+::
   Developer's Certificate of Origin 1.1
 
   By making a contribution to this project, I certify that:
