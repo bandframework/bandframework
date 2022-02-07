@@ -22,7 +22,9 @@ Authorship
 BAND expects new major version releases of the framework to occur annually. 
 
 Status as a named coauthor will be granted for those who:
+
 1. make significant contributions to the Framework (in implementation, documentation, conceptualization, review, etc.) and
+
 2. maintain and support those contributions.
     
 BAND's Design and Oversight Committee (DOC) will do their best to notice when contributions reach this level by editing `AUTHORS <https://github.com/bandframework/bandframework/blob/main/AUTHORS>`_, but please email or create an issue if you believe your contributions have met these criteria and haven't yet been acknowledged.
