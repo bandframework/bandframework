@@ -17,7 +17,23 @@ or by emailing members of the `BAND
 <https://bandframework.github.io/team/>`_ 
 and interacting with us to ensure that your effort is well-directed.
 
-The BAND Framework is distributed under a 2-clause BSD license (see LICENSE).  
+Authorship
+----------
+BAND expects new major version releases of the framework to occur annually. 
+
+Status as a named coauthor will be granted for those who:
+1. make significant contributions to the Framework (in implementation, documentation, conceptualization, review, etc.) and
+2. maintain and support those contributions.
+    
+BAND's Design and Oversight Committee (DOC) will do their best to notice when contributions reach this level by editing `AUTHORS<https://github.com/bandframework/bandframework/blob/main/AUTHORS>`_, but please email or create an issue if you believe your contributions have met these criteria and haven't yet been acknowledged.
+
+Coauthorship is expected to persist in all future releases, with new contributors being appended to the list of authors. If contributors decline to be listed as coauthors, they will be acknowledged in the repository, manual, and release notes.
+
+
+Contributions
+-------------
+
+The BAND Framework is distributed under a 2-clause BSD license (see `LICENSE<https://github.com/bandframework/bandframework/blob/main/LICENSE>`_).  
 The act of submitting a pull request or patch will be understood as an 
 affirmation of the following:
 
