@@ -17,6 +17,10 @@ or by emailing members of the `BAND
 <https://bandframework.github.io/team/>`_ 
 and interacting with us to ensure that your effort is well-directed.
 
+To contribute a package to the BAND Framework, please see the [BAND Software Development Kit (SDK)](/resources/sdkpolicies/bandsdk.md), which includes requirements and recommendations. 
+
+
+
 Authorship
 ----------
 BAND expects new major version releases of the framework to occur annually. 
