@@ -18,7 +18,7 @@ Before release
 - Version number is updated wherever it appears and ``+dev`` suffix is removed
   (in `README.md </README.md>`_).
 
-- Check `README.md </README.md>`_ *Citing bandframework* for correctness.
+- Check `README.md </README.md>`_ *Citing bandframework* for correctness (e.g., ensure that author list matches `AUTHORS </AUTHORS>`_).
 
 - Tests are run with source to be released (this may iterate):
 
