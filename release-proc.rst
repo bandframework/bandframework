@@ -1,4 +1,4 @@
-BANDFramework Release Process
+BAND Framework Release Process
 ===============
 
 A release can be undertaken only by a project administrator.
