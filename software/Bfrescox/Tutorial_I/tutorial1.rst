@@ -4,7 +4,7 @@ Tutorial I: Interfacing frescox with surmise
 Verification
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-First, we will verify that ``frescox`` works as expected when called from Python. Additional notes on obtaining and building ``frescox`` can be found at <https://github.com/bandframework/privateband/tree/team/Software/Frescox/README.md>.
+First, we will verify that ``frescox`` works as expected when called from Python. Additional notes on obtaining and building ``frescox`` can be found in the `README </software/Bfrescox/README.md>`_.
 
 To do that, we use a single-neutron transfer reaction, 48Ca(d,p)49Ca, which should reproduce the blue dotted and green dashed curves in Fig. 1 of `Lovell and Nunes, J. Phys. G: Nucl. Part. Phys. 2015 [doi:10.1088/0954-3899/42/3/034014]. <https://iopscience.iop.org/article/10.1088/0954-3899/42/3/034014/pdf>`_
 
