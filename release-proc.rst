@@ -13,6 +13,8 @@ Before release
 
 - Release notes for this version are added to the `CHANGELOG.rst </CHANGELOG.rst>`_ file.
 
+- Ensure that links and references have been updated (e.g., no occurences of ``privateband``).
+
 - Version number is updated wherever it appears and ``+dev`` suffix is removed
   (in `README.md </README.md>`_).
 
