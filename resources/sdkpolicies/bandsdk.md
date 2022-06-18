@@ -4,11 +4,11 @@ The BAND collaboration will carry out the software development in several stages
 
 ## Including code in BAND
 
-All code included in the public Github `bandframework` repository will be open source.  If a piece of code does not contain a open-source LICENSE file as mentioned in the requirements below, then it will be automatically licensed as described in the LICENSE file in the root directory of the bandframework repository.  
+All code included in the public Github `bandframework` repository will be open source.  If a piece of code does not contain a open-source LICENSE file as mentioned in the requirements below, then it will be automatically licensed as described in the [LICENSE](/LICENSE) file in the root directory of the `bandframework` repository.  
 
-New code can be included in the `bandframework` repository via a pull request to the `development` branch.  The name of the software should be the subdirectory name in the `/software` directory.  
+New code can be included in the `bandframework` repository via a pull request to the `develop` branch.  The name of the software should be the subdirectory name in the `/software` directory.  
 
-BAND packages should include a compatibility document and a [template](/resources/sdkpolicies/template.md) is provided. The compatibility  file should be placed in the root directory of the new subdirectory and labeled by the software name appended by bandsdk.  For example, if you have a software `foo`, you should create a directory `/software/foo` and place the compatibility file named `foobandsdk.md` in the directory `/software/foo` alongside contributed code.  All pull requests for inclusion of a new `/software` directory  that do not include this document will be rejected.  You can also include a repository as a submodule in the `bandframework` repository by placing a pull request.  The submodule must meet the same requirements as outlined here.
+BAND packages should include a compatibility document and a [template](/resources/sdkpolicies/template.md) is provided. The compatibility  file should be placed in the root directory of the new subdirectory and labeled by the software name appended by `bandsdk`.  For example, if you have a software `foo`, you should create a directory `/software/foo` and place the compatibility file named `foobandsdk.md` in the directory `/software/foo` alongside contributed code.  All pull requests for inclusion of a new `/software` directory  that do not include this document will be rejected.  You can also include a repository as a submodule in the `bandframework` repository by placing a pull request.  Please see the [additional instructions for including a submodule](/resources/sdkpolicies/git_instructions_for_submodules.md); all submodules must meet the same requirements as outlined here.
 
 ## BAND SDK v0.1 Community Policies
 
