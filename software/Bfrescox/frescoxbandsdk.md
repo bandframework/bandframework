@@ -1,7 +1,7 @@
 # BAND SDK v0.1 Community Policy Compatibility for Frescox
 
 
-> This document summarizes the efforts of current and future BAND member packages to achieve compatibility with the BAND SDK community policies.  Additional details on the BAND SDK are available [here](https://raw.githubusercontent.com/bandframework/bandframework/main/resources/sdkpolicies/bandsdk.md) and should be considered when filling out this form. The most recent copy of this template exists [here](https://raw.githubusercontent.com/bandframework/bandframework/main/resources/sdkpolicies/template.md).
+> This document summarizes the efforts of current and future BAND member packages to achieve compatibility with the BAND SDK community policies.  Additional details on the BAND SDK are available [here](/resources/sdkpolicies/bandsdk.md) and should be considered when filling out this form. The most recent copy of this template exists [here](/resources/sdkpolicies/template.md).
 >
 > This file should filled out and placed in the directory in the `bandframework` repository representing the software name appended by `bandsdk`.  For example, if you have a software `foo`, the compatibility file should be named `foobandsdk.md` and placed in the directory housing the software in the `bandframework` repository. No open source code can be included without this file.
 >
@@ -12,13 +12,13 @@
 > To suggest changes to these requirements or obtain more information, please contact [BAND](https://bandframework.github.io).
 
 
-**Website:** https://github.com/LLNL/Frescox\
+**Website:** https://github.com/LLNL/Frescox
 
 **Contact:** nunes@frib.msu.edu
 
 **Icon:** No icon info
 
-**Description:** Scattering code Frescox for coupled-channels calculations \
+**Description:** Scattering code Frescox for coupled-channels calculations 
 
 
 ### Mandatory Policies
