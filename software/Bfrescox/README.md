@@ -1,6 +1,13 @@
-# frescox Installation
+# Bfrescox 
 
-This document describes how to install `frescox` to run a scattering code for
+Bfrescox is a BAND integration combining statistical calibration capabilities with the frescox scattering code for coupled-channels calculations.
+
+A [BAND SDK v0.1 Community Policy](/resources/sdkpolicies/bandsdk.md) compatibility documentation for frescox is contained in [frescoxbandsdk.md](/software/Bfrescox/frescoxbandsdk.md).
+
+
+## frescox Installation
+
+This section describes how to install `frescox` to run a scattering code for
 coupled-channels calculations
 
 `frescox` is publicly available at the repo https://github.com/LLNL/Frescox; more detailed documentation for earlier versions of `frescox` can be found at http://www.fresco.org.uk
@@ -47,4 +54,9 @@ In order to install `frescox`:
   
   - If you obtain an error such as `frescox: command not found`, this means that the `frescox` executable is not in your path. You should add the location of this executable (see above reference to a subdirectory of `$(HOME)/binw`)
 
-- In order to verify the code works as expected and perform Bayesian calibration, go to https://github.com/bandframework/privateband/tree/team/Software/Frescox/Tutorial_I
+
+## Bfrescox Tutorials
+
+In order to verify the code works as expected and perform Bayesian calibration, please see [Tutorial I](/software/Bfrescox/Tutorial_I/tutorial1.rst).
+
+A tutorial that uses an interactive colab notebook and that was featured at BAND Camp 2021 is available in [BANDCamp21.rst](/software/Bfrescox/Tutorial_I/BANDCamp21.rst).
