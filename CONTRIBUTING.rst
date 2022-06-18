@@ -31,7 +31,7 @@ Status as a named coauthor will be granted for those who:
 
 2. maintain and support those contributions.
     
-BAND's Design and Oversight Committee (DOC) will do their best to notice when contributions reach this level by editing `AUTHORS <https://github.com/bandframework/bandframework/blob/main/AUTHORS>`_, but please email or create an issue if you believe your contributions have met these criteria and haven't yet been acknowledged.
+BAND's Design and Oversight Committee (DOC) will do their best to notice when contributions reach this level by editing `AUTHORS </AUTHORS>`_, but please email or create an issue if you believe your contributions have met these criteria and haven't yet been acknowledged.
 
 Coauthorship is expected to persist in all future releases, with new contributors being appended to the list of authors. If contributors decline to be listed as coauthors, they will be acknowledged in the repository, manual, and release notes.
 
@@ -39,7 +39,7 @@ Coauthorship is expected to persist in all future releases, with new contributor
 Contributions
 -------------
 
-The BAND Framework is distributed under a 2-clause BSD license (see `LICENSE <https://github.com/bandframework/bandframework/blob/main/LICENSE>`_).  
+The BAND Framework is distributed under a 2-clause BSD license (see `LICENSE </LICENSE>`_).  
 The act of submitting a pull request or patch will be understood as an 
 affirmation of the following:
 ::
