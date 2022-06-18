@@ -2,9 +2,20 @@
 
 # BAND Framework
 This contains the primary public repository for the [BAND framework project](https://bandframework.github.io/). 
-Please see
-https://bandframework.github.io/ for more information.
 
+
+
+
+
+## BAND Framework Packages 
+
+BAND Framework packages are found in [software/](/software/).
+
+As of version 0.1.0+dev, the following packages are included:
+
+- [Bfrescox](/software/Bfrescox): A BAND extension of the [frescox](https://github.com/LLNL/Frescox) scattering code for coupled-channels calculations.
+- [QGP_Bayes](/software/QGP_Bayes): A Bayesian parameter estimation code for Relativistic Heavy Ion Collisions.
+- [surmise](/software/surmise): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 
 
 
@@ -16,7 +27,7 @@ The BAND Framework maintains a [BAND Software Development Kit (SDK)](/resources/
 
 ## License 
 
-All code included in the BAND Framework is open source, with the particular form of license contained in the top -level subdirectories of `/software`.  If such a subdirectory does not contain a LICENSE file, then it is automatically licensed as described in the otherwise encompassing BAND Framework [LICENSE](/LICENSE).  
+All code included in the BAND Framework is open source, with the particular form of license contained in the top -level subdirectories of [software/](/software/).  If such a subdirectory does not contain a LICENSE file, then it is automatically licensed as described in the otherwise encompassing BAND Framework [LICENSE](/LICENSE).  
 
 ## Citing the BAND Framework
 
