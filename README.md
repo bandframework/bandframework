@@ -18,6 +18,18 @@ The BAND Framework maintains a [BAND Software Development Kit (SDK)](/resources/
 
 All code included in the BAND Framework is open source, with the particular form of license contained in the top -level subdirectories of `/software`.  If such a subdirectory does not contain a LICENSE file, then it is automatically licensed as described in the otherwise encompassing BAND Framework [LICENSE](/LICENSE).  
 
+## Citing the BAND Framework
+
+Please use the following to cite the BAND Framework:
+
+    @techreport{bandframework,
+        title       = {{BANDFramework: An} Open-Source Framework for {B}ayesian Analysis of Nuclear Dynamics},
+        author      = {},
+        institution = {},
+        number      = {Version 0.1.0},
+        year        = {2022},
+        url         = {https://github.com/bandframework/bandframework}
+    }
 
 
 ## Resources
