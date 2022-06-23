@@ -55,13 +55,11 @@ sudo make install
 
 ## And Finally, AZURE2
 
-* There seems to be a C++ standard issue. Editing line 38 of
-`AZURE2/include/TargetEffect.h` such that `const` is replaced by `constexpr`
-seems to fix it.
-* If you have install Minuit2 according to the instruction above, you need to
-  specify its path.
+* There seems to be a C++ standard issue. Editing line 38 of `AZURE2/include/TargetEffect.h` such that `const` is replaced by `constexpr` seems to fix it.
+* If you have installed Minuit2 according to the instruction above, you need to specify its path.
 ```
 cmake -DMINUIT_PATH=$HOME/Minuit2/build/lib -DMINUIT2_INCLUDE_DIR=$HOME/Minuit2/build/src ..
 make
 make install
 ```
+* If you run into errors related to the C++11 standard, try adding `-DCMAKE_CXX_STANDARD=11` to the `cmake` command.
