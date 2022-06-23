@@ -3,6 +3,10 @@
 AZURE2 has a number of dependencies, particularly Minuit2, Qt4, and GSL. Below
 are a few notes and tips that ought to make the installation a little easier.
 
+Additionally, there is a [video](https://youtu.be/-5h_gjdwhNs) where the BRICK
+author, Daniel Odell, and fellow BAND member, Pablo Giuliani, install AZURE2 and
+demonstrate BRICK. It is a little bit long, but we hope it is helpful. 
+
 ## Minuit2
 
 Minimally, Minuit2 requires:
