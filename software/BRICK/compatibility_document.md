@@ -33,8 +33,11 @@
 
 
 **Website:** https://github.com/odell/brick
+
 **Contact:** dodell@ohio.edu
+
 **Icon:** 🧱
+
 **Description:**  BRICK is a Python layer to the $R$-matrix code AZURE2. It
 allows the user to easily sample what it typically optimized in an $R$-matrix
 calculation. What is included here is a basic tutorial to familiarize BRICK
@@ -64,7 +67,9 @@ users with its most important features.
 |**R4.**| Document versions of packages that it works with or depends upon, preferably in machine-readable form.  | None |  |
 |**R5.**| Have README, SUPPORT, LICENSE, and CHANGELOG files in top directory.  | Partial | Missing SUPPORT and CHANGELOG. |
 |**R6.**| Have sufficient documentation to support use and further development.  | Partial |  |
-|**R7.**| Be buildable using 64-bit pointers; 32-bit is optional. | Unsure | The PyPA `build` package may take care of this. |
+|**R7.**| Be buildable using 64-bit pointers; 32-bit is optional. | Unsure | The
+package is written in Python. 64- and 32-bit pointer support is left solely up
+to the user's interpreter. |
 |**R8.**| Do not assume a full MPI communicator; allow for user-provided MPI communicator. | N/A |  |
 |**R9.**| Use a limited and well-defined name space (e.g., symbol, macro, library, include). | Partial | |
 |**R10.**| Give best effort at portability to key architectures. | Full | |
