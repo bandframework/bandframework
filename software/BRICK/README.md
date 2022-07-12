@@ -33,3 +33,9 @@ BRICK is hosted on [GitHub](https://github.com/odell/brick), so the best way to
 contact the development team is to create a new issue or pull request. Let us
 know if something isn't working for you or if there's a feature you'd like to
 see added.
+
+## Testing
+
+The [README](https://github.com/odell/brick/blob/main/README.md) file in the
+BRICK repository describes how the tests can be run. IMPORTANT: Those tests rely
+on a locally installed copy of AZURE2.
