@@ -1,0 +1,41 @@
+<config>
+true                                                                                                #Perform A-Matrix Calculation
+output/                                                                                             #Full Path to Output Directory
+checks/                                                                                             #Full Path to Checks Directory
+none                                                                                                #Compond Nucleus Check
+none                                                                                                #Boundary Condition Check
+none                                                                                                #Data Check
+none                                                                                                #Lo-Matrix and Penetrability Check
+none                                                                                                #Legendre Polynomial Check
+none                                                                                                #Coulomb Amplitudes Check
+none                                                                                                #Reaction Pathway Check
+none                                                                                                #Angular Distributions Check
+</config>
+<levels>
+ 0.5   -1            0    1    1    1    1    2    1    1    0                1.87  0.5    1    0    1            0 1.00728      12    1    6      1.94351      1.94351    0    0          0.0     0     3.4       5.5857            0       0
+ 0.5   -1            0    1    1    2    1    2    1    1    1                   0    1    1  0.5   -1            0       0      13    0    7      1.94351            0    0    0          0.0    10       0            0            0       7
+
+ 0.5    1       2.3689    0    1    1    1    0    2    1    0             34963.2  0.5    1    0    1            0 1.00728      12    1    6      1.94351      1.94351    0    0          0.0     0     3.4       5.5857            0       0
+ 0.5    1       2.3689    0    1    2    1    2    2    1    0           -0.609648    1    1  0.5   -1            0       0      13    0    7      1.94351            0    0    0          0.0    10       0            0            0       7
+
+</levels>
+<segmentsData>
+1              1              2              0              50             0              180            0              1              1              10             data/vogl.dat
+1              1              2              0              10             0              180            1              1              1              10             data/rolfs_renorm.dat
+</segmentsData>
+<segmentsTest>
+1              1              1              0.1            0.1            0              0              0              0              0
+</segmentsTest>
+<targetInt>
+1              "3-20"         10             0              0              0              0               "" 0               1              5 1 0.943 0.834 0.688 0.517 
+1              "21-28"        10             0              0              0              0               "" 0               1              3 1 0.95 0.83 
+1              "1-2,35-39"    10             0              0              0              0               "" 0               1              3 1 1 0.65 
+</targetInt>
+<lastRun>
+10057
+"output/param.sav"
+"output/intEC.dat"
+1 1
+0 ""
+1 1 0
+</lastRun>

@@ -1,0 +1,22 @@
+
+************************************
+*    Internal Reaction Pathways    *
+************************************
+  Entrance Pair #  Decay #  Decay Pair #   K Group #  Entrance Ch. s  Decay Ch. s  M Group #  J Group #  Entrance Ch. #  Exit Ch. #
+                1        1             1           1             0.5          0.5          1          1               1           1
+                1        1             1           1             0.5          0.5          2          2               1           1
+
+                1        2             2           1             0.5            0          1          1               1           2
+                1        2             2           1             0.5            0          2          2               1           2
+
+
+************************************
+*    External Reaction Pathways    *
+************************************
+  Entrance Pair #  Decay #  Decay Pair #   K Group #  Entrance Ch. s  Decay Ch. s  M Group #      Mult.  J_i Value  J_f Value  l_i Value  l_f Value         Type  Ch. Decay #    Ch. K #    Ch. M #  Int. Ch #
+
+                1        2             2           1             0.5          0.5          1         M1        0.5        0.5          1          1    Hard Sphere
+                1        2             2           1             0.5          0.5          2         M1        0.5        0.5          1          1      Channel            1          1          1          2
+                1        2             2           1             0.5          0.5          3         E1        0.5        0.5          0          1    Hard Sphere
+                1        2             2           1             0.5          0.5          4         E1        0.5        0.5          0          1      Channel            1          1          2          2
+
