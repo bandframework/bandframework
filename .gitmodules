@@ -4,3 +4,6 @@
 [submodule "software/QGP_Bayes"]
 	path = software/QGP_Bayes
 	url = https://github.com/danOSU/QGP_Bayes.git
+[submodule "software/SAMBA"]
+	path = software/SAMBA
+	url = https://www.github.com/asemposki/SAMBA
