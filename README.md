@@ -43,7 +43,11 @@ As of version 0.1.0+dev, the following tools are included:
 The following examples of the use of surmise are part of version 0.1.0+dev
 
 - Bfrescox: A BAND extension of the frescox scattering code for coupled-channels calculations.
-- QGP_Bayes: A Bayesian parameter estimation notebook for Relativistic Heavy Ion Collisions.
+
+Version 0.1.0+dev also includes two examples of the use of Bayesian parameter estimation in nuclear-physics contexts:
+
+- BRICK: the Bayesian R-matrix Inference Code Kit, facilitates extraction of R-matrix parameters from experimental data.
+- QGP_Bayes: provides a tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP. 
 
 ## Downloading and using the BAND Framework
 
