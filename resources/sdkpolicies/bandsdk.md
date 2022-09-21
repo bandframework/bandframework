@@ -45,4 +45,3 @@ The BAND Framework will conform with BAND Software Development Kit (SDK) require
 |**R12.**| All BAND compatibility changes should be sustainable.
 |**R13.**| Respect system resources and settings made by other previously called packages.
 |**R14.**| Provide a comprehensive, automated test suite for correctness of installation verification.
-
