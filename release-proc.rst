@@ -31,6 +31,8 @@ Before release
 
 - Reviewer will check that all tests have passed and will then approve merge.
 
+- Send an email to bandframework@cels.anl.gov asking to confirm whether the email list membership listed at `CODE_OF_CONDUCT.md <CODE_OF_CONDUCT.md>`_
+
 During release
 --------------
 
