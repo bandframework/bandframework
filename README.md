@@ -69,9 +69,10 @@ Please use the following to cite the BAND Framework:
 
     @techreport{bandframework,
         title       = {{BANDFramework: An} Open-Source Framework for {B}ayesian Analysis of Nuclear Dynamics},
-        author      = {},
+        author      = {Moses Chan and James DeBoer and Dick Furnstahl and Dan Liyanage and Filomena Nunes and 
+        Daniel Odell and Daniel Phillips and Matt Plumlee and Alexandra Semposki and Ozge Surer and Stefan M. Wild},
         institution = {},
-        number      = {Version 0.1.0},
+        number      = {Version 0.2.0},
         year        = {2022},
         url         = {https://github.com/bandframework/bandframework}
     }
