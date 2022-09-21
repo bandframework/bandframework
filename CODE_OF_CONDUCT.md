@@ -62,8 +62,8 @@ Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
 bandframework@cels.anl.gov.
 The current recipients of this email are Daniel Phillips, Dick Furnstahl,
-Stefan Wild, and Frederi Viens. To report a concern about one of these 
-please, email the others. 
+Stefan Wild, and Frederi Viens. To report a concern about one or more of these 
+four individuals, please email the others.
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
