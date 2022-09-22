@@ -13,7 +13,7 @@ Before release
 
 - Release notes for this version are added to the `CHANGELOG.rst </CHANGELOG.rst>`_ file.
 
-- Ensure that links and references have been updated (e.g., no occurences of ``privateband``).
+- Ensure that links and references have been updated (e.g., no occurrences of ``privateband``).
 
 - Version number is updated wherever it appears and ``+dev`` suffix is removed
   (in `README.md </README.md>`_).
@@ -30,6 +30,8 @@ Before release
   one or more reviewers (including at least one other administrator).
 
 - Reviewer will check that all tests have passed and will then approve merge.
+
+- Send an email to bandframework@cels.anl.gov asking to confirm whether the list of email contacts in `CODE_OF_CONDUCT.md <CODE_OF_CONDUCT.md>`_ is up-to-date.
 
 During release
 --------------

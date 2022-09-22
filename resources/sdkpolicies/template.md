@@ -1,4 +1,4 @@
-# BAND SDK v0.1 Community Policy Compatibility for \<package\>
+# BAND SDK v0.2 Community Policy Compatibility for \<package\>
 
 
 > This document summarizes the efforts of current and future BAND member packages to achieve compatibility with the BAND SDK community policies.  Additional details on the BAND SDK are available [here](/resources/sdkpolicies/bandsdk.md) and should be considered when filling out this form. The most recent copy of this template exists [here](/resources/sdkpolicies/template.md).
@@ -23,7 +23,7 @@
 | # | Policy                 |Support| Notes                   |
 |---|-----------------------|-------|-------------------------|
 | 1. | Support BAND community GNU Autoconf, CMake, or other build options. |Full| Short-explanation-here; optional link for more extensive details if needed, see below. [M1 details](#m1-details)|
-| 2. | Provide a comprehensive test suite for correctness of installation verification. |Full| Short-explanation-here; optional link for more extensive details if needed, see below. [M2 details](#m2-details)|
+| 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. [M2 details](#m2-details)| Full| None.|
 | 3. | Provide a documented, reliable way to contact the development team. |Full| None.|
 | 4. | Come with an open-source license |Full| Uses 2-clause BSD license.|
 | 5. | Provide a runtime API to return the current version number of the software. |Full| None.|
@@ -52,3 +52,4 @@ M2 details <a id="m2-details"></a>: optional: provide more details about approac
 |**R11.**| Install headers and libraries under `<prefix>/include` and `<prefix>/lib`, respectively. |Full| None.|
 |**R12.**| All BAND compatibility changes should be sustainable. |Full| None.|
 |**R13.**| Respect system resources and settings made by other previously called packages. |Full| None.|
+|**R14.**| Provide a comprehensive test suite for correctness of installation verification. |Full| None.|
