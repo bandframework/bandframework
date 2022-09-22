@@ -1,8 +1,8 @@
-# BAND SDK v0.1 Community Policy Compatibility for Frescox
+# BAND SDK v0.2 Community Policy Compatibility for Frescox
 
 
 > This document summarizes the efforts of current and future BAND member packages to achieve compatibility with the BAND SDK community policies.  Additional details on the BAND SDK are available [here](/resources/sdkpolicies/bandsdk.md) and should be considered when filling out this form. The most recent copy of this template exists [here](/resources/sdkpolicies/template.md).
->
+<!-- > -->
 > This file should filled out and placed in the directory in the `bandframework` repository representing the software name appended by `bandsdk`.  For example, if you have a software `foo`, the compatibility file should be named `foobandsdk.md` and placed in the directory housing the software in the `bandframework` repository. No open source code can be included without this file.
 >
 > All code included in this repository will be open source.  If a piece of code does not contain a open-source LICENSE file as mentioned in the requirements below, then it will be automatically licensed as described in the LICENSE file in the root directory of the bandframework repository.
@@ -18,7 +18,7 @@
 
 **Icon:** No icon info
 
-**Description:** Scattering code Frescox for coupled-channels calculations 
+**Description:** Scattering code Frescox for coupled-channels calculations
 
 
 ### Mandatory Policies
@@ -28,7 +28,7 @@
 | # | Policy                 |Support| Notes                   |
 |---|-----------------------|-------|-------------------------|
 | 1. | Support BAND community GNU Autoconf, CMake, or other build options |Full|  |
-| 2. | Provide a comprehensive test suite for correctness of installation verification |Full| The test/ directory contains : at least 6 test jobs xeta, lane20 & f19xfr, e80f49b, on2 & be11 their various outputs SUN/*.out |
+| 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. | Full| README explains installation via tutorial.|
 | 3. | Provide a documented, reliable way to contact the development team |Full| |
 | 4. | Come with an open-source license |Full| Frescox uses GNU general public license. |
 | 5. | Provide a runtime API to return the current version number of the software |Full| |
@@ -55,3 +55,4 @@
 |**R11.**| Install headers and libraries under `<prefix>/include` and `<prefix>/lib`, respectively |Full| |
 |**R12.**| All BAND compatibility changes should be sustainable |Full| |
 |**R13.**| Respect system resources and settings made by other previously called packages |Full| |
+|**R14.**| Provide a comprehensive test suite for correctness of installation verification |Full| The test/ directory contains at least 6 test jobs, xeta, lane20, f19xfr, e80f49b, on2, be11, and their associated outputs in SUN/*.out |
