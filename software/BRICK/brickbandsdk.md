@@ -1,4 +1,4 @@
-# BAND SDK v0.1 Community Policy Compatibility for BRICK
+# BAND SDK v0.2 Community Policy Compatibility for BRICK
 
 
 > This document summarizes the efforts of current and future BAND member
@@ -49,7 +49,7 @@ users with its most important features.
 | # | Policy                 |Support| Notes                   |
 |---|-----------------------|-------|-------------------------|
 | 1. | Support BAND community GNU Autoconf, CMake, or other build options. | Full | BRICK relies on the PyPA `build` package. |
-| 2. | Provide a comprehensive test suite for correctness of installation verification. | Full | Basic functionality tests can be found in `tests/12Cpg` |
+| 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. | Full | Points to the brick repository README where testing instructions are given. |
 | 3. | Provide a documented, reliable way to contact the development team. |Full| In addition to the contact information above, BRICK is hosted on GitHub where the development team welcomes feedback and contributions from the community through issues and pull requests, respectively. |
 | 4. | Come with an open-source license |Full| Uses MIT License. |
 | 5. | Provide a runtime API to return the current version number of the software. |Full| The `brick` module has a `__version__` attribute that returns the version number as a string. |
@@ -67,12 +67,11 @@ users with its most important features.
 |**R4.**| Document versions of packages that it works with or depends upon, preferably in machine-readable form.  | None |  |
 |**R5.**| Have README, SUPPORT, LICENSE, and CHANGELOG files in top directory.  | Partial | Missing SUPPORT and CHANGELOG. |
 |**R6.**| Have sufficient documentation to support use and further development.  | Partial |  |
-|**R7.**| Be buildable using 64-bit pointers; 32-bit is optional. | Unsure | The
-package is written in Python. 64- and 32-bit pointer support is left solely up
-to the user's interpreter. |
+|**R7.**| Be buildable using 64-bit pointers; 32-bit is optional. | Unsure | The package is written in Python. 64- and 32-bit pointer support is left solely up to the user's interpreter. |
 |**R8.**| Do not assume a full MPI communicator; allow for user-provided MPI communicator. | N/A |  |
 |**R9.**| Use a limited and well-defined name space (e.g., symbol, macro, library, include). | Partial | |
 |**R10.**| Give best effort at portability to key architectures. | Full | |
 |**R11.**| Install headers and libraries under `<prefix>/include` and `<prefix>/lib`, respectively. | N/A | |
 |**R12.**| All BAND compatibility changes should be sustainable. | Full | |
 |**R13.**| Respect system resources and settings made by other previously called packages. | Full | |
+|**R14.**| Provide a comprehensive test suite for correctness of installation verification. |Full| Basic functionality tests can be found in `tests/12Cpg` |
