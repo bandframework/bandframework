@@ -97,4 +97,4 @@ If possible, please also cite the original BAND Framework paper:
 ## Resources
 For more information, please see the [BAND framework website](https://bandframework.github.io/). 
 
-Our [release process](/release-proc.rst) is also provided.
+Our [release process](resources/dev_guide/release-proc.rst) is also provided.
