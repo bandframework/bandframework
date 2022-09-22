@@ -8,6 +8,8 @@ GitHub <https://github.com/bandframework>`_.
 Before release
 --------------
 
+- A GitHub issue is created with a checklist for the release.
+
 - A release branch should be taken off ``develop`` (or ``develop`` pulls
   controlled).
 
