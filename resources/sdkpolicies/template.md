@@ -43,7 +43,7 @@ M2 details <a id="m2-details"></a>: optional: provide more details about approac
 |**R2.**| Free all system resources acquired as soon as they are no longer needed. |Full| None. |
 |**R3.**| Provide a mechanism to export ordered list of library dependencies. |None| None. |
 |**R4.**| Document versions of packages that it works with or depends upon, preferably in machine-readable form.  |None| None. |
-|**R5.**| Have README, SUPPORT, LICENSE, and CHANGELOG files in top directory.  |None| None. |
+|**R5.**| Have SUPPORT, LICENSE, and CHANGELOG files in top directory.  |None| None. |
 |**R6.**| Have sufficient documentation to support use and further development.  |None| None. |
 |**R7.**| Be buildable using 64-bit pointers; 32-bit is optional. |Full| Package supports both 32 and 64 bit under same API.|
 |**R8.**| Do not assume a full MPI communicator; allow for user-provided MPI communicator. |N/a| None. |
