@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Below are the release notes for bandframework.
+Below are the release notes for all bandframework releases.
 
 May reference issues on:
 https://github.com/bandframework/bandframework/issues
@@ -11,17 +11,28 @@ Release 0.2.0
 
 :Date: September 23, 2022
 
-Initial release post SDK.
+Initial release post SDK update.
 
-Known issues and desired features will be raised on GitHub post-release.
+New capabilities and notable changes:
 
-Known issues:
+- updated BAND SDK to v0.2 to reflect state of community testing and documentation
+- added BAND-compatible surmise, a surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis
+- added BAND-compatible SaMBA, a sandbox for mixing via Bayesian analysis
+- added BAND-compatible Bfrescox, a BAND extension of the frescox scattering code for coupled-channels calculations
+- added BAND-compatible BRICK, a Bayesian R-matrix inference code kit facilitating extraction of R-matrix parameters from experimental data
+- added BAND-compatible QGP_Bayes, a tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP
+- added Code of Conduct
+- added release process 
+- updated overall processes and navigation
 
- - update unit tests for each project under software
- - improve documentation
- - add website and other dependencies to release process
- - 
+:Known issues:
 
-Desired features:
+- continuous integration bug associated with github actions
+- update unit tests for each project under software
+- improve documentation
+- add website and other dependencies to release process
+- improve documentation and facilitation of migration from privateband and bandframework branches to bandframework
 
- - enable actions 
+:Desired features:
+
+- enable actions 
