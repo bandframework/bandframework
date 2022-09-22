@@ -2,7 +2,7 @@
 
 Bfrescox is a BAND integration combining statistical calibration capabilities with the frescox scattering code for coupled-channels calculations.
 
-A [BAND SDK v0.1 Community Policy](/resources/sdkpolicies/bandsdk.md) compatibility documentation for frescox is contained in [frescoxbandsdk.md](/software/Bfrescox/frescoxbandsdk.md).
+A [BAND SDK v0.2 Community Policy](/resources/sdkpolicies/bandsdk.md) compatibility documentation for frescox is contained in [frescoxbandsdk.md](/software/Bfrescox/frescoxbandsdk.md).
 
 
 ## frescox Installation
