@@ -6,7 +6,7 @@ Below are the release notes for all bandframework releases.
 May reference issues on:
 https://github.com/bandframework/bandframework/issues
 
-Release 0.2.0+dev
+Release 0.2
 -------------
 
 :Date: September 23, 2022
