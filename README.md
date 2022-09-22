@@ -35,16 +35,16 @@ BAND Framework elements are of two main types:
 
 BAND Framework tools and examples are found in [software/](/software/).
 
-As of version 0.2.0+dev, the following tools are included:
+As of version 0.2.0, the following tools are included:
 
 - surmise: A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - SaMBA: Sandbox for Mixing via Bayesian Analysis
 
-The following examples of the use of surmise are part of version 0.2.0+dev
+The following examples of the use of surmise are part of version 0.2.0
 
 - Bfrescox: A BAND extension of the frescox scattering code for coupled-channels calculations.
 
-Version 0.2.0+dev also includes two examples of the use of Bayesian parameter estimation in nuclear-physics contexts:
+Version 0.2.0 also includes two examples of the use of Bayesian parameter estimation in nuclear-physics contexts:
 
 - BRICK: the Bayesian R-matrix Inference Code Kit, facilitates extraction of R-matrix parameters from experimental data.
 - QGP_Bayes: provides a tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP. 
