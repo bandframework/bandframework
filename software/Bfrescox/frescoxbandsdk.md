@@ -55,4 +55,4 @@
 |**R11.**| Install headers and libraries under `<prefix>/include` and `<prefix>/lib`, respectively |Full| |
 |**R12.**| All BAND compatibility changes should be sustainable |Full| |
 |**R13.**| Respect system resources and settings made by other previously called packages |Full| |
-|**R14.**| Provide a comprehensive test suite for correctness of installation verification |Full| The test/ directory contains : at least 6 test jobs xeta, lane20 & f19xfr, e80f49b, on2 & be11 their various outputs SUN/*.out |
+|**R14.**| Provide a comprehensive test suite for correctness of installation verification |Full| The test/ directory contains at least 6 test jobs, xeta, lane20, f19xfr, e80f49b, on2, be11, and their associated outputs in SUN/*.out |
