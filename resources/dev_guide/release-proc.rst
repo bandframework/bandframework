@@ -18,7 +18,7 @@ Before release
 - Ensure that links and references have been updated (e.g., no occurrences of ``privateband``).
 
 - Version number is updated wherever it appears and ``+dev`` suffix is removed
-  (in `README.md </README.md>`_).
+  (in `README.md </README.md>`_ and possibly in `CHANGELOG.rst </CHANGELOG.rst>`_).
 
 - Check `README.md </README.md>`_ *Citing bandframework* for correctness (e.g., ensure that author list matches `AUTHORS </AUTHORS>`_).
 
