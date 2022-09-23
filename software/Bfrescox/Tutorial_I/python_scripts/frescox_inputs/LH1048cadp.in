@@ -1,0 +1,63 @@
+ca48(d,p)ca49 @ 10 MeV, Lohr & Haeberli;
+NAMELIST
+ &FRESCO hcm=0.1 rmatch=20 rintp=0.20 hnl=0.1 rnl=4.0 centre=-0.4
+	 jtmin=0.0  jtmax=30 absend=-1.0
+	 thmin=0.00 thmax=180.00 thinc=1.00
+	 iter=1 nnu=36
+	 chans=1 xstabl=1
+	 elab=10 /
+
+ &PARTITION namep='d'  massp=2.014 zp=1
+             namet='Ca48'  masst=47.95 zt=20 nex=1  /
+ &STATES jp=1 bandp=1 ep=0.0 cpot=1 jt=0 bandt=1 et=0.0000  /
+
+ &PARTITION namep='p' massp=1 zp=1
+            namet='Ca49'  masst=48.96 zt=20 qval=2.922 nex=1  /
+ &STATES jp=0.5 bandp=1 ep=0.0  cpot=2 jt=1.5 bandt=-1 et=0.0000  /
+ &partition /
+
+ ! entrance partition
+ &POT kp=1 ap=2 at=48.000 rc=1.3  /
+ &POT kp=1 type=1 p1=103.237 p2=1.05 p3=0.86  p4=0.0 p5=1.33 p6=0.49  /
+ &POT kp=1 type=2 p1=0 p2=0 p3=0  p4=16.506 p5=1.43 p6=0.672  /
+ &POT kp=1 type=3 p1=3.5 p2=0.75 p3=0.5   /
+
+ ! exit partition
+ &POT kp=2 ap=1 at=49.000 rc=1.272793 /
+ &POT kp=2 type=1 p1=49.841 p2=1.189 p3=0.69  p4=2.029 p5=1.215 p6=0.69  /
+ &POT kp=2 type=2 p1=0 p2=0 p3=0  p4=8.216  p5=1.215 p6=0.69  /
+ &POT kp=2 type=3 p1=5.9 p2=1.012 p3=0.63   /
+
+ ! binding potential of 49Ca = (n+48Ca)
+ &POT kp=3 ap=1 at=48 rc=1.2  /
+ &POT kp=3 type=1 p1=34.0 p2=1.2 p3=0.6   /
+ &POT kp=3 type=3 p1=7.0 p2=1.2 p3=0.6   /
+
+ ! binding potential of the deuteron
+ &POT kp=4 type=0 shape=5 p1=1 p3=1  /
+ &POT kp=4 type=1 shape=5 p1=1 p3=1  /
+ &POT kp=4 type=3 shape=5 p1=1 p3=1 /
+ &POT kp=4 type=4 shape=5 p1=1 p3=1 /
+ &POT kp=4 type=7 shape=5 p1=1 p3=1 /
+
+ ! core-core potential (core of d (p) + 48Ca)
+ ! effectively same as exit partition
+ &POT kp=5 ap=1 at=48.000 rc=1.272793 /
+ &POT kp=5 type=1 p1=49.841 p2=1.189 p3=0.69  p4=2.029 p5=1.215 p6=0.69  /
+ &POT kp=5 type=2 p1=0 p2=0 p3=0  p4=8.216   p5=1.215 p6=0.69  /
+ &POT kp=5 type=3 p1=5.9 p2=1.012 p3=0.63   /
+
+ &pot /
+
+
+ &Overlap kn1=1 ic1=1 ic2=2 in=1 nn=1 l=0 sn=0.5 j=0.5
+          kbpot=4 be=2.22 isc=1  /
+ &Overlap kn1=4 ic1=2 ic2=1 in=2 nn=2 l=1 sn=0.5 j=1.5
+          kbpot=3 be=5.146  isc=1 ipc=0 /
+ &overlap /
+
+ &Coupling icto=-2 icfrom=1 kind=7 ip1=0 ip2=0 ip3=5/
+ &CFP in=1 ib=1 ia=1 kn=1 a=1.00  /
+ &CFP in=2 ib=1 ia=1 kn=4 a=1.00  /
+ &CFP /
+ &coupling /

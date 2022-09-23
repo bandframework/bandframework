@@ -1,0 +1,21 @@
+12C scattering
+NAMELIST
+ &FRESCO hcm=0.01 rmatch=40 rintp=0.20 hnl=0.1 rnl=5.0 centre=-0.25
+	 jtmin=0.0  jtmax=35 absend=-1.0
+	 thmin=0.00 thmax=180.00 thinc=1.0
+	 iter=0 iblock=2 nnu=36
+	 chans=1 treneg=1 xstabl=1
+         elab(1)= 7.97 /
+
+ &PARTITION namep='n'  massp=1.0 zp=0
+            namet='48Ca'  masst= 48. zt=20  nex=1  /
+ &STATES jp=0.5 bandp=1 ep=0.0 cpot=1 jt= 0 bandt= 1 et=0.0000 /
+ &partition /
+
+ &pot kp= 1 type= 0  p(1:3)= 1.000  48.  0.00 /
+ &pot kp= 1 type= 1  p(1:6)= XXXXX   XXXXX  XXXXX    1.0     1.33   0.62 /
+ &pot kp=1  type= 2  p(1:6)= 0.0    0.0	   0.0	   XXXXX    XXXXX    XXXXX /
+ &pot kp= 1 type= 3  p(1:6)= 6.6    1.33   0.62    0.0  1.36  0.63 /
+ &pot /
+ &overlap /
+ &COUPLING /

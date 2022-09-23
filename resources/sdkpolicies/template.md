@@ -1,7 +1,7 @@
-# BAND SDK v0.1 Community Policy Compatibility for \<package\>
+# BAND SDK v0.2 Community Policy Compatibility for \<package\>
 
 
-> This document summarizes the efforts of current and future BAND member packages to achieve compatibility with the BAND SDK community policies.  Additional details on the BAND SDK are available [here](https://raw.githubusercontent.com/bandframework/bandframework/main/resources/sdkpolicies/bandsdk.md) and should be considered when filling out this form. The most recent copy of this template exists [here](https://raw.githubusercontent.com/bandframework/bandframework/main/resources/sdkpolicies/template.md).
+> This document summarizes the efforts of current and future BAND member packages to achieve compatibility with the BAND SDK community policies.  Additional details on the BAND SDK are available [here](/resources/sdkpolicies/bandsdk.md) and should be considered when filling out this form. The most recent copy of this template exists [here](/resources/sdkpolicies/template.md).
 >
 > This file should filled out and placed in the directory in the `bandframework` repository representing the software name appended by `bandsdk`.  For example, if you have a software `foo`, the compatibility file should be named `foobandsdk.md` and placed in the directory housing the software in the `bandframework` repository. No open source code can be included without this file.
 >
@@ -23,7 +23,7 @@
 | # | Policy                 |Support| Notes                   |
 |---|-----------------------|-------|-------------------------|
 | 1. | Support BAND community GNU Autoconf, CMake, or other build options. |Full| Short-explanation-here; optional link for more extensive details if needed, see below. [M1 details](#m1-details)|
-| 2. | Provide a comprehensive test suite for correctness of installation verification. |Full| Short-explanation-here; optional link for more extensive details if needed, see below. [M2 details](#m2-details)|
+| 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. [M2 details](#m2-details)| Full| None.|
 | 3. | Provide a documented, reliable way to contact the development team. |Full| None.|
 | 4. | Come with an open-source license |Full| Uses 2-clause BSD license.|
 | 5. | Provide a runtime API to return the current version number of the software. |Full| None.|
@@ -43,7 +43,7 @@ M2 details <a id="m2-details"></a>: optional: provide more details about approac
 |**R2.**| Free all system resources acquired as soon as they are no longer needed. |Full| None. |
 |**R3.**| Provide a mechanism to export ordered list of library dependencies. |None| None. |
 |**R4.**| Document versions of packages that it works with or depends upon, preferably in machine-readable form.  |None| None. |
-|**R5.**| Have README, SUPPORT, LICENSE, and CHANGELOG files in top directory.  |None| None. |
+|**R5.**| Have SUPPORT, LICENSE, and CHANGELOG files in top directory.  |None| None. |
 |**R6.**| Have sufficient documentation to support use and further development.  |None| None. |
 |**R7.**| Be buildable using 64-bit pointers; 32-bit is optional. |Full| Package supports both 32 and 64 bit under same API.|
 |**R8.**| Do not assume a full MPI communicator; allow for user-provided MPI communicator. |N/a| None. |
@@ -52,3 +52,4 @@ M2 details <a id="m2-details"></a>: optional: provide more details about approac
 |**R11.**| Install headers and libraries under `<prefix>/include` and `<prefix>/lib`, respectively. |Full| None.|
 |**R12.**| All BAND compatibility changes should be sustainable. |Full| None.|
 |**R13.**| Respect system resources and settings made by other previously called packages. |Full| None.|
+|**R14.**| Provide a comprehensive test suite for correctness of installation verification. |Full| None.|

@@ -1,3 +1,10 @@
 [submodule "software/surmise"]
 	path = software/surmise
 	url = https://github.com/surmising/surmise
+[submodule "software/QGP_Bayes"]
+	path = software/QGP_Bayes
+	url = https://github.com/danOSU/QGP_Bayes.git
+        branch = main
+[submodule "software/SAMBA"]
+	path = software/SAMBA
+	url = https://www.github.com/asemposki/SAMBA

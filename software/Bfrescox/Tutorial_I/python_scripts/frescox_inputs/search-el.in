@@ -1,0 +1,28 @@
+'48Ca.in' '48Ca.out' 
+5 1
+
+ &variable kind=1 name='V' kp=1 pline=2 col=1 potential=49.284900 step=0.01/ 
+ &variable kind=1 name='r' kp=1 pline=2 col=2 potential=0.907039 step=0.01 valmin=0.8 valmax=1.0/
+ &variable kind=1 name='a' kp=1 pline=2 col=3 potential=0.679841 step=0.01 valmin=0.3 valmax=0.8/
+ &variable kind=1 name='Ws' kp=1 pline=3 col=4 potential=3.394386 step=0.01 valmin=1.0 valmax=40.0/
+ &variable kind=1 name='rs' kp=1 pline=3 col=5 potential=1.094115 step=0.01 valmin=1.0 valmax=1.6/
+ &variable kind=1 name='as' kp=1 pline=3 col=6 potential=0.2763 step=0.01 /
+ 
+ &data type=0 iscale=2  idir=0 lab=F  abserr=F/
+
+25.5        1243        .023         
+30.6        887.7       .022         
+40.8        355.5       .029         
+50.9        111.5       .039         
+61          26.5        .079         
+71.1        10.4        .067         
+76.2        8.3         .067         
+81.2        7.3         .075         
+91.2        17.2        .042         
+101.2       37.6        .028         
+111.1       48.7        .027         
+121         38.9        .024         
+130.9       32.4        .028         
+140.8       36.4        .03           
+150.6       61.9        .022     
+&
