@@ -56,3 +56,7 @@ After release
 -------------
 
 - Ensure all relevant GitHub issues are closed.
+ 
+- Update website to reflect existence of new release.
+
+- Disseminate news of new release to: FRIB-TA mailing list, JETSCAPE/X-SCAPE mailing list, other interested parties
