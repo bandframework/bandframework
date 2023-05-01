@@ -23,6 +23,9 @@ For a full installation with all dependencies, including ``libEnsemble``, use:
 pip install < --user > "parmoo[extras]"
 ```
 
+ParMOO is also available on conda-forge or it can be installed from source using the `setup.py` file.
+For additional information, see [ParMOO's installation docs](https://parmoo.readthedocs.io/en/latest/install.html).
+
 One can cite ParMOO via the paper:
 ```
 @article{parmoo,
