@@ -76,7 +76,9 @@ Running the above test produces a CSV file containing ParMOO's final database of
 
 ![](https://github.com/parmoo/parmoo-solver-farm/blob/main/fayans-model-calibration-2022/Pareto-Front.png)
 
-See the code in `parmoo_fayans_test.py` for more details on how to preproduce these results, and see the file `parmoo_fayans_structured_solver.py` for an example of a production-ready structure-exploiting run.
+See the code in [`parmoo_fayans_test.py`](https://github.com/parmoo/parmoo-solver-farm/blob/main/fayans-model-calibration-2022/parmoo_fayans_test.py) for more details on how to preproduce these results, and see the file [`parmoo_fayans_structured_solver.py`](https://github.com/parmoo/parmoo-solver-farm/blob/main/fayans-model-calibration-2022/parmoo_fayans_structured_solver.py) for an example of a production-ready structure-exploiting run.
+
+Details on this problem, which involves a surrogate of the Fayans functional, can be found in Section 5 of the preprint [ArXiv:2304.06881](https://arxiv.org/abs/2304.06881).
 
 ## Additional Support and Tutorials
 
