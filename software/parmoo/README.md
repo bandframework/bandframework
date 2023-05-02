@@ -72,7 +72,7 @@ Test installation and execution by running:
 python3 parmoo_fayans_test.py --comms local --nworkers 4
 ```
 
-Running the above test produces a CSV file containing ParMOO's final database of design parameter and objective values in `fayans_test_results.csv` and saves a pairwise scatter plot of the Pareto front in Pareto Front.png, which should look similar to
+Running the above test produces a CSV file containing ParMOO's final database of design parameter and objective values in `fayans_test_results.csv` and saves a pairwise scatter plot of the Pareto front in `Pareto Front.png`, which should look similar to
 
 ![](https://github.com/parmoo/parmoo-solver-farm/blob/main/fayans-model-calibration-2022/Pareto-Front.png)
 
