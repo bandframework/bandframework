@@ -62,7 +62,7 @@ To try callibrating a Fayans EDF with ParMOO, clone the [Fayans Model Calibratio
 git clone https://github.com/parmoo/parmoo-solver-farm
 ```
 
-From within the subdirectory ``parmoo-solver-farm/fayans-model-calibration-2022``, install the example via:
+From within the subdirectory ``parmoo-solver-farm/fayans-model-calibration-2022``, make sure that all of the dependencies for this example are installed via:
 ```
 python3 -m pip install -r REQUIREMENTS.txt
 ```
