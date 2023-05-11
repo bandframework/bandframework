@@ -57,7 +57,7 @@ ParMOO's online documentation:
 
 ## ParMOO Tutorial: Calibrating a NN Surrogate of the Fayans Energy Density Functional
 
-To try callibrating a Fayans EDF with ParMOO, clone the [Fayans Model Calibration example](https://github.com/parmoo/parmoo-solver-farm/tree/main/fayans-model-calibration-2022) from the [ParMOO Solver Farm](https://github.com/parmoo/parmoo-solver-farm/):
+To try calibrating a Fayans EDF with ParMOO, clone the [Fayans Model Calibration example](https://github.com/parmoo/parmoo-solver-farm/tree/main/fayans-model-calibration-2022) from the [ParMOO Solver Farm](https://github.com/parmoo/parmoo-solver-farm/):
 ```
 git clone https://github.com/parmoo/parmoo-solver-farm
 ```
