@@ -1,12 +1,13 @@
 ## How to put your github repo submodule in the bandframework/software directory
 
-> First fork the bandframework repo in you local computer.
-> - go to *[bandframework repo](https://github.com/bandframework/bandframework/)* and click fork on upper right
->- go to your github account and a copy of bandframework repo should apear there. Clone it to your local computer.
+> First fork the bandframework repo on your local computer:
+> - Go to *[bandframework repo](https://github.com/bandframework/bandframework/)* and click fork on upper right
+> - Go to your github account and a copy of the bandframework repo should appear there.
+> - Clone the `development` branch of your forked repo to your local computer:
 
 `git clone -b development <link to bandframework forked repo>`
 
-> To get the content in the submodules of bandframework/software execute the following comand
+> To get the content of any submodules (e.g., those in `bandframework/software`) execute the following command:
 
 `git submodule update --init --recursive`
 
@@ -25,12 +26,12 @@ git submodule add <url of your custom softwear repo>
   git push origin development
 ```
 
-> Put your software on bandframework development branch
->- go to the *[development branch of the bandframework](https://github.com/bandframework/bandframework/tree/development)*
->- click on the *[pull request tab](https://github.com/bandframework/bandframework/pulls)* at the very top.
->- click on the green New pull request button.
->- click compare accross all
->- follow the instructions and finally submit the pull request with a comment for the approval. 
+> Put your software on bandframework development branch:
+>- Go to the *[development branch of the bandframework](https://github.com/bandframework/bandframework/tree/development)*
+>- Click on the *[pull request tab](https://github.com/bandframework/bandframework/pulls)* at the very top.
+>- Click on the green `New pull request` button.
+>- Click compare accross all.
+>- Follow the instructions and finally submit the pull request with a comment for the approval. 
 
 ### Later when you have made changes to your software and want to update the bandframework with this change do the following
 
