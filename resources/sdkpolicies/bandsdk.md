@@ -14,7 +14,7 @@ BAND packages should include a compatibility document and a [template](/resource
 
 The BAND Framework will conform with BAND Software Development Kit (SDK) requirements, summarized below. By using such requirements we envision ready interoperability across the BAND software ecosystem, large-scale scientific simulation codes, and other numerical libraries.
 
-As shown in the [template](/resources/sdkpolicies/template.md) and [linked SDK compatability examples](/resources/sdkpolicies/README.md), we note that there are different levels to which packages can satisfy BAND's mandatory and recommended policies in order to facilitate interoperability with other BAND compatible tools. We emphasize that the most important thing is for packages to state their compliance with each policy.
+As shown in the [template](/resources/sdkpolicies/template.md) and [linked SDK compatibility examples](/resources/sdkpolicies/README.md), we note that there are different levels to which packages can satisfy BAND's mandatory and recommended policies in order to facilitate interoperability with other BAND compatible tools. We emphasize that the most important thing is for packages to state their compliance with each policy.
 
 ### Mandatory Policies
 
