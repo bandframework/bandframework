@@ -3,9 +3,9 @@
 > First fork the bandframework repo on your local computer:
 > - Go to *[bandframework repo](https://github.com/bandframework/bandframework/)* and click fork on upper right
 > - Go to your github account and a copy of the bandframework repo should appear there.
-> - Clone the `development` branch of your forked repo to your local computer:
+> - Clone the `develop` branch of your forked repo to your local computer:
 
-`git clone -b development <link to bandframework forked repo>`
+`git clone -b develop <link to bandframework forked repo>`
 
 > To get the content of any submodules (e.g., those in `bandframework/software`) execute the following command:
 
