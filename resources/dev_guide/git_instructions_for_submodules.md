@@ -15,7 +15,7 @@
 
 ```
 cd bandframework/software
-git submodule add <url of your custom softwear repo>
+git submodule add <url of your custom software repo>
   ```
 
 
@@ -23,11 +23,11 @@ git submodule add <url of your custom softwear repo>
  ```
   git add .
   git commit -m "added submodule"
-  git push origin development
+  git push origin develop
 ```
 
-> Put your software on bandframework development branch:
->- Go to the *[development branch of the bandframework](https://github.com/bandframework/bandframework/tree/development)*
+> Put your software on bandframework develop branch:
+>- Go to the *[develop branch of the bandframework](https://github.com/bandframework/bandframework/tree/develop)*
 >- Click on the *[pull request tab](https://github.com/bandframework/bandframework/pulls)* at the very top.
 >- Click on the green `New pull request` button.
 >- Click compare accross all.
@@ -41,6 +41,6 @@ git submodule add <url of your custom softwear repo>
  ```
  git add .
  git commit -m "updating the submodule"
- git push origin development
+ git push origin develop
  ```
- > Then you have to repeat the above procedure under "Put your software apear on bandframework development branch"
+ > Then you have to repeat the above procedure under "Put your software apear on bandframework develop branch"
