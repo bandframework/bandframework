@@ -43,4 +43,4 @@ git submodule add <url of your custom software repo>
  git commit -m "updating the submodule"
  git push origin develop
  ```
- > Then you have to repeat the above procedure under "Put your software apear on bandframework develop branch"
+ > Then you have to repeat the above procedure under "Put your software on bandframework develop branch"
