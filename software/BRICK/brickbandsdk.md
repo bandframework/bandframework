@@ -30,7 +30,8 @@
 >
 > To suggest changes to these requirements or obtain more information, please
 > contact [BAND](https://bandframework.github.io/team).
-
+>
+> Details on citing the current version of the BAND Framework can be found in the [README](https://github.com/bandframework/bandframework).
 
 **Website:** https://github.com/odell/brick
 
