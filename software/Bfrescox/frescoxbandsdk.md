@@ -10,6 +10,8 @@
 > Please provide information on your compatibility status for each mandatory policy and, if possible, also for recommended policies. If you are not compatible, state what is lacking and what are your plans on how to achieve compliance. For current BAND SDK packages: If you were not fully compatible at some point, please describe the steps you undertook to fulfill the policy. This information will be helpful for future BAND member packages.
 >
 > To suggest changes to these requirements or obtain more information, please contact [BAND](https://bandframework.github.io).
+>
+> Details on citing the current version of the BAND Framework can be found in the [README](https://github.com/bandframework/bandframework).
 
 
 **Website:** https://github.com/LLNL/Frescox

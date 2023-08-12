@@ -54,11 +54,33 @@ Version 0.2.0+dev also includes two examples of the use of Bayesian parameter es
 
 You are free to use any pieces of the BAND Framework that will advance your own research. Please cite the framework, and the original BAND paper, as detailed below under "Citing the BAND Framework".
 
+## Submodules
+
+BAND Framework currently includes some dependencies via git submodules. Currently, the following submodules are employed:
+
+* [software/](software/)QGP_Bayes
+* [software/](software/)SAMBA 
+* [software/](software/)surmise
+
+As a consequence, when cloning the BAND Framework repository, the submodules can be retrieved automatically via
+- `git clone --recursive` (in place of the usual `git clone`)
+
+If you have already cloned the repository, the following modified `git` commands can be used:
+- `git submodule update --init --recursive` (to obtain all submodules and any submodules those submodules have)
+- `git pull --recurse-submodules=yes` (in place of the usual `git pull`)
+- `git submodule update --init` (additionally, after `git pull`)
+- `git submodule update --init software/surmise`
+  (variant of the previous item, in case you want to only get the surmise submodule)
+
+Note that submodules work modern git, version >= 2.38.0.
+
 ## Contributing to the BAND Framework
 
 BAND welcomes contributions to the BAND Framework in a variety of forms; please see [CONTRIBUTING](CONTRIBUTING.rst).
 
 The BAND Framework maintains a [BAND Software Development Kit (SDK)](/resources/sdkpolicies/bandsdk.md) that includes requirements and recommendations for contributing a package to the BAND Framework. 
+
+Detailed instructions for contributing software, including by submodules, are found in BAND's [developer's guide](/resources/dev_guide).
 
 ## License 
 
