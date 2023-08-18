@@ -44,3 +44,12 @@ git submodule add <url of your custom software repo>
  git push origin develop
  ```
  > Then you have to repeat the above procedure under "Put your software on bandframework develop branch"
+
+## BAND-recommended way to log data for BAND packages added via submodules
+
+> Software directly hosted in this repository has data logging enabled to track number of clones, etc.
+> for a longer time period than github's.
+>
+> To track this data for packages hosted elsewhere, we recommend using https://github.com/marketplace/actions/github-repo-stats
+>
+>  Users should follow the tutorial https://github.com/jgehrcke/github-repo-stats/wiki/Tutorial
