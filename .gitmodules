@@ -8,3 +8,6 @@
 [submodule "software/SAMBA"]
 	path = software/SAMBA
 	url = https://www.github.com/asemposki/SAMBA
+[submodule "software/Taweret"]
+	path = software/Taweret
+	url = https://github.com/TaweretOrg/Taweret.git
