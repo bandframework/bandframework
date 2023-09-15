@@ -14,4 +14,4 @@ Examples of completed SDK policy compatibility documents include:
 -  [parmoo-bandsdk.md](/software/parmoo/parmoo-bandsdk.md)
 -  [QGP_Bayesbandsdk.md](https://github.com/danOSU/QGP_Bayes/blob/main/QGP_Bayesbandsdk.md)
 -  [SAMBAbandsdk.md](https://github.com/asemposki/SAMBA/blob/main/SAMBAbandsdk.md)
--  [surmisebandsdk.md](https://github.com/surmising/surmise/blob/main/surmisebandsdk.md)
+-  [surmisebandsdk.md](https://github.com/bandframework/surmise/blob/main/surmisebandsdk.md)
