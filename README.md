@@ -40,6 +40,7 @@ As of version 0.2.0+dev, the following tools are included:
 - surmise: A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - SaMBA: The Sandbox for Mixing via Bayesian Analysis.
 - parMOO: A Python library for parallel multiobjective simulation optimization.
+- Taweret: A Python package containing multiple Bayesian Model Mixing methods.
 
 The following examples of the use of surmise are part of version 0.2.0+dev
 
@@ -61,6 +62,7 @@ BAND Framework currently includes some dependencies via git submodules. Currentl
 * [software/](software/)QGP_Bayes
 * [software/](software/)SAMBA 
 * [software/](software/)surmise
+* [software/](software/)Taweret
 
 As a consequence, when cloning the BAND Framework repository, the submodules can be retrieved automatically via
 - `git clone --recursive` (in place of the usual `git clone`)
