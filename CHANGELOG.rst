@@ -16,6 +16,7 @@ Initial release post SDK update.
 New capabilities and notable changes:
 
 - added BAND-compatible parMOO, a parallel multiobjective simulation optimization library
+- added BAND-compatible Taweret, a package containing multiple Bayesian Model Mixing methods
 - CHECK THIS updated BAND-compatible SaMBA
 - updated BAND-compatible surmise to `v0.2.0 <https://github.com/bandframework/surmise/releases/tag/v0.2.0>`_ with new emulation, calibration, and sampling methods
 - improved developer guide
@@ -24,6 +25,7 @@ New capabilities and notable changes:
 
 :Known issues:
 
+- continuing to experience side effects of the github Actions bug (see `Issue #71 <https://github.com/bandframework/bandframework/issues/71>`_)
 - update unit tests for each project under software
 - improve documentation
 - improve documentation and facilitation of migration from privateband and bandframework branches to bandframework
