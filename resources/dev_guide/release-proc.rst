@@ -22,6 +22,8 @@ Before release
 
 - Check `README.md </README.md>`_ *Citing bandframework* for correctness (e.g., ensure that author list matches `AUTHORS </AUTHORS>`_).
 
+- Check `bandsdk.md </resources/sdkpolicies/bandsdk.md>`_ for *Citing bandframework* for correctness.
+
 - Tests are run with source to be released (this may iterate):
 
   - Online CI (GitHub Actions) tests must pass.
@@ -56,3 +58,7 @@ After release
 -------------
 
 - Ensure all relevant GitHub issues are closed.
+
+- Update website to reflect existence of new release.
+
+- Disseminate news of new release to: FRIB-TA mailing list, JETSCAPE/X-SCAPE mailing list, other interested parties.

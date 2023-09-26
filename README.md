@@ -35,16 +35,18 @@ BAND Framework elements are of two main types:
 
 BAND Framework tools and examples are found in [software/](/software/).
 
-As of version 0.2.0, the following tools are included:
+As of version 0.2.0+dev, the following tools are included:
 
 - surmise: A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
-- SaMBA: Sandbox for Mixing via Bayesian Analysis
+- SaMBA: The Sandbox for Mixing via Bayesian Analysis.
+- parMOO: A Python library for parallel multiobjective simulation optimization.
+- Taweret: A Python package containing multiple Bayesian Model Mixing methods.
 
-The following examples of the use of surmise are part of version 0.2.0
+The following examples of the use of surmise are part of version 0.2.0+dev
 
 - Bfrescox: A BAND extension of the frescox scattering code for coupled-channels calculations.
 
-Version 0.2.0 also includes two examples of the use of Bayesian parameter estimation in nuclear-physics contexts:
+Version 0.2.0+dev also includes two examples of the use of Bayesian parameter estimation in nuclear-physics contexts:
 
 - BRICK: the Bayesian R-matrix Inference Code Kit, facilitates extraction of R-matrix parameters from experimental data.
 - QGP_Bayes: provides a tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP. 
@@ -53,11 +55,34 @@ Version 0.2.0 also includes two examples of the use of Bayesian parameter estima
 
 You are free to use any pieces of the BAND Framework that will advance your own research. Please cite the framework, and the original BAND paper, as detailed below under "Citing the BAND Framework".
 
+## Submodules
+
+BAND Framework currently includes some dependencies via git submodules. Currently, the following submodules are employed:
+
+* [software/](software/)QGP_Bayes
+* [software/](software/)SAMBA 
+* [software/](software/)surmise
+* [software/](software/)Taweret
+
+As a consequence, when cloning the BAND Framework repository, the submodules can be retrieved automatically via
+- `git clone --recursive` (in place of the usual `git clone`)
+
+If you have already cloned the repository, the following modified `git` commands can be used:
+- `git submodule update --init --recursive` (to obtain all submodules and any submodules those submodules have)
+- `git pull --recurse-submodules=yes` (in place of the usual `git pull`)
+- `git submodule update --init` (additionally, after `git pull`)
+- `git submodule update --init software/surmise`
+  (variant of the previous item, in case you want to only get the surmise submodule)
+
+Note that submodules work modern git, version >= 2.38.0.
+
 ## Contributing to the BAND Framework
 
 BAND welcomes contributions to the BAND Framework in a variety of forms; please see [CONTRIBUTING](CONTRIBUTING.rst).
 
 The BAND Framework maintains a [BAND Software Development Kit (SDK)](/resources/sdkpolicies/bandsdk.md) that includes requirements and recommendations for contributing a package to the BAND Framework. 
+
+Detailed instructions for contributing software, including by submodules, are found in BAND's [developer's guide](/resources/dev_guide).
 
 ## License 
 
