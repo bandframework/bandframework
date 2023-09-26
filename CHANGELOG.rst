@@ -21,7 +21,7 @@ New capabilities and notable changes:
 - updated BAND-compatible surmise to `v0.2.0 <https://github.com/bandframework/surmise/releases/tag/v0.2.0>`_ with new emulation, calibration, and sampling methods
 - improved developer guide
 - improved overall processes and navigation
-- github fixed continuous integration bug associated with github actions
+- github partially fixed continuous integration bug associated with github actions; it is now possible to create and run actions in all bandframework organization repositories except for bandframework/bandframework
 
 :Known issues:
 
