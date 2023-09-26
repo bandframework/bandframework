@@ -1,0 +1,18 @@
+#SmoothEmulator_LogFileName smoothlog.txt
+ SmoothEmulator_LAMBDA 3.0
+ SmoothEmulator_MAXRANK 4
+ SmoothEmulator_NASample 8  # No. of coefficient samples
+ SmoothEmulator_TuneChooseMCMC true # set false if NPars<5
+ SmoothEmulator_UseSigmaYRreal false # 
+ SmoothEmulator_ConstrainA0 false
+ SmoothEmulator_CutoffA false
+ SmoothEmulator_ModelRunDirName modelruns
+ SmoothEmulator_CoefficientsDirName coefficients
+ SmoothEmulator_ModelParInfoDir    Info
+ SmoothEmulator_ObservableInfoDir  Info
+ SmoothEmulator_TrainingPts 0-4
+ SmoothEmulator_MCStepSize 0.01
+ SmoothEmulator_MCSigmaAStepSize 50.0
+ SmoothEmulator_NMC 10000  # Steps between samples 
+ SmoothEmulator_UsePCA   false
+ 
