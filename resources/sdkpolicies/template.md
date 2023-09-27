@@ -25,7 +25,7 @@
 | # | Policy                 |Support| Notes                   |
 |---|-----------------------|-------|-------------------------|
 | 1. | Support BAND community GNU Autoconf, CMake, or other build options. |Full| Short-explanation-here; optional link for more extensive details if needed, see below. [M1 details](#m1-details)|
-| 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. [M2 details](#m2-details)| Full| None.|
+| 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. | Full| None. [M2 details](#m2-details)|
 | 3. | Provide a documented, reliable way to contact the development team. |Full| None.|
 | 4. | Come with an open-source license |Full| Uses 2-clause BSD license.|
 | 5. | Provide a runtime API to return the current version number of the software. |Full| None.|
