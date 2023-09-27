@@ -14,10 +14,10 @@
 > Details on citing the current version of the BAND Framework can be found in the [README](https://github.com/bandframework/bandframework).
 
 
-**Website:** \<package website\>\
-**Contact:** \<contact information\>
-**Icon:** \<url of icon you would like to display\>
-**Description:**  \<a short description of the code\>
+**Website:** \<package website\> \
+**Contact:** \<contact information\> \
+**Icon:** \<url of icon you would like to display\> \
+**Description:**  \<a short description of the code\> \
 
 ### Mandatory Policies
 
