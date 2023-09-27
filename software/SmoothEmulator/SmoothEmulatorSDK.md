@@ -22,9 +22,9 @@
 **BAND SDK**
 | # | Policy                 |Support| Notes                   |
 |---|-----------------------|-------|-------------------------|
-| 1. | Support BAND community GNU Autoconf, CMake, or other build options. |Full| FIX ME Short-explanation-here. |
-| 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. | Full| FIX ME.|
-| 3. | Provide a documented, reliable way to contact the development team. |Full| FIX ME.|
+| 1. | Support BAND community GNU Autoconf, CMake, or other build options. |Full| All software compiled through CMake |
+| 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. | Somewhat| User can run tutorial and check against expected output |
+| 3. | Provide a documented, reliable way to contact the development team. |Full| Yes, in README|
 | 4. | Come with an open-source license |Full| Uses a [GPL v3 license](LICENSE.md).|
 | 5. | Provide a runtime API to return the current version number of the software. |Full| FIX ME.|
 | 6. | Provide a BAND team-accessible repository. |Full| Smooth Emulator is available via https://github.com/bandframework/bandframework |
