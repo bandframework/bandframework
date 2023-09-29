@@ -11,3 +11,6 @@
 [submodule "software/Taweret"]
 	path = software/Taweret
 	url = https://github.com/TaweretOrg/Taweret.git
+[submodule "software/rose"]
+	path = software/rose
+	url = https://github.com/bandframework/rose
