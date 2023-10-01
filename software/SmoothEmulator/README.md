@@ -1,6 +1,8 @@
-# smooth
-smooth emulator
+# SmoothEmulator
+
 Authors: Scott Pratt, Eren Erdogan, Ekaksh Kataria
-See doc/User_Manual.pdf
+
+For installation and documentation, see [doc/User_Manual.pdf](doc/UserManual.pdf)
+
 For assistance, contact Scott Pratt (prattsc@msu.edu)
 
