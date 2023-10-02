@@ -15,7 +15,7 @@
 **Website:** https://github.com/bandframework/bandframework/blob/main/software/SmoothEmulator \
 **Contact:** For assistance contact Scott Pratt (prattsc@msu.edu) \
 **Icon:** N/a \
-**Description:**  SmoothEmulator evaluates training points, fits a smooth emulator, and provides ways to explore a parameter space based on this emulator. \
+**Description:**  SmoothEmulator evaluates training points, fits a smooth emulator, and provides ways to explore a parameter space based on this emulator. 
 
 ### Mandatory Policies
 
