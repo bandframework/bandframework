@@ -142,6 +142,7 @@ SCAPE
 scikit
 scipy
 SciPy
+sdk
 SDK
 sdkpolicies
 sexualized
