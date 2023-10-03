@@ -22,6 +22,7 @@ cmake
 CMake
 Coauthorship
 colab
+conda
 Conda
 cov
 COVID
@@ -34,7 +35,7 @@ datasets
 de
 dec
 deuteron
-+dev
+dev
 directbayes
 directbayeswoodbury
 docstrings
@@ -137,6 +138,7 @@ rst
 runtime
 SaMBA
 SAMBAbandsdk
+SCAPE
 scikit
 scipy
 SciPy
