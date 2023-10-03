@@ -9,15 +9,17 @@ https://github.com/bandframework/bandframework/issues
 Release 0.3.0
 -------------
 
-:Date: September 26, 2023 TBD
+:Date: October 10, 2023 TBD
 
 Initial release post SDK update.
 
 New capabilities and notable changes:
 
+- added BAND-compatible BMEX, a web application for exploring nuclear masses and related quantities
 - added BAND-compatible parMOO, a parallel multiobjective simulation optimization library
+- added BAND-compatible rose, a reduced-order scattering emulator
 - added BAND-compatible Taweret, a package containing multiple Bayesian Model Mixing methods
-- CHECK THIS updated BAND-compatible SaMBA
+- updated BAND-compatible SaMBA
 - updated BAND-compatible surmise to `v0.2.0 <https://github.com/bandframework/surmise/releases/tag/v0.2.0>`_ with new emulation, calibration, and sampling methods
 - improved developer guide
 - improved overall processes and navigation
