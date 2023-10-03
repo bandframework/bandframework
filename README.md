@@ -22,7 +22,7 @@ These tools are designed to:
 - enable predictions with full UQ for experimentally inaccessible environments such as neutron stars.
 - when combined with code that implements Bayesian experimental design methodology, permit a quantitative assessment of the impact of proposed experiments.
 
-More about the goals and structure of the BAND project can be found in D.R. Phillips et al., "[Get on the BAND Wagon: a Bayesian framework for quantifying model uncertainties in nuclear dynamics"](https://iopscience.iop.org/article/10.1088/1361-6471/abf1df), J. Phys. G **48** (2021) 7, 072001.
+More about the goals and structure of the BAND project can be found in D.R. Phillips et al., "[Get on the BAND Wagon: a Bayesian framework for quantifying model uncertainties in nuclear dynamics"](https://doi.org/10.1088/1361-6471/abf1df), J. Phys. G **48** (2021) 7, 072001.
 
 A full list of BAND members together with a current list of  publications produced by the members using the tools and ideas of the project is available at https://bandframework.github.io
 
