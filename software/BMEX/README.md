@@ -16,7 +16,7 @@ One can cite the software with the following bibtex entry:
 ```
 @software{bmex,
   author       = {Kyle Godbey, Landon Buskirk, and
-                  Giuliani, Pablo},
+                  Pablo Giuliani},
   title        = {{BMEX} - {T}he {B}ayesian {M}ass {E}xplorer},
   month        = sep,
   year         = 2023,
