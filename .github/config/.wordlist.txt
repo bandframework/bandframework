@@ -43,6 +43,10 @@ docstrings
 dodell
 EDF
 edu
+Eigen
+Ekaksh
+Erdogan
+Eren
 et
 executables
 faq
@@ -61,6 +65,7 @@ github
 github's
 githubusercontent
 gKTCLEAGE
+GPL
 GPy
 Gramacy
 GSL
@@ -76,6 +81,7 @@ ipynb
 JETSCAPE
 jgehrcke
 Jupyter
+Kataria
 lbl
 LHS
 libEnsemble
@@ -86,6 +92,7 @@ macOS
 MCMC
 mcs
 md
+MERCHANTABILITY
 miamioh
 mlbayeswoodbury
 mosesyhc
@@ -116,6 +123,7 @@ PCGPwM
 PCGPwMatComp
 pdf
 Plumlee
+prattsc
 preprint
 privateband
 PTLMC
@@ -149,6 +157,7 @@ sdkpolicies
 sexualized
 sfresco
 simulationpost
+SmoothEmulator
 socio
 softwaredocumentation
 subdirectories
@@ -165,6 +174,7 @@ Taweret
 TBD
 tex
 thetalpdf
+todo
 uk
 undoc
 unreferenced
