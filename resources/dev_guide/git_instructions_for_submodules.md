@@ -30,7 +30,7 @@ git submodule add <url of your custom software repo>
 >- Go to the *[develop branch of the bandframework](https://github.com/bandframework/bandframework/tree/develop)*
 >- Click on the *[pull request tab](https://github.com/bandframework/bandframework/pulls)* at the very top.
 >- Click on the green `New pull request` button.
->- Click compare accross all.
+>- Click compare across all.
 >- Follow the instructions and finally submit the pull request with a comment for the approval. 
 
 ### Later when you have made changes to your software and want to update the bandframework with this change do the following
