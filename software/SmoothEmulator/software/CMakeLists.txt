@@ -12,7 +12,7 @@ find_package(Eigen3 REQUIRED)
 
 message("eigen3_include_dir is ${EIGEN3_INCLUDE_DIR}")
 
-include_directories(SYSTEM include ${GITHOME_MSU}/SmoothUtilities/software/include ${GSL_INCLUDE_DIR} ${EIGEN3_INCLUDE_DIR})
+include_directories(SYSTEM include ${GITHOME_MSU}/SmoothUtilities/software/include ${GSL_INCLUDE_DIR} $ENV{GSL_INCLUDE_DIR} ${EIGEN3_INCLUDE_DIR} $ENV{EIGEN3_INCLUDE_DIR} include)
 
 file(GLOB smooth_src src/*.cc)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "lib")
