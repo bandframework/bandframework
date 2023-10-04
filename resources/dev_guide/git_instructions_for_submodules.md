@@ -30,20 +30,19 @@ git submodule add <url of your custom software repo>
 >- Go to the *[develop branch of the bandframework](https://github.com/bandframework/bandframework/tree/develop)*
 >- Click on the *[pull request tab](https://github.com/bandframework/bandframework/pulls)* at the very top.
 >- Click on the green `New pull request` button.
->- Click compare accross all.
+>- Click compare across all.
 >- Follow the instructions and finally submit the pull request with a comment for the approval. 
 
 ### Later when you have made changes to your software and want to update the bandframework with this change do the following
 
-> Go into the bandframework/software/your_sub_module
-`  git pull origin`
-> Go back to the previous directory: bandframework/software
+> While on the develop branch (or a branch created from develop) go into bandframework/software and issue
+`  git submodule update --remote`
+> Then, add the changes for your_submodule: 
  ```
- git add .
- git commit -m "updating the submodule"
+ git add your_submodule
+ git commit -m "updating the submodule your_submodule"
  git push origin develop
  ```
- > Then you have to repeat the above procedure under "Put your software on bandframework develop branch"
 
 ## BAND-recommended way to log data for BAND packages added via submodules
 
