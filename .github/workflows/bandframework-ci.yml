@@ -30,6 +30,5 @@ jobs:
       - name: URL Checker
         uses: paramt/url-checker@master
         with:
-          files: "README.md,software/README.md,resources/README.md,resources/sdkpolicies/README.md"
-          blacklist: https://doi.org/10.1088/1361-6471/abf1df
-      
+          files: "README.md,software/README.md,resources/README.md,resources/sdkpolicies/README.md,resources/sdkpolicies/bandsdk.md,resources/sdkpolicies/template.md"
+          blacklist: https://doi.org/10.1088/1361-6471/abf1df,SAMBAbandsdk.md,brickbandsdk.md,surmisebandsdk.md,frescoxbandsdk.md,template.md,bandsdk.md,parmoo-bandsdk.md
