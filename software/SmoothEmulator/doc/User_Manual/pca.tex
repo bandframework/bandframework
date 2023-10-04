@@ -1,0 +1,53 @@
+\documentclass[UserManual.tex]{subfiles}
+\begin{document}
+\setcounter{section}{5}
+\section{Emulating Principal Components}\label{sec:pca}
+
+This section is incomplete, and the PCA software is not yet fully tested. 
+
+\subsection{Summary}
+
+Rather than emulating all observables, it can be more efficient to emulate a handful of principal components. After generating the training-point data, one can run the {\tt pca} program included with the distribution. This will create files that shadow those used to emulate the observables. This will create a file {\tt Info/pca\_info.txt} alongside {\tt Info/observable\_info.txt}. The difference is that the observables will be named {\tt z1,z2}$\cdots$. In each run directory, alongside the {\tt obs.txt} files, there will be a {\tt obs\_pca.txt} file. Finally, there will be a file {\tt PCA\_Info/tranformation\_info.txt} file that contains all the information and matrices required to perform the basis transformation. If the parameter {\tt Use\_PCA} is set to {\tt true}, the emulator will use the PCA files above instead of the observable files. The emulator will then store the Taylor coefficients in the directory {\tt coefficients\_pca/} rather than in {\tt coefficients/}. 
+
+To get an idea of the capabilities and functionality of the PCA elements of the {\it Smooth Emulator} Distribution, one can view the sample main program,\\
+{\tt GITHOME\_BAND/SmoothEmulator/local/main\_programs/pca\_main.cc}. 
+
+\subsection{PCA Parameters (not model parameters!)}
+The PCA programs uses parameter that are prefixed with {\bf SmoothEmulator}. One would typically use the same parameter file as used for running {\it Smooth Emulator}. The relevant parameters are:
+\begin{enumerate}\itemsep=0pt
+\item {\bf SmoothEmultor\_UsePCA}\\
+If one wishes to emulate the PCA observables, i.e. those that are linear combinations of the real observables, this should be set to true. One must then be sure to have run the PCA decomposition programs first. 
+\item {\bf SmoothEmulator\_ModelRunDirName} and {\bf SmoothEmulator\_TrainingPts} should be set the same as used by {\it Smooth Emulator}.
+\end{enumerate}
+
+\subsection{Running the PCA programs}
+
+The first sample program is {\tt pca\_calctransformation}, which reads the training information from the full model runs and calculates the principal component information. Quantities such as the PCA eigenvalues and eigenvectors are stored. This provides the User knowledge of which linear combination of observables carry significant resolving power. By storing the eigenvectors, the information may be retrieved later. This allows the User to easily transform from the observable, $y_a$, to the PCA components $z_a$. 
+
+One should first to {\tt GITHOME\_BAND/local/build} and compile/install the program\\
+{\tt GITHOME\_BAND/local/bin/pca\_calctransformation}.
+{\tt
+\begin{verbatim}
+ .../local/build % cmake .
+ .../local/build % make pca_calctransformation
+ \end{verbatim}
+}
+Next, from the project directory (assuming the training point information has already been collected) one can enter the command (assuming the path includes {\tt GITHOME\_BAND/local/bin})
+{\tt
+\begin{verbatim}
+ ../my_project/ % pca_calctransformation PARAMETER_FILENAME
+ \end{verbatim}
+}
+Here, {\tt PARAMETER\_FILENAME} is likely {\tt parameters/emulator\_parameters.txt}. At this point, all the information about observables from the training has equivalent representation for the PCA components.
+
+In order to emulate the PCA components, one must set the parameter {\tt SmoothEmulator\_UsePCA} to true. Then, running the program {\tt smoothy\_tune} as described above will build and tune an emulator for the PCA components. It will store the Taylor coefficients in the directory {\tt coefficients\_pca/}.
+
+The second sample program reads the transformation information written by {\tt pca\_calctransformation}. This program gives an example of transforming a vector of principal components, $z_a$, to a vector of observables $y_a$. To compile the programs, change into the build directory as above and enter:
+{\tt
+\begin{verbatim}
+ .../local/build % cmake .
+ .../local/build % make pca_readtransformation
+ \end{verbatim}
+}
+
+\end{document} 

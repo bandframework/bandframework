@@ -1,0 +1,205 @@
+\documentclass[UserManual.tex]{subfiles}
+\begin{document}
+\setcounter{section}{4}
+\section{Tuning the Emulator}\label{sec:emulator}
+
+\subsection{Summary}
+
+Smooth emulator finds a sample set of Taylor expansion coefficients that reproduce a set of observables at a set of training points. For a given observables, a particular sample set of coefficients gives the following emulated function:
+\begin{align*}\eqnumber
+E(\vec{\theta})&=\sum_{\vec{n}, s.t. \sum_in_i\le {\rm MaxRank}}\frac{d(\vec{n})}{(n_1+n_2+\cdots)!}
+A_{\vec{n}}
+\left(\frac{\theta_1}{\Lambda}\right)^{n_1}
+\left(\frac{\theta_2}{\Lambda}\right)^{n_2}
+\cdots.
+\end{align*}
+Here, $\theta_1\theta_2\cdots$ are the model parameters, scaled so that their priors range from -1 to +1, or if they are Gaussian, have unit variance. The degeneracy factor, $d(\vec{n})$ is the number of different ways to sum the powers $n_i$ to a given rank,
+\begin{align*}\eqnumber
+d(\vec{n})=\frac{n_1!n_2!\cdots}{(n_1+n_2+\cdots)!}.
+\end{align*}
+
+The emulator finds a predetermined number of sets of coefficients, where each set of coefficients provides a function that reproduces the real model at the training points. The User sets the number of sets of coefficients, typically of order $N_{\rm sample}\approx 10$, in a parameter file. Away from the training points, the uncertainty of the emulator is represented by the spread of the values amongst the $N_{\rm sample}$ predictions.
+
+{\it Smooth Emulator} solves for the $N_{\rm sample}$ sets of coefficients from the training data, then stores those coefficients in files for later use. {\it Smooth Emulator} can emulate either the full-model observables directly, or their principal components (PCA capability coming soon). Training the emulator follows the same steps for either approach. 
+
+The executables based on {\it Smooth Emulator} are located in the User's {\tt MY\_LOCAL/bin} directory. Examples of such executables are {\tt smoothy\_tune} or {\tt smoothy\_calcobs}. These functions must be executed from within the User's project directory. 
+
+Before training the emulator, one must first run the full model at a given set of training points. In addition to a parameter file, which sets numerous options, the User must provide the following:
+\begin{enumerate}\itemsep=0pt
+    \item A file listing the names of observables, their uncertainties, and an estimate of the variance of each observable throughout the model-parameter space. This file is named {\tt Info/obs.txt}, where the path is relative to the project directory. 
+    \item If the number of full-model runs performed is $N_{\rm train}$, Smooth emulator requires files for each run. Each file is named {\tt MODEL\_RUN\_DIRNAME/runI/mod\_parameters.txt}, where $I$ varies from $1-N_{\rm train}$, describes the point in  parameter space for the $I^{\rm th}$ full-model run. The directory {\tt MODEL\_RUN\_DIRNAME/} is typically {\tt MY\_PROJECT/modelruns}, but can be defined otherwise (see below).
+    \item In the same directory, {\it Smooth Emulator} requires the observables calculated at the training points mentioned above. This information is provided in {\tt MODEL\_RUN\_DIRNAME/runI/obs.txt}. 
+\end{enumerate}
+The parameter file, typically stored in {\tt parameters/emulator\_parameters.txt}, enables the User to select numerous options. For example, the User might use training data from a different directory, not {\tt modelruns/}, or might choose to use principal components rather than the observables directly. 
+
+In the following subsections, we first review the format for each of the required input files, then describe how to run {\it Smooth Emulator}, how its output is stored, and how to switch PCA observables for real observables.
+
+\subsection{{\it Smooth Emulator} Parameters (not model parameters!)}
+
+{\it Smooth Emulator} requires a parameter file. This can be located anywhere, as it will be specified on the command line when running {\it Smooth Emulator}, but is typically {\tt parameters/emulator\_parameters.txt}. The parameter file is simply a list, of parameter names followed by values. 
+
+{\tt
+\begin{verbatim}
+ #SmoothEmulator_LogFileName           smoothlog.txt
+ SmoothEmulator_LAMBDA                 3.0
+ SmoothEmulator_MAXRANK                4
+ SmoothEmulator_NMC                    100000  # Steps between samples 
+ SmoothEmulator_NASample               8       # No. of coefficient samples
+ SmoothEmulator_TuneChooseMCMC         true    # set true if NPars>~5
+ SmoothEmulator_UseSigmaYRreal         false 
+ SmoothEmulator_ConstrainA0            true
+ SmoothEmulator_CutoffA                false
+ SmoothEmulator_ModelRunDirName        modelruns
+ SmoothEmulator_TrainingPts            0-9
+ SmoothEmulator_UsePCA                 false
+ RANDY_SEED                            1234
+\end{verbatim}
+}
+If any of these parameters are missing from the parameters file, {\it Smooth Emulator} will assign a default value.
+
+\begin{enumerate}\itemsep 0pt
+\item {\bf SmoothEmulator\_LAMBDA}\\
+This is the smoothness parameter $\Lambda$. It sets the relative importance of terms of various rank. If $\Lambda$ is unity or less, it suggests that the Taylor expansion converges slowly. The default is 3.
+
+\item {\bf SmoothEmulator\_LogFileName}\\
+If this is commented out, as it is in the example above, {\it Smooth Emulator}'s main output will be directed to the screen. Otherwise, the output will be recorded in the specified file.
+\item {\bf SmoothEmulator\_MAXRANK}\\
+As {\it Smooth Emulator} assumes a Taylor expansion, this the maximum power of $\theta^n$ that is considered. Higher values require more coefficients, which in turn, slows down the tuning process. The default is 4.
+\item {\bf SmoothEmulator\_TuneChooseMCMC}\\
+If set to {\tt false}, {\it Smooth Emulator} will set all but $N_{\rm train}$ coefficients randomly, according to their Gaussian prior. Then, it will solve for the remaining coefficients in order to fit the training data. The weight is calculated for the remaining coefficients, at which point the coefficients are kept or rejected proportional to the weight. The coefficients chosen in this manner are perfectly independent of one another, but perhaps at the cost of requiring many samplings before finding a weight to keep. This choice is efficient when the number of training points is small. If {\tt SmoothEmulator\_SmoothEmulator\_TuneChooseMCMC} is set to {\tt true}, {\it Smooth Emulator} will choose the coefficients as a small random step from the previous coefficients, then keep or reject the coefficients according to a Metropolis algorithm. The downside is that many steps are required to create a sampling set of coefficients that are independent of one another. Although it can be slow when there are many model parameters, this choice is more efficient for larger numbers of training points.  The default is {\tt true}.
+\item {\bf SmoothEmulator\_NMC}\\
+When the previous parameter is set to {\tt true}, this sets the number of steps between retained samples of coefficients. For larger numbers of parameters, this should be set at many thousands. Higher values lead to more independent sets of coefficients, but the calculation then requires more time. 
+\item {\bf SmoothEmulator\_NASample}\\
+{\it Smooth Emulator} finds $N_{\rm sample}$ sets of coefficients. Each set reproduces the training points, but differs away from the training points. Setting $N_{\rm sample}\sim 10$ should reasonably represent the uncertainty of the emulator. The default is set at 8.
+\item {\bf SmoothEmulator\_UseSigmaYRreal}\\
+If the real model has noise, the emulator should not be constrained to exactly reproduce the observables at the training points. In fact, if two training points are located close to one another in parameter space, {\it Smooth Emulator} might be force to find a particularly uneven function so that the points are exactly reproduced. If the User wishes to exactly reproduce the training points, this should be set to {\tt false}, as is the  default. 
+\item {\bf SmoothEmulator\_ConstrainA0}\\
+The coefficients in the Taylor expansion are assumed to have some weight,
+\[
+W(A_i)=\frac{1}{\sqrt{2\pi\sigma_A^2}}e^{-A_i^2/2\sigma_A^2}.
+\]
+The term $\sigma_A$ is allowed to vary during the tuning to maximize the likelihood of the expansion. If the User wishes to exempt the lowest term, i.e. the constant term in the Taylor expansion from the weight, the User may set {\tt SmoothEmulator\_ConstrainA0} to {\tt false}. The default is {\tt false}.
+\item {\bf SmoothEmulator\_CutoffA}\\
+This applies an additional multiplicative weight to the weight for $A$ above.
+\[
+W(A_i)_{\rm additional}=\frac{1}{1+\frac{1}{4}\frac{A_i^2}{\sigma_{A}^2}}.
+\] 
+Here $\sigma_{A0}$ is the initial guess for the spread. This can safeguard against the width $\sigma_A$ drifting off to arbitrarily large values. Unless necessary, it is recommended to leave this at the default, {\tt false}.
+\item {\bf SmoothEmulator\_ModelRunDirName}\\
+This gives the directory in which the training data from the full model runs is stored. The default is {\tt modelruns}, which is the same default {\tt Simplex Sampler} uses for writing the coordinates of the training points.
+
+\item {\bf SmoothEmulator\_TrainingPts}\\
+This lists which full-model training runs SmoothEmulator will use to train the emulator. This provides the User with the flexibility to use some subset for training, as may be the case when testing the accuracy. The default is ``1''. An example the User might enter could be\\
+{\tt ~SmoothEmulator\_TrainingPts  0-4,13,15}\\
+This would choose the training information from the directories {\tt run0,run1,run2,run3,run4,run13} and {\tt run14}, which would be found in the directory denoted by the {\tt SmoothEmulator\_ModelRunDirName} parameter.
+\item {\bf RANDY\_SEED}\\
+This sets the seed for the random number generator. If the line is commented out, it will be set to {\tt std::time(NULL)}.
+
+\item {\bf SmoothEmultor\_UsePCA}\\
+By default, this is set to false. If one wishes to emulate the PCA observables, i.e. those that are linear combinations of the real observables, this should be set to true. One must then be sure to have run the pca decomposition programs first. For more, see Sec. \ref{sec:pca}. 
+
+\end{enumerate}
+
+
+\subsection{Editing Info Files}
+
+\begin{enumerate}
+
+\item {\bf Info/observable\_info.txt}\\
+{\it Smooth Emulator} requires knowledge of the observables. An example of such a file is
+{\tt
+\begin{verbatim}
+meanpt_pion  40
+meanpt_proton 60
+meanv2_pion 0.05
+\end{verbatim}
+}
+The second line provides an initial estimate for the parameter $\sigma_A$. The User needn't worry if this is off by a few factors of two from the final value, but if it is off by orders of magnitude, it might take {\it Smooth Emulator} a long time to find the appropriate range.
+
+\item {\bf Info/modelpar\_info.txt}\\
+This file provides the names and ranges of the model parameters, i.e. the prior. {\it Smooth Emulator} translates the scales the parameters so that they have uniform ranges, in the case of uniform distributions, or uniform widths, and zero mean for the Gaussian distributions. This same file was used for running {\it Simplex Sampler} and is described in Sec. \ref{subsec:modelparinfo}. 
+
+\end{enumerate}
+
+\subsection{Running the {\it Smooth Emulator} Program}
+
+The source code for the {\it Smooth Emulator} main program can be found in the {\tt MY\_LOCAL/main\_programs/} directory. This directory contains source code for several main programs. They are separated from the bulk of the software, which is in the {\tt GITHOME\_BAND/SmoothEmulator/software/} directory. The main programs are designed so that the User can easily copy and edit them to create versions that might be more appropriate to the User's specific needs. When compiled, from the {\tt MY\_LOCAL/build/} directory, the executables appear in the {\tt MY\_LOCAL/bin/} directory. Two of the source codes that come with the distributions are MY\_LOCAL and {\tt MY\_LOCAL/main\_programs/smoothy\_calc\_main.cc}. Once compiled the corresponding executables are {\tt MY\_LOCAL/bin/smoothy\_tune} and {\tt MY\_LOCAL/bin/smoothy\_calcobs}. A 
+{\tt
+\begin{verbatim}
+using namespace std;
+int main(int argc,char *argv[]){
+    if(argc!=2){
+        printf("Usage smoothy emulator parameter filename");
+        exit(1);
+    }
+    CparameterMap *parmap=new CparameterMap();
+    parmap->ReadParsFromFile(string(argv[1]));
+    CSmoothMaster master(parmap);
+    master.ReadTrainingInfo();
+    master.GenerateCoefficientSamples();
+    master.WriteCoefficientsAllY();
+    return 0;
+}
+\end{verbatim}
+}
+Similarly, there is a code {\tt MY\_LOCAL/main\_programs/smoothy\_calcobs\_main.cc}, which provides an example of how one might read the coefficients and generate predictions for the emulator at specfied points in parameter space.
+
+From within the {\tt MY\_LOCAL/build/} directory, one can compile the two programs with the commands:
+{\tt
+\begin{verbatim}
+ MY_LOCAL/build % cmake .
+ MY_LOCAL/build % make smoothy_tune
+ MY_LOCAL/build % make smoothy_calcobs
+\end{verbatim}
+}
+The executables {\tt smoothy\_tune} and {\tt smoothy\_calcobs} should now appear in the {\tt MY\_LOCAL/bin/} directory. Assuming the {\tt bin/} directory has been added to the User's path, the User may switch to the User's project directory, and enter the command
+{\tt
+\begin{verbatim}
+  ~/MY_PROJECT % smoothy_tune PARAMETERS/MY_PARAMETERS.TXT
+\end{verbatim}
+}
+Here {\tt PARAMETERS/MY\_PARAMETERS.TXT} can be replaced by the User, but is typically {\tt parameters/emulator\_parameters.txt}.
+
+The program will write the Taylor coefficients for the $N_{\rm sample}$ samples to files in the {\tt coefficients} directory.  The coefficients for each observable are given in separate subdirectories, named by the observables, i.e. {\tt coefficients/OBS\_NAME/sampleI.txt}. Here, , where {\tt OBS\_NAME} is the name for each observable, and if there are $N_{\rm sample}$ sets of coefficients, $0\le I<N_{\rm sample}$. Along with the coefficients, in the same directory {\it Smooth Emulator} writes a file for each observable. These files are named {\tt coefficients/OBS\_NAME/meta.txt}.  This file provides information, such as the maximum rank and net number of model parameters, to make it possible to read the coefficients later on.
+
+{\it Smooth Emulator} will output lines describing its progress, either to the screen or to a file, as specified by the {\tt SmoothEmulator\_LogFile} parameter described above. This output includes a report on the percentage of steps in the MCMC program that were successful. The line {\tt BestLogP/Ndof} describes the weight used to evaluate the likelihood of a coefficients sample. This value should roughly plateau once the Metropolis procedure has settled on the most likely region.
+
+For later us, e.g. when performing the MCMC to sampler the posterior, the User would need to generate predictions for specified values of the parameters. The executable {\tt MY\_LOCAL/bin/smoothy\_calcobs}, is such an example. It is compiled from the main program, {\tt MY\_LOCAL/main\_programs/smoothy\_calcobs.cc}:
+{\tt
+\begin{verbatim}
+int main(int argc,char *argv[]){
+    if(argc!=2){
+        CLog::Info("Usage smoothy_calcobs emulator parameter filename");
+        exit(1);
+    }
+    CparameterMap *parmap=new CparameterMap();
+    parmap->ReadParsFromFile(string(argv[1]));
+    CSmoothMaster master(parmap);
+    // Reads Emulator Coefficients for all observables
+    master.ReadCoefficientsAllY();
+    master.priorinfo->PrintInfo();
+    //modpars carries info about single point
+    CModelParameters *modpars=new CModelParameters(master.priorinfo);
+    // Prompt user for model parameter values
+    vector<double> X(modpars->NModelPars);
+    for(int ipar=0;ipar<modpars->NModelPars;ipar++){
+        cout << "Enter value for " << master.priorinfo->GetName(ipar) << ":\n";
+        cin >> X[ipar];
+    }
+    modpars->SetX(X);
+    //  Calc Observables Y[iy] for X
+    CObservableInfo *obsinfo=new CObservableInfo("Info/Observable_Info.txt");
+    vector<double> Y(obsinfo->NObservables);
+    vector<double> SigmaY(obsinfo->NObservables);
+    master.CalcAllY(modpars,Y,SigmaY);
+    for(int iY=0;iY<obsinfo->NObservables;iY++){
+        cout << obsinfo->GetName(iY) << " = " << Y[iY] << " +/- " << SigmaY[iY] << endl;
+    }
+    return 0;
+
+\end{verbatim}
+}
+The User can hopefully use this template programs as a base for calling {\it Smooth Emulator} to calculate the emulator values for a specified point in space. Note that {\tt SigmaY} is the emulator uncertainty, not that from experiment or from the theoretical model.
+
+
+\end{document}
