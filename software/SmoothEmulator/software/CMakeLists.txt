@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
-set(GITHOME_MSU $ENV{GITHOME_MSU})
+set(GITHOME_MSU $ENV{GITHOME_BAND})
 project(msu_smooth CXX C)
 message("CXX is ${CXX}")
 
