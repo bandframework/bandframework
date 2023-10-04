@@ -23,13 +23,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       # Checks the URLS in md files
       - name: URL Checker
-        uses: paramt/url-checker@v0.2.0
+        uses: paramt/url-checker@master
         with:
           files: "README.md,SUPPORT.md"
       
-      - name: Broken Link Checker Action
-        uses: technote-space/broken-link-checker-action@v1.1.3
