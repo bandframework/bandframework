@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
 
   PCA *pca = new PCA(argv[1]);
 
-  pca->ReadPCATransformationInfo();
+  pca->ReadTransformationInfo();
 	
 	vector<double> Z,Y,SigmaZ_emulator,SigmaY_emulator;
 	
