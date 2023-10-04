@@ -37,11 +37,12 @@ BAND Framework tools and examples are found in [software/](/software/).
 
 As of version 0.2.0+dev, the following tools are included:
 
-- BMEX: A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - surmise: A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - SaMBA: The Sandbox for Mixing via Bayesian Analysis.
 - parMOO: A Python library for parallel multiobjective simulation optimization.
 - Taweret: A Python package containing multiple Bayesian Model Mixing methods.
+- BMEX: A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
+
 
 The following examples of the use of surmise are part of version 0.2.0+dev
 
