@@ -9,6 +9,7 @@ A parallel [directory](/resources/dev_guide) contains a basic development guide 
 - The BAND [release process](/resources/dev_guide/release-proc.rst)
 
 Examples of completed SDK policy compatibility documents include:
+-  [BMEX-bandsdk.md](/software/BMEX/BMEX-bandsdk.md)
 -  [brickbandsdk.md](/software/BRICK/brickbandsdk.md)
 -  [frescoxbandsdk.md](/software/Bfrescox/frescoxbandsdk.md)
 -  [parmoo-bandsdk.md](/software/parmoo/parmoo-bandsdk.md)
