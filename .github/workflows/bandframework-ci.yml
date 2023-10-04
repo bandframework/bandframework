@@ -30,5 +30,6 @@ jobs:
       - name: URL Checker
         uses: paramt/url-checker@master
         with:
-          files: "README.md,SUPPORT.md"
+          files: "README.md, software/README.md, resources/README.md, resources/sdkpolicies/*.md"
+          blacklist: https://doi.org/10.1088/1361-6471/abf1df
       
