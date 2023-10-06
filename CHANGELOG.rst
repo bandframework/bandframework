@@ -18,9 +18,9 @@ New capabilities and notable changes:
 - added BAND-compatible BMEX, a web application for exploring nuclear masses and related quantities at `v0.1.1 <https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1>`_
 - added BAND-compatible parMOO, a parallel multiobjective simulation optimization library at `v0.3.1 <https://github.com/parmoo/parmoo/releases/tag/v0.3.1>`_
 - added BAND-compatible rose, a reduced-order scattering emulator at `v1.0.0 <https://github.com/bandframework/rose/releases/tag/v1.0.0>`_
-- added BAND-compatible Taweret, a package containing multiple Bayesian Model Mixing methods at `v0.1.0 <https://github.com/bandframework/Taweret/releases/tag/v1.0.0>`_
+- added BAND-compatible Taweret, a package containing multiple Bayesian Model Mixing methods at `v1.0.0 <https://github.com/bandframework/Taweret/releases/tag/v1.0.0>`_
 - updated BAND-compatible SaMBA to `v1.0.1 <https://github.com/asemposki/SAMBA/releases/tag/v1.0.1>`_
-- updated BAND-compatible surmise to `v0.2.0 <https://github.com/bandframework/surmise/releases/tag/v0.2.0>`_ with new emulation, calibration, and sampling methods
+- updated BAND-compatible surmise to `v0.2.1 <https://github.com/bandframework/surmise/releases/tag/v0.2.1>`_ with new emulation, calibration, and sampling methods
 - improved developer guide
 - improved overall processes and navigation
 - fully resolved continuous integration bug associated with github actions
