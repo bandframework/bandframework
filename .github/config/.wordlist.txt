@@ -184,6 +184,7 @@ surmisebandsdk
 svg
 tarfile
 Taweret
+Taweretbandsdk
 TBD
 tex
 thetalpdf
