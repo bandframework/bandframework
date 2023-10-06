@@ -1,8 +1,9 @@
 #include "msu_smooth/traininginfo.h"
 
+using namespace std;
+using namespace NBandSmooth;
 CSmoothMaster* CTrainingInfo::smoothmaster=NULL;
 
-using namespace std;
 
 CTrainingInfo::CTrainingInfo(vector<int> NTrainingList_set,CObservableInfo *observableinfo_set,CPriorInfo *priorinfo_set){
 	observableinfo=observableinfo_set;

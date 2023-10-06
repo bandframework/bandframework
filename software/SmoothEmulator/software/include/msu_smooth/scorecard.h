@@ -9,12 +9,16 @@
 #include "msu_smooth/emulator.h"
 #include "msu_smooth/smooth.h"
 
-class CScoreCard{
-public:
-	double score,YExp,SigmaYExp,SigmaYReal;
-	int itest,isample,NTest;
-	double yi,Pi,Pibar,Pi2bar;
-	void CalcScore(CSmoothEmulator *emulator,vector<vector<double>> &ThetaTest,double YExpSet,double SigmaYExpSet);
-};
+namespace NBandSmooth{
+
+	class CScoreCard{
+	public:
+		double score,YExp,SigmaYExp,SigmaYReal;
+		int itest,isample,NTest;
+		double yi,Pi,Pibar,Pi2bar;
+		void CalcScore(CSmoothEmulator *emulator,vector<vector<double>> &ThetaTest,double YExpSet,double SigmaYExpSet);
+	};
+
+}
 
 #endif

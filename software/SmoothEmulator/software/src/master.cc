@@ -1,5 +1,6 @@
 #include "msu_smooth/master.h"
 using namespace std;
+using namespace NBandSmooth;
 
 CSmoothMaster::CSmoothMaster(CparameterMap *parmap_set){
 	parmap=parmap_set;

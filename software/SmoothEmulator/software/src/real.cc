@@ -1,5 +1,6 @@
 #include "msu_smooth/real.h"
 using namespace std;
+using namespace NBandSmooth;
 
 CReal::CReal(){
 //	cout << "CReal object created" << endl;

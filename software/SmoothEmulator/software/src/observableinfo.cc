@@ -10,6 +10,7 @@
 #include "msu_smooth/observableinfo.h"
 
 using namespace std;
+using namespace NBandSmooth;
 
 CObservableInfo::CObservableInfo(string filename){
 	ReadObservableInfo(filename);

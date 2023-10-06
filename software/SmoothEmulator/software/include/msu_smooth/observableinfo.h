@@ -10,6 +10,8 @@
 #include <vector>
 #include <map>
 
+namespace NBandSmooth{
+
 class CObservableInfo{
 public:
 	CObservableInfo(string filename);
@@ -25,6 +27,6 @@ public:
 	void PrintInfo();
 };
 
-
+}
 
 #endif

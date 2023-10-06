@@ -1,5 +1,6 @@
 #include "msu_smooth/scorecard.h"
 using namespace std;
+using namespace NBandSmooth;
 
 
 void CScoreCard::CalcScore(CSmoothEmulator *emulator,vector<vector<double>> &ThetaTest,double YExpSet,double SigmaYExpSet){

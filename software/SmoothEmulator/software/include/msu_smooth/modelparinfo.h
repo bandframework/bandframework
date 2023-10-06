@@ -13,6 +13,8 @@
 #include "msu_smooth/priorinfo.h"
 #include <Eigen/Dense>
 
+namespace NBandSmooth{
+
 class CModelParameters{
 public:
 //has actual values of the parameter
@@ -26,5 +28,7 @@ public:
 	CPriorInfo *priorinfo;
 	void SetX(vector<double> &xset);
 };
+
+}
 
 #endif

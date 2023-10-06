@@ -1,6 +1,7 @@
 #include "msu_smooth/PCA.h"
 
 using namespace std;
+using namespace NBandSmooth;
 
 PCA::PCA(string filename){
 	CparameterMap *parmap=new CparameterMap();

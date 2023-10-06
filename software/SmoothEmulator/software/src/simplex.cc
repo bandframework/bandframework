@@ -2,6 +2,7 @@
 #include <cstdlib>
 
 using namespace std;
+using namespace NBandSmooth;
 
 CSimplexSampler::CSimplexSampler(CparameterMap *parmap){
 	string logfilename=parmap->getS("Simplex_LogFileName","Screen");

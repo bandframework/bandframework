@@ -1,6 +1,8 @@
 #include "msu_smooth/emulator.h"
 using namespace std;
 
+using namespace NBandSmooth;
+
 int CSmoothEmulator::NPars=0;
 CSmooth *CSmoothEmulator::smooth=NULL;
 CSmoothMaster *CSmoothEmulator::smoothmaster=NULL;

@@ -20,46 +20,49 @@
 #include "msu_smooth/priorinfo.h"
 #include "msu_smooth/traininginfo.h"
 
-class CSmoothEmulator;
-class CTrainingInfo;
-class CPriorInfo;
-class CObservableInfo;
-class CModelParInfo;
+namespace NBandSmooth{
+	class CSmoothEmulator;
+	class CTrainingInfo;
+	class CPriorInfo;
+	class CObservableInfo;
+	class CModelParInfo;
+	
+	class CSmoothMaster{
+	public:
+		int TrainType;
+		CSmoothMaster(CparameterMap *parmap_set);
+		CparameterMap *parmap;
+		unsigned int NPars;
+		vector<CSmoothEmulator *> emulator;
+		CTrainingInfo *traininginfo;
+		CObservableInfo *observableinfo;
+		CPriorInfo *priorinfo;
+		Crandy *randy;
+		CSmooth *smooth;
+		string ModelRunDirName,CoefficientsDirName;
+		bool UsePCA;
 
-class CSmoothMaster{
-public:
-	int TrainType;
-	CSmoothMaster(CparameterMap *parmap_set);
-	CparameterMap *parmap;
-	unsigned int NPars;
-	vector<CSmoothEmulator *> emulator;
-	CTrainingInfo *traininginfo;
-	CObservableInfo *observableinfo;
-	CPriorInfo *priorinfo;
-	Crandy *randy;
-	CSmooth *smooth;
-	string ModelRunDirName,CoefficientsDirName;
-	bool UsePCA;
+		void ReadTrainingInfo();
+		void GenerateCoefficientSamples();
+		void TuneAllY(); // tune all observables
+		void TuneY(string obsname); // tune one observable
+		void TuneY(int iY); // tune one observable
+		void SetThetaTrain();
+		void CalcY(int iY,CModelParameters *modelpars,double &Y,double &SigmaY_emulator);
+		void CalcY(string obsname,CModelParameters *modelpars,double &Y,double &SigmaY_emulator);
+		void CalcAllY(CModelParameters *modelpars,vector<double> &Y,vector<double> &SigmaY_emulator);
+		void TestAtTrainingPts();
+		void TestAtTrainingPts(string obsname);
+		void TestAtTrainingPts(int iY);
+		void WriteCoefficientsAllY();
+		void WriteCoefficients(string obsname);
+		void WriteCoefficients(int iY);
+		void ReadCoefficientsAllY();
+		void ReadCoefficients(string obsname);
+		void ReadCoefficients(int iY);
 
-	void ReadTrainingInfo();
-	void GenerateCoefficientSamples();
-	void TuneAllY(); // tune all observables
-	void TuneY(string obsname); // tune one observable
-	void TuneY(int iY); // tune one observable
-	void SetThetaTrain();
-	void CalcY(int iY,CModelParameters *modelpars,double &Y,double &SigmaY_emulator);
-	void CalcY(string obsname,CModelParameters *modelpars,double &Y,double &SigmaY_emulator);
-	void CalcAllY(CModelParameters *modelpars,vector<double> &Y,vector<double> &SigmaY_emulator);
-	void TestAtTrainingPts();
-	void TestAtTrainingPts(string obsname);
-	void TestAtTrainingPts(int iY);
-	void WriteCoefficientsAllY();
-	void WriteCoefficients(string obsname);
-	void WriteCoefficients(int iY);
-	void ReadCoefficientsAllY();
-	void ReadCoefficients(string obsname);
-	void ReadCoefficients(int iY);
+	};
 
-};
+}
 
 #endif

@@ -7,10 +7,11 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <filesystem>
-
 #include "msu_commonutils/parametermap.h"
 #include "msu_smooth/master.h"
 
+namespace NBandSmooth{
+	
 class PCA{
 public:
 
@@ -36,5 +37,7 @@ public:
 	vector<double> &Z,vector<double> &SigmaZ_emulator);
 	
 };
+
+}
 
 #endif
