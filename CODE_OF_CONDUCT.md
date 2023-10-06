@@ -63,7 +63,7 @@ reported to the community leaders responsible for enforcement at
 bandframework@cels.anl.gov.
 The current recipients of this email are Daniel Phillips, Dick Furnstahl, Frederi Viens,
 Özge Sürer, and Stefan Wild. To report a concern about one or more of these 
-four individuals, please email the others.
+five individuals, please email the others.
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
