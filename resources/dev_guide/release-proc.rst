@@ -22,7 +22,7 @@ Before release
 
 - Check `README.md </README.md>`_ *Citing bandframework* for correctness (e.g., ensure that author list matches `AUTHORS </AUTHORS>`_).
 
-- Check `bandsdk.md </resources/sdkpolicies/bandsdk.md>`_ for *Citing bandframework* for correctness.
+- Check `bandsdk.md </resources/sdkpolicies/bandsdk.md>`_ for *Citing bandframework* to ensure correctness.
 
 - Tests are run with source to be released (this may iterate):
 
