@@ -10,7 +10,7 @@
 	url = https://www.github.com/asemposki/SAMBA
 [submodule "software/Taweret"]
 	path = software/Taweret
-	url = https://github.com/TaweretOrg/Taweret.git
+	url = https://github.com/bandframework/Taweret
 [submodule "software/rose"]
 	path = software/rose
 	url = https://github.com/bandframework/rose
