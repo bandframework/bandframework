@@ -9,9 +9,7 @@ https://github.com/bandframework/bandframework/issues
 Release 0.3.0
 -------------
 
-:Date: October 9, 2023 TBD
-
-Initial release post SDK update.
+:Date: October 10, 2023
 
 New capabilities and notable changes:
 
