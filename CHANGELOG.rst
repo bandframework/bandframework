@@ -11,8 +11,6 @@ Release 0.3.0
 
 :Date: October 10, 2023
 
-Initial release post SDK update.
-
 New capabilities and notable changes:
 
 - added BAND-compatible BMEX, a web application for exploring nuclear masses and related quantities at `v0.1.1 <https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1>`_
