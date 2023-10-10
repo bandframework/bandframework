@@ -22,7 +22,7 @@ These tools are designed to:
 - enable predictions with full UQ for experimentally inaccessible environments such as neutron stars.
 - when combined with code that implements Bayesian experimental design methodology, permit a quantitative assessment of the impact of proposed experiments.
 
-More about the goals and structure of the BAND project can be found in D.R. Phillips et al., "[Get on the BAND Wagon: a Bayesian framework for quantifying model uncertainties in nuclear dynamics"](https://iopscience.iop.org/article/10.1088/1361-6471/abf1df), J. Phys. G **48** (2021) 7, 072001.
+More about the goals and structure of the BAND project can be found in D.R. Phillips et al., "[Get on the BAND Wagon: a Bayesian framework for quantifying model uncertainties in nuclear dynamics"](https://doi.org/10.1088/1361-6471/abf1df), J. Phys. G **48** (2021) 7, 072001.
 
 A full list of BAND members together with a current list of  publications produced by the members using the tools and ideas of the project is available at https://bandframework.github.io
 
@@ -35,16 +35,20 @@ BAND Framework elements are of two main types:
 
 BAND Framework tools and examples are found in [software/](/software/).
 
-As of version 0.2.0, the following tools are included:
+As of version 0.3.0, the following tools are included:
 
-- surmise: A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
-- SaMBA: Sandbox for Mixing via Bayesian Analysis
+- surmise ([v0.2.1](https://github.com/bandframework/surmise/releases/tag/v0.2.1 )): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
+- SaMBA ([v1.0.1](https://github.com/asemposki/SAMBA/releases/tag/v1.0.1 )): The Sandbox for Mixing via Bayesian Analysis.
+- parMOO ([v0.3.1](https://github.com/parmoo/parmoo/releases/tag/v0.3.1 )): A Python library for parallel multiobjective simulation optimization.
+- rose ([v1.0.0](https://github.com/bandframework/rose/releases/tag/v1.0.0 )), a reduced-order scattering emulator
+- BMEX ([v0.1.1](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
+- Taweret ([v1.0.0](https://github.com/bandframework/Taweret/releases/tag/v1.0.0 )): A Python package containing multiple Bayesian Model Mixing methods.
 
-The following examples of the use of surmise are part of version 0.2.0
+The following examples of the use of surmise are part of version 0.3.0:
 
 - Bfrescox: A BAND extension of the frescox scattering code for coupled-channels calculations.
 
-Version 0.2.0 also includes two examples of the use of Bayesian parameter estimation in nuclear-physics contexts:
+Version 0.3.0 also includes two examples of the use of Bayesian parameter estimation in nuclear-physics contexts:
 
 - BRICK: the Bayesian R-matrix Inference Code Kit, facilitates extraction of R-matrix parameters from experimental data.
 - QGP_Bayes: provides a tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP. 
@@ -53,11 +57,34 @@ Version 0.2.0 also includes two examples of the use of Bayesian parameter estima
 
 You are free to use any pieces of the BAND Framework that will advance your own research. Please cite the framework, and the original BAND paper, as detailed below under "Citing the BAND Framework".
 
+## Submodules
+
+BAND Framework currently includes some dependencies via git submodules. Currently, the following submodules are employed:
+
+* [software/](software/)QGP_Bayes
+* [software/](software/)SAMBA 
+* [software/](software/)surmise
+* [software/](software/)Taweret
+
+As a consequence, when cloning the BAND Framework repository, the submodules can be retrieved automatically via
+- `git clone --recursive` (in place of the usual `git clone`)
+
+If you have already cloned the repository, the following modified `git` commands can be used:
+- `git submodule update --init --recursive` (to obtain all submodules and any submodules those submodules have)
+- `git pull --recurse-submodules=yes` (in place of the usual `git pull`)
+- `git submodule update --init` (additionally, after `git pull`)
+- `git submodule update --init software/surmise`
+  (variant of the previous item, in case you want to only get the surmise submodule)
+
+Note that submodules work modern git, version >= 2.38.0.
+
 ## Contributing to the BAND Framework
 
 BAND welcomes contributions to the BAND Framework in a variety of forms; please see [CONTRIBUTING](CONTRIBUTING.rst).
 
 The BAND Framework maintains a [BAND Software Development Kit (SDK)](/resources/sdkpolicies/bandsdk.md) that includes requirements and recommendations for contributing a package to the BAND Framework. 
+
+Detailed instructions for contributing software, including by submodules, are found in BAND's [developer's guide](/resources/dev_guide).
 
 ## License 
 
@@ -69,11 +96,13 @@ Please use the following to cite the BAND Framework:
 
     @techreport{bandframework,
         title       = {{BANDFramework: An} Open-Source Framework for {B}ayesian Analysis of Nuclear Dynamics},
-        author      = {Moses Y-H. Chan and Richard James DeBoer and Richard J. Furnstahl and Dananjaya Liyanage and Filomena M. Nunes and 
-        Daniel Odell and Daniel R. Phillips and Matthew Plumlee and Alexandra C. Semposki and \"Ozge S\"urer and Stefan M. Wild},
+        author      = {Kyle Beyer and Landon Buskirk and Moses Y-H. Chan and Tyler H. Chang and Richard James DeBoer and 
+        Richard J. Furnstahl and Pablo Giuliani and Kyle Godbey and Kevin Ingles and Dananjaya Liyanage and Filomena M. Nunes and 
+        Daniel Odell and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and Alexandra C. Semposki and \"Ozge S\"urer and 
+        Stefan M. Wild and John C. Yannotty},
         institution = {},
-        number      = {Version 0.2.0},
-        year        = {2022},
+        number      = {Version 0.3.0},
+        year        = {2023},
         url         = {https://github.com/bandframework/bandframework}
     }
     

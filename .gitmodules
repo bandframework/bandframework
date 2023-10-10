@@ -1,6 +1,6 @@
 [submodule "software/surmise"]
 	path = software/surmise
-	url = https://github.com/surmising/surmise
+	url = https://github.com/bandframework/surmise
 [submodule "software/QGP_Bayes"]
 	path = software/QGP_Bayes
 	url = https://github.com/danOSU/QGP_Bayes.git
@@ -8,3 +8,9 @@
 [submodule "software/SAMBA"]
 	path = software/SAMBA
 	url = https://www.github.com/asemposki/SAMBA
+[submodule "software/Taweret"]
+	path = software/Taweret
+	url = https://github.com/bandframework/Taweret
+[submodule "software/rose"]
+	path = software/rose
+	url = https://github.com/bandframework/rose

@@ -8,11 +8,13 @@ All code included in the public Github `bandframework` repository will be open s
 
 New code can be included in the `bandframework` repository via a pull request to the `develop` branch.  The name of the software should be the subdirectory name in the `/software` directory.  
 
-BAND packages should include a compatibility document and a [template](/resources/sdkpolicies/template.md) is provided. The compatibility  file should be placed in the root directory of the new subdirectory and labeled by the software name appended by `bandsdk`.  For example, if you have a software `foo`, you should create a directory `/software/foo` and place the compatibility file named `foobandsdk.md` in the directory `/software/foo` alongside contributed code.  All pull requests for inclusion of a new `/software` directory  that do not include this document will be rejected.  You can also include a repository as a submodule in the `bandframework` repository by placing a pull request.  Please see the [additional instructions for including a submodule](/resources/sdkpolicies/git_instructions_for_submodules.md); all submodules must meet the same requirements as outlined here.
+BAND packages should include a compatibility document and a [template](/resources/sdkpolicies/template.md) is provided. The compatibility  file should be placed in the root directory of the new subdirectory and labeled by the software name appended by `bandsdk`.  For example, if you have a software `foo`, you should create a directory `/software/foo` and place the compatibility file named `foobandsdk.md` in the directory `/software/foo` alongside contributed code.  All pull requests for inclusion of a new `/software` directory  that do not include this document will be rejected.  You can also include a repository as a submodule in the `bandframework` repository by placing a pull request.  Please see the [additional instructions for including a submodule](/resources/dev_guide/git_instructions_for_submodules.md); all submodules must meet the same requirements as outlined here.
 
 ## BAND SDK v0.2 Community Policies
 
 The BAND Framework will conform with BAND Software Development Kit (SDK) requirements, summarized below. By using such requirements we envision ready interoperability across the BAND software ecosystem, large-scale scientific simulation codes, and other numerical libraries.
+
+As shown in the [template](/resources/sdkpolicies/template.md) and [linked SDK compatibility examples](/resources/sdkpolicies/README.md), we note that there are different levels to which packages can satisfy BAND's mandatory and recommended policies in order to facilitate interoperability with other BAND compatible tools. We emphasize that the most important thing is for packages to state their compliance with each policy.
 
 ### Mandatory Policies
 
@@ -45,3 +47,19 @@ The BAND Framework will conform with BAND Software Development Kit (SDK) require
 |**R12.**| All BAND compatibility changes should be sustainable.
 |**R13.**| Respect system resources and settings made by other previously called packages.
 |**R14.**| Provide a comprehensive, automated test suite for correctness of installation verification.
+
+## Citing the BAND Framework
+
+Please use the following to cite the BAND Framework:
+
+    @techreport{bandframework,
+        title       = {{BANDFramework: An} Open-Source Framework for {B}ayesian Analysis of Nuclear Dynamics},
+        author      = {Kyle Beyer and Landon Buskirk and Moses Y-H. Chan and Tyler H. Chang and Richard James DeBoer and 
+        Richard J. Furnstahl and Pablo Giuliani and Kyle Godbey and Kevin Ingles and Dananjaya Liyanage and Filomena M. Nunes and 
+        Daniel Odell and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and Alexandra C. Semposki and \"Ozge S\"urer and 
+        Stefan M. Wild and John C. Yannotty},
+        institution = {},
+        number      = {Version 0.3.0},
+        year        = {2023},
+        url         = {https://github.com/bandframework/bandframework}
+    }
