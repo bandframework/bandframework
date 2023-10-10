@@ -35,7 +35,7 @@ BAND Framework elements are of two main types:
 
 BAND Framework tools and examples are found in [software/](/software/).
 
-As of version 0.3.0, the following tools are included:
+As of version 0.3.0+dev, the following tools are included:
 
 - surmise ([v0.2.1](https://github.com/bandframework/surmise/releases/tag/v0.2.1 )): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - SaMBA ([v1.0.1](https://github.com/asemposki/SAMBA/releases/tag/v1.0.1 )): The Sandbox for Mixing via Bayesian Analysis.
@@ -44,11 +44,11 @@ As of version 0.3.0, the following tools are included:
 - BMEX ([v0.1.1](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - Taweret ([v1.0.0](https://github.com/bandframework/Taweret/releases/tag/v1.0.0 )): A Python package containing multiple Bayesian Model Mixing methods.
 
-The following examples of the use of surmise are part of version 0.3.0:
+The following examples of the use of surmise are part of version 0.3.0+dev:
 
 - Bfrescox: A BAND extension of the frescox scattering code for coupled-channels calculations.
 
-Version 0.3.0 also includes two examples of the use of Bayesian parameter estimation in nuclear-physics contexts:
+Version 0.3.0+dev also includes two examples of the use of Bayesian parameter estimation in nuclear-physics contexts:
 
 - BRICK: the Bayesian R-matrix Inference Code Kit, facilitates extraction of R-matrix parameters from experimental data.
 - QGP_Bayes: provides a tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP. 
@@ -101,7 +101,7 @@ Please use the following to cite the BAND Framework:
         Daniel Odell and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and Alexandra C. Semposki and \"Ozge S\"urer and 
         Stefan M. Wild and John C. Yannotty},
         institution = {},
-        number      = {Version 0.3.0},
+        number      = {Version 0.3.0+dev},
         year        = {2023},
         url         = {https://github.com/bandframework/bandframework}
     }
