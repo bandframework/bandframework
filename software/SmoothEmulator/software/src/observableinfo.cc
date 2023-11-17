@@ -11,6 +11,7 @@
 
 using namespace std;
 using namespace NBandSmooth;
+using namespace NMSUPratt;
 
 CObservableInfo::CObservableInfo(string filename){
 	ReadObservableInfo(filename);

@@ -2,6 +2,7 @@
 using namespace std;
 
 using namespace NBandSmooth;
+using namespace NMSUPratt;
 
 int CSmoothEmulator::NPars=0;
 CSmooth *CSmoothEmulator::smooth=NULL;
@@ -62,10 +63,19 @@ void CSmoothEmulator::Init(){
 	ATrial.resize(smooth->NCoefficients);
 	SetA_Zero(ATrial);
 	M.resize(NTrainingPts,NTrainingPts);
+	Minv.resize(NTrainingPts,NTrainingPts);
+	Mtot.resize(NTrainingPts);
+	for(int it=0;it<NTrainingPts;it++){
+		Mtot[it].resize(smooth->NCoefficients);
+		for(int ic=0;ic<smooth->NCoefficients;ic++){
+			Mtot[it][ic]=0.0;
+		}
+	}
 }
 
 void CSmoothEmulator::Tune(){
 	FirstTune=true;
+	CalcMForTraining();
 	if(TuneChooseMCMC==true){
 		if(UseSigmaYReal){
 			if(FirstTune){
@@ -155,7 +165,7 @@ void CSmoothEmulator::TuneMCMC(){
 
 	int Ndof=smooth->NCoefficients-NTrainingPts;
 	if(!FirstTune)
-		CLog::Info("success percentage="+to_string(double(success)*100.0/double(NMC))+", SigmaA="+to_string(SigmaA)+", logP/Ndof="+to_string(logP/double(Ndof))+",BestLogP/Ndof="+to_string(BestLogP/double(Ndof))+"\n");
+		CLog::Info("success percentage="+to_string(double(success)*100.0/double(NMC))+",SigmaA="+to_string(SigmaA)+",  logP/Ndof="+to_string(logP/double(Ndof))+", BestLogP/Ndof="+to_string(BestLogP/double(Ndof))+"\n");
 }
 
 void CSmoothEmulator::TuneMCMC_withSigma(){
@@ -165,7 +175,6 @@ void CSmoothEmulator::TuneMCMC_withSigma(){
 	double BestLogP;
 	vector<double> YTrain=smoothmaster->traininginfo->YTrain[iY];
 	vector<double> SigmaYTrain=smoothmaster->traininginfo->SigmaYTrain[iY];
-	//CalcAFromTraining(A);
 	for(ic=0;ic<smooth->NCoefficients;ic++){
 		ATrial[ic]=A[ic];
 	}
@@ -175,7 +184,7 @@ void CSmoothEmulator::TuneMCMC_withSigma(){
 	double logP,logPTrial;
 	logP=GetLog_AProb(*Aptr,SigmaA);
 	for(itrain=0;itrain<NTrainingPts;itrain++){
-		Y=smooth->CalcY(*Aptr,LAMBDA,ThetaTrain[itrain]);
+		Y=smooth->CalcY_FromMtot(*Aptr,Mtot[itrain]);
 		logP-=0.5*(YTrain[itrain]-Y)*(YTrain[itrain]-Y)/(SigmaYTrain[itrain]*SigmaYTrain[itrain]);
 	}
 
@@ -193,7 +202,7 @@ void CSmoothEmulator::TuneMCMC_withSigma(){
 
 
 		for(itrain=0;itrain<NTrainingPts;itrain++){
-			Y=smooth->CalcY(*ATrialptr,LAMBDA,ThetaTrain[itrain]);
+			Y=smooth->CalcY_FromMtot(*ATrialptr,Mtot[itrain]);
 			logPTrial-=0.5*(YTrain[itrain]-Y)*(YTrain[itrain]-Y)/(SigmaYTrain[itrain]*SigmaYTrain[itrain]);
 		}
 
@@ -246,6 +255,7 @@ void CSmoothEmulator::TunePerfect(){
 	unsigned int ic,ic0,ntry=0,ntrymax=100000;
 	bool success=false;
 	double weight,warg;//sigmafact=1.0;
+	CalcMForTraining();
 	if(ConstrainA0){
 		ic0=0;
 	}
@@ -286,8 +296,45 @@ void CSmoothEmulator::TunePerfect(){
 	}
 }
 
+void CSmoothEmulator::CalcMForTraining(){
+	unsigned int itrain,ic;
+	for(itrain=0;itrain<NTrainingPts;itrain++){
+		for(ic=0;ic<NTrainingPts;ic++){
+			M(itrain,ic)=smooth->GetM(ic,LAMBDA,ThetaTrain[itrain]);
+		}
+		for(ic=0;ic<smooth->NCoefficients;ic++){
+			Mtot[itrain][ic]=smooth->GetM(ic,LAMBDA,ThetaTrain[itrain]);
+		}
+	}
+	Minv=M.inverse();
+}
+
 // This adjust first NTrainingPts coefficients to reproduce Y training values
+
 void CSmoothEmulator::CalcAFromTraining(vector<double> &AA){
+	vector<double> YTrain=smoothmaster->traininginfo->YTrain[iY];
+	unsigned int itrain;
+	//vector<double> Ashort;
+	//Ashort.resize(smooth->NCoefficients);
+	Eigen::VectorXd Ashort,YTarget;
+	AA.resize(NTrainingPts);
+	YTarget.resize(NTrainingPts);
+	if(ThetaTrain.size()!=NTrainingPts){
+		CLog::Info("CSmoothEmulator:: array size mismatch!!\n");
+		CLog::Fatal("ThetaTrain.size="+to_string(ThetaTrain.size())+", NTrainingPts="+to_string(NTrainingPts)+"\n");
+	}
+	YTarget.resize(NTrainingPts);
+
+	for(itrain=0;itrain<NTrainingPts;itrain++){
+		//YTarget(itrain)=YTrain[itrain]-smooth->CalcY_Remainder(AA,LAMBDA,ThetaTrain[itrain],NTrainingPts);
+		YTarget(itrain)=YTrain[itrain]-smooth->CalcY_Remainder_FromMtot(AA,NTrainingPts,Mtot[itrain]);
+	}
+	Ashort=Minv*YTarget;
+	for(itrain=0;itrain<NTrainingPts;itrain++)
+		AA[itrain]=Ashort(itrain);
+}
+
+void CSmoothEmulator::OldCalcAFromTraining(vector<double> &AA){
 	vector<double> YTrain=smoothmaster->traininginfo->YTrain[iY];
 	unsigned int itrain,ic;
 	//vector<double> Ashort;
@@ -298,7 +345,6 @@ void CSmoothEmulator::CalcAFromTraining(vector<double> &AA){
 	if(ThetaTrain.size()!=NTrainingPts){
 		CLog::Info("CSmoothEmulator:: array size mismatch!!\n");
 		CLog::Fatal("ThetaTrain.size="+to_string(ThetaTrain.size())+", NTrainingPts="+to_string(NTrainingPts)+"\n");
-		exit(1);
 	}
 	YTarget.resize(NTrainingPts);
 

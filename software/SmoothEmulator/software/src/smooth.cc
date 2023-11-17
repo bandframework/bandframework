@@ -1,6 +1,7 @@
 #include "msu_smooth/smooth.h"
 using namespace std;
 using namespace NBandSmooth;
+using namespace NMSUPratt;
 
 CSmooth::CSmooth(){
 	//
@@ -231,6 +232,24 @@ double CSmooth::CalcY_Remainder(vector<double> &A,double LAMBDA,vector<double> &
 		answer+=term;
 	}
 	answer*=rfactor;
+	return answer;
+}
+
+double CSmooth::CalcY_Remainder_FromMtot(vector<double> &A,unsigned int NTrainingPts,vector<double> &Mtot){
+	double answer=0.0;
+	unsigned int ic;
+	for(ic=NTrainingPts;ic<NCoefficients;ic++){
+		answer+=Mtot[ic]*A[ic];
+	}
+	return answer;
+}
+
+double CSmooth::CalcY_FromMtot(vector<double> &A,vector<double> &Mtot){
+	double answer=0.0;
+	unsigned int ic;
+	for(ic=0;ic<NCoefficients;ic++){
+		answer+=Mtot[ic]*A[ic];
+	}
 	return answer;
 }
 

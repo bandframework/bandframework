@@ -2,6 +2,7 @@
 
 using namespace std;
 using namespace NBandSmooth;
+using namespace NMSUPratt;
 
 CPriorInfo::CPriorInfo(string parinfo_filename_set){
 	parinfo_filename=parinfo_filename_set;

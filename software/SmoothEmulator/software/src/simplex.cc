@@ -3,6 +3,7 @@
 
 using namespace std;
 using namespace NBandSmooth;
+using namespace NMSUPratt;
 
 CSimplexSampler::CSimplexSampler(CparameterMap *parmap){
 	string logfilename=parmap->getS("Simplex_LogFileName","Screen");

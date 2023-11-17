@@ -2,6 +2,7 @@
 using namespace std;
 using namespace NBandSmooth;
 
+
 CSmoothMaster::CSmoothMaster(CparameterMap *parmap_set){
 	parmap=parmap_set;
 	int ranseed=parmap->getI("RANDY_SEED",time(NULL));
@@ -65,6 +66,7 @@ CSmoothMaster::CSmoothMaster(CparameterMap *parmap_set){
 	CSmoothEmulator::parmap=parmap;
 	CSmoothEmulator::randy=randy;
 	CSmoothEmulator::NTrainingPts=NTrainingList.size();
+	printf("NTrainingPts=%u\n",CSmoothEmulator::NTrainingPts);
 	CSmoothEmulator::smooth=smooth;
 	CSmoothEmulator::smoothmaster=this;
 	emulator.resize(observableinfo->NObservables);
@@ -95,7 +97,6 @@ void CSmoothMaster::TuneY(string obsname){
 void CSmoothMaster::TuneY(int iY){
 	emulator[iY]->Tune();
 }
-
 
 void CSmoothMaster::GenerateCoefficientSamples(){
 	int iY;

@@ -17,6 +17,7 @@
 #include "msu_smooth/observableinfo.h"
 #include "msu_smooth/priorinfo.h"
 #include "msu_smooth/traininginfo.h"
+using namespace NMSUPratt;
 
 namespace NBandSmooth{
 	class CSmoothMaster;
@@ -29,7 +30,8 @@ namespace NBandSmooth{
 	public:
 		int iY; // labels observable from observable info
 		string observable_name;
-		Eigen::MatrixXd M;
+		Eigen::MatrixXd M,Minv;
+		vector<vector<double>> Mtot;
 
 		double SigmaA0,SigmaAMin,SigmaA,SigmaATrial,MCStepSize,MCSigmaAStepSize,LAMBDA;
 		unsigned int NMC;   // NMC is for generating independent samplings of A in Tune
@@ -42,8 +44,9 @@ namespace NBandSmooth{
 
 		CSmoothEmulator(string observable_name_set);
 
-
+		void CalcMForTraining();
 		void CalcAFromTraining(vector<double> &AA);
+		void OldCalcAFromTraining(vector<double> &AA);
 		void PrintA(vector<double> &Aprint);
 
 		void SetThetaTrain();

@@ -12,6 +12,7 @@
 #include "msu_commonutils/constants.h"
 #include "msu_smooth/priorinfo.h"
 #include <Eigen/Dense>
+using namespace NMSUPratt;
 
 namespace NBandSmooth{
 

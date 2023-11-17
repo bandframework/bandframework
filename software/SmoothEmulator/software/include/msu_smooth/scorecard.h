@@ -8,6 +8,7 @@
 #include "msu_commonutils/randy.h"
 #include "msu_smooth/emulator.h"
 #include "msu_smooth/smooth.h"
+using namespace NMSUPratt;
 
 namespace NBandSmooth{
 

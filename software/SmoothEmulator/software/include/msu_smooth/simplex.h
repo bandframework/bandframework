@@ -18,6 +18,8 @@
 #include <algorithm>
 #include <random>
 
+using namespace NMSUPratt;
+
 namespace NBandSmooth{
 
 	class CSimplexSampler{
