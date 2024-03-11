@@ -9,7 +9,7 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR}/bin)
 add_custom_target(extern_commonutils COMMAND make WORKING_DIRECTORY ${GITHOME_MSU}/SmoothEmulator/SmoothUtilities/software)
 add_custom_target(extern_smooth COMMAND make WORKING_DIRECTORY ${GITHOME_MSU}/SmoothEmulator/software)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall -std=c++17")
+set(CMAKE_CXX_FLAGS "-W -Wall -march=native -std=c++17 -O2")
 set(CMAKE_MODULE_PATH "${MAIN_PROGRAM_DIR}/cmake")
 find_package(GSL REQUIRED)
 find_package(Eigen3 REQUIRED)

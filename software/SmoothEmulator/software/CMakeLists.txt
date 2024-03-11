@@ -4,7 +4,7 @@ project(msu_smooth CXX C)
 message("CXX is ${CXX}")
 
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall -std=c++17")
+set(CMAKE_CXX_FLAGS "-W -Wall -march=native -std=c++17 -O2")
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 find_package(GSL REQUIRED)
