@@ -88,7 +88,6 @@ namespace NBandSmooth{
 
 		void Init();
 
-		static 
 		static CSmoothMaster *smoothmaster;
 		static unsigned int NPars;
 		static CSmooth *smooth;
