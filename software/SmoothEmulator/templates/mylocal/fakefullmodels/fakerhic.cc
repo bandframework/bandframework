@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <vector>
 #include <cstring>
+#include <filesystem>
 #include "msu_smoothutils/randy.h"
 #include "msu_smoothutils/log.h"
 

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 set(CMAKE_VERBOSE_MAKEFILE on)
 project(smooth_projects)
 set(GITHOME_BAND_SMOOTH $ENV{GITHOME_BAND_SMOOTH})
+message (${GITHOME_BAND_SMOOTH})
 set (MAIN_PROGRAM_DIR ".")
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "../bin")
 
