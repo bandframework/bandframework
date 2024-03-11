@@ -1,0 +1,6 @@
+compressibility			uniform	$\kappa$
+etaovers						uniform	$\eta/s$
+initial_flow				uniform	Init.Flow
+initial_screening			uniform	Screening
+quenching_length			uniform	$\lambda_{\rm quench}$
+initial_epsilon			uniform	$\epsilon_0$

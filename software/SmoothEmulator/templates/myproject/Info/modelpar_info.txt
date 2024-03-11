@@ -1,0 +1,7 @@
+# par_name            dist_type xmin  xmax
+compressibility			uniform	150	300
+etaovers						uniform	0.05	0.32
+initial_flow				uniform	0.3	1.2
+initial_screening			uniform	0.0	1.0
+quenching_length			uniform	0.5	2.0
+initial_epsilon			uniform	15.0	30.0

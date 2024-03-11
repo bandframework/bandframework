@@ -1,0 +1,18 @@
+User should copy three files into this diretory:
+  1) ResolvingPower.txt  -- from mcmc_data/ after running mcmc
+  2) observable_info.txt -- from Info/
+  3) modelpar_info.txt   -- from Info/
+Then User should edit two of those files
+  1) observable_info.txt -- keep only two lines, the observable name and the formatted string to use for display
+     For example, one of the lines could be
+	   meanpt_pion  $\langle p_t\rangle_{\pi}$
+  2) modelpar_info.txt -- keep three lines, model parameter name, gaussian-or-uniform, and display name
+     For example, one of the lines could be
+	   compressibility  uniform  $\kappa$
+
+User can run the command
+% python3 RP.py
+The output should be RP.pdf
+
+The User may wish to edit the python script, usually to adjust sizes, especially to get the labels to fit well. The lines to be adjusted are described inside the python script.
+

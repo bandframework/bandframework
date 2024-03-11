@@ -1,0 +1,9 @@
+ # This is for the MCMC search of parameter space
+ # (not for the emulator tuning)
+ MCMC_LANGEVIN false
+ MCMC_METROPOLIS_STEPSIZE 0.04
+ MCMC_LANGEVIN_STEPSIZE 0.5
+ MCMC_NBURN  100000
+ MCMC_NTRACE 100000
+ MCMC_NSKIP  5
+ RANDY_SEED  12345

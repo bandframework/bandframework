@@ -1,0 +1,16 @@
+User should copy 2 files to this directory
+  1) trace.txt  -- from mcmc_data/ after running mcmc
+  2) modelpar_info.txt   -- from Info/
+Then User should edit one info file
+  1) modelpar_info.txt -- keep three lines, model parameter name, gaussian-or-uniform, and display name
+     For example, one of the lines could be
+	   compressibility  uniform  $\kappa$
+
+User can run the command
+% python3 posterior.py
+The output should be posterior.pdf
+
+The User may wish to edit the python script. The lines to be adjusted are described inside the python script. If the For example, if the there were 6 parameters, but the User wished to display only parameters 2,3,4,5, the User would edit the line:
+  ParsToPlot=[2,3,4,5]
+And if the User wished the array to be reordered to 2,4,3,5, the line would be:
+  ParsToPlot=[2,4,3,5]
