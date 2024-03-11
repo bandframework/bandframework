@@ -1,4 +1,0 @@
-par1 uniform      0.000      100.0
-par2 uniform      0.000      100.0
-par3 uniform      0.000      100.0
-par4 uniform      0.000      100.0

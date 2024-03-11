@@ -7,38 +7,36 @@
 #include <vector>
 #include <array>
 #include <fstream>
-#include "msu_commonutils/parametermap.h"
-#include "msu_commonutils/misc.h"
-#include "msu_commonutils/randy.h"
-#include "msu_commonutils/constants.h"
+#include "msu_smoothutils/parametermap.h"
+#include "msu_smoothutils/misc.h"
+#include "msu_smoothutils/randy.h"
 #include <list>
 #include "msu_smooth/smooth.h"
 #include <iostream>
 #include <Eigen/Dense>
-#include "msu_commonutils/log.h"
+#include "msu_smoothutils/log.h"
 #include "msu_smooth/master.h"
 #include "msu_smooth/modelparinfo.h"
 #include "msu_smooth/observableinfo.h"
 #include "msu_smooth/priorinfo.h"
-using namespace NMSUPratt;
+using namespace NMSUUtils;
 
 namespace NBandSmooth{
-	class CSmoothEmulator;
 	class CSmoothMaster;
 
 	class CTrainingInfo{
 	public:
 		CObservableInfo *observableinfo;
 		CPriorInfo *priorinfo;
-		CTrainingInfo(vector<int> NTrainingList, CObservableInfo *observableinfo,CPriorInfo *priorinfo);
-		int NTrainingPts,NObservables;
-		vector<int> NTrainingList;
+		CTrainingInfo(vector<unsigned int> NTrainingList, CObservableInfo *observableinfo,CPriorInfo *priorinfo);
+		unsigned int NTrainingPts,NObservables;
+		vector<unsigned int> NTrainingList;
 		vector<vector<double>> YTrain,SigmaYTrain;
 		vector<CModelParameters *> modelpars;
 		void ReadTrainingInfo(string rundirname);
 		static CSmoothMaster *smoothmaster;
 	};
 
-}
+};
 
 #endif

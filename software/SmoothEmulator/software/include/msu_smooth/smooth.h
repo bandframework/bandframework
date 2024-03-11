@@ -6,15 +6,14 @@
 #include <vector>
 #include <array>
 #include <fstream>
-#include "msu_commonutils/parametermap.h"
-#include "msu_commonutils/misc.h"
-#include "msu_commonutils/constants.h"
-#include "msu_commonutils/randy.h"
-#include "msu_commonutils/log.h"
+#include "msu_smoothutils/parametermap.h"
+#include "msu_smoothutils/misc.h"
+#include "msu_smoothutils/randy.h"
+#include "msu_smoothutils/log.h"
 #include <list>
 
 using namespace std;
-using namespace NMSUPratt;
+using namespace NMSUUtils;
 
 namespace NBandSmooth{
 
@@ -29,20 +28,22 @@ namespace NBandSmooth{
 		bool UseRFactor;
 
 		CSmooth();
-		CSmooth(unsigned int NPars_Set,int maxrank);
+		CSmooth(unsigned int NPars_Set,unsigned int maxrank);
 		CSmooth(CparameterMap *parmap);
 		void InitArrays();
 		void Copy(CSmooth *smooth);
 
 		double CalcY(vector<double> &A,double LAMBDA,vector<double> &theta);
-		double CalcY_FromMtot(vector<double> &A,vector<double> &Mtot);
+		double CalcY_FromT(vector<double> &A,vector<double> &T);
 		double CalcY_Remainder(vector<double> &A,double LAMBDA,vector<double> &theta,unsigned int NTrainingPts);
-		double CalcY_Remainder_FromMtot(vector<double> &A,unsigned int NTrainingPts,vector<double> &Mtot);
+		double CalcY_Remainder_FromT(vector<double> &A,unsigned int NTrainingPts,vector<double> &T);
 		double GetRFactor(double LAMBDA,vector<double> &theta);
-		double GetM(int ic,double LAMBDA,vector<double> &theta);
+		double GetT(unsigned int ic,double LAMBDA,vector<double> &theta);
+		
+		void CalcYDYDTheta(vector<double> &A,double lambda,vector<double> &theta,double &Y,vector<double> &dYdTheta);
 
 	};
 
-}
+};
 
 #endif

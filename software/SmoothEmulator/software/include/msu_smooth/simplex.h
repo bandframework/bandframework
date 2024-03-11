@@ -6,10 +6,9 @@
 #include <vector>
 #include <array>
 #include <fstream>
-#include "msu_commonutils/parametermap.h"
-#include "msu_commonutils/misc.h"
-#include "msu_commonutils/randy.h"
-#include "msu_commonutils/constants.h"
+#include "msu_smoothutils/parametermap.h"
+#include "msu_smoothutils/misc.h"
+#include "msu_smoothutils/randy.h"
 #include <list>
 #include <iostream>
 #include <Eigen/Dense>
@@ -18,7 +17,7 @@
 #include <algorithm>
 #include <random>
 
-using namespace NMSUPratt;
+using namespace NMSUUtils;
 
 namespace NBandSmooth{
 
@@ -26,9 +25,9 @@ namespace NBandSmooth{
 	public:
 		unsigned int NPars,NTrainingPts,TrainType;
 		vector<vector<double>> ThetaTrain;
-		double RTrain;
 		string ModelDirName;
 		CPriorInfo *priorinfo;
+		Crandy *randy;
 		vector<CModelParameters *> modelparameters;
 		CSimplexSampler(CparameterMap *parmap);
 		void SetThetaType1();
@@ -44,11 +43,11 @@ namespace NBandSmooth{
 
 	namespace NAlternativeParameterSampling{
 		// Latin Hyer Cube parameters
-		void GetParsLHC(int NRuns,int NPars,Crandy *randy,vector<vector<double>> &Theta);
-		void GetParsLHC_Modified(int NRuns,int NPars,Crandy *randy,vector<vector<double>> &Theta);
+		void GetParsLHC(unsigned int NRuns,unsigned int NPars,Crandy *randy,vector<vector<double>> &Theta);
+		void GetParsLHC_Modified(unsigned int NRuns,unsigned int NPars,Crandy *randy,vector<vector<double>> &Theta);
 		double GetPEShuffle(vector<vector<double>> x);
 		// These are used for Coulomb force generated parameters
-		void GetParsCoulomb(int NRuns,int NPars,Crandy *randy,vector<vector<double>> &Theta);
+		void GetParsCoulomb(unsigned int NRuns,unsigned int NPars,Crandy *randy,vector<vector<double>> &Theta);
 		void CalcEnergy(vector<vector<double>> &x,vector<vector<double>> &vv,vector<vector<double>> &v,double &PE,double &KE,double &Etot);
 		void Propagate(double dt,vector<vector<double>> &x,vector<vector<double>> &xx,vector<vector<double>> &v,vector<vector<double>> &vv,double &PE);
 		void GetForcePotential(vector<double> &x,vector<double> &xx,vector<double> &F,double &potential);
@@ -60,7 +59,7 @@ namespace NBandSmooth{
 		void GetFextVextHO(vector<double> &x,vector<double> &Fext,double &Vext);
 	};
 
-}
+};
 
 
 #endif

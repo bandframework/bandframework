@@ -7,22 +7,23 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <filesystem>
-#include "msu_commonutils/parametermap.h"
-#include "msu_smooth/master.h"
-using namespace NMSUPratt;
+#include "msu_smoothutils/parametermap.h"
+#include "msu_smooth/observableinfo.h"
+using namespace NMSUUtils;
 namespace NBandSmooth{
 	
-	class PCA{
+	class CPCA{
 	public:
 
-		PCA(string parameter_filename);
-		int nruns,Nobs;
+		CPCA(CparameterMap *parmap_set);
+		CparameterMap *parmap;
+		unsigned int nruns,NObs;
 		Eigen::MatrixXd eigvecs;
 		Eigen::VectorXd eigvals;
 		vector<vector<double>> Y;
 		vector<double> SigmaY,Ybar;
 		vector<vector<double>> SigmaY_emulator;
-		vector<int> NTrainingList;
+		vector<unsigned int> NTrainingList;
 		string modelruns_dirname;
 		CObservableInfo *observable_info;
 
@@ -38,6 +39,6 @@ namespace NBandSmooth{
 	
 	};
 
-}
+};
 
 #endif

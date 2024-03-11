@@ -1,18 +1,21 @@
-#SmoothEmulator_LogFileName smoothlog.txt
- SmoothEmulator_LAMBDA 3.0
- SmoothEmulator_MAXRANK 4
- SmoothEmulator_NASample 8  # No. of coefficient samples
- SmoothEmulator_TuneChooseMCMC true # set false if NPars<5
- SmoothEmulator_UseSigmaYRreal false # 
- SmoothEmulator_ConstrainA0 false
- SmoothEmulator_CutoffA false
+#SmoothEmulator_LogFileName smoothlog.txt # comment out for interactive running
+ SmoothEmulator_LAMBDA 4.0 # smoothness parameter
+ SmoothEmulator_MAXRANK 5
+ SmoothEmulator_ConstrainA0 true
  SmoothEmulator_ModelRunDirName modelruns
- SmoothEmulator_CoefficientsDirName coefficients
- SmoothEmulator_ModelParInfoDir    Info
- SmoothEmulator_ObservableInfoDir  Info
- SmoothEmulator_TrainingPts 0-4
- SmoothEmulator_MCStepSize 0.01
- SmoothEmulator_MCSigmaAStepSize 50.0
- SmoothEmulator_NMC 10000  # Steps between samples 
- SmoothEmulator_UsePCA   false
- 
+ SmoothEmulator_TrainingPts 0-27
+ SmoothEmulator_UsePCA false
+ SmoothEmulator_TuneChooseExact true
+ #
+ # These are only used if you are using MCMC tuning rather than Exact method
+ SmoothEmulator_TuneChooseMCMC false # set false if NPars<5
+ SmoothEmulator_TuneChooseMCMCPerfect false #
+ SmoothEmulator_MCMC_NASample 8  # No. of coefficient samples
+ SmoothEmulator_MCMC_StepSize 0.01
+ SmoothEmulator_MCMC_CutoffA false # Used only if SigmaA constrained by SigmaA0
+ SmoothEmulator_MCMC_SigmaAStepSize 1.0  #
+ SmoothEmulator_MCMCUseSigmaY false # If false, also varies SigmaA
+ SmoothEmulator_MCMC_NMC 20000  # Steps between samples 
+ #
+ # This is for the MCMC search of parameter space (not for the emulator tuning)
+ RANDY_SEED  1234

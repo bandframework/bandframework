@@ -1,21 +1,22 @@
-#include "msu_commonutils/parametermap.h"
+#include "msu_smoothutils/parametermap.h"
 #include "msu_smooth/master.h"
-#include "msu_commonutils/log.h"
+#include "msu_smoothutils/log.h"
 
 using namespace std;
-int main(int argc,char *argv[]){
-	if(argc!=2){
-		printf("Usage smoothy_tune emulator parameter filename");
-		exit(1);
-	}
+using namespace  NBandSmooth;
+using namespace NMSUUtils;
+
+int main(){
 	CparameterMap *parmap=new CparameterMap();
-	parmap->ReadParsFromFile(string(argv[1]));
-	
+	parmap->ReadParsFromFile("parameters/emulator_parameters.txt");
+
 	CSmoothMaster master(parmap);
 	
 	master.ReadTrainingInfo();
-
-	master.GenerateCoefficientSamples();
+	
+	master.TuneAllY();
+	
+	//master.CalcAllLogP();
 	
 	//master.TestAtTrainingPts();
 	

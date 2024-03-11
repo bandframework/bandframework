@@ -1,4 +1,7 @@
-length  meters  0.5
-mass    kg      100.0
-time    seconds 20.0   
-
+# obs. name		SigmaA0	
+meanpt_pion		100		
+meanpt_kaon		200		
+meanpt_proton	300		
+Rinv				1.0     	
+v2					0.2		
+RAA				0.5	   
