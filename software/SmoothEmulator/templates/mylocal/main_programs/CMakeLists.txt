@@ -1,13 +1,14 @@
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 set(CMAKE_VERBOSE_MAKEFILE on)
-project(smooth_projects)
+project(smooth_mainprograms CXX)
 set(GITHOME_BAND_SMOOTH $ENV{GITHOME_BAND_SMOOTH})
-message (${GITHOME_BAND_SMOOTH})
 set (MAIN_PROGRAM_DIR ".")
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "../bin")
 
 add_custom_target(extern_smooth COMMAND make WORKING_DIRECTORY ${GITHOME_BAND_SMOOTH}/software)
 
+message("Will Compile with " ${CMAKE_CXX_COMPILER})
+message("For different compiler enter: cmake -D YOUR_PREFERRED_COMPILER .")
 set(CMAKE_CXX_FLAGS "-W -Wall -march=native -std=c++17 -O2")
 set(CMAKE_MODULE_PATH "${MAIN_PROGRAM_DIR}/cmake")
 find_package(Eigen3 REQUIRED)
