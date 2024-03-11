@@ -70,7 +70,6 @@ CSmoothMaster::CSmoothMaster(CparameterMap *parmap_set){
 	CSmoothEmulator::randy=randy;
 	CSmoothEmulator::NTrainingPts=NTrainingList.size();
 	CSmoothEmulator::smooth=smooth;
-	CSmoothEmulator::smoothmaster=this;
 	emulator.resize(NObs);
 	
 	pca_ignore.resize(NObs);
