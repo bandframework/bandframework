@@ -56,8 +56,8 @@ void CTrainingInfo::ReadTrainingInfo(string rundirname){
 				nsuccess+=1;
 			}
 		}while(!feof(fptr));
+		fclose(fptr);
 	}
-	fclose(fptr);
 	
 	if(nsuccess!=smoothmaster->observableinfo->NObservables)
 		CLog::Fatal("In CTrainingInfo::ReadTrainInfo, only read in "+to_string(nsuccess)+" observables from file "+string(filename)+"\n");

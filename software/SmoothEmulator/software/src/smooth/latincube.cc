@@ -56,7 +56,7 @@ void NAlternativeParameterSampling::GetParsLHC_Modified(unsigned int NRuns,unsig
 	vector<vector<double>> BestTheta;
 	ThetaOrdered.resize(NRuns);
 	vector<int> ishuffle;
-	double PE,BestPE=1.0E99;
+	double PE=0.0,BestPE=1.0E99;
 	ishuffle.resize(NRuns);
 	double dTheta;
 	std::random_device rd;
@@ -137,7 +137,7 @@ void NAlternativeParameterSampling::GetParsCoulomb(unsigned int NParts,unsigned 
 	(void) randy;
 	unsigned int ipart,idim;
 	vector<vector<double>> xx,v,vv;
-	double t,dt=0.001,PE,Etot,KE;
+	double t,dt=0.001,PE=0.0,Etot,KE;
 	if(x.size()!=(unsigned int)NParts){
 		x.resize(NParts);
 	}

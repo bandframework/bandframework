@@ -104,29 +104,25 @@ void CSimplexSampler::SetThetaType2(){
 	}
 	
 	double R1,R2;
-	for(itrain=0;itrain<NTrainingPts;itrain++){
-		if(itrain<=NPars){
-			R1=0.0;
-			for(ipar=0;ipar<NPars;ipar++)
-				R1+=ThetaTrain[itrain][ipar]*ThetaTrain[itrain][ipar];
-			R1=sqrt(R1);
-		}
+	itrain=0;
+	R1=0.0;
+	for(ipar=0;ipar<NPars;ipar++)
+		R1+=ThetaTrain[itrain][ipar]*ThetaTrain[itrain][ipar];
+	R1=sqrt(R1);
+	itrain=NTrainingPts-1;
+	R2=0.0;
+	for(ipar=0;ipar<NPars;ipar++)
+		R2+=ThetaTrain[itrain][ipar]*ThetaTrain[itrain][ipar];
+	R2=sqrt(R2);
 	
-		if(itrain>NPars){
-			R2=0.0;
-			for(ipar=0;ipar<NPars;ipar++)
-				R2+=ThetaTrain[itrain][ipar]*ThetaTrain[itrain][ipar];
-			R2=sqrt(R2);
-		}
-		//double Rtest=0.0;
+	for(itrain=0;itrain<NTrainingPts;itrain++){
 		for(ipar=0;ipar<NPars;ipar++){
 			if(itrain<=NPars){
-				ThetaTrain[itrain][ipar]*=(0.8*RTrain1/R1);
+				ThetaTrain[itrain][ipar]*=(RTrain1/R1);
 			}
 			else{
 				ThetaTrain[itrain][ipar]*=(RTrain2/R2);
 			}
-			//Rtest+=ThetaTrain[itrain][ipar]*ThetaTrain[itrain][ipar];
 		}
 	}
 }

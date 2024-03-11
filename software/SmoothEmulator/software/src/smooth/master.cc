@@ -5,7 +5,7 @@ using namespace NBandSmooth;
 CSmoothMaster::CSmoothMaster(CparameterMap *parmap_set){
 	unsigned int NObs;
 	unsigned int iZ;
-	CPCA *pca;
+	CPCA *pca=NULL;
 	parmap=parmap_set;
 	int ranseed=parmap->getI("RANDY_SEED",time(NULL));
 	randy=new Crandy(ranseed);

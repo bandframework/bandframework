@@ -1,8 +1,10 @@
-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 set(GITHOME_BAND_SMOOTH $ENV{GITHOME_BAND_SMOOTH})
 set(GITHOME_MSU_PRATT $ENV{GITHOME_MSU_PRATT})
-project(msu_smooth CXX C)
-message("CXX is ${CXX}")
+project(msu_smooth CXX)
+
+message("Will Compile with " ${CMAKE_CXX_COMPILER})
+message("For different compiler enter: cmake -D YOUR_PREFERRED_COMPILER .")
 
 set(CMAKE_CXX_FLAGS "-W -Wall -march=native -std=c++17 -O2")
 
