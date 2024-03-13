@@ -1,0 +1,50 @@
+\contentsline {section}{\numberline {1}Overview}{3}{section.1}%
+\contentsline {section}{\numberline {2}Installation and Getting Started}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Prerequisites}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Downloading the Repository and Setting the\\GITHOME\_BAND\_SMOOTH Environment Variable}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Directory and File Structure}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Compiling Libraries }{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}The {\tt MY\_PROJECT} Directory}{7}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Generating Training Points with {\it Simplex Sampler}}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Summary}{9}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Simplex Parameters (not model parameters!)}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Specifying Model Parameters and Priors}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Training Types}{10}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Type 1}{10}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Type 2}{10}{subsubsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.5}Running Simplex to Generate Training Points}{11}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Replacing {\it Simplex Sampler} with Other Choices of Training Points}{11}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Performing Full Model Runs}{12}{section.4}%
+\contentsline {section}{\numberline {5}Tuning the Emulator}{14}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Summary}{14}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Preparing Files for {\it Smooth Emulator}}{15}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}{\it Smooth Emulator} Parameters (not model parameters!)}{17}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Running {\it Smooth Emulator} Programs}{19}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Useful Functionalities of {\tt CSmoothMaster} Object}{21}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Other Potentially Useful {\it Smooth Emulator Objects}}{23}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Emulating Principal Components}{26}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Overview}{26}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Compiling and Running the PCA Programs}{26}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}PCA Parameters (not model parameters!)}{28}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Performing MCMC search with PCA components}{29}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Markov-Chain Monte Carlo (MCMC) Generation of the Posterior}{30}{section.7}%
+\contentsline {section}{\numberline {8}Template-Based Tutorial}{33}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Overview}{33}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Installation and Compilation}{33}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Creating Necessary Info Files}{34}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Running {\it Simplex Sampler}}{35}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Running the Fake Full Model}{36}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Running {\it Smooth Emulator}}{36}{subsection.8.6}%
+\contentsline {section}{\numberline {9}Testing the Emulator at the Training Points}{38}{section.9}%
+\contentsline {section}{\numberline {10}Generating Emulated Observables at Given Points}{38}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Exploring the Posterior via Markov-Chain Monte-Carlo}{41}{subsection.10.1}%
+\contentsline {section}{\numberline {9}Underlying Theory of {\it Smooth Emulator}}{46}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Mathematical Form of {\it Smooth Emulator}}{46}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Alternate Forms}{48}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Tuning the Emulator via MCMC}{49}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Exact Solution for the Most Probable Coefficients and the Uncertainty}{51}{subsection.9.4}%
+\contentsline {subsubsection}{\numberline {9.4.1}Finding the Optimum Coefficients}{52}{subsubsection.9.4.1}%
+\contentsline {subsubsection}{\numberline {9.4.2}Finding the Uncertainty when Calculating $E(\vec {\theta }$)}{54}{subsubsection.9.4.2}%
+\contentsline {section}{\numberline {10}Theoretical Basis of {\it Simplex Sampler}}{56}{section.10}%
+\contentsline {subsection}{\numberline {10.1}The Pernicious Nature of Step-Function Priors in High Dimension}{57}{subsection.10.1}%
+\contentsline {section}{\numberline {11}Tests of the {\it Smooth Emulator} using {\it Simplex Sampler} for Training}{58}{section.11}%

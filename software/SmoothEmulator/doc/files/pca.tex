@@ -15,8 +15,7 @@ To get an idea of the capabilities and functionality of the PCA elements of the 
 {\tt \$\{MY\_LOCAL\}/main\_programs/pca\_calctransformation\_main.cc}:
 {\tt\begin{verbatim}
 int main() {
-	CparameterMap parmap;
-	parmap.ReadParsFromFile("parameters/emulator_parameters.txt");
+  CparameterMap parmap;
   NBandSmooth::PCA *pca = new NBandSmooth::PCA(&parmap);
   pca->CalcTransformationInfo();
 }
@@ -48,9 +47,9 @@ Another example program for PCA analysis is {\tt \$\{MY\_LOCAL\}/main\_programs/
 {\tt\begin{verbatim}
  int main() {
 	CparameterMap parmap;
-	parmap.ReadParsFromFile("parameters/emulator_parameters.txt");
-  NBandSmooth::PCA *pca = new NBandSmooth::PCA(&parmap);
-  pca->ReadTransformationInfo();
+    NBandSmooth::PCA *pca = new NBandSmooth::PCA(&parmap);
+    pca->ReadTransformationInfo();
+    
 	vector<double> Z,Y,SigmaZ_emulator,SigmaY_emulator;
 	Z.resize(pca->Nobs);
 	Y.resize(pca->Nobs);
