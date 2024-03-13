@@ -1,5 +1,5 @@
 #SmoothEmulator_LogFileName smoothlog.txt # comment out for interactive running
- SmoothEmulator_LAMBDA 4.0 # smoothness parameter
+ SmoothEmulator_LAMBDA 2.5 # smoothness parameter
  SmoothEmulator_MAXRANK 5
  SmoothEmulator_ConstrainA0 true
  SmoothEmulator_ModelRunDirName modelruns

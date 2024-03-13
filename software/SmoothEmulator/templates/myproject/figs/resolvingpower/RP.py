@@ -20,7 +20,7 @@ panelheight=0.75  # larger values stretches figure vertically
 Ynames = []
 NObs=0
 iline=0
-for line in open('observable_info.txt'):
+for line in open('../observable_info.txt'):
   if len(line) > 1:
     NObs+=1
     tempdata=list(map(str,line.split()))
@@ -32,7 +32,7 @@ for line in open('observable_info.txt'):
 Xnames=[]
 NPars=0
 iline=0
-for line in open ('modelpar_info.txt'):
+for line in open ('../modelpar_info.txt'):
   if len(line) > 2:
     tempdata=list(map(str,line.split()))
     NPars=NPars+1

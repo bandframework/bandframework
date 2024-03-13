@@ -6,11 +6,11 @@ from matplotlib.colors import LogNorm
 plt.rc('text', usetex=False)
 
 # you will likely wish to edit these parameters
-ParsToPlot=[1,2,3,4,5,0]    #Choose which model parameters to plot, and their order
+ParsToPlot=[0,1,2,3,4,5]    #Choose which model parameters to plot, and their order
 npanels=len(ParsToPlot)
 nbins=30 # Higher gives better resolution but can be noisier
 mcmcfilename='trace.txt' # Created by MCMC program (look in mcmc_trace/..)
-limitsfilename='modelpar_info.txt' #same as used by Smooth Emulator, but needs extra entry for parname for plot
+priorfilename='../modelpar_info.txt' #same as used by Smooth Emulator, but needs extra entry for parname for plot
 # This parameter name can be "latex-like", e.g. $\alpha_s$
 outputfilename='posterior.pdf'
 
@@ -36,23 +36,23 @@ mcmcdata=np.loadtxt(mcmcfilename,skiprows=0,unpack=True)
 npts = mcmcdata[0].size
 print('Number of points in trace =', npts)
 
-limitsdata=[[],[]]
+priordata=[[],[]]
 iline=0
 npars=0
-for line in open ('modelpar_info.txt'):
+for line in open (priorfilename):
   if len(line) > 3:
     npars=npars+1
-    limitsdata.append([])
+    priordata.append([])
     tempdata=list(map(str,line.split()))
     for iword in range(0,len(tempdata)):
-      limitsdata[iline].append(tempdata[iword])
+      priordata[iline].append(tempdata[iword])
     iline=iline+1
 
 for ipar in range (0,npars):
-  nstrings = len(limitsdata[ipar])
+  nstrings = len(priordata[ipar])
   for istring in range(3,nstrings):
-    limitsdata[ipar][2] = str(limitsdata[ipar][2])+' '+str(limitsdata[ipar][istring])
-  #print(limitsdata[ipar])
+    priordata[ipar][2] = str(priordata[ipar][2])+' '+str(priordata[ipar][istring])
+  #print(priordata[ipar])
 
 xmin=-1.0
 xmax=1.0
@@ -77,11 +77,11 @@ for ipanel in range (0,npanels):
       
     if ipanel == npanels-1:
       ax.yaxis.set_label_position('right')
-      ax.set_ylabel(limitsdata[jpanel][2],size=labelsize, family='serif', rotation=-90, va='bottom',labelpad=0.1*labelsize)
+      ax.set_ylabel(priordata[jpanel][2],size=labelsize, family='serif', rotation=-90, va='bottom',labelpad=0.1*labelsize)
     
     if jpanel == 0:
       ax.xaxis.set_label_position('top')
-      ax.set_xlabel(limitsdata[ipar][2],size=labelsize, family='serif',labelpad=0.2*labelsize)
+      ax.set_xlabel(priordata[ipar][2],size=labelsize, family='serif',labelpad=0.2*labelsize)
        
     if jpanel == npanels-1:
       ax.tick_params(axis='x',labelbottom=True,labeltop=False,labelsize=ticklabelsize)
