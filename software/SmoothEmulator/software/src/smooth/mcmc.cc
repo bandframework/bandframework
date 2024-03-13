@@ -17,6 +17,11 @@ CMCMC::CMCMC(CSmoothMaster *master_set){
 	priorinfo=master->priorinfo;
 	CLLCalc::priorinfo=priorinfo;
 	parmap=master->parmap;
+	parmap->ReadParsFromFile("parameters/mcmc_parameters.txt");
+	string logfilename=parmap->getS("MCMC_LogFileName","Screen");
+	if(logfilename!="Screen"){
+		CLog::Init(logfilename);
+	}
 	randy=master->randy;
 	NPars=master->NPars;
 	trace_filename=parmap->getS("MCMC_TRACE_FILENAME","mcmc_trace/trace.txt");
@@ -61,7 +66,9 @@ void CMCMC::PruneTrace(){
 	vector<double> theta0;
 	theta0=trace[trace.size()-1];
 	ClearTrace();
-	trace.push_back(theta0);
+	for(unsigned int ipar=0;ipar<NPars;ipar++){
+		trace[0][ipar]=theta0[ipar];
+	}
 }
 
 void CMCMC::PerformTrace(unsigned int Ntrace,unsigned int Nskip){
@@ -96,9 +103,8 @@ void CMCMC::PerformMetropolisTrace(unsigned int Ntrace,unsigned int Nskip){
 		oldtheta=trace[it0-1];
 	}
 	llcalc->CalcLL(oldtheta,oldLL);
-	//oldLL=0.0;
-	//for(ipar=0;ipar<NPars;ipar++)
-	//	oldLL-=pow(oldptr->Theta[ipar]-0.2,2);
+	besttheta=oldtheta;
+	
 	bestLL=oldLL;
 	CLog::Info("At beginning of Trace, LL="+to_string(oldLL)+"\n");
 	
@@ -134,7 +140,7 @@ void CMCMC::PerformMetropolisTrace(unsigned int Ntrace,unsigned int Nskip){
 			}
 			else{
 				X=newLL-oldLL;
-				if(X>-30.0){
+				if(X>-30.0 && X<0.0){
 					if(exp(X)>randy->ran()){
 						for(ipar=0;ipar<NPars;ipar++)
 							oldtheta[ipar]=newtheta[ipar];

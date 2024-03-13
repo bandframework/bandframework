@@ -16,6 +16,7 @@ void CSmoothEmulator::WriteCoefficients(){
 	if(!pca_ignore){
 		unsigned int NCoefficients=smooth->NCoefficients;
 		unsigned int isample,ic,a;
+		double betawrite;
 		FILE *fptr;
 		string filename;
 		string dirname=smoothmaster->CoefficientsDirName+"/"+observable_name;
@@ -28,19 +29,19 @@ void CSmoothEmulator::WriteCoefficients(){
 		fclose(fptr);
 	
 		if(TuneChooseExact){
-			filename=dirname+"/ABest.txt";
-			fptr=fopen(filename.c_str(),"w");
+			filename=dirname+"/ABest.bin";
+			fptr=fopen(filename.c_str(),"wb");
 			for(ic=0;ic<smooth->NCoefficients;ic++){
-				fprintf(fptr,"%18.12e\n",ABest[ic]);
+				fwrite(&(ABest[ic]),sizeof(double),1,fptr);
 			}
 			fclose(fptr);
-			filename=dirname+"/BetaBest.txt";
-			fptr=fopen(filename.c_str(),"w");
+			filename=dirname+"/BetaBest.bin";
+			fptr=fopen(filename.c_str(),"wb");
 			for(ic=0;ic<NCoefficients;ic++){
 				for(a=0;a<NTrainingPts;a++){
-					fprintf(fptr,"%18.12e ",beta(a,ic));
+					betawrite=beta(a,ic);
+					fwrite(&betawrite,sizeof(double),1,fptr);
 				}
-				fprintf(fptr,"\n");
 			}
 			fclose(fptr);
 		
@@ -49,18 +50,18 @@ void CSmoothEmulator::WriteCoefficients(){
 			for(ic=0;ic<NCoefficients;ic++)
 				ABest[ic]=0.0;
 			for(isample=0;isample<NASample;isample++){
-				filename=dirname+"/sample"+to_string(isample)+".txt";
-				fptr=fopen(filename.c_str(),"w");
+				filename=dirname+"/sample"+to_string(isample)+".bin";
+				fptr=fopen(filename.c_str(),"wb");
 				for(ic=0;ic<smooth->NCoefficients;ic++){
-					fprintf(fptr,"%18.12e\n",ASample[isample][ic]);
+					fwrite(&(ASample[isample][ic]),sizeof(double),1,fptr);
 					ABest[ic]+=ASample[isample][ic]/double(NASample);
 				}
 				fclose(fptr);
 			}
-			filename=dirname+"/ABest.txt";
-			fptr=fopen(filename.c_str(),"w");
+			filename=dirname+"/ABest.bin";
+			fptr=fopen(filename.c_str(),"wb");
 			for(ic=0;ic<smooth->NCoefficients;ic++){
-				fprintf(fptr,"%18.12e\n",ABest[ic]);
+				fwrite(&(ABest[ic]),sizeof(double),1,fptr);
 			}
 			fclose(fptr);
 		}
@@ -90,17 +91,17 @@ void CSmoothEmulator::ReadCoefficients(){
 		if(TuneChooseExact){
 			ABest.resize(NCoefficients);
 			beta.resize(NTrainingPts,NCoefficients);
-			filename=dirname+"/ABest.txt";
-			fptr=fopen(filename.c_str(),"r");
+			filename=dirname+"/ABest.bin";
+			fptr=fopen(filename.c_str(),"rb");
 			for(ic=0;ic<NCoefficients;ic++){
-				fscanf(fptr,"%lf\n",&ABest[ic]);
+				fread(&(ABest[ic]),sizeof(double),1,fptr);
 			}
 			fclose(fptr);
-			filename=dirname+"/BetaBest.txt";
-			fptr=fopen(filename.c_str(),"r");
+			filename=dirname+"/BetaBest.bin";
+			fptr=fopen(filename.c_str(),"rb");
 			for(ic=0;ic<NCoefficients;ic++){
 				for(a=0;a<NTrainingPts;a++){
-					fscanf(fptr,"%lf ",&betaread);
+					fread(&betaread,sizeof(double),1,fptr);
 					beta(a,ic)=betaread;
 				}
 			}
@@ -113,10 +114,11 @@ void CSmoothEmulator::ReadCoefficients(){
 		}
 		else{
 			for(isample=0;isample<NASample;isample++){
-				filename=dirname+"/sample"+to_string(isample)+".txt";
-				fptr=fopen(filename.c_str(),"r");
+				filename=dirname+"/sample"+to_string(isample)+".bin";
+				fptr=fopen(filename.c_str(),"rb");
 				for(ic=0;ic<smooth->NCoefficients;ic++){
-					fscanf(fptr,"%lf\n",&ASample[isample][ic]);
+					//fscanf(fptr,"%lf\n",&ASample[isample][ic]);
+					fread(&(ASample[isample][ic]),sizeof(double),1,fptr);
 				}
 				fclose(fptr);
 			}

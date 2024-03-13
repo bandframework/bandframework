@@ -8,6 +8,7 @@ using namespace NMSUUtils;
 
 CSimplexSampler::CSimplexSampler(CparameterMap *parmap){
 	randy=new Crandy(123);
+	parmap->ReadParsFromFile("parameters/simplex_parameters.txt");
 	string logfilename=parmap->getS("Simplex_LogFileName","Screen");
 	if(logfilename!="Screen"){
 		CLog::Init(logfilename);

@@ -6,6 +6,7 @@ using namespace NMSUUtils;
 
 CPCA::CPCA(CparameterMap *parmapset){
 	parmap=parmapset;
+	parmap->ReadParsFromFile("parameters/emulator_parameters.txt");
 	string command="mkdir -p PCA_Info";
 	system(command.c_str());
 	

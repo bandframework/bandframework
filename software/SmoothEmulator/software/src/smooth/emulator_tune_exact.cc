@@ -8,7 +8,6 @@ void CSmoothEmulator::TuneExact(){
 	unsigned int NCoefficients=smooth->NCoefficients;
 	unsigned int itrain,ic,a,b;
 	Psi.resize(NTrainingPts,NTrainingPts);
-	
 	Eigen::VectorXd alpha,gamma,YTrain;
 	Eigen::MatrixXd C;
 	alpha.resize(NCoefficients);
@@ -28,6 +27,7 @@ void CSmoothEmulator::TuneExact(){
 		for(ic=NTrainingPts;ic<NCoefficients;ic++){
 			for(b=0;b<NTrainingPts;b++){
 				beta(a,ic)+=TtildeInv(a,b)*T[b][ic];
+
 			}
 		}
 	}
