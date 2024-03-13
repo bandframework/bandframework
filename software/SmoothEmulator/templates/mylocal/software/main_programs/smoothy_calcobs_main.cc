@@ -4,7 +4,6 @@
 using namespace std;
 int main(){
 	NMSUUtils::CparameterMap *parmap=new CparameterMap();
-	parmap->ReadParsFromFile("parameters/emulator_parameters.txt");
 	NBandSmooth::CSmoothMaster master(parmap);
 	master.ReadCoefficientsAllY();
 	NBandSmooth::CModelParameters *modpars=new NBandSmooth::CModelParameters(); // contains info about single point

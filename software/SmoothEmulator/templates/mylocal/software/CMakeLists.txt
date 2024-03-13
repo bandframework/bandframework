@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 set(CMAKE_VERBOSE_MAKEFILE on)
 project(smooth_mainprograms CXX)
-set(GITHOME_BAND_SMOOTH $ENV{GITHOME_BAND_SMOOTH})
-set (MAIN_PROGRAM_DIR ".")
-set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "../bin")
+#set(GITHOME_BAND_SMOOTH $ENV{GITHOME_BAND_SMOOTH})
+set(GITHOME_BAND_SMOOTH "$ENV{PWD}/../..")
+set (MAIN_PROGRAM_DIR "main_programs")
+set (FAKEFULLMODEL_DIR "fakefullmodels")
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "$ENV{PWD}/../bin")
 
 add_custom_target(extern_smooth COMMAND make WORKING_DIRECTORY ${GITHOME_BAND_SMOOTH}/software)
 
@@ -30,10 +32,15 @@ add_executable(smoothy_tune ${MAIN_PROGRAM_DIR}/smoothy_tune_main.cc)
 add_dependencies(smoothy_tune extern_smooth)
 target_link_libraries(smoothy_tune ${GITHOME_BAND_SMOOTH}/software/lib/libsmooth.a  ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a   ${EIGEN3_LIBRARY})
 #################################################
-set(SOURCE_FILES ${MAIN_PROGRAM_DIR}/smoothy_train_test_main.cc)
-add_executable(smoothy_train_test ${MAIN_PROGRAM_DIR}/smoothy_train_test_main.cc)
-add_dependencies(smoothy_train_test extern_smooth)
-target_link_libraries(smoothy_train_test ${GITHOME_BAND_SMOOTH}/software/lib/libsmooth.a  ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a   ${EIGEN3_LIBRARY})
+set(SOURCE_FILES ${MAIN_PROGRAM_DIR}/smoothy_testattrainingpts_main.cc)
+add_executable(smoothy_testattrainingpts ${MAIN_PROGRAM_DIR}/smoothy_testattrainingpts_main.cc)
+add_dependencies(smoothy_testattrainingpts extern_smooth)
+target_link_libraries(smoothy_testattrainingpts ${GITHOME_BAND_SMOOTH}/software/lib/libsmooth.a  ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a   ${EIGEN3_LIBRARY})
+#################################################
+set(SOURCE_FILES ${MAIN_PROGRAM_DIR}/smoothy_testvsfullmodel_main.cc)
+add_executable(smoothy_testvsfullmodel ${MAIN_PROGRAM_DIR}/smoothy_testvsfullmodel_main.cc)
+add_dependencies(smoothy_testvsfullmodel extern_smooth)
+target_link_libraries(smoothy_testvsfullmodel ${GITHOME_BAND_SMOOTH}/software/lib/libsmooth.a  ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a   ${EIGEN3_LIBRARY})
 #################################################
 set(SOURCE_FILES ${MAIN_PROGRAM_DIR}/pca_calctransformation_main.cc)
 add_executable(pca_calctransformation ${MAIN_PROGRAM_DIR}/pca_calctransformation_main.cc)
@@ -54,4 +61,23 @@ set(SOURCE_FILES ${MAIN_PROGRAM_DIR}/mcmc_main.cc)
 add_executable(mcmc ${MAIN_PROGRAM_DIR}/mcmc_main.cc)
 add_dependencies(mcmc extern_smooth)
 target_link_libraries(mcmc ${GITHOME_BAND_SMOOTH}/software/lib/libsmooth.a ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a   ${EIGEN3_LIBRARY})
+#################################################
+#
+# Some fake full models (for tutorial or emulator-testing purposes
+#################################################
+# fakesmooth
+#################################################
+set(SOURCE_FILES ${FAKEFULLMODEL_DIR}/fakesmooth.cc)
+add_executable(fakesmooth ${FAKEFULLMODEL_DIR}/fakesmooth.cc)
+add_dependencies(fakesmooth extern_smooth)
+target_link_libraries(fakesmooth ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a
+${GITHOME_BAND_SMOOTH}/software/lib/libsmooth.a ${EIGEN3_LIBRARY})
+#################################################
+# fakerhic
+#################################################
+set(SOURCE_FILES ${FAKEFULLMODEL_DIR}/fakerhic.cc)
+add_executable(fakerhic ${FAKEFULLMODEL_DIR}/fakerhic.cc)
+add_dependencies(fakerhic extern_smooth)
+target_link_libraries(fakerhic ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a
+ ${EIGEN3_LIBRARY})
 #################################################

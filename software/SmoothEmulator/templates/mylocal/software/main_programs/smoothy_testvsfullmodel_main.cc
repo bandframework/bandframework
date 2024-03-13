@@ -6,17 +6,9 @@ using namespace std;
 int main(){
 	NMSUUtils::CparameterMap *parmap=new NMSUUtils::CparameterMap();
 	parmap->ReadParsFromFile("parameters/emulator_parameters.txt");
-	
 	NBandSmooth::CSmoothMaster master(parmap);
-	master.randy->reset(-time(NULL));
-	
 	master.ReadCoefficientsAllY();
-	
 	master.ReadTrainingInfo();
-	
-	master.TestAtTrainingPts();
-	
-	//master.TestVsFullModel();
-
+	master.TestVsFullModel();
 	return 0;
 }
