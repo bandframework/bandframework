@@ -1,8 +1,4 @@
-# SmoothEmulator
-
+# smooth emulator and simplex sampler software
+smooth emulator
 Authors: Scott Pratt, Eren Erdogan, Ekaksh Kataria
-
-For installation and documentation, see [doc/User_Manual.pdf](doc/UserManual.pdf)
-
-For assistance, contact Scott Pratt (prattsc@msu.edu)
-
+Installation directions and descriptions can be found in doc/UserManual.pdf
