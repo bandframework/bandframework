@@ -267,12 +267,12 @@ One next needs to minimize this for each coefficient, $A_{i>N_{\rm train}}$. Thi
 \begin{eqnarray}
 \sum_{a\le N_{\rm train}}\alpha_a\beta_{ai}&=&\sum_{j>N_{\rm train}} \left(\delta_{ij}+\sum_{a\le N_{\rm train}}\beta_{ai}\beta_{aj}\right)A_j
 \end{eqnarray}
-This would be a straight forward solution, but if there were large numbers of parameters, one might have tens of thousands of coefficients. To avoid solving such a large number of simultaneous equations, one can realize that if one thinks of $A_{i>N_{\rm train}}$ as a high dimensional vector, the only other vectors in that space, i.e. those with index $i>N_{\rm train}$, that can represent the solution are the $N_{\rm train}$ vectors $\beta_{ai}$. Thus the solution should have the form
+This would be a straight forward solution, but if there were large numbers of parameters, one might have tens of thousands of coefficients. To avoid solving such a large number of simultaneous equations, one can realize that if one thinks of $A_{i>N_{\rm train}}$ as a high dimensional vector, the only other vectors in that space, i.e. those with index $i>N_{\rm train}$, that can represent the solution are the $N_{\rm train}$ vectors $\beta_{ai}$. Thus, the solution should have the form
 \begin{eqnarray}
 \label{eq:AofGamma}
 A_{i}&=&\sum_a\gamma_a \beta_{ai}.
 \end{eqnarray}
-One can then solve for $\gamma_a$, which will require solving $N_{\rm train}$ simultaneous equations. For the sake of brevity, gall the indices labels, $a,b,c$ or $t$ will vary from $1-N_{\rm train}$ and those labeled $i,j$ will vary from $N_{\rm train}+1\cdots N_{\rm coef}$. One must minimize
+One can then solve for $\gamma_a$, which will require solving $N_{\rm train}$ simultaneous equations. For the sake of brevity, the index labels, $a,b,c$ or $t$ will vary from $1\cdots N_{\rm train}$ and those labeled $i,j$ will vary from $N_{\rm train}+1\cdots N_{\rm coef}$. One must minimize
 \begin{eqnarray}
 {\rm MIN}&=&\sum_i \left[\sum_a \gamma_a\beta_{ai}\right]^2
 +\sum_a\left[\left(\alpha_a-\sum_i\beta_{ai}\sum_b\gamma_b\beta_{bi}\right)\right]^2\\
@@ -287,7 +287,9 @@ Setting the derivative w.r.t. $\gamma_a$ to zero,
 \begin{eqnarray}\label{eq:gammafind}
 0&=&\sum_bB_{ab}\gamma_b+\sum_{bc}B_{ab}B_{bc}\gamma_b-B_{ab}\alpha_b,\\
 \nonumber
-\alpha_a&=&\left(\delta_{ab}+B_{ab}\right)\gamma_b.
+\alpha_a&=&\left(\delta_{ab}+B_{ab}\right)\gamma_b,\\
+\nonumber
+\gamma_a&=&(\identity+B)^{-1}_{ab}\alpha_b.
 \end{eqnarray}
 Thus, once one has run the full model $N_{\rm train}$ times at the training points, one can find $y_t$ and $T_{ai}$. Following the prescription above, one then finds $\alpha_a$ and $\beta_{ai}$, which then gives $B_{ab}$. One then solves Eq. (\ref{eq:gammafind}) for $\gamma_b$, which when inserted into Eq. (\ref{eq:AofGamma}) gives the coefficients $A_i$ for $i>N_{\rm train}$. To find the coefficients, $A_a$ for $a\le N_{\rm train}$, one then applies Eq. (\ref{eq:AofTAalphabeta}).
 
