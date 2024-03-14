@@ -41,6 +41,8 @@ void CMCMC::EvaluateTrace(){
 	Ybar.resize(NObs);
 	YRMS.resize(NObs);
 	SigmaYEmulator.resize(NObs);
+	for(iobs=0;iobs<NObs;iobs++)
+		SigmaYEmulator[iobs]=0.0;
 
 	if(UsePCA){
 		Z.resize(NObs);
@@ -58,7 +60,12 @@ void CMCMC::EvaluateTrace(){
 	}
 
 	for(itrace=0;itrace<ntrace;itrace++){
-		master->CalcAllY(trace[itrace],Y,SigmaYEmulator);
+		if(IGNORE_EMULATOR_ERROR){
+			master->CalcAllYOnly(trace[itrace],Y);
+		}
+		else{
+			master->CalcAllY(trace[itrace],Y,SigmaYEmulator);
+		}
 		if(UsePCA){
 			for(iobs=0;iobs<NObs;iobs++){
 				SigmaZEmulator[iobs]=SigmaYEmulator[iobs];
@@ -157,14 +164,12 @@ void CMCMC::EvaluateTrace(){
 		}
 	}
 
-	
 	// Write output
 	
 	CModelParameters modpars;
 	modpars.priorinfo=master->priorinfo;
 	modpars.SetTheta(thetabar);
 	modpars.TranslateTheta_to_X();
-	//modpars.Print();
 	string command="mkdir -p mcmc_trace";
 	system(command.c_str());
 	modpars.Write("mcmc_trace/xbar_thetabar.txt");
@@ -214,6 +219,5 @@ void CMCMC::EvaluateTrace(){
 		fprintf(fptr,"%s",SigmaString.c_str());
 	}
 	fclose(fptr);
-		
-	
+
 }

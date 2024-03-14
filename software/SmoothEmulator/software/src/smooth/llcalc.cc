@@ -4,6 +4,7 @@ using namespace std;
 using namespace NBandSmooth;
 using namespace NMSUUtils;
 
+bool CLLCalc::IGNORE_EMULATOR_ERROR=false;
 CPriorInfo *CLLCalc::priorinfo=NULL;
 
 CLLCalc::CLLCalc(){
@@ -74,9 +75,16 @@ void CLLCalcSmooth::CalcLL(vector<double> &theta,double &LL){
 		}
 	}
 	if(insidebounds){
-		master->CalcAllY(theta,Y,SigmaY_emulator);
+		if(IGNORE_EMULATOR_ERROR){
+			master->CalcAllYOnly(theta,Y);
+		}
+		else
+			master->CalcAllY(theta,Y,SigmaY_emulator);
 		for(iy=0;iy<NObs;iy++){
-			sigma2=SigmaY_emulator[iy]*SigmaY_emulator[iy]+obsinfo->SigmaExp[iy]*obsinfo->SigmaExp[iy];
+			sigma2=obsinfo->SigmaExp[iy]*obsinfo->SigmaExp[iy];
+			if(!IGNORE_EMULATOR_ERROR){
+				sigma2+=SigmaY_emulator[iy]*SigmaY_emulator[iy];
+			}
 			LL-=0.5*pow(Y[iy]-obsinfo->YExp[iy],2)/sigma2;
 			LL-=0.5*log(sigma2);
 		}

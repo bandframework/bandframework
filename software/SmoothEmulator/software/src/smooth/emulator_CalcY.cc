@@ -33,6 +33,30 @@ void CSmoothEmulator::CalcY(vector<double> &Theta,double &Y,double &SigmaY_emula
 	}
 }
 
+void CSmoothEmulator::CalcYOnly(CModelParameters *modpars,double &Y){
+	CalcYOnly(modpars->Theta,Y);
+}
+
+void CSmoothEmulator::CalcYOnly(vector<double> &Theta,double &Y){
+	if(pca_ignore){
+		Y=0.0;
+	}
+	else{
+		if(TuneChooseExact){
+			Y=smooth->CalcY(ABest,LAMBDA,Theta);
+		}
+		else{
+			double y;
+			Y=0.0;
+			for(unsigned int isample=0;isample<NASample;isample++){
+				y=smooth->CalcY(ASample[isample],LAMBDA,Theta);
+				Y+=y;
+			}
+			Y=Y/double(NASample);
+		}
+	}
+}
+
 void CSmoothEmulator::CalcYDYDTheta(CModelParameters *modpars,double &Y,vector<double> &dYdTheta,double &SigmaY_emulator){
 	if(pca_ignore){
 		Y=0.0;

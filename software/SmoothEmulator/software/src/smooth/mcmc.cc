@@ -28,6 +28,8 @@ CMCMC::CMCMC(CSmoothMaster *master_set){
 	string command="mkdir -p mcmc_trace";
 	system(command.c_str());
 	OPTIMIZESTEPS=parmap->getB("MCMC_OPTIMIZESTEPS",false);
+	IGNORE_EMULATOR_ERROR=parmap->getB("MCMC_IGNORE_EMULATOR_ERROR",false);
+	CLLCalc::IGNORE_EMULATOR_ERROR=IGNORE_EMULATOR_ERROR;
 	langevin=parmap->getB("MCMC_LANGEVIN",false);
 	if(langevin)
 		stepsize=parmap->getD("MCMC_LANGEVIN_STEPSIZE",0.01);

@@ -79,6 +79,8 @@ namespace NBandSmooth{
 		void GenerateASamples();
 		void CalcY(CModelParameters *modpars,double &Y,double &SigmaY);
 		void CalcY(vector<double> &Theta,double &Y,double &SigmaY);
+		void CalcYOnly(CModelParameters *modpars,double &Y);
+		void CalcYOnly(vector<double> &Theta,double &Y);
 		//void CalcYDYDTheta(CModelParameters *modpars,double &Y,vector<double> &dYdTheta,double &SigmaY);
 		void CalcYDYDTheta(CModelParameters *modpars,double &Y,vector<double> &dYdTheta,double &SigmaY);
 		void CalcYDYDTheta(vector<double> &Theta,double &Y,vector<double> &dYdTheta,double &SigmaY);

@@ -83,6 +83,6 @@ plt.savefig('RP.pdf',format='pdf')
 plt.show()
 plt.close()
 # if you have Mac OS and want to see pdf file, comment out previous two lines and uncomment line below
-#os.system("open -a Preview RP.pdf"). # syntax works for Mac OS
+#os.system("open -a Preview RP.pdf") # syntax works for Mac OS
 
 quit()

@@ -55,10 +55,18 @@ namespace NBandSmooth{
 		
 		void CalcAllY(CModelParameters *modelpars,vector<double> &Y,vector<double> &SigmaY_emulator);
 		void CalcAllY(vector<double> &theta,vector<double> &Y,vector<double> &SigmaY_emulator);
+		void CalcAllYOnly(CModelParameters *modelpars,vector<double> &Y);
+		void CalcAllYOnly(vector<double> &theta,vector<double> &Y);
+		
 		void CalcY(unsigned int iY,CModelParameters *modelpars,double &Y,double &SigmaY_emulator);
 		void CalcY(unsigned int iY,vector<double> &theta,double &Y,double &SigmaY_emulator);
 		void CalcY(string obsname,CModelParameters *modelpars,double &Y,double &SigmaY_emulator);
 		void CalcY(string obsname,vector<double> &theta,double &Y,double &SigmaY_emulator);
+		
+		void CalcYOnly(unsigned int iY,CModelParameters *modelpars,double &Y);
+		void CalcYOnly(unsigned int iY,vector<double> &theta,double &Y);
+		void CalcYOnly(string obsname,CModelParameters *modelpars,double &Y);
+		void CalcYOnly(string obsname,vector<double> &theta,double &Y);
 		
 		void CalcAllYdYdTheta(CModelParameters *modelpars,vector<double> &Y,
 		vector<double> &SigmaY_emulator,vector<vector<double>> &dYdTheta);
