@@ -57,7 +57,6 @@ int main(){
 		}
 	}
 
-	
 	string command="mkdir -p realdata";
 	system(command.c_str());
 	
@@ -86,7 +85,7 @@ int main(){
 			fclose(fptr_out);
 		}
 		
-		filename="realdata/"+obsname[iobs]+".txt";
+		filename="fullmodel_testdata/"+obsname[iobs]+".txt";
 		fptr=fopen(filename.c_str(),"w");
 		for(itest=0;itest<100;itest++){
 			y=smooth.CalcY(A,LAMBDA,thetatest[itest]);
