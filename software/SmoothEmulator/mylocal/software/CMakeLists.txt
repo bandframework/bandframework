@@ -70,8 +70,8 @@ target_link_libraries(mcmc ${GITHOME_BAND_SMOOTH}/software/lib/libsmooth.a ${GIT
 set(SOURCE_FILES ${FAKEFULLMODEL_DIR}/fakesmooth.cc)
 add_executable(fakesmooth ${FAKEFULLMODEL_DIR}/fakesmooth.cc)
 add_dependencies(fakesmooth extern_smooth)
-target_link_libraries(fakesmooth ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a
-${GITHOME_BAND_SMOOTH}/software/lib/libsmooth.a ${EIGEN3_LIBRARY})
+target_link_libraries(fakesmooth 
+${GITHOME_BAND_SMOOTH}/software/lib/libsmooth.a ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a ${EIGEN3_LIBRARY})
 #################################################
 # fakerhic
 #################################################
