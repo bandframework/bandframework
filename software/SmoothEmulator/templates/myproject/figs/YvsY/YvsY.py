@@ -44,7 +44,7 @@ print(Ynames0)
 
 iY=int(input("Enter iY: "))
 filename='fullmodel_testdata/YvsY_'+Ynames0[iY]+'.txt'
-mydata=np.loadtxt(filename,skiprows=1,unpack=True)
+mydata=np.loadtxt(filename,skiprows=0,unpack=True)
 Yfull=mydata[0]
 Yemulator=mydata[1]
 SigmaY=mydata[2]
