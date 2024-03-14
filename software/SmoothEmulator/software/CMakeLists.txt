@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+qcmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 project(msu_smooth CXX)
 
 message("Will Compile with " ${CMAKE_CXX_COMPILER})
