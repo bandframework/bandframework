@@ -1,4 +1,3 @@
-**/logfiles/**
 **/install/**
 **/CMakeFiles/**
 **/Makefile
@@ -11,5 +10,6 @@
 **/*.log
 **/*.out
 **/*.toc
+**/bin/**
 ekaksh
 ekaksh/**
