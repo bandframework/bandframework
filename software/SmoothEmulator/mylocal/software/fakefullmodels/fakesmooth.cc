@@ -8,7 +8,7 @@ using namespace NMSUUtils;
 int main(){
 
 	unsigned int NObs=0,NPars=0;
-	unsigned int NTrain,itrain,iy,ic,ipar,maxrank=5,it=time(NULL),itest,Ntest=50;
+	unsigned int NTrain,itrain,iy,ic,ipar,maxrank=4,it=time(NULL),itest,Ntest=50;
 	double LAMBDA; 
 	double y,x,xminread,xmaxread,sigmaA0;
 	vector<double> A;
