@@ -13,7 +13,7 @@ These are parameters representing choices made by the User. Note these are NOT t
 Parameters files can have any name or location. These files are text files in the format. An example of a parameter file is:
 {\tt
 \begin{verbatim}
- #Simplex_LogFileName          simplexlog.txt    # if commented, output to screen
+ #LogFileName          simplexlog.txt    # if commented, output to screen
  Simplex_TrainType             1                 # Must be 1 or 2
  Simplex_ModelRunDirName       modelruns         # Directory with training
                                                            point information
@@ -26,7 +26,7 @@ For the parameter file, the first string is the parameter name and is followed b
 Possible values are ``1'' or ``2''. The default, ``1'', will position points according to a simplex, i.e. in two dimensions this is an equilateral triangle and in three dimensions, it is a tetrahedron. In $n$ dimensions there are $n+1$ points separated at equal distances from one another and centered at the origin. For ``2'', points are added at the half-way points between each vertex of the tetrahedron. The points at the bisection points are scaled to a different radius than those at the vertices. This provides the precise number of training points to exactly determine both the linear and quadratic terms.
 \item {\bf Simplex\_ModelRunDirName}\\
 This sets the path to the directory in which the run files will be created. The default name is {\tt ./modelruns}, but the User can change this to anything they want. The path is relative to the project directory, i.e. the directory from which you run the {\it simplex} command.
-\item {\bf Simplex\_LogFileName}\\
+\item {\bf LogFileName}\\
 If this is left blank, {\it Simplex Sampler} will write output to the string. Otherwise it will write output to a file. Given that {\it Simplex Sampler} runs in a few seconds, the program is usually run interactively and output is sent to the screen.
 \end{enumerate}
 

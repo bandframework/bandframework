@@ -3,6 +3,8 @@
 \setcounter{section}{6}
 \section{Markov-Chain Monte Carlo (MCMC) Generation of the Posterior}\label{sec:mcmc}
 
+\subsection{Preparing for MCMC using {\it Smooth Emulator}}
+
 The final step in Bayesian analyses is to generate MCMC traces through parameter space. {\it Smooth Emulator} software is designed for the MCMC programs to be run from within the {\tt \$\{MY\_PROJECT\}} directory. Once the emulator is tuned and before it is applied to a Markov Chain investigation of the likelihood, the software needs know the experimental measurement and uncertainty. That information must be entered in the {\tt Info/experimental\_info.txt} file. The file should have the format:
 {\tt
 \begin{verbatim}
@@ -26,20 +28,46 @@ The main program that runs the mcmc code is {\tt\$\{MY\_LOCAL\}/main\_programs/m
 \begin{verbatim}
  ${MY_LOCAL}/main_programs% make mcmc
 \end{verbatim}}
+
+One should tune the emulator before running {\tt mcmc}. This could involve running the emulator and saving the Taylor coefficients, or inserting the tuning into the main source code for {\tt mcmc} mentioned above.
+
+\subsection{MCMC Parameter File}
+
 Next, one needs to edit the parameter file {\tt\$\{MY\_PROJECT\}/parameters/mcmc\_parameters.txt}. An example file is:
 {\tt
 \begin{verbatim}
+ #LogFileName mcmc_log.txt
  MCMC_LANGEVIN false
  MCMC_METROPOLIS_STEPSIZE 0.04
  MCMC_LANGEVIN_STEPSIZE 0.5
  MCMC_NBURN  100000
  MCMC_NTRACE 100000
  MCMC_NSKIP  5
+ MCMC_IGNORE_EMULATOR_ERROR false
  RANDY_SEED  12345
 \end{verbatim}}
-The program can run either a Metropolis algorithm or a Langevin algorithm. If {\tt MCMC\_LANGEVIN} is {\tt false}, the Metropolis algorithm is invoked. The Langevin algorithm is faster when one has large numbers of parameters, but it ignores the emulator uncertainty (because it has a $\theta$ dependence). Thus, if the emulator uncertainty is significant, the Metropolis method is recommended. For the Metropolis method, the stepsize of the random steps should be adjusted so that the Metropolis success probability is on the order of one half. If the probability is only a few percent, or if it is very close to 100\% the efficiency of the method suffers. When one runs {\tt mcmc} it will report the success percentage. If the percentage is worrisome, one should reset {\tt MCMC\_METROPOLIS\_STEPSIZE} and re-run. The parameter {\tt MCMC\_NBURN} is the number of Metropolis steps the program attempts during the burn-in stage, i.e. before the trace is reported when the trace might be outside the likely region. The trace then records {\tt MCMC\_NTRACE} steps, taking {\tt MCMC\_NSKIP} steps between writing down the information about the point in model parameter space. Thus, after burn-in, the chain performs {\tt MCMC\_NSKIP}$\times${\tt MCMC\_NTRACE} samplings, recording {\tt MCMC\_NTRACE} values of $\vec{\theta}$ and $\vec{X}$. At the current time, the Langevin method is not fully tested and should be avoided.
+As was the case with {\it Smooth Emulator}, each parameter has a default value. Summarizing the parameters:
+\begin{itemize}\itemsep=0pt
+\item {\tt LogFileName}\\
+To run interactively, leave this line commented out. Otherwise, output will be directed to the designated file.
+\item {\tt MCMC\_LANGEVIN}\\
+The Langevin method can replace the Metropolis method, but it is not fully tested. If the default, {\tt false}, is set, the Metropolis method will be invoked. The Langevin method currently ignores the emulator uncertainty. At this time it is not clear that once it is invoked, it will significantly improve performance.
+\item {\tt MCMC\_METROPOLIS\_STEPSIZE}\\
+Metropolis algorithms require taking random steps in $\vec{\theta}$ space. If the steps are small, it takes longer to explore the space, but if the steps are very long, the success rate of the Metropolis steps becomes low. Maximum efficiency occurs when the Metropolis success rate, which is provided during running, is near 50\%. Rates of 20\% or 80\% are also fine, but if the rate is only a few percent of if it becomes close to 100\%, the User should adjust the parameter.
+\item{\tt MCMC\_LANGEVIN\_STEPSIZE}\\
+For the Langevin procedure, all steps are successful, but the accuracy can suffer if the steps are too large.
+\item{\tt MCMC\_NBURN}\\
+A certain number of Metropolis or Langevin steps should be taken before the trace is recorded so that the trace is not biased by the starting value.
+\item {\tt MCMC\_NTRACE}\\
+This is the number of points in the trace that are recorded for subsequent analysis. More points provides a more accurate representation of the posterior.
+\item {\tt MCMC\_NSKIP}\\
+Because succesive points in the trace are correlated, it makes sense to skip several points before skipping. For example, in the Metropolis procedure if the success rate is 50\%, the neighboring points have a 50\% chance of being the same. The values of {\tt MCMC\_NBURN}, {\tt MCMC\_NTRACE} and {\tt MCMC\_NSKIP} are stored by the {\tt CMCMC} objects, but are only set when the object calls the {\tt trace} function. Thus, default values are set at the time the call is made to the {\tt PerformTrace} funtion.  See Sec. \ref{sec:mcmcsource} below for an example of how this is used. 
+\item {\tt MCMC\_IGNORE\_EMULATOR\_ERROR}\\
+If this flag is set to {\tt true} the emulator error will be ignored. This significantly increases the speed of the MCMC procedure, but should not be done if the emulator error is significant.
+\end{itemize}
 
-Then, from the project directory, run the program. Output should look something like this:
+\subsection{Running the MCMC Program}
+To run the provided MCMC program, to the project directory, and run the program {\tt mcmc}. Output should look something like this:
 {\tt
 \begin{verbatim}
 ${MY_PROJECT}% ${MY_LOCAL}/bin/mcmc
@@ -67,6 +95,9 @@ ${MY_PROJECT}% ${MY_LOCAL}/bin/mcmc
 \end{itemize}
 The information for $\langle\delta \theta_i\delta\theta_{b}\rangle$ might be useful later on.
 
+
+\subsection{Reviewing the MCMC Source Code}\label{sec:mcmcsource}
+
 Finally, we review the source code in {\tt \$\{MY\_LOCAL\}/main\_programs/mcmc\_main.cc}:
 {\tt
 \begin{verbatim}
@@ -88,7 +119,7 @@ int main(){
 }
 \end{verbatim}}
 This is mostly self-explanatory. If one wishes to avoid writing out the trace, the line {\tt mcmc.WriteTrace} can be deleted. If the User wishes to run the code in batch mode, the output can be directed to a file, {\tt mcmc\_log.txt}, by adding the line\\
-\hspace*{20pt}{\tt MCMC\_LogFileName mcmc\_log.txt} \\
+\hspace*{20pt}{\tt LogFileName mcmc\_log.txt} \\
 to the parameter file {\tt parameters/mcmc\_parameters.txt}.
 
 

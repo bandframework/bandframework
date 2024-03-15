@@ -77,7 +77,7 @@ The first entry in each line simply provides the names of the observable which w
 Both {\it Simplex Sampler} and {\it Smooth Emulator} have options. These are provided in parameter files. For this tutorial, the provided parameter file is {\tt \$\{MY\_PROJECTS\}/parameters/simplex\_parameters.txt}. The provided file is
 {\tt
 \begin{verbatim}
-   #Simplex_LogFileName    simplexlog.txt # comment out to direct output to screen
+   #LogFileName    simplexlog.txt # comment out to direct output to screen
    Simplex_TrainType       2              # Must be 1 or 2             
    Simplex_ModelRunDirName modelruns      # Directory with training pt. info
 \end{verbatim}
@@ -134,7 +134,7 @@ Additionally, {\tt fakerhic} created a directory {\tt \$\{MY\_PROJECTS\}/fullmod
 Before building and tuning the emulator, the User needs to edit one additional file, the parameter file that sets numerous options for {\it Smooth Emulator}. For the template used in this tutorial, that file is
 {\tt
 \begin{verbatim}
-#SmoothEmulator_LogFileName smoothlog.txt # comment out for interactive running
+#LogFileName smoothlog.txt # comment out for interactive running
   SmoothEmulator_LAMBDA 2.5 # smoothness parameter
   SmoothEmulator_MAXRANK 5
   SmoothEmulator_ConstrainA0 false

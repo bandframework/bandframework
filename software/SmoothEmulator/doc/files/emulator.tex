@@ -110,7 +110,7 @@ The first number is the measured value and the second is the experimentally repo
 
 {\tt
 \begin{verbatim}
- #SmoothEmulator_LogFileName smoothlog.txt # comment out for interactive running
+ #LogFileName smoothlog.txt # comment out for interactive running
   SmoothEmulator_LAMBDA 2.0 #  Smoothness parameter
   SmoothEmulator_MAXRANK 5
   SmoothEmulator_ConstrainA0 true
@@ -137,8 +137,8 @@ The first number is the measured value and the second is the experimentally repo
 }
 If any of these parameters are missing from the parameters file, {\it Smooth Emulator} will assign a default value.
 
-\begin{enumerate}\itemsep 0pt
-\item {\bf SmoothEmulator\_LogFileName}\\
+\begin{itemize}\itemsep 0pt
+\item {\bf LogFileName}\\
 If this is commented out, as it is in the example above, {\it Smooth Emulator}'s main output will be directed to the screen and the program will run interactively. Otherwise, the output will be recorded in the specified file. Most often, one will wish the program to run interactively.
 
 \item {\bf SmoothEmulator\_LAMBDA}\\
@@ -198,7 +198,7 @@ W(A_i)_{\rm additional}=\frac{1}{1+\frac{1}{4}\frac{A_i^2}{\sigma_{A}^2}}.
 \] 
 Here $\sigma_{A0}$ is the initial guess for the spread. This can safeguard against the width $\sigma_A$ drifting off to arbitrarily large values. Unless necessary, it is recommended to leave this at the default, {\tt false}.
 
-\end{enumerate}
+\end{itemize}
 
 \subsection{Running {\it Smooth Emulator} Programs}
 
