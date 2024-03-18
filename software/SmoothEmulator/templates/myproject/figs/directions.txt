@@ -1,0 +1,66 @@
+User should copy 2 files to this directory
+  1) modelpar_info.txt   -- from ../Info/
+  2) observable_info.txt -- from ../Info/
+Then User should edit one info file
+  1) modelpar_info.txt -- keep three lines, model parameter name, gaussian-or-uniform, and display name
+     For example, one of the lines could be
+	   compressibility  uniform  $\kappa$
+  2 observable_info.txt -- keep only two columns, the observable name and the formatted string to use for display
+     For example, one of the lines could be
+	   meanpt_pion  $\langle p_t\rangle_{\pi}$
+		
+-----------------------------------------------
+To view contours of posterior likelihood:
+-----------------------------------------------
+First, run mcmc in project directory
+ MY_PROJECT}% mcmc
+User then enters the commands:
+ % cd figs/posterior
+ % ln -s ../mcmc_data/trace.txt .
+ % python3 posterior.py
+You can also simply move or copy "trace.txt" if you don't like symbolic links. The output should be posterior.pdf
+
+The User may wish to edit the python script. The lines to be adjusted are described inside the python script. If the For example, if the there were 6 parameters, but the User wished to display only parameters 2,3,4,5, the User would edit the line:
+  ParsToPlot=[2,3,4,5]
+And if the User wished the array to be reordered to 2,4,3,5, the line would be:
+  ParsToPlot=[2,4,3,5]
+User should copy one directory and one file to this directory
+  1) fullmodel_testdata/  -- from ${myproject}/ after running smoothy_train_test
+  2) observable_info.txt   -- from Info/
+Then User should edit one info file
+  1) observable_info.txt -- keep only two lines, the observable name and the formatted string to use for display
+     For example, one of the lines could be
+	   meanpt_pion  $\langle p_t\rangle_{\pi}$
+	  This should be identical to the file in figs/resolvingpower
+
+-----------------------------------------------
+To view comparison of emulator to full model test runs (runs not used to tune emulator):
+-----------------------------------------------
+First, in project directory, User must run
+ ${MY_PROJECT}% smoothy_testvsfullmodel
+Next,
+ % cd figs/YvsY
+ % ln -s ../fullmodel_testdata .
+ % python3 YvsY.py
+The program will print out the observables:
+ ['meanpt_pion', 'meanpt_kaon', 'meanpt_proton', 'Rinv', 'v2', 'RAA']
+then prompt:
+  Enter iY: 
+This chooses which observable to analyze. E.g. if one enters '0', the emulator for meanpt_pion will be analyzed and if one enters '4', the v2 emulator will be considered. The program also prints out how many of the emulated values were within one sigma of full-model value. Hopefully, this will be not too far from 68%. Emulated values are red circles and full-model values are black squares. The output should be YvsY.pdf
+
+The User may wish to edit the a few lines for cosmetic purposes. The margins may be adjusted if the plot labels aren't fitting into the desired area, or if the User wishes to use a different fontsize.
+The script RP.py compares full-model observables calculated at several points to the emulated observables, along with their uncertainties. Hopefully, about 
+
+-----------------------------------------------
+To view resolving power
+-----------------------------------------------
+First, run mcmc in project directory if not already done
+ MY_PROJECT}% mcmc
+User then enters
+ % cd figs/resolvingpower
+ % ln -s ../mcmc_data/ResolvingPower.txt .
+ % python3 RP.py
+The output should be RP.pdf
+
+The User may wish to edit the python script, usually to adjust sizes, especially to get the labels to fit well. The lines to be adjusted are described inside the python script.
+

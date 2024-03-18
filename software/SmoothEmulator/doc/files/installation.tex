@@ -1,0 +1,92 @@
+\documentclass[UserManual.tex]{subfiles}
+\begin{document}
+\setcounter{section}{1}
+
+\section{Installation and Getting Started}\label{sec:installation}
+
+\subsection{Prerequisites}
+{\it Smooth Emulator} software should run on UNIX, Mac OS or Linux, but is not supported for Windows OS. {\it Smooth Emulator} is largely  written in C++. In addition to a C++ compiler, the user needs the following software installed.
+
+\begin{itemize}
+    \item git
+    \item CMake
+    \item Eigen3 (Linear Algebra Package)
+    \item Python/Matplotlib (only for generating plots in the MCMC procedure)
+\end{itemize}
+
+CMake is an open-source, cross-platform build system that helps automate the process of compiling and linking for software projects. Hopefully, CMake will perform the needed gymnastics to find the Eigen3 installation. To install CMake, either visit the CMake website (https://cmake.org/), or use the system's package manager for the specific system. For example, on Mac OS, if one uses {\it homebrew} as a package manager, the command is
+{\tt 
+\begin{verbatim} % brew install cmake\end{verbatim}
+}
+
+Eigen is a C++ template library for vector and matrix math, i.e. linear algebra. The user can visit the Eigen website (\url{https://eigen.tuxfamily.org/dox/}), or use their system's package manager. For example on Mac OS with {\it homebrew},
+{\tt 
+\begin{verbatim} % brew install eigen\end{verbatim}
+}
+
+\subsection{Downloading the Repository}
+
+The software requires downloading the BAND framework software repository into some directory. Should that be in the User's home directory, the User might enter
+{\tt 
+\begin{verbatim}
+    /Users/CarlosSmith% git clone https://github.com/bandframework/bandframework.git
+\end{verbatim}
+}
+Within the repository, there will be a directory\\{\tt /Users/CarlosSmith/bandframework/software/SmoothEmulator/}. All the relevant functionality of {\it Smooth Emulator} is contained within this directory. Throughout the manual the phrase {\tt \$\{GITHOME\_SMOOTH\}} will refer to this directory. 
+
+The User needs to create a project directory from which the User would perform most projects. This is easiest accomplished by copying a template from the {\it Smooth} distribution,
+{\tt
+\begin{verbatim}
+    % cp -r ${GITHOME_SMOOTH}/templates/myproject ${MY_PROJECT}
+\end{verbatim}
+}
+Hence forth, {\tt \$\{MY\_PROJECT\}} is a name chosen by the User, and will refer to the directory, including the path, from which the User will perform most of the analysis. The User may wish to have several such directories, located according to the User's preference. Any time a new analysis is performed with new parameters, and if the User wishes to save the previous analysis, a new {\tt \$\{MY\_PROJECT\}} directory should be created. These directories should be outside the main distribution, i.e. outside the {\tt bandframework/} path so that the User's work does not interfere with the repository. 
+
+Within the {\tt templates/} directory, there is also a directory {\tt ../templates/mylocal/}. The directory {\tt \$\{GITHOME\_SMOOTH\}/mylocal/} is an exact copy. The {\tt mylocal/} directory contains the main programs and the {\it Smooth Emulator} executables will be stored in {\tt \$\{GITHOME\_SMOOTH\}/mylocal/bin}. Because the User may well wish to edit the main programs, or to add similar programs, this provides the User a space to make such edits, all while leaving an original copy of the directory in the {\tt templates/} directory. 
+
+For the remainder of this manual, {\tt \$\{GITHOME\_SMOOTH\}}, {\tt \$\{MY\_LOCAL\}} and {\tt \$\{MY\_PROJECT\}} will be used to denote the location of these directories.
+
+\subsection{Directory and File Structure}
+
+\begin{figure}
+\centerline{\includegraphics[width = 0.85\textwidth]{directorystructure}}
+\caption{{\bf The directory structure}: The User clones the repository into some location, which will be referred to as {\tt \$\{GITHOME\_SMOOTH\}}. The User can then copy the {\tt  \$\{MY\_PROJECT\}} directory to the User's choices of locations outside the path of the BAND repository.  The programs are designed to be run from within the {\tt MY\_PROJECT/} directory, and the User can make multiple copies of {\tt  \$\{MY\_PROJECT\}} whenever they wish to run and save different instances of {\it Smooth Emulator}}.
+\end{figure}
+
+The {\tt \$\{GITHOME\_SMOOTH\}/software/} directory contains codes that are used to create libraries specific to the sampler and emulator. The User can change to The executables are stored in {\tt \$\{MY\_LOCAL\}/bin}. The short main program source files are located in {\tt \$\{MY\_LOCAL\}/main\_programs}. It is not envisioned that the User would edit files in the\\{\tt SmoothEmulator/software/} directory, but that the User may well wish to create custom versions of the short main programs in {\tt \$\{MY\_LOCAL\}/main\_programs/}. The main programs are compiled using the CMake files in {\tt \$\{MY\_LOCAL\}/main\_programs/}. The User may find it convenient to add {\tt \$\{MY\_LOCAL\}/bin/} to their path.
+
+\subsection{Compiling Libraries }
+
+First, change into software directories, then create the makefiles with cmake, then compile them.
+{\tt 
+\begin{verbatim}
+    % cd ${GITHOME_SMOOTH}/software
+    ${GITHOME_SMOOTH}/software% cmake .
+    ${GITHOME_SMOOTH}/software% make
+\end{verbatim}
+}
+There seems to be a common problem that {\tt cmake} misreports the path of the {\tt Eigen} installation. If the User should get an error stating that the Eigen header files cannot be found, the User can set the environmental variable,
+{\tt 
+\begin{verbatim}
+    % export EIGEN3_INCLUDE_DIR=/usr/local/include/eigen3
+\end{verbatim}
+}
+The final arguments may need to be changed depending on the User's location of the packages. If the User wishes to choose a specific C++ compiler, the {\tt cmake} command should be replaced with {\tt cmake -D YOUR\_PREFERRED\_COMPILER}. 
+
+At this point all the libraries are built, but this does not include the main programs. The main programs are short, and are meant to serve as examples which the User might copy and edit at will. Below, this illustrates how to compile the programs used for generating training points with Simplex and for tuning the emulator with Smoothy:
+{\tt
+\begin{verbatim}
+    % cd ${MY_LOCAL}/software
+    ${MY_LOCAL}/software% cmake .
+    ${MY_LOCAL}/software% make
+    .
+    .
+\end{verbatim}
+}
+The {\tt cmake} command will also recompile the libraries in {\tt \$\{GITHOME\_SMOOTH\}/software/} if necessary. Several source codes for main programs can be found in {\tt \$\{MY\_LOCAL\}/software/main\_programs/}. If you build your own main programs (probably using these as examples), you can edit the {\tt CMakeList.txt} file in {\tt \$\{MY\_LOCAL\}/software/main\_programs/}, using the existing entries as an example. The executables should appear in {\tt \$\{MY\_LOCAL\}/bin/}. 
+
+\subsection{The {\tt MY\_PROJECT} Directory}
+
+Within {\tt \$\{MY\_PROJECT\}/} there are four sub-directories (assuming it was created from the template). The first is {\tt \$\{MY\_PROJECT\}/Info/}. Information about the model parameters, and their priors is stored in {\tt \$\{MY\_PROJECT\}/Info/modelpar\_info.txt}, and information about the observables is stored in {\tt \$\{MY\_PROJECT\}/observable\_info.txt}. The {\tt \$\{MY\_PROJECT\}/parameters} directory stores user-defined parameter files used by {\it Simplex Sampler},\\ {\tt \$\{MY\_PROJECT\}/parameters/simplex\_parameters.txt}, and by {\it Smooth Emulator}\\{\tt \$\{MY\_PROJECT\}/parameters/emulator\_parameters.txt}. The {\tt\$\{MY\_PROJECT\}/modelruns} directory will store information for each full-model run. The directories {\tt  \$\{MY\_PROJECT\}/modelruns/run0/}, {\tt  \$\{MY\_PROJECT\}/modelruns/run1}, $\cdots$, have files describing the model parameters for each run, along with the output required by the emulator for each specific full-model run. For example, the {\tt  \$\{MY\_PROJECT\}/modelruns/run1/} directory has the files {\tt mod\_parameters.txt} and {\tt obs.txt}. The first file stores the model parameter values for that particular training run. The User then runs their full model based on those parameters and stores the corresponding observables in {\tt obs.txt}. The User may generate the {\tt mod\_parameters.txt} files using {\it Simplex Sampler}, or the user might generate them according to some other prescription. Once the User has then generated the {\tt obs.txt} files, {\it Smooth Emulator} can then build and tune the emulator. Finally the {\tt\$\{MY\_PROJECT\}/figs} directory contains python scripts for plotting results.
+
+\end{document}

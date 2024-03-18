@@ -1,0 +1,15 @@
+**/install/**
+**/CMakeFiles/**
+**/Makefile
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/*.o
+**/*.a
+**/old**
+**/*.aux
+**/*.log
+**/*.out
+**/*.toc
+**/bin/**
+ekaksh
+ekaksh/**
