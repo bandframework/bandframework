@@ -15,6 +15,7 @@ thetamax=1.4      # sets max display range of y axes
 myfontsize=9      # base of all fonts
 barwidth=0.5      # larger number stretches figure horizontally
 panelheight=0.75  # larger values stretches figure vertically
+outputfilename='RP.pdf'
 
 # User can hopefully leave all this alone
 Ynames = []
@@ -80,9 +81,12 @@ for ipanel in range (0,Npanels):
 
 plt.savefig('RP.pdf',format='pdf')
 
+plt.savefig(outputfilename,format='pdf')
 plt.show()
 plt.close()
 # if you have Mac OS and want to see pdf file, comment out previous two lines and uncomment line below
-#os.system("open -a Preview RP.pdf") # syntax works for Mac OS
+#os.system("open -a Preview "+outputfilename);
+# if you have Linux and want to see pdf file, comment out previous two lines and uncomment line below
+#os.system("okular "+outputfilename+"&");
 
 quit()

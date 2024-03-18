@@ -17,6 +17,7 @@ leftmargin=0.95
 rightmargin=0.01
 topmargin=0.04
 bottommargin=0.09
+outputfilename='YvsY.pdf'
 # 
 
 
@@ -76,8 +77,12 @@ plt.xlabel('$i_X$', fontsize=22, weight='normal')
 plt.ylabel(Ynames[iY],fontsize=22)
 
 
-plt.savefig('YvsY.pdf',format='pdf')
-# for Mac OS this might be nicer than plt.show()
-#os.system('open -a Preview YvsY.pdf')
+plt.savefig(outputfilename,format='pdf')
 plt.show()
+plt.close()
+# if you have Mac OS and want to see pdf file, comment out previous two lines and uncomment line below
+#os.system("open -a Preview "+outputfilename);
+# if you have Linux and want to see pdf file, comment out previous two lines and uncomment line below
+#os.system("okular "+outputfilename+"&");
+
 quit()
