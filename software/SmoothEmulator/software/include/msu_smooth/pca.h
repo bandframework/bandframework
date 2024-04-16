@@ -15,7 +15,7 @@ namespace NBandSmooth{
 	class CPCA{
 	public:
 
-		CPCA(CparameterMap *parmap_set);
+		CPCA();
 		CparameterMap *parmap;
 		unsigned int nruns,NObs;
 		Eigen::MatrixXd eigvecs;

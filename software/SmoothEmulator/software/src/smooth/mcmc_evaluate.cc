@@ -11,7 +11,7 @@ void CMCMC::EvaluateTrace(){
 	bool UsePCA=master->UsePCA;
 	CPCA *pca=NULL;
 	if(UsePCA){
-			pca=new CPCA(master->parmap);
+			pca=new CPCA();
 			pca->ReadTransformationInfo();
 	}
 	NObs=master->observableinfo->NObservables;

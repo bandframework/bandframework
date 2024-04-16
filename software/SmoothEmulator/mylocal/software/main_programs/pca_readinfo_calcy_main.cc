@@ -9,8 +9,7 @@
 using namespace std;
 
 int main() {
-	CparameterMap parmap;
-  NBandSmooth::CPCA *pca = new NBandSmooth::CPCA(&parmap);
+  NBandSmooth::CPCA *pca = new NBandSmooth::CPCA();
 
   pca->ReadTransformationInfo();
 	

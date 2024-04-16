@@ -3,10 +3,6 @@ using namespace std;
 using namespace NBandSmooth;
 using namespace NMSUUtils;
 
-CSmooth::CSmooth(){
-	//
-}
-
 CSmooth::CSmooth(unsigned int NPars_Set,unsigned int maxrank_set){
 	NPars=NPars_Set;
 	UseRFactor=false;
@@ -14,14 +10,16 @@ CSmooth::CSmooth(unsigned int NPars_Set,unsigned int maxrank_set){
 	InitArrays();
 }
 
-CSmooth::CSmooth(CparameterMap *parmap){
-	NPars=parmap->getI("SmoothEmulator_NPars",0);
-	MaxRank=parmap->getI("Smooth_MAXRANK",5);
+CSmooth::CSmooth(){
+	CparameterMap parmap;
+	parmap.ReadParsFromFile("parameters/emulator_parameters.txt");
+	NPars=parmap.getI("SmoothEmulator_NPars",0);
+	MaxRank=parmap.getI("Smooth_MAXRANK",5);
 	if(MaxRank>5){
 		CLog::Info("Inside CSmooth::InitArrays(), MaxRank="+to_string(MaxRank)+" is too big, being reset to 5\n");
 		MaxRank=5;
 	}
-	UseRFactor=parmap->getB("Smooth_UseRFactor",false);
+	UseRFactor=parmap.getB("Smooth_UseRFactor",false);
 	InitArrays();
 }
 

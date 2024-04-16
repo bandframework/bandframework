@@ -29,7 +29,6 @@ namespace NBandSmooth{
 
 		CSmooth();
 		CSmooth(unsigned int NPars_Set,unsigned int maxrank);
-		CSmooth(CparameterMap *parmap);
 		void InitArrays();
 		void Copy(CSmooth *smooth);
 

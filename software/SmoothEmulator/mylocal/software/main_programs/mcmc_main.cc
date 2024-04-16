@@ -4,8 +4,8 @@
 #include "msu_smooth/mcmc.h"
 using namespace std;
 int main(){
-	NMSUUtils::CparameterMap *parmap=new CparameterMap();
-	NBandSmooth::CSmoothMaster master(parmap);	
+	NBandSmooth::CSmoothMaster master();	
+	NMSUUtils::CparameterMap *parmap=master->parmap;
 	NBandSmooth::CMCMC mcmc(&master);
 	master.ReadCoefficientsAllY();
 	master.ReadTrainingInfo();
@@ -17,6 +17,7 @@ int main(){
 		theta[ipar]=0.2;
 	}
 	
+	/*
 	//  Calc Observables
 	NBandSmooth::CObservableInfo *obsinfo=master.observableinfo;
 	vector<double> Y(obsinfo->NObservables);
@@ -26,6 +27,7 @@ int main(){
 	for(unsigned int iY=0;iY<obsinfo->NObservables;iY++){
 		cout << obsinfo->GetName(iY) << " = " << Y[iY] << " +/- " << SigmaY[iY] << endl;
 	}
+	*/
 	
 	unsigned int Nburn=parmap->getI("MCMC_NBURN",1000);  // Steps for burn in
 	unsigned int Ntrace=parmap->getI("MCMC_NTRACE",1000); // Record this many points

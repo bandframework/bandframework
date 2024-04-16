@@ -6,18 +6,19 @@ using namespace std;
 using namespace NBandSmooth;
 using namespace NMSUUtils;
 
-CSimplexSampler::CSimplexSampler(CparameterMap *parmap){
+CSimplexSampler::CSimplexSampler(){
+	CparameterMap parmap;
 	randy=new Crandy(123);
-	parmap->ReadParsFromFile("parameters/simplex_parameters.txt");
-	string logfilename=parmap->getS("Simplex_LogFileName","Screen");
+	parmap.ReadParsFromFile("parameters/simplex_parameters.txt");
+	string logfilename=parmap.getS("Simplex_LogFileName","Screen");
 	if(logfilename!="Screen"){
 		CLog::Init(logfilename);
 	}
-	TrainType=parmap->getI("Simplex_TrainType",1);
+	TrainType=parmap.getI("Simplex_TrainType",1);
 	string prior_info_filename="Info/modelpar_info.txt";
 	priorinfo=new CPriorInfo(prior_info_filename);
 	CModelParameters::priorinfo=priorinfo;
-	ModelDirName=parmap->getS("Simplex_ModelRunDirName","modelruns");
+	ModelDirName=parmap.getS("Simplex_ModelRunDirName","modelruns");
 	NPars=priorinfo->NModelPars;
 }
 

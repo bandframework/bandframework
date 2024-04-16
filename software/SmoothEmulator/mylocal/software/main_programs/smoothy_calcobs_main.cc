@@ -3,8 +3,7 @@
 #include "msu_smoothutils/log.h"
 using namespace std;
 int main(){
-	NMSUUtils::CparameterMap *parmap=new CparameterMap();
-	NBandSmooth::CSmoothMaster master(parmap);
+	NBandSmooth::CSmoothMaster master();
 	master.ReadCoefficientsAllY();
 	NBandSmooth::CModelParameters *modpars=new NBandSmooth::CModelParameters(); // contains info about single point
 	modpars->priorinfo=master.priorinfo;

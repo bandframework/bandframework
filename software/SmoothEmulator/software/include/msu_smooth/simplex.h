@@ -29,7 +29,7 @@ namespace NBandSmooth{
 		CPriorInfo *priorinfo;
 		Crandy *randy;
 		vector<CModelParameters *> modelparameters;
-		CSimplexSampler(CparameterMap *parmap);
+		CSimplexSampler();
 		void SetThetaType1();
 		void SetThetaType2();
 		void SetThetaType3();

@@ -32,7 +32,7 @@ namespace NBandSmooth{
 	class CSmoothMaster{
 	public:
 		unsigned int TrainType;
-		CSmoothMaster(CparameterMap *parmap_set);
+		CSmoothMaster();
 		CparameterMap *parmap;
 		unsigned int NPars;
 		vector<CSmoothEmulator *> emulator;

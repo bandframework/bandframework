@@ -4,8 +4,7 @@
 
 using namespace std;
 int main(){
-	NMSUUtils::CparameterMap *parmap=new NMSUUtils::CparameterMap();
-	NBandSmooth::CSmoothMaster master(parmap);
+	NBandSmooth::CSmoothMaster master();
 	master.ReadCoefficientsAllY();
 	master.ReadTrainingInfo();
 	master.TestAtTrainingPts();

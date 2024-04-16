@@ -2,11 +2,11 @@
 using namespace std;
 using namespace NBandSmooth;
 
-CSmoothMaster::CSmoothMaster(CparameterMap *parmap_set){
+CSmoothMaster::CSmoothMaster(){
 	unsigned int NObs;
 	unsigned int iZ;
 	CPCA *pca=NULL;
-	parmap=parmap_set;
+	parmap=new CparameterMap;
 	parmap->ReadParsFromFile("parameters/emulator_parameters.txt");
 	int ranseed=parmap->getI("RANDY_SEED",time(NULL));
 	randy=new Crandy(ranseed);
@@ -21,7 +21,7 @@ CSmoothMaster::CSmoothMaster(CparameterMap *parmap_set){
 	if(UsePCA){
 		filename="PCA_Info/observable_info.txt";
 		CoefficientsDirName="coefficients_pca";
-		pca=new CPCA(parmap);
+		pca=new CPCA();
 	}
 	else{
 		filename="Info/observable_info.txt";
@@ -62,7 +62,7 @@ CSmoothMaster::CSmoothMaster(CparameterMap *parmap_set){
 	CTrainingInfo::smoothmaster=this;
 	traininginfo = new CTrainingInfo(NTrainingList,observableinfo,priorinfo);
 
-	smooth=new CSmooth(parmap);
+	smooth=new CSmooth();
 
 	CSmoothEmulator::NPars=NPars;
 	CSmoothEmulator::smooth=smooth;
