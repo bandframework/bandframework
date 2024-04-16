@@ -65,6 +65,7 @@ void CSimplexSampler::SetThetaType1(){
 }
 
 void CSimplexSampler::SetThetaType2(){
+	bool SCALE_TO_CUBE=true;
 	unsigned int ipar,itrain,jtrain,N1,n;
 	double R,z,RTrain1,RTrain2;
 	RTrain2=1.0-1.0/double(NPars+1);
@@ -124,6 +125,20 @@ void CSimplexSampler::SetThetaType2(){
 			else{
 				ThetaTrain[itrain][ipar]*=(RTrain2/R2);
 			}
+		}
+	}
+	if(SCALE_TO_CUBE){
+		double Rmax=0.95,BiggestTheta;
+		for(itrain=NPars+1;itrain<NTrainingPts;itrain++){
+			BiggestTheta=0.0;
+			for(ipar=0;ipar<NPars;ipar++){
+				if(fabs(ThetaTrain[itrain][ipar])>BiggestTheta)
+					BiggestTheta=fabs(ThetaTrain[itrain][ipar]);
+			}
+			for(ipar=0;ipar<NPars;ipar++){
+				ThetaTrain[itrain][ipar]=ThetaTrain[itrain][ipar]*Rmax/BiggestTheta;
+			}	
+			printf("Rmax/BiggestTheta=%g\n",Rmax/BiggestTheta);			
 		}
 	}
 }

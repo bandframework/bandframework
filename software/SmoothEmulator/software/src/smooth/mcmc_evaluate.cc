@@ -29,11 +29,11 @@ void CMCMC::EvaluateTrace(){
 	CovThetaTheta.resize(NPars,NPars);
 	CovThetaThetaInv.resize(NPars,NPars);
 	CovThetaY.resize(NPars,NObs);
-	dYdTheta.resize(NPars,NObs);
+	dYdTheta.resize(NObs,NPars);
 	evecs.resize(NPars,NPars);
 	SigmaYEmulator.resize(NObs);
 	CovYY.resize(NObs,NObs);
-	RP.resize(NObs,NPars);
+	RP.resize(NPars,NObs);
 	CovThetaTheta.setZero();
 	CovThetaY.setZero();
 	CovYY.setZero();
@@ -58,7 +58,7 @@ void CMCMC::EvaluateTrace(){
 		if(UsePCA)	
 			Zbar[iobs]=0.0;
 	}
-
+	
 	for(itrace=0;itrace<ntrace;itrace++){
 		if(IGNORE_EMULATOR_ERROR){
 			master->CalcAllYOnly(trace[itrace],Y);
@@ -132,6 +132,7 @@ void CMCMC::EvaluateTrace(){
 			CovYY(iobs,jobs)=CovYY(iobs,jobs)-Ybar[iobs]*Ybar[jobs];
 		}
 	}
+	
 	/*
 	cout << "<<ThetaTheta>>\n";
 	cout << CovThetaTheta << endl;
@@ -156,6 +157,7 @@ void CMCMC::EvaluateTrace(){
 		}
 		YRMS[iobs]=sqrt(YRMS[iobs]);
 	}
+
 	for(iobs=0;iobs<NObs;iobs++){
 		sigmatot2=master->observableinfo->SigmaExp[iobs]*master->observableinfo->SigmaExp[iobs]
 			+SigmaYEmulator[iobs]*SigmaYEmulator[iobs];
@@ -163,7 +165,7 @@ void CMCMC::EvaluateTrace(){
 			RP(ipar,iobs)=CovThetaY(ipar,iobs)*YRMS[iobs]/sigmatot2;
 		}
 	}
-
+	
 	// Write output
 	
 	CModelParameters modpars;
@@ -219,5 +221,5 @@ void CMCMC::EvaluateTrace(){
 		fprintf(fptr,"%s",SigmaString.c_str());
 	}
 	fclose(fptr);
-
+	
 }
