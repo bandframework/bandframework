@@ -90,6 +90,7 @@ void CSimplexSampler::SetThetaType2(){
 		ThetaTrain[itrain][itrain-1]=z;
 		R=z;
 	}
+	
 	N1=NTrainingPts;
 	n=N1;
 	NTrainingPts+=N1*(N1-1)/2;
