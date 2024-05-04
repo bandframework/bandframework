@@ -14,3 +14,6 @@
 [submodule "software/rose"]
 	path = software/rose
 	url = https://github.com/bandframework/rose
+[submodule "software/nuclear_saturation"]
+	path = software/nuclear_saturation
+	url = git@github.com:cdrischler/nuclear_saturation.git
