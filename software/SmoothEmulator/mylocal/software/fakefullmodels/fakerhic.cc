@@ -98,12 +98,12 @@ int main(){
 	Ytrain.resize(NObs);
 	
 	// Observable uncertainties
-	SigmaY[0]=100.0;
-	SigmaY[1]=150.0;
-	SigmaY[2]=200.0;
-	SigmaY[3]=1.5;
-	SigmaY[4]=0.5;
-	SigmaY[5]=0.5;
+	SigmaY[0]=40.0;
+	SigmaY[1]=50.0;
+	SigmaY[2]=60.0;
+	SigmaY[3]=1.0;
+	SigmaY[4]=0.2;
+	SigmaY[5]=0.1;
 
 	// read in modelpar_info and set experimental value to theta=0.2
 	fptr=fopen("Info/modelpar_info.txt","r");

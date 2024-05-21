@@ -62,7 +62,8 @@ CSmoothMaster::CSmoothMaster(){
 	CTrainingInfo::smoothmaster=this;
 	traininginfo = new CTrainingInfo(NTrainingList,observableinfo,priorinfo);
 
-	smooth=new CSmooth();
+	unsigned int maxrank=parmap->getI("SmoothEmulator_MAXRANK",4);
+	smooth=new CSmooth(NPars,maxrank);
 
 	CSmoothEmulator::NPars=NPars;
 	CSmoothEmulator::smooth=smooth;
@@ -96,8 +97,6 @@ CSmoothMaster::CSmoothMaster(){
 			emulator[iy]=new CSmoothEmulator(observableinfo->observable_name[iy],pca_ignore[iy]);
 		}
 	}
-
-
 }
 
 void CSmoothMaster::TuneAllY(){

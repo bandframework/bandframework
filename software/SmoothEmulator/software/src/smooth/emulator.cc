@@ -118,6 +118,7 @@ void CSmoothEmulator::Tune(){
 void CSmoothEmulator::CalcTForTraining(){
 	if(!pca_ignore){
 		unsigned int itrain,ic;
+		//printf("NTrainingPts=%u, NCoefficients=%u\n",NTrainingPts,smooth->NCoefficients);
 		for(itrain=0;itrain<NTrainingPts;itrain++){
 			for(ic=0;ic<smooth->NCoefficients;ic++){
 				T[itrain][ic]=smooth->GetT(ic,LAMBDA,ThetaTrain[itrain]);
@@ -130,9 +131,11 @@ void CSmoothEmulator::CalcTForTraining(){
 	
 		/* cout << "---------\n";
 		cout << Ttilde << endl;
+		cout << "---------\n";
 		double detTtilde=Ttilde.determinant();
 		CLog::Info("ln(determinant(Ttilde))="+to_string(log(detTtilde))+"\n");
-		cout << TtildeInv << endl; */
+		cout << TtildeInv << endl;
+		*/
 	
 		for(itrain=0;itrain<NTrainingPts;itrain++){
 			for(ic=0;ic<NTrainingPts;ic++){
