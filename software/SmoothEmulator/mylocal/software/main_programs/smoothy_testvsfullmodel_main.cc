@@ -4,7 +4,7 @@
 
 using namespace std;
 int main(){
-	NBandSmooth::CSmoothMaster master();
+	NBandSmooth::CSmoothMaster master;
 	master.ReadCoefficientsAllY();
 	master.ReadTrainingInfo();
 	master.TestVsFullModel();
