@@ -43,10 +43,10 @@ and the main programs,
 }
 This will compile all the main source programs in {\tt \$\{MY\_LOCAL\}/software/main\_programs/*.cc} and a ``fake'' full model to be used in the tutorial {\tt \$\{MY\_LOCAL\}/software/fakefulmodels/fakerhic.cc}. The repository was organized to encourage Users to edit any files in {\tt \$\{MY\_LOCAL\}/}. If the User wishes to restore any original files, a copy can be found at {\tt \$\{GITHOME\_SMOOTH\}/templates/mylocal}.
 
-Several executables should now appear in {\tt \$\{MY\_LOCAL\}/bin/}, {\tt simplex, smoothy\_tune, mcmc, smoothy\_testattrainingpts, smoothy\_testvsfullmodel, pca\_calctransformation, pca\_readinfo\_calcy} and {\tt fakerhic}. The User might find it convenient to add {\tt \$\{MY\_LOCAL\}/bin} to their path. The reason these are compiled in the User's space, separate from the main libraries, is that the User may well wish to create their own main programs, and this arrangement allows the User to compile their own versions, while leaving the original programs from the templates directory and the lower-level source code unchanged. 
+Several executables should now appear in {\tt \$\{MY\_LOCAL\}/bin/}: {\tt simplex, smoothy\_tune, mcmc, smoothy\_testattrainingpts, smoothy\_testvsfullmodel, pca\_calctransformation, pca\_readinfo\_calcy} and {\tt fakerhic}. The User might find it convenient to add {\tt \$\{MY\_LOCAL\}/bin} to their path. The reason these are compiled in the User's space, separate from the main libraries, is that the User may well wish to create their own main programs, and this arrangement allows the User to compile their own versions, while leaving the original programs from the templates directory and the lower-level source code unchanged. 
 
 \subsection{Creating Necessary Info Files}
-The User will run the software from the {\tt \$\{MY\_PROJECTS\}/} directory. Before a User can run {\it Simplex Sampler} they must create information files that describe the model-parameter priors and list the observable names. Both files are need to be in the {\tt \$\{MY\_PROJECTS\}} directory. The first file is {\tt \$\{MY\_PROJECTS\}/Info/modelpar\_info.txt}, which describes the model parameters and their priors. For the purposes of this tutorial, a file already exists,
+The User will run the software from the {\tt \$\{MY\_PROJECT\}/} directory. Before a User can run {\it Simplex Sampler} they must create information files that describe the model-parameter priors and list the observable names. Both files are need to be in the {\tt \$\{MY\_PROJECT\}} directory. The first file is {\tt \$\{MY\_PROJECT\}/Info/modelpar\_info.txt}, which describes the model parameters and their priors. For the purposes of this tutorial, a file already exists,
 {\tt
 \begin{verbatim}
    compressibility         uniform  150   300
@@ -59,7 +59,7 @@ The User will run the software from the {\tt \$\{MY\_PROJECTS\}/} directory. Bef
 }
 Thus, the model has six parameters. The second entry in each line is either {\tt uniform} or {\tt gaussian}. If the entry is {\tt uniform}, the last two numbers represent the range of the uniform prior, $x_{\rm min}$ and $x_{\rm max}$. If the second entry is {\tt gaussian} the third entry represents the center of the Gaussian distribution and the fourth represents the width. For a full model, the User would replace this model with one appropriate for their own model.
 
-The second file is {\tt \$\{MY\_PROJECTS\}/Info/observable\_info.txt}. This describes output values from the model. In the template, the provided file is
+The second file is {\tt \$\{MY\_PROJECT\}/Info/observable\_info.txt}. This describes output values from the model. In the template, the provided file is
 {\tt
 \begin{verbatim}
    meanpt_pion    100      
@@ -74,7 +74,7 @@ The first entry in each line simply provides the names of the observable which w
 
 \subsection{Running {\it Simplex Sampler}}
 
-Both {\it Simplex Sampler} and {\it Smooth Emulator} have options. These are provided in parameter files. For this tutorial, the provided parameter file is {\tt \$\{MY\_PROJECTS\}/parameters/simplex\_parameters.txt}. The provided file is
+Both {\it Simplex Sampler} and {\it Smooth Emulator} have options. These are provided in parameter files. For this tutorial, the provided parameter file is {\tt \$\{MY\_PROJECT\}/parameters/simplex\_parameters.txt}. The provided file is
 {\tt
 \begin{verbatim}
    #LogFileName    simplexlog.txt # comment out to direct output to screen
@@ -82,12 +82,12 @@ Both {\it Simplex Sampler} and {\it Smooth Emulator} have options. These are pro
    Simplex_ModelRunDirName modelruns      # Directory with training pt. info
 \end{verbatim}
 }
-Because the first line is commented, the output of {\it Simplex Sampler} will be to the screen. Otherwise it would go to the specified file. By setting {\tt Simplex\_TrainType=1}, the sampler will choose $n+1$ training points, where $n=6$ is the number of model parameters. Each point corresponds to the vertices of an $n+1$ dimensional simplex.  Finally, the parameter {\tt Simplex\_ModelRunDirName} is set to ``{\tt modelruns}''. This informs {\tt Simplex Sampler} to write the coordinates of each training point and the corresponding observables in the directory {\tt \$\{MY\_PROJECTS\}/rhic/modelruns/}. Here, {\tt Simplex\_TrainType=2}, which adds points half-way between each pair of simplex points. These additonal points are then moved outward and the original simplex points are brought inward. This method has precisely the number of training points as the number of coefficients necessary for a quadratic fit. 
+Because the first line is commented, the output of {\it Simplex Sampler} will be to the screen. Otherwise it would go to the specified file. By setting {\tt Simplex\_TrainType=1}, the sampler will choose $n+1$ training points, where $n=6$ is the number of model parameters. Each point corresponds to the vertices of an $n+1$ dimensional simplex.  Finally, the parameter {\tt Simplex\_ModelRunDirName} is set to ``{\tt modelruns}''. This informs {\tt Simplex Sampler} to write the coordinates of each training point and the corresponding observables in the directory {\tt \$\{MY\_PROJECT\}/rhic/modelruns/}. Here, {\tt Simplex\_TrainType=2}, which adds points half-way between each pair of simplex points. These additonal points are then moved outward and the original simplex points are brought inward. This method has precisely the number of training points as the number of coefficients necessary for a quadratic fit. 
 
 Now the user can run {\tt Simplex Sampler}, which must be run from the project directory. The only output is the number of training points.
  {\tt
 \begin{verbatim}
-   ${MY_PROJECTS}/rhic% ${MY_LOCAL}/bin/simplex
+   ${MY_PROJECT}/rhic% ${MY_LOCAL}/bin/simplex
    NTrainingPts=28
 \end{verbatim}
 }
@@ -108,7 +108,7 @@ This describes the six model parameters, which will serve as the input for the f
 Once the training points have been generated, the user will run a full model based on the given structure, tailored to address their specific problem. For the tutorial, a fake full model is provided. It reads the model-parameter values in each {\tt modelruns/runI/mod\_parameters.txt} file and writes the corresponding observables in {\tt modelruns/runI/obs.txt}. The output should be as follows:
 {\tt
 \begin{verbatim}
-   ${MY_PROJECTS}/rhic% ${MY_LOCAL}/bin/fakerhic
+   ${MY_PROJECT}/rhic% ${MY_LOCAL}/bin/fakerhic
    NTraining Pts=28
    NPars=6
 \end{verbatim}
@@ -128,7 +128,7 @@ Inspecting the {\tt modelruns/run0/obs.txt} file,
 }
 The second entry of each line is the value of the specified observable for that specific training point. The last entry is the random uncertainty associated with the full model. This is only relevant if the model has random fluctuations, meaning the re-running the model at the same point might result in different output. For this tutorial, the emulator will not consider such fluctuations (there is an emulator parameter that can be set to either consider the randomness or ignore it), so the third entry on each line is usually superfluous. 
 
-Additionally, {\tt fakerhic} created a directory {\tt \$\{MY\_PROJECTS\}/fullmodel\_testdata/} which stores information about full-model runs at 50 randomly chosen points in the model-parameter space. These points are not used for tuning. This data can be used later to test the emulator. 
+Additionally, {\tt fakerhic} created a directory {\tt \$\{MY\_PROJECT\}/fullmodel\_testdata/} which stores information about full-model runs at 50 randomly chosen points in the model-parameter space. These points are not used for tuning. This data can be used later to test the emulator. 
 
 \subsection{Running {\it Smooth Emulator}}
 Before building and tuning the emulator, the User needs to edit one additional file, the parameter file that sets numerous options for {\it Smooth Emulator}. For the template used in this tutorial, that file is
@@ -163,7 +163,7 @@ Now, running {\tt smoothy\_tune}, produces the following output,
 
 {\tt
 \begin{verbatim}
-${MY_PROJECTS}/rhic% ${MY_LOCAL}/bin/smoothy_tune
+${MY_PROJECT}/rhic% ${MY_LOCAL}/bin/smoothy_tune
  ---- Tuning for meanpt_pion ----
  ---- Tuning for meanpt_kaon ----
  ---- Tuning for meanpt_proton ----
@@ -196,7 +196,7 @@ Hopefully, the User will find this and the other main-program source codes to be
 {\it Smooth Emulator} should return the training values at the training points. If one runs the executable {\tt smoothy\_train\_test}, it will first read in the coefficient information along with the training information. The program then emulates the model at the training points and compares the emulated value to the training value. Running the program gives the output:
 {\tt
 \begin{verbatim}
-${MY_PROJECTS}/rhic% ${MY_LOCAL}/bin/smoothy_testattrainingpts
+${MY_PROJECT}/rhic% ${MY_LOCAL}/bin/smoothy_testattrainingpts
  --- Y_train     Y_emulator    Sigma_emulator ----
 ------ itrain=0 --------
 Y[0]= 4.026e+02 =?  4.026e+02  +/-  1.14910e-07
@@ -242,7 +242,7 @@ Finally, now that the emulator is tuned, one may wish to generate emulated value
 
 {\tt
 \begin{verbatim}
-${MY_PROJECTS}/rhic% ${MY_LOCAL}/bin/smoothy_calcobs
+${MY_PROJECT}/rhic% ${MY_LOCAL}/bin/smoothy_calcobs
  Prior Info
  #   ParameterName Type   Xmin_or_Xbar  Xmax_or_SigmaX
   0: compressibility     uniform        150        300
@@ -272,7 +272,7 @@ v2 = 0.361353 +/- 0.00537586
 RAA = 0.545491 +/- 0.00823794
 \end{verbatim}
 }
-Of course, it is unlikely the User will wish to enter model parameters interactively as was done above. To incorporate {\tt Smooth Emulator} into other programs, the User should inspect the main programs, e.g. {\tt \$\{MY\_LOCAL\}/main\_programs/smoothy\_calcobs\_main.cc}. The User can then design their own program based on this source code, and compile and link it by editing\\ {\tt \$\{MY\_LOCAL\}/main\_programs/CMakeLists.txt}. By editing the CMake file, replacing the lines unique to {\tt smoothy\_calcobs}, one can easily compile new executables based on the User's main programs. To understand what might be involved, the source code in {\tt \$\{MY\_LOCAL\}/main\_programs/SmoothEmulator\_calcobs\_main.cc} is
+Of course, it is unlikely the User will wish to enter model parameters interactively as was done above. To incorporate {\tt Smooth Emulator} into other programs, the User should inspect the main programs, e.g. {\tt \$\{MY\_LOCAL\}/software/main\_programs/smoothy\_calcobs\_main.cc}. The User can then design their own program based on this source code, and compile and link it by editing\\ {\tt \$\{MY\_LOCAL\}/software/main\_programs/CMakeLists.txt}. By editing the CMake file, replacing the lines unique to {\tt smoothy\_calcobs}, one can easily compile new executables based on the User's main programs. To understand what might be involved, the source code in\\ {\tt \$\{MY\_LOCAL\}/software/main\_programs/SmoothEmulator\_calcobs\_main.cc} is
 {\tt
 \begin{verbatim}
 #include "msu_smoothutils/parametermap.h"
@@ -362,7 +362,7 @@ The parameter {\tt MCMC\_NBURN} sets the number of Metropolis steps to be used i
 Running the MCMC program gives the following output:
 {\tt
 \begin{verbatim}
- ${MY_PROJECTS}/rhic% ${MY_LOCAL}/bin/mcmc
+ ${MY_PROJECT}/rhic% ${MY_LOCAL}/bin/mcmc
  At beginning of Trace, LL=-9.538317
  At end of trace, best LL=-4.415930
  Best Theta=
@@ -406,9 +406,9 @@ As described in Sec. \ref{sec:theory} the covariances in the posterior can also 
 This quantifies how the posterior value of $\theta_i$ changes as the experimental value changes if the experimental value, $Y_a^{\rm exp}$, changes an amount characteristic of the variance of $Y_a$ across the prior. Given that there may not be a set of training points calculated uniformly across the prior, the final factor is estimated as described in Sec. \ref{sec:theory}. Higher values of $\mathcal{R}_{ia}$ for different $a$ demonstrate the relative contributions of different observables $a$ to constrain a model parameter $i$. The resolving power matrix is written to {\tt mcmc\_trace/ResolvingPower.txt}.
 
 \subsection{Making Plots}
-Three python scripts (using MATPLOTLIB) are provided to provide graphical insight into the posterior likelihood, into the resolving power and for viewing how the emulator uncertainty compares to the discrepancies between full-model runs (not used for tuning) and emulated value. One can visit the {\tt \$\{MY\_PROJECTS\}/figs/} directory and peruse the file {\tt directions.txt} for more detailed instructions of how to create the plots below. First, one must create two data files. These provide the names of observables and model parameters to be used by the plots.
+Three python scripts (using MATPLOTLIB) are provided to provide graphical insight into the posterior likelihood, into the resolving power and for viewing how the emulator uncertainty compares to the discrepancies between full-model runs (not used for tuning) and emulated value. One can visit the {\tt \$\{MY\_PROJECT\}/figs/} directory and peruse the file {\tt directions.txt} for more detailed instructions of how to create the plots below. First, one must create two data files. These provide the names of observables and model parameters to be used by the plots.
 
-The two files are given the same names as two files in {\tt \$\{MY\_PROJECTS\}/Info/}. The first is {\tt \$\{MY\_PROJECTS\}/figs/modelpars\_info.txt}. It differs from the one in the {\tt Info/} directory in that it has only three columns, though the first column is identical. The provided file is\\
+The two files are given the same names as two files in {\tt \$\{MY\_PROJECT\}/Info/}. The first is {\tt \$\{MY\_PROJECT\}/figs/modelpars\_info.txt}. It differs from the one in the {\tt Info/} directory in that it has only three columns, though the first column is identical. The provided file is\\
 {\tt\begin{verbatim}
 compressibility           uniform    $\kappa$
 etaovers                  uniform    $\eta/s$
@@ -419,7 +419,7 @@ initial_epsilon           uniform    $\epsilon_0$
 \end{verbatime}}
 As one can see, the last column is used by MATPLOTLIB to label axes. The middle column is not currently used, but that might come into play if one wanted to alter the python scripts to use a different scale for gaussian priors.
 
-The second required file is {\tt \$\{MY\_PROJECTS\}/figs/observable\_info.txt}, and the provided version is\\
+The second required file is {\tt \$\{MY\_PROJECT\}/figs/observable\_info.txt}, and the provided version is\\
 {\tt
 \begin{verbatim}
 meanpt_pion          $\langle p_t\rangle_{\pi}$
