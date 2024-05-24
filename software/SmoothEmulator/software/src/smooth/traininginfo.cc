@@ -31,7 +31,7 @@ CTrainingInfo::CTrainingInfo(vector<unsigned int> NTrainingList_set,CObservableI
 }
 
 void CTrainingInfo::ReadTrainingInfo(string rundirname){
-	unsigned int itrain,ifile,iy,nsuccess=0,ipar,nread;
+	unsigned int itrain,ilist,ifile,iy,nsuccess=0,ipar,nread;
 	char filename[300],obs_charname[300],mod_par_name[300];
 	string obs_name;
 	double y,sigmay,x;
@@ -63,7 +63,8 @@ void CTrainingInfo::ReadTrainingInfo(string rundirname){
 		CLog::Fatal("In CTrainingInfo::ReadTrainInfo, only read in "+to_string(nsuccess)+" observables from file "+string(filename)+"\n");
 
 	for(itrain=0;itrain<NTrainingPts;itrain++){
-		snprintf(filename,300,"%s/run%u/mod_parameters.txt",rundirname.c_str(),itrain);
+		ilist=NTrainingList[itrain];
+		snprintf(filename,300,"%s/run%u/mod_parameters.txt",rundirname.c_str(),ilist);
 		fptr=fopen(filename,"r");
 		nread=0;
 		do{
