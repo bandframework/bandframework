@@ -47,8 +47,9 @@ void CTrainingInfo::ReadTrainingInfo(string rundirname){
 		fptr=fopen(filename,"r");
 		nsuccess=0;
 		do{
-			fscanf(fptr,"%s %lf %lf",obs_charname,&y,&sigmay);
+			fscanf(fptr,"%s",obs_charname);
 			if(!feof(fptr)){
+				fscanf(fptr,"%lf %lf",&y,&sigmay);
 				obs_name=string(obs_charname);
 				iy=smoothmaster->observableinfo->GetIPosition(obs_name);
 				YTrain[iy][itrain]=y;
@@ -68,8 +69,9 @@ void CTrainingInfo::ReadTrainingInfo(string rundirname){
 		fptr=fopen(filename,"r");
 		nread=0;
 		do{
-			fscanf(fptr,"%s %lf",mod_par_name,&x);
+			fscanf(fptr,"%s",mod_par_name);
 			if(!feof(fptr)){
+				fscanf(fptr,"%lf",&x);
 				ipar=priorinfo->GetIPosition(mod_par_name);
 				modelpars[itrain]->X[ipar]=x;
 				nread+=1;

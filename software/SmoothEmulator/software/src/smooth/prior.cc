@@ -17,8 +17,9 @@ CPriorInfo::CPriorInfo(string parinfo_filename_set){
 	do{
 		fscanf(fptr, "%s",dummy1);
 		if(dummy1[0]!='#' && !feof(fptr)){
-			fscanf(fptr, "%s %lf %lf",dummy2,&minval,&maxval);
+			fscanf(fptr, "%s",dummy2);
 			if(!feof(fptr)){
+				fscanf(fptr, "%lf %lf",&minval,&maxval);
 				if(string(dummy2)!="uniform" && string(dummy2)!="gaussian"){
 					CLog::Fatal("reading priorinfo: type="+string(dummy2)+". Must be uniform or gaussian.\n");
 				}

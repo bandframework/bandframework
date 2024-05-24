@@ -66,8 +66,9 @@ void CPCA::CalcTransformationInfo(){
 		snprintf(filename,300,"%s/run%u/obs.txt",modelruns_dirname.c_str(),NTrainingList[irun]);
 		fptr=fopen(filename,"r");
 		while(!feof(fptr)){
-			fscanf(fptr,"%s %lf %lf",obs_name, &y, &sigmay);
+			fscanf(fptr,"%s",obs_name);
 			if(!feof(fptr)){
+				fscanf(fptr,"%lf %lf",&y, &sigmay);
 				iy=observable_info->GetIPosition(obs_name);
 				Y[irun][iy]=y;
 				Ybar[iy]+=y/double(nruns);
