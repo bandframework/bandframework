@@ -1,11 +1,11 @@
 User should copy 2 files to this directory
   1) modelpar_info.txt   -- from ../Info/
   2) observable_info.txt -- from ../Info/
-Then User should edit one info file
-  1) modelpar_info.txt -- keep three lines, model parameter name, gaussian-or-uniform, and display name
+Then User should edit then edit the info files
+  1) modelpar_info.txt -- keep three comlumns, model parameter name, gaussian-or-uniform, and display name
      For example, one of the lines could be
 	   compressibility  uniform  $\kappa$
-  2 observable_info.txt -- keep only two columns, the observable name and the formatted string to use for display
+  2) observable_info.txt -- keep only two columns, the observable name and the formatted string to use for display
      For example, one of the lines could be
 	   meanpt_pion  $\langle p_t\rangle_{\pi}$
 		
@@ -16,7 +16,7 @@ First, run mcmc in project directory
  MY_PROJECT}% mcmc
 User then enters the commands:
  % cd figs/posterior
- % ln -s ../mcmc_data/trace.txt .
+ % ln -s ../../mcmc_data/trace.txt .
  % python3 posterior.py
 You can also simply move or copy "trace.txt" if you don't like symbolic links. The output should be posterior.pdf
 
