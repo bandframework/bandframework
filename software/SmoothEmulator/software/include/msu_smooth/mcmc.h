@@ -33,7 +33,7 @@ namespace NBandSmooth{
 		CMCMC(CSmoothMaster *master);
 		unsigned int NPars,NObs;
 		vector<vector<double>> trace;
-		string trace_filename;
+		string trace_filename,Xtrace_filename;
 		bool langevin;
 		double stepsize;
 		
@@ -44,6 +44,7 @@ namespace NBandSmooth{
 		void PerformMetropolisTrace(unsigned int Ntrace,unsigned int Nskip);
 		void PerformLangevinTrace(unsigned int Ntrace,unsigned int Nskip);
 		void WriteTrace();
+		void WriteXTrace();
 		void ReadTrace();
 		void EvaluateTrace();
 		

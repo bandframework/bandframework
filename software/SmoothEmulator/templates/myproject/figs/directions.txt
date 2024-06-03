@@ -5,9 +5,11 @@ Then User should edit then edit the info files
   1) modelpar_info.txt -- keep three comlumns, model parameter name, gaussian-or-uniform, and display name
      For example, one of the lines could be
 	   compressibility  uniform  $\kappa$
+	  Erase any comment lines
   2) observable_info.txt -- keep only two columns, the observable name and the formatted string to use for display
      For example, one of the lines could be
 	   meanpt_pion  $\langle p_t\rangle_{\pi}$
+	  Erase any comment lines
 		
 -----------------------------------------------
 To view contours of posterior likelihood:

@@ -25,6 +25,7 @@ CMCMC::CMCMC(CSmoothMaster *master_set){
 	randy=master->randy;
 	NPars=master->NPars;
 	trace_filename=parmap->getS("MCMC_TRACE_FILENAME","mcmc_trace/trace.txt");
+	Xtrace_filename=parmap->getS("MCMC_TRACE_FILENAME","mcmc_trace/Xtrace.txt");
 	string command="mkdir -p mcmc_trace";
 	system(command.c_str());
 	OPTIMIZESTEPS=parmap->getB("MCMC_OPTIMIZESTEPS",false);
@@ -236,6 +237,26 @@ void CMCMC::WriteTrace(){
 	for(itrace=0;itrace<ntrace;itrace++){
 		for(ipar=0;ipar<NPars;ipar++){
 			fprintf(fptr,"%8.5f ",trace[itrace][ipar]);
+		}
+		fprintf(fptr,"\n");
+	}
+	fclose(fptr);
+}
+
+void CMCMC::WriteXTrace(){
+	CModelParameters modpars;
+	
+	unsigned int itrace,ipar,ntrace=trace.size();
+	FILE *fptr;
+	CLog::Info("writing, ntrace = "+to_string(ntrace)+"\n");
+	fptr=fopen(Xtrace_filename.c_str(),"w");
+	for(itrace=0;itrace<ntrace;itrace++){
+		for(ipar=0;ipar<NPars;ipar++){
+			modpars.Theta[ipar]=trace[itrace][ipar];
+		}
+		modpars.TranslateTheta_to_X();
+		for(ipar=0;ipar<NPars;ipar++){
+			fprintf(fptr,"%8.5f ",modpars.X[ipar]);
 		}
 		fprintf(fptr,"\n");
 	}
