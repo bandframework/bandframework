@@ -310,7 +310,7 @@ void CSmoothMaster::TestAtTrainingPts(string obsname){
 	}
 }
 
-void CSmoothMaster::TestVsFullModel(){
+void CSmoothMaster::TestVsFullModelAlt(){
 	char pchars[CLog::CHARLENGTH];
 	unsigned int iY,ipar,nfit=0,ntest=0;
 	unsigned int NObservables=observableinfo->NObservables;
@@ -345,6 +345,83 @@ void CSmoothMaster::TestVsFullModel(){
 		fclose(fptr);		
 		fclose(fptr_out);
 		CLog::Info(observableinfo->observable_name[iY]+": "+to_string(nfit)+" out of "+to_string(ntest)+" points within 1 sigma\n");
+	}
+}
+
+void CSmoothMaster::TestVsFullModel(){
+	string TestListStr = parmap->getS("SmoothEmulator_TestPts","1");
+	
+	vector<unsigned int> TestList;
+	stringstream ss(TestListStr);
+	string token;
+
+	while(getline(ss, token, ',')) {
+		size_t pos = token.find("-");
+		if (pos != string::npos) {
+
+			unsigned int start = stoi(token.substr(0, pos));
+			unsigned int end = stoi(token.substr(pos+1));
+
+			for (unsigned int i = start; i <= end; i++)
+			TestList.push_back(i);
+		}
+		else {
+			TestList.push_back(stoi(token));
+		}
+	}
+	
+	unsigned int ntestpts=TestList.size();
+	char obsnamechars[200],modparnamechars[200];
+	string obsname,modparname;
+	unsigned int iY,iread,itest,ipar,nfit;
+	unsigned int NObservables=observableinfo->NObservables;
+	double Y,SigmaY_emulator,realY,realSigmaY;
+	double Xread,SigmaXRead;
+	CModelParameters testpars;
+	FILE *fptr,*fptr_out;
+	string filename;
+	for(iY=0;iY<NObservables;iY++){
+		filename="fullmodel_testdata/YvsY_"+observableinfo->observable_name[iY]+".txt";
+		fptr_out=fopen(filename.c_str(),"w");
+		nfit=0;
+		
+		//CLog::Info("Writing test_vs_full_model results to "+filename+"\n");
+		
+		for(itest=0;itest<ntestpts;itest++){
+			filename="modelruns/run"+to_string(TestList[itest])+"/mod_parameters.txt";
+			//printf("reading %s: \n",filename.c_str());
+			fptr=fopen(filename.c_str(),"r");
+			for(iread=0;iread<NPars;iread++){
+				fscanf(fptr,"%s %lf %lf",modparnamechars,&Xread,&SigmaXRead);
+				modparname=string(modparnamechars);
+				ipar=priorinfo->GetIPosition(modparname);
+				testpars.X[ipar]=Xread;
+			}
+			fclose(fptr);
+			testpars.TranslateX_to_Theta();
+			CalcY(iY,testpars.Theta,Y,SigmaY_emulator);
+			
+			filename="modelruns/run"+to_string(TestList[itest])+"/obs.txt";
+			//printf("reading %s: \n",filename.c_str());
+			fptr=fopen(filename.c_str(),"r");
+			iread=-1;
+			do{
+				iread+=1;
+				fscanf(fptr,"%s %lf %lf",obsnamechars,&realY,&realSigmaY);
+				obsname=string(obsnamechars);
+				
+			}while(iread<observableinfo->NObservables && obsname!=observableinfo->observable_name[iY]);
+			fclose(fptr);
+			if(fabs(Y-realY)<SigmaY_emulator)
+				nfit+=1;
+			if(obsname!=observableinfo->observable_name[iY])
+				CLog::Fatal("cannot find obsname amongst observales, obsname="+obsname+"\n");
+			
+			fprintf(fptr_out,"%lf %lf %lf\n",realY,Y,SigmaY_emulator);
+			
+		}
+		fclose(fptr_out);
+		CLog::Info(observableinfo->observable_name[iY]+": "+to_string(nfit)+" out of "+to_string(ntestpts)+" points within 1 sigma\n");
 	}
 }
 
