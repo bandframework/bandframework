@@ -310,6 +310,15 @@ Same but for a single observable referenced by observable name.
 \item {\tt TestAtTrainingPts(unsigned int iY)}\\
 Same but for a single observable referenced by index.
 \item {\tt TestVsFullModel()}\\
+This is useful for comparing emulator to model evaluated at points not used for training. You can set the emulator parameter {\tt SmoothEmulator\_TestPts} in the same manner as was done for the emulator parameter {\tt SmoothEmulator\_TrainingPts}. It will compare the emulator to the results in the run directories specified here. Usually, one wishes to compare at points not used for training. Fore example, if there were 100 run directories, one might set
+{\tt
+\begin{verbatim}
+SmoothEmulator_TrainingPts 0-89
+SmoothEmulator_TrainingPts 90-99
+\end{verbatim}}
+to train the emulator with the first 90 points and test it at the last 10 points. Tests for each observable are stored in a directory {\tt fullmodel\_testdata/}.
+
+\item {\tt TestVsFullModelAlt()}\\
 This is useful for comparing emulator to model evaluated at points not used for training. For the full model, make a sub-directory within the project directory called {\tt fullmodeltestdata/}. Within that subdirectory, for each observable create a file called {\tt OBSNAME.txt}, where {\tt OBSNAME} is the name for each observable. Each file should have the format
 {\tt
 \begin{verbatim}
