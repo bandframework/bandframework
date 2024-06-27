@@ -47,6 +47,7 @@ void CSmoothEmulator::WriteCoefficients(){
 		
 		}
 		else{
+			ABest.resize(NCoefficients);
 			for(ic=0;ic<NCoefficients;ic++)
 				ABest[ic]=0.0;
 			for(isample=0;isample<NASample;isample++){

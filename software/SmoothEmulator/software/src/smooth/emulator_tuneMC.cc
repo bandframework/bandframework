@@ -213,11 +213,13 @@ void CSmoothEmulator::TunePerfectMCMC(){
 }
 
 void CSmoothEmulator::GenerateASamples(){
+	ABest.resize(smooth->NCoefficients);
 	if(!pca_ignore){
 		unsigned int isample,ic;
 		FirstTune=true;
 		for(ic=0;ic<smooth->NCoefficients;ic++)
 			ABest[ic]=0.0;
+		Tune(); // This is for burn in
 		for(isample=0;isample<NASample;isample++){
 			Tune();
 			for(ic=0;ic<smooth->NCoefficients;ic++){

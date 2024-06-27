@@ -101,12 +101,19 @@ CSmoothMaster::CSmoothMaster(){
 
 void CSmoothMaster::TuneAllY(){
 	for(unsigned int iY=0;iY<observableinfo->NObservables;iY++){
-		if((UsePCA && !pca_ignore[iY]) || !UsePCA){
-			CLog::Info("---- Tuning for "+observableinfo->observable_name[iY]+" ----\n");
-			emulator[iY]->Tune();
+		if(emulator[iY]->TuneChooseExact){
+			if((UsePCA && !pca_ignore[iY]) || !UsePCA){
+				CLog::Info("---- Tuning for "+observableinfo->observable_name[iY]+" ----\n");
+				emulator[iY]->Tune();
+			}
+		}
+		else{
+			CLog::Info("Tuning Emulator for "+observableinfo->GetName(iY)+"\n");
+			emulator[iY]->GenerateASamples();
 		}
 	}
 }
+	
 
 void CSmoothMaster::TuneY(string obsname){
 	unsigned int iY=observableinfo->GetIPosition(obsname);
@@ -275,7 +282,7 @@ void CSmoothMaster::TestAtTrainingPts(){
 		for(iY=0;iY<NObservables;iY++){
 			CalcY(iY,traininginfo->modelpars[itrain],Y,SigmaY_emulator);
 			snprintf(pchars,CLog::CHARLENGTH,
-			"Y[%u]=%10.3e =? %10.3e  +/- %12.5e\n",iY,Y,traininginfo->YTrain[iY][itrain],SigmaY_emulator);
+			"Y[%u]=%10.3e =? %10.3e  +/- %12.5e\n",iY,traininginfo->YTrain[iY][itrain],Y,SigmaY_emulator);
 			CLog::Info(pchars);
 		}
 	}
@@ -290,7 +297,7 @@ void CSmoothMaster::TestAtTrainingPts(unsigned int iY){
 		CLog::Info("------ itrain="+to_string(itrain)+" --------\n");
 		CalcY(iY,traininginfo->modelpars[itrain],Y,SigmaY_emulator);
 		snprintf(pchars,CLog::CHARLENGTH,
-		"Y[%u]=%10.3e =? %10.3e  +/- %12.5e\n",iY,Y,traininginfo->YTrain[iY][itrain],SigmaY_emulator);
+		"Y[%u]=%10.3e =? %10.3e  +/- %12.5e\n",iY,traininginfo->YTrain[iY][itrain],Y,SigmaY_emulator);
 		CLog::Info(pchars);
 	}
 }
@@ -305,7 +312,7 @@ void CSmoothMaster::TestAtTrainingPts(string obsname){
 		CLog::Info("------ itrain="+to_string(itrain)+" --------\n");
 		CalcY(iY,traininginfo->modelpars[itrain],Y,SigmaY_emulator);
 		snprintf(pchars,CLog::CHARLENGTH,
-		"Y[%u]=%10.3e =? %10.3e,    SigmaY=%12.5e\n",iY,Y,traininginfo->YTrain[iY][itrain],SigmaY_emulator);
+		"Y[%u]=%10.3e =? %10.3e,    SigmaY=%12.5e\n",iY,traininginfo->YTrain[iY][itrain],Y,SigmaY_emulator);
 		CLog::Info(pchars);
 	}
 }

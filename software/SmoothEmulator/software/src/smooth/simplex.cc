@@ -140,7 +140,7 @@ void CSimplexSampler::SetThetaType2(){
 			for(ipar=0;ipar<NPars;ipar++){
 				ThetaTrain[itrain][ipar]=ThetaTrain[itrain][ipar]*Rmax/BiggestTheta;
 			}	
-			printf("Rmax/BiggestTheta=%g\n",Rmax/BiggestTheta);			
+			CLog::Info("Rmax/BiggestTheta="+to_string(Rmax/BiggestTheta)+"\n");			
 		}
 	}
 }
