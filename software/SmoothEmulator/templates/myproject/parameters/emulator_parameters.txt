@@ -4,12 +4,13 @@
  SmoothEmulator_ConstrainA0 true
  SmoothEmulator_ModelRunDirName modelruns
  SmoothEmulator_TrainingPts 0-27
+ #SmoothEmulator_TestPts 20-27
  SmoothEmulator_UsePCA false
  SmoothEmulator_TuneChooseExact true
  #
  # These are only used if you are using MCMC tuning rather than Exact method
- SmoothEmulator_TuneChooseMCMC false # set false if NPars<5
- SmoothEmulator_TuneChooseMCMCPerfect false #
+ SmoothEmulator_TuneChooseMCMC false # If set to true, be sure to set SmoothEmulator_TuneChooseExact to false
+ SmoothEmulator_TuneChooseMCMCPerfect false #set true if NPars<5
  SmoothEmulator_MCMC_NASample 8  # No. of coefficient samples
  SmoothEmulator_MCMC_StepSize 0.01
  SmoothEmulator_MCMC_CutoffA false # Used only if SigmaA constrained by SigmaA0
