@@ -1,0 +1,181 @@
+\documentclass[12pt]{article}
+%#Scott Pratt, Eren Erdogan, Ekaksh Kataria 2023
+\usepackage{subfiles}
+%\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage[
+        pdfencoding=auto,%
+        pdftitle={Smooth Emulator and Simplex Sampler}
+        pdfauthor={Scott Pratt},%
+        pdfstartview=FitV,%
+        colorlinks=true,%
+        linkcolor=blue,%
+        citecolor=blue, %
+        urlcolor=blue,
+				breaklinks=true]{hyperref}
+%\usepackage[anythingbreaks,hyphenbreaks]{breakurl}
+\usepackage{xurl}
+\usepackage{comment}
+%\usepackage{pdfsync}
+\usepackage{amssymb}
+\usepackage{amsmath}
+%\usepackage{nopageno}
+\usepackage{bm}
+\usepackage{dsfont}
+%\usepackage[utf8]{inputenc}
+\usepackage[small,bf]{caption}
+%\usepackage{fontspec}
+%\usepackage{textcomp}
+%\usepackage{color}
+%\usepackage{fancyhdr}
+\usepackage[titletoc]{appendix}
+%\usepackage[headheight=110pt]{geometry}
+\usepackage{bm}
+
+\numberwithin{equation}{section} 
+\numberwithin{figure}{section} 
+
+%\usepackage[most]{tcolorbox}
+%\tcbset{
+%frame code={}
+%center title,
+%left=0pt,
+%right=0pt,
+%top=0pt,
+%bottom=0pt,
+%colback=gray!25,
+%colframe=white,
+%width=\dimexpr\textwidth\relax,
+%enlarge left by=0mm,
+%boxsep=5pt,
+%arc=0pt,outer arc=0pt,
+%}
+%\newcounter{examplecounter}
+%\counterwithin{examplecounter}{section}
+%\setcounter{examplecounter}{0}
+%\newcommand{\example}[2]{\begin{tcolorbox}[breakable,enhanced]
+%\refstepcounter{examplecounter}{
+%\bf Example \arabic{section}.\arabic{examplecounter}:}~~{\bf #1}\\
+%{#2}
+%\end{tcolorbox}
+%}
+
+%\newcommand{\exampleend}{
+%\begin{samepage}
+%\nopagebreak\noindent\rule{\textwidth}{1pt}
+%\end{samepage}
+%}
+
+%\usepackage{silence}
+%\WarningFilter{hyperref}{Token not allowed in a PDF String}
+
+\newcommand\eqnumber{\addtocounter{equation}{1}\tag{\theequation}}
+%\newcommand{\solution}[1]{ }
+\newcommand\identity{\mathds{1}}
+
+\setlength{\headheight}{16pt}
+\parskip 6pt
+\parindent 0pt
+\textwidth 7.0in
+\hoffset -0.8in
+\textheight 9.2in
+\voffset -1in
+
+%\newcommand{\bm}{\boldmath}
+\boldmath
+%
+\begin{document}
+
+
+\begin{titlepage}
+   \begin{center}
+       \vspace*{2.5cm}
+
+       {\bf\LARGE {\it Smooth Emulator \&  Simplex Sampler}}\\
+       \vspace*{8pt}
+
+       {\bf\Large User Manual}
+
+       {\bf A BAND Collaboration Project}\\
+       \href{https://bandframework.github.io}{https://bandframework.github.io}
+
+       \vspace{2.0cm}
+
+       {\large Scott Pratt, Eren Erdogan, Ekaksh Kataria}
+
+       {\it Department of Physics and Facility for Rare Isotope Beams}
+
+       {\it Michigan State University, East Lansing Michigan, 48824}
+
+       \today
+  \end{center}
+       
+    \vspace*{1.0in}
+     
+       \hspace*{1.0in}\includegraphics[width=0.2\textwidth]{FRIB_logo.png}
+
+       \vspace*{-1.3in}
+       \hspace*{2.63in}\includegraphics[width=0.26\textwidth]{msu_logo}
+
+       \vspace*{-0.7in}
+       \hspace*{4.6in}
+       \includegraphics[width=0.24\textwidth]{BAND_logo.png}
+            
+
+\end{titlepage}
+
+\newpage
+
+\thispagestyle{empty}
+
+\tableofcontents
+
+\newpage
+
+\thispagestyle{empty}
+
+\section{Overview}\label{sec:overview}
+
+This manual describes how to install and run {\it Smooth Emulator} software. The software performs three basic functions. First, the {\it {\it Simplex Sampler}} chooses a set of points in model parameter space, at which full model runs will performed to then tune the emulator. The user must provide a description of the model parameters and the prior in a text files in a standard format. There are several options, the first of which is to choose the points that represent a simplex, e.g. an equilateral triangle in two dimensions or a tetrahedron in three dimensions. In a simplex, all points are equidistant from one another, and the number of training points is $N_p+1$, where $N_p$ is the number of parameters. In addition to the standard simplex, there are additional options which are motivated by the simplex form. For the standard form the  $N_p+1$ training points in the simplex match the number of points needed to determine a linear fit. Another choice, which is based on the simplex chooses enough points to determine a quadratic fit, $(N_p+1)(N_p+2)/2$. The software will write the information about the training points in a standard format, which is described in the manual. If the user decides to use training points from a different procedure, the user can still record the information about the points in a same format, and the emulator tuning will still work, as the emulator itself is not predicated on a specific choice of training points.
+
+ The user is then responsible for running the full model at the training points and expressing observables, and the uncertainties, for each training point in a standard format. The manual describes the output format.
+
+ The second functionality of the software is to build and tune the emulator, referred here as {\it {\it Smooth Emulator}}. The emulator reads the information above, along with another user-provided parameter file to choose which observables are to be emulated, which parameters will be varied, and which emulator options will be applied. After being trained, the Taylor coefficients representing the emulator are written to a file. One can always add additional training points, and retrain the emulator. 
+
+The third functionality of the software is to perform a MCMC exploration of parameter space using the emulator. This user must express the experimental observables and their uncertainties in a standard format. The MCMC software will read the emulator coefficients from file and perform the MCMC exploration. This procedure is also guided by a simple text file of parameters. The MCMC software uses python and Matplotlib to generate plots that describe the posterior. 
+
+
+\newpage
+
+\subfile{installation.tex}
+
+\newpage
+
+\subfile{simplex.tex}
+
+\newpage
+
+\subfile{fullmodel.tex}
+
+\newpage
+
+\subfile{emulator.tex}
+
+\newpage
+
+\subfile{pca.tex}
+
+\newpage
+
+\subfile{mcmc.tex}
+
+\newpage
+
+\subfile{tutorial.tex}
+
+\newpage
+
+\subfile{theory.tex}
+
+\end{document}
+
