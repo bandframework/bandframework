@@ -50,7 +50,7 @@ void CTrainingInfo::ReadTrainingInfo(string rundirname){
 			fscanf(fptr,"%s",obs_charname);
 			if(!feof(fptr)){
 				fscanf(fptr,"%lf %lf",&y,&sigmay);
-				sigmay=0.06*fabs(y);
+				sigmay=0.2*fabs(y);
 				obs_name=string(obs_charname);
 				iy=smoothmaster->observableinfo->GetIPosition(obs_name);
 				YTrain[iy][itrain]=y;
