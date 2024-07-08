@@ -87,6 +87,7 @@ namespace NBandSmooth{
 		void WriteCoefficients();
 		void ReadCoefficients();
 		void GetExactUncertainty(vector<double> &Theta_s,double &sigma);
+		void CalcYAndExactUncertainty(vector<double> &Theta_s,double &Y,double &uncertainty);
 
 		void Init();
 
