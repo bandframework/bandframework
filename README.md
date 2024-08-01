@@ -43,6 +43,7 @@ As of version 0.3.0, the following tools are included:
 - rose ([v1.0.0](https://github.com/bandframework/rose/releases/tag/v1.0.0 )), a reduced-order scattering emulator
 - BMEX ([v0.1.1](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - Taweret ([v1.0.0](https://github.com/bandframework/Taweret/releases/tag/v1.0.0 )): A Python package containing multiple Bayesian Model Mixing methods.
+- jitr ([v1.2](https://github.com/beykyle/jitr/releases/tag/v1.2)): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration
 
 The following examples of the use of surmise are part of version 0.3.0:
 
@@ -65,6 +66,7 @@ BAND Framework currently includes some dependencies via git submodules. Currentl
 * [software/](software/)SAMBA 
 * [software/](software/)surmise
 * [software/](software/)Taweret
+* [software/](software/)jitr
 
 As a consequence, when cloning the BAND Framework repository, the submodules can be retrieved automatically via
 - `git clone --recursive` (in place of the usual `git clone`)
