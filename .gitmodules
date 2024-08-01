@@ -14,3 +14,6 @@
 [submodule "software/rose"]
 	path = software/rose
 	url = https://github.com/bandframework/rose
+[submodule "software/jitr"]
+	path = software/jitr
+	url = git@github.com:beykyle/jitr.git
