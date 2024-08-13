@@ -119,7 +119,6 @@ void CSmoothEmulator::Tune(){
 void CSmoothEmulator::CalcTForTraining(){
 	if(!pca_ignore){
 		unsigned int itrain,ic;
-		//printf("NTrainingPts=%u, NCoefficients=%u\n",NTrainingPts,smooth->NCoefficients);
 		for(itrain=0;itrain<NTrainingPts;itrain++){
 			for(ic=0;ic<smooth->NCoefficients;ic++){
 				T[itrain][ic]=smooth->GetT(ic,LAMBDA,ThetaTrain[itrain]);

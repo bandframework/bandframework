@@ -30,7 +30,7 @@ void CalcY(vector<double> &xmin,vector<double> &xmax,vector<double> &x,vector<do
 	t[5]=-0.5*theta[5]-0.3*theta[1]+0.1*theta[3];*/
 	
 	t[0]=0.8*theta[0]+0.6*theta[1];
-	t[1]=0.71*theta[0]-0.5*theta[1]+0.5*theta[4];
+	t[1]=0.71*theta[0]+0.5*theta[1]-0.5*theta[4];
 	t[2]=-0.6*theta[2]+0.8*theta[3];
 	t[3]=0.71*theta[3]+0.71*theta[2];
 	t[4]=0.4*theta[0]-0.4*theta[1]+0.4*theta[2]-0.4*theta[3]+0.4*theta[4]-0.4*theta[5];
@@ -122,12 +122,19 @@ int main(){
 	fclose(fptr);
 	
 	// Write observable info for every training point
+	
+	FILE *fptr_thetas=fopen("smooth_data/TrainingThetas.txt","w");
+	FILE *fptr_obs=fopen("smooth_data/TrainingObs.txt","w");
+	FILE *fptr_sigmay=fopen("smooth_data/TrainingSigmaY.txt","w");
+	
 	for(itrain=0;itrain<NTrain;itrain++){
 		filename="smooth_data/modelruns/run"+to_string(itrain)+"/mod_parameters.txt";
 		fptr=fopen(filename.c_str(),"r");
 		for(ipar=0;ipar<NPars;ipar++){
 			fscanf(fptr,"%s %lf",parname_c,&xtrain[ipar]);
+			fprintf(fptr_thetas,"%15.8f ",xtrain[ipar]);
 		}
+		fprintf(fptr_thetas,"\n");
 		fclose(fptr);
 		
 		CalcY(xmin,xmax,xtrain,Ytrain,&randy);
@@ -136,9 +143,17 @@ int main(){
 		fptr=fopen(filename.c_str(),"w");
 		for(iobs=0;iobs<NObs;iobs++){
 			fprintf(fptr,"%s %lf %lf\n",obsname[iobs].c_str(),Ytrain[iobs],SigmaY[iobs]);
+			fprintf(fptr_obs,"%15.8f ",Ytrain[iobs]);
+			fprintf(fptr_sigmay,"%15.8f ",SigmaY[iobs]);
 		}
 		fclose(fptr);
+		fprintf(fptr_obs,"\n");
+		fprintf(fptr_sigmay,"\n");
+		
 	}
+	fclose(fptr_thetas);
+	fclose(fptr_obs);
+	fclose(fptr_sigmay);
 	
 	// Write fullmodel test data for random points
 	X.resize(NPars);
@@ -147,6 +162,7 @@ int main(){
 	command="rm -f fullmodel_testdata/*.txt";
 	system(command.c_str());
 	unsigned int itest,Ntest=50;
+	
 	for(itest=0;itest<Ntest;itest++){
 		randy.reset(itest);
 		for(ipar=0;ipar<NPars;ipar++){

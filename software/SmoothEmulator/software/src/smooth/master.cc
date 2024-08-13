@@ -3,7 +3,6 @@ using namespace std;
 using namespace NBandSmooth;
 
 CSmoothMaster::CSmoothMaster(){
-	printf("check in a\n");
 	unsigned int NObs;
 	unsigned int iZ;
 	CPCA *pca=NULL;
@@ -17,7 +16,6 @@ CSmoothMaster::CSmoothMaster(){
 		CLog::Init(logfilename);
 	}
 	SmoothEmulator_TrainingFormat=parmap->getS("SmoothEmulator_TrainingFormat","training_format_smooth");
-	printf("check b\n");
 	string filename;
 	UsePCA=parmap->getB("SmoothEmulator_UsePCA",false);
 	if(UsePCA){
@@ -29,7 +27,6 @@ CSmoothMaster::CSmoothMaster(){
 		filename="smooth_data/Info/observable_info.txt";
 		CoefficientsDirName="coefficients";
 	}
-	printf("check c\n");
 	observableinfo=new CObservableInfo(filename);
 	NObs=observableinfo->NObservables;
 	
@@ -42,15 +39,10 @@ CSmoothMaster::CSmoothMaster(){
 	NPars=priorinfo->NModelPars;
 	parmap->set("SmoothEmulator_NPars",NPars);
 	parmap->set("Smooth_NPars",NPars);
-	printf("check d\n");
-
 	CTrainingInfo::smoothmaster=this;
-	printf("check d1\n");
 	traininginfo = new CTrainingInfo(observableinfo,priorinfo);
-	printf("check d2\n");
 	unsigned int maxrank=parmap->getI("SmoothEmulator_MAXRANK",4);
 	smooth=new CSmooth(NPars,maxrank);
-		printf("check d3\n");
 
 	CSmoothEmulator::NPars=NPars;
 	CSmoothEmulator::smooth=smooth;
@@ -59,7 +51,6 @@ CSmoothMaster::CSmoothMaster(){
 	CSmoothEmulator::randy=randy;
 	CSmoothEmulator::smooth=smooth;
 	emulator.resize(NObs);
-	printf("check e\n");
 	
 	pca_ignore.resize(NObs);
 	if(UsePCA){
@@ -79,13 +70,13 @@ CSmoothMaster::CSmoothMaster(){
 		for(iZ=0;iZ<NObs;iZ++)
 			pca_ignore[iZ]=false;
 	}
-	printf("check f\n");
 	for(unsigned int iy=0;iy<NObs;iy++){
 		if(!UsePCA || !pca_ignore[iy]){
 			emulator[iy]=new CSmoothEmulator(observableinfo->observable_name[iy],pca_ignore[iy]);
 		}
 	}
-	printf("check out\n");
+	ReadTrainingInfo();
+	SetThetaTrain();
 }
 
 void CSmoothMaster::TuneAllY(){
@@ -106,14 +97,10 @@ void CSmoothMaster::TuneAllY(){
 
 void CSmoothMaster::TuneY(string obsname){
 	unsigned int iY=observableinfo->GetIPosition(obsname);
-	if(iY==3)
-		emulator[3]->A[0]=5.5;
 	emulator[iY]->Tune();
 }
 
 void CSmoothMaster::TuneY(unsigned int iY){
-	if(iY==3)
-		emulator[3]->A[0]=5.5;
 	emulator[iY]->Tune();
 }
 
@@ -125,6 +112,7 @@ void CSmoothMaster::GenerateCoefficientSamples(){
 }
 
 void CSmoothMaster::SetThetaTrain(){
+	printf("---- Inside CSmoothMaster::SetThetaTrain(), NObservables=%d\n",observableinfo->NObservables);
 	for(unsigned int iY=0;iY<observableinfo->NObservables;iY++){
 		emulator[iY]->SetThetaTrain();
 	}

@@ -3,13 +3,13 @@ using namespace std;
 using namespace NBandSmooth;
 
 void CSmoothMaster::ReadTrainingInfo(){
-	if(SmoothEmulator_TrainingFormat != "training_format_smooth"){
+	if(SmoothEmulator_TrainingFormat == "training_format_smooth"){
+		printf("AAAAAAA\n");
 		traininginfo->ReadTrainingInfoSmoothFormat();
-		SetThetaTrain();
 	}
-	else if(SmoothEmulator_TrainingFormat != "training_format_surmise"){
+	else if(SmoothEmulator_TrainingFormat == "training_format_surmise"){
+		printf("BBBBBBBB\n");
 		traininginfo->ReadTrainingInfoSurmiseFormat();
-		SetThetaTrain();
 	}
 }
 
