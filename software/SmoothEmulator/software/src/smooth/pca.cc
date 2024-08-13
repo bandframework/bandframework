@@ -6,7 +6,7 @@ using namespace NMSUUtils;
 
 CPCA::CPCA(){
 	parmap=new CparameterMap;
-	parmap->ReadParsFromFile("parameters/emulator_parameters.txt");
+	parmap->ReadParsFromFile("smooth_parameters/emulator_parameters.txt");
 	string command="mkdir -p PCA_Info";
 	system(command.c_str());
 	
@@ -63,7 +63,7 @@ void CPCA::CalcTransformationInfo(){
 	}
 	
 	for(irun=0;irun<nruns;irun++){
-		snprintf(filename,300,"%s/run%u/obs.txt",modelruns_dirname.c_str(),NTrainingList[irun]);
+		snprintf(filename,300,"smooth_data/%s/run%u/obs.txt",modelruns_dirname.c_str(),NTrainingList[irun]);
 		fptr=fopen(filename,"r");
 		while(!feof(fptr)){
 			fscanf(fptr,"%s",obs_name);
@@ -146,7 +146,7 @@ void CPCA::CalcTransformationInfo(){
 				Z[irun][iz]+=eigvecs(iz,iy)*Ytilde[irun][iy];
 			}
 		}
-		snprintf(filename,300,"%s/run%u/obs_pca.txt",modelruns_dirname.c_str(),NTrainingList[irun]);
+		snprintf(filename,300,"smooth_data/%s/run%u/obs_pca.txt",modelruns_dirname.c_str(),NTrainingList[irun]);
 		fptr=fopen(filename,"w");
 		for(iz=0;iz<NObs;iz++){
 			pcaname="z"+to_string(iz);

@@ -6,7 +6,6 @@ using namespace std;
 int main(){
 	NBandSmooth::CSmoothMaster master;
 	master.ReadCoefficientsAllY();
-	master.ReadTrainingInfo();
 	master.TestVsFullModelAlt();
 	return 0;
 }

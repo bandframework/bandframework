@@ -9,16 +9,15 @@ using namespace NMSUUtils;
 CSimplexSampler::CSimplexSampler(){
 	CparameterMap parmap;
 	randy=new Crandy(123);
-	parmap.ReadParsFromFile("parameters/simplex_parameters.txt");
+	parmap.ReadParsFromFile("smooth_data/smooth_parameters/simplex_parameters.txt");
 	string logfilename=parmap.getS("Simplex_LogFileName","Screen");
 	if(logfilename!="Screen"){
 		CLog::Init(logfilename);
 	}
 	TrainType=parmap.getI("Simplex_TrainType",1);
-	string prior_info_filename="Info/modelpar_info.txt";
+	string prior_info_filename="smooth_data/Info/modelpar_info.txt";
 	priorinfo=new CPriorInfo(prior_info_filename);
 	CModelParameters::priorinfo=priorinfo;
-	ModelDirName=parmap.getS("Simplex_ModelRunDirName","modelruns");
 	NPars=priorinfo->NModelPars;
 }
 
@@ -220,9 +219,7 @@ void CSimplexSampler::WriteModelPars(){
 		modelparameters[itrain]->TranslateTheta_to_X();
 	}
 	for(itrain=0;itrain<NTrainingPts;itrain++){
-		//command="rm -r -f "+ModelDirName+"/run"+to_string(itrain)+"/mod_parameters.txt";
-		//system(command.c_str());
-		dirname=ModelDirName+"/run"+to_string(itrain);
+		dirname="smooth_data/modelruns/run"+to_string(itrain);
 		command="mkdir -p "+dirname;
 		system(command.c_str());
 		filename=dirname+"/mod_parameters.txt";

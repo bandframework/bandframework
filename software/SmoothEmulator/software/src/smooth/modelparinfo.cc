@@ -65,10 +65,7 @@ void CModelParameters::Print(){
 
 void CModelParameters::Write(string filename){
 	unsigned int ipar;
-	string command;
-	command="mkdir -p mcmc_trace";
-	system(command.c_str());
-	filename="mcmc_trace/XbarThetabar.txt";
+	filename="smooth_data/"+filename;
 	FILE *fptr=fopen(filename.c_str(),"w");
 	fprintf(fptr,"#   parname        X      Theta\n");
 	for(ipar=0;ipar<NModelPars;ipar++){

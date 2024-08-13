@@ -113,6 +113,7 @@ void CSmoothEmulator::Tune(){
 			CLog::Fatal("In CSmoothEmulator::Tune(), no tuning method specified\n");
 		}
 	}
+	CLog::Info("SigmaA="+to_string(SigmaA)+"\n");
 }
 
 void CSmoothEmulator::CalcTForTraining(){

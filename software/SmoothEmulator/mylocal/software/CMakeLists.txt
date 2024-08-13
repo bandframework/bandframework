@@ -42,6 +42,11 @@ add_executable(smoothy_testvsfullmodel ${MAIN_PROGRAM_DIR}/smoothy_testvsfullmod
 add_dependencies(smoothy_testvsfullmodel extern_smooth)
 target_link_libraries(smoothy_testvsfullmodel ${GITHOME_BAND_SMOOTH}/software/lib/libsmooth.a  ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a   ${EIGEN3_LIBRARY})
 #################################################
+set(SOURCE_FILES ${MAIN_PROGRAM_DIR}/smoothy_testvsfullmodelalt_main.cc)
+add_executable(smoothy_testvsfullmodelalt ${MAIN_PROGRAM_DIR}/smoothy_testvsfullmodelalt_main.cc)
+add_dependencies(smoothy_testvsfullmodelalt extern_smooth)
+target_link_libraries(smoothy_testvsfullmodelalt ${GITHOME_BAND_SMOOTH}/software/lib/libsmooth.a  ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a   ${EIGEN3_LIBRARY})
+#################################################
 set(SOURCE_FILES ${MAIN_PROGRAM_DIR}/pca_calctransformation_main.cc)
 add_executable(pca_calctransformation ${MAIN_PROGRAM_DIR}/pca_calctransformation_main.cc)
 add_dependencies(pca_calctransformation extern_smooth)
@@ -79,5 +84,13 @@ set(SOURCE_FILES ${FAKEFULLMODEL_DIR}/fakerhic.cc)
 add_executable(fakerhic ${FAKEFULLMODEL_DIR}/fakerhic.cc)
 add_dependencies(fakerhic extern_smooth)
 target_link_libraries(fakerhic ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a
+ ${EIGEN3_LIBRARY})
+#################################################
+# fakejetscape
+#################################################
+set(SOURCE_FILES ${FAKEFULLMODEL_DIR}/fakejetscape.cc)
+add_executable(fakejetscape ${FAKEFULLMODEL_DIR}/fakejetscape.cc)
+add_dependencies(fakejetscape extern_smooth)
+target_link_libraries(fakejetscape ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a
  ${EIGEN3_LIBRARY})
 #################################################

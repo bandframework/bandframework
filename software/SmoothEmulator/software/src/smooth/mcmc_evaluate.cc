@@ -172,11 +172,11 @@ void CMCMC::EvaluateTrace(){
 	modpars.priorinfo=master->priorinfo;
 	modpars.SetTheta(thetabar);
 	modpars.TranslateTheta_to_X();
-	string command="mkdir -p mcmc_trace";
+	string command="mkdir -p smooth_data/mcmc_trace";
 	system(command.c_str());
 	modpars.Write("mcmc_trace/xbar_thetabar.txt");
 	
-	fptr=fopen("mcmc_trace/CovThetaTheta.txt","w");
+	fptr=fopen("smooth_data/mcmc_trace/CovThetaTheta.txt","w");
 	for(ipar=0;ipar<NPars;ipar++){
 		SigmaString.clear();
 		for(jpar=0;jpar<NPars;jpar++){
@@ -189,7 +189,7 @@ void CMCMC::EvaluateTrace(){
 	}
 	fclose(fptr);
 	
-	fptr=fopen("mcmc_trace/ResolvingPower.txt","w");
+	fptr=fopen("smooth_data/mcmc_trace/ResolvingPower.txt","w");
 	for(ipar=0;ipar<NPars;ipar++){
 		for(iobs=0;iobs<NObs;iobs++){
 			fprintf(fptr,"%12.5e ",RP(ipar,iobs));
@@ -203,14 +203,14 @@ void CMCMC::EvaluateTrace(){
 	evecs=esolver.eigenvectors();
 	vector<double> evalnorm;
 	evalnorm.resize(NPars);
-	fptr=fopen("mcmc_trace/CovThetaTheta_eigenvals.txt","w");
+	fptr=fopen("smooth_data/mcmc_trace/CovThetaTheta_eigenvals.txt","w");
 	for(ipar=0;ipar<NPars;ipar++){
 		evalnorm[ipar]=sqrt(fabs(real(evals(ipar))));
 		fprintf(fptr,"%15.8e\n",evalnorm[ipar]);
 	}
 	fclose(fptr);
 	
-	fptr=fopen("mcmc_trace/CovThetaTheta_eigenvecs.txt","w");
+	fptr=fopen("smooth_data/mcmc_trace/CovThetaTheta_eigenvecs.txt","w");
 	for(ipar=0;ipar<NPars;ipar++){
 		SigmaString.clear();
 		for(jpar=0;jpar<NPars;jpar++){

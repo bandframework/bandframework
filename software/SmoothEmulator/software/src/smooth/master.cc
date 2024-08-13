@@ -3,11 +3,12 @@ using namespace std;
 using namespace NBandSmooth;
 
 CSmoothMaster::CSmoothMaster(){
+	printf("check in a\n");
 	unsigned int NObs;
 	unsigned int iZ;
 	CPCA *pca=NULL;
 	parmap=new CparameterMap;
-	parmap->ReadParsFromFile("parameters/emulator_parameters.txt");
+	parmap->ReadParsFromFile("smooth_data/smooth_parameters/emulator_parameters.txt");
 	int ranseed=parmap->getI("RANDY_SEED",time(NULL));
 	randy=new Crandy(ranseed);
 	
@@ -15,64 +16,50 @@ CSmoothMaster::CSmoothMaster(){
 	if(logfilename!="Screen"){
 		CLog::Init(logfilename);
 	}
-	
+	SmoothEmulator_TrainingFormat=parmap->getS("SmoothEmulator_TrainingFormat","training_format_smooth");
+	printf("check b\n");
 	string filename;
 	UsePCA=parmap->getB("SmoothEmulator_UsePCA",false);
 	if(UsePCA){
-		filename="PCA_Info/observable_info.txt";
+		filename="smooth_data/PCA_Info/observable_info.txt";
 		CoefficientsDirName="coefficients_pca";
 		pca=new CPCA();
 	}
 	else{
-		filename="Info/observable_info.txt";
+		filename="smooth_data/Info/observable_info.txt";
 		CoefficientsDirName="coefficients";
 	}
+	printf("check c\n");
 	observableinfo=new CObservableInfo(filename);
 	NObs=observableinfo->NObservables;
 	
 	ModelRunDirName=parmap->getS("SmoothEmulator_ModelRunDirName","modelruns");
+	TrainingThetasFileName=parmap->getS("SmoothEmulator_TrainingThetasFilename","TrainingThetas.txt");
+	TrainingObsFileName=parmap->getS("SmoothEmulator_TrainingObsFilename","TrainingObs.txt");
 	
-	filename="Info/modelpar_info.txt";
+	filename="smooth_data/Info/modelpar_info.txt";
 	priorinfo=new CPriorInfo(filename);
 	NPars=priorinfo->NModelPars;
 	parmap->set("SmoothEmulator_NPars",NPars);
 	parmap->set("Smooth_NPars",NPars);
-
-	string NTrainingStr = parmap->getS("SmoothEmulator_TrainingPts","1");
-	
-	vector<unsigned int> NTrainingList;
-	stringstream ss(NTrainingStr);
-	string token;
-
-	while(getline(ss, token, ',')) {
-		size_t pos = token.find("-");
-		if (pos != string::npos) {
-
-			unsigned int start = stoi(token.substr(0, pos));
-			unsigned int end = stoi(token.substr(pos+1));
-
-			for (unsigned int i = start; i <= end; i++)
-			NTrainingList.push_back(i);
-		}
-		else {
-			NTrainingList.push_back(stoi(token));
-		}
-	}
+	printf("check d\n");
 
 	CTrainingInfo::smoothmaster=this;
-	traininginfo = new CTrainingInfo(NTrainingList,observableinfo,priorinfo);
-
+	printf("check d1\n");
+	traininginfo = new CTrainingInfo(observableinfo,priorinfo);
+	printf("check d2\n");
 	unsigned int maxrank=parmap->getI("SmoothEmulator_MAXRANK",4);
 	smooth=new CSmooth(NPars,maxrank);
+		printf("check d3\n");
 
 	CSmoothEmulator::NPars=NPars;
 	CSmoothEmulator::smooth=smooth;
 	CSmoothEmulator::smoothmaster=this;
 	CSmoothEmulator::parmap=parmap;
 	CSmoothEmulator::randy=randy;
-	CSmoothEmulator::NTrainingPts=NTrainingList.size();
 	CSmoothEmulator::smooth=smooth;
 	emulator.resize(NObs);
+	printf("check e\n");
 	
 	pca_ignore.resize(NObs);
 	if(UsePCA){
@@ -92,11 +79,13 @@ CSmoothMaster::CSmoothMaster(){
 		for(iZ=0;iZ<NObs;iZ++)
 			pca_ignore[iZ]=false;
 	}
+	printf("check f\n");
 	for(unsigned int iy=0;iy<NObs;iy++){
 		if(!UsePCA || !pca_ignore[iy]){
 			emulator[iy]=new CSmoothEmulator(observableinfo->observable_name[iy],pca_ignore[iy]);
 		}
 	}
+	printf("check out\n");
 }
 
 void CSmoothMaster::TuneAllY(){
@@ -192,7 +181,6 @@ void CSmoothMaster::CalcAllY(vector<double> &theta,vector<double> &Y,vector<doub
 		CalcY(iY,theta,Y[iY],SigmaY_emulator[iY]);
 	}
 }
-
 
 void CSmoothMaster::CalcYOnly(string obsname,CModelParameters *modelpars,double &Y){
 	unsigned int iY=observableinfo->GetIPosition(obsname);
@@ -327,9 +315,9 @@ void CSmoothMaster::TestVsFullModelAlt(){
 	string filename;
 	for(iY=0;iY<NObservables;iY++){
 		nfit=ntest=0;
-		filename="fullmodel_testdata/"+observableinfo->observable_name[iY]+".txt";
+		filename="smooth_data/fullmodel_testdata/"+observableinfo->observable_name[iY]+".txt";
 		fptr=fopen(filename.c_str(),"r");
-		filename="fullmodel_testdata/YvsY_"+observableinfo->observable_name[iY]+".txt";
+		filename="smooth_data/fullmodel_testdata/YvsY_"+observableinfo->observable_name[iY]+".txt";
 		fptr_out=fopen(filename.c_str(),"w");
 		
 		testtheta.resize(NPars);
@@ -388,14 +376,14 @@ void CSmoothMaster::TestVsFullModel(){
 	FILE *fptr,*fptr_out;
 	string filename;
 	for(iY=0;iY<NObservables;iY++){
-		filename="fullmodel_testdata/YvsY_"+observableinfo->observable_name[iY]+".txt";
+		filename="smooth_data/fullmodel_testdata/YvsY_"+observableinfo->observable_name[iY]+".txt";
 		fptr_out=fopen(filename.c_str(),"w");
 		nfit=0;
 		
 		//CLog::Info("Writing test_vs_full_model results to "+filename+"\n");
 		
 		for(itest=0;itest<ntestpts;itest++){
-			filename="modelruns/run"+to_string(TestList[itest])+"/mod_parameters.txt";
+			filename="smooth_data/modelruns/run"+to_string(TestList[itest])+"/mod_parameters.txt";
 			//printf("reading %s: \n",filename.c_str());
 			fptr=fopen(filename.c_str(),"r");
 			for(iread=0;iread<NPars;iread++){

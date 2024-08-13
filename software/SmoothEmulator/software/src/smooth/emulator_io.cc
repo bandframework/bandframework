@@ -19,7 +19,7 @@ void CSmoothEmulator::WriteCoefficients(){
 		double betawrite;
 		FILE *fptr;
 		string filename;
-		string dirname=smoothmaster->CoefficientsDirName+"/"+observable_name;
+		string dirname="smooth_data/"+smoothmaster->CoefficientsDirName+"/"+observable_name;
 		string command="mkdir -p "+dirname;
 		system(command.c_str());
 		filename=dirname+"/meta.txt";
@@ -76,10 +76,8 @@ void CSmoothEmulator::ReadCoefficients(){
 		double betaread;
 		FILE *fptr;
 		string filename;
-		string dirname=smoothmaster->CoefficientsDirName+"/"+observable_name;
-		string command="mkdir -p "+dirname;
+		string dirname="smooth_data/"+smoothmaster->CoefficientsDirName+"/"+observable_name;
 		char dummy[100];
-		system(command.c_str());
 		filename=dirname+"/meta.txt";
 		fptr=fopen(filename.c_str(),"r");
 		fgets(dummy,100,fptr);

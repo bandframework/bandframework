@@ -5,8 +5,9 @@
 using namespace std;
 int main(){
 	NBandSmooth::CSmoothMaster master;
-	master.ReadTrainingInfo();
+	printf("check a\n");
 	master.TuneAllY();
+	printf("check b\n");
 	master.WriteCoefficientsAllY();
 	return 0;
 }

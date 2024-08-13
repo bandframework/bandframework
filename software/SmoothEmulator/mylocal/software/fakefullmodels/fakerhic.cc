@@ -38,7 +38,7 @@ void CalcY(vector<double> &xmin,vector<double> &xmax,vector<double> &x,vector<do
 	
 	randy->reset(123);
 
-	double Lambda=2.0,rg;
+	double Lambda=4.0,rg;
 	for(unsigned int I=0;I<NPars;I++){
 		for(unsigned int i=0;i<NPars;i++){
 			for(unsigned int j=0;j<NPars;j++){
@@ -56,11 +56,11 @@ void CalcY(vector<double> &xmin,vector<double> &xmax,vector<double> &x,vector<do
 		}
 	}
 	
-	Y[0]=450.0+100.0*t[0];
-	Y[1]=725.0+150.0*t[1];
-	Y[2]=1100.0+200.0*t[2];
+	Y[0]=450.0+100.0*sin(t[0]/Lambda);
+	Y[1]=725.0+150.0*cos(t[1]/Lambda);
+	Y[2]=1100.0+200.0*(t[2]+exp(t[2]/Lambda));
 	Y[3]=5.5+2.5*t[3];
-	Y[4]=0.4+0.25*t[4];
+	Y[4]=0.4+0.25*log(1.0+(t[4]*t[4]/((1.0+t[4]*t[4]))/(Lambda*Lambda)));
 	Y[5]=0.6+0.4*t[5];
 }
 
@@ -80,7 +80,7 @@ int main(){
 	NTrain=0;
 	bool existence;
 	do{
-		string filename="modelruns/run"+to_string(NTrain);
+		string filename="smooth_data/modelruns/run"+to_string(NTrain);
 		filesystem::path f{filename};
 		existence=filesystem::exists(f);
 		if(existence){
@@ -98,15 +98,15 @@ int main(){
 	Ytrain.resize(NObs);
 	
 	// Observable uncertainties
-	SigmaY[0]=40.0;
-	SigmaY[1]=50.0;
-	SigmaY[2]=60.0;
-	SigmaY[3]=1.0;
+	SigmaY[0]=20.0;
+	SigmaY[1]=30.0;
+	SigmaY[2]=40.0;
+	SigmaY[3]=0.5;
 	SigmaY[4]=0.2;
 	SigmaY[5]=0.1;
 
 	// read in modelpar_info and set experimental value to theta=0.2
-	fptr=fopen("Info/modelpar_info.txt","r");
+	fptr=fopen("smooth_data/Info/modelpar_info.txt","r");
 	fgets(dummy,200,fptr);
 	for(ipar=0;ipar<NPars;ipar++){
 		fscanf(fptr,"%s %s %lf %lf",parname_c,type,&xmin[ipar],&xmax[ipar]);
@@ -114,7 +114,7 @@ int main(){
 	}
 	fclose(fptr);
 	CalcY(xmin,xmax,xtrue,Ytrue,&randy);
-	fptr=fopen("Info/experimental_info.txt","w");
+	fptr=fopen("smooth_data/Info/experimental_info.txt","w");
 	for(iobs=0;iobs<NObs;iobs++){
 		fprintf(fptr,"%s\t%g\t%g 0.0\n",
 		obsname[iobs].c_str(),Ytrue[iobs],SigmaY[iobs]/5.0);
@@ -123,7 +123,7 @@ int main(){
 	
 	// Write observable info for every training point
 	for(itrain=0;itrain<NTrain;itrain++){
-		filename="modelruns/run"+to_string(itrain)+"/mod_parameters.txt";
+		filename="smooth_data/modelruns/run"+to_string(itrain)+"/mod_parameters.txt";
 		fptr=fopen(filename.c_str(),"r");
 		for(ipar=0;ipar<NPars;ipar++){
 			fscanf(fptr,"%s %lf",parname_c,&xtrain[ipar]);
@@ -132,7 +132,7 @@ int main(){
 		
 		CalcY(xmin,xmax,xtrain,Ytrain,&randy);
 		
-		filename="modelruns/run"+to_string(itrain)+"/obs.txt";
+		filename="smooth_data/modelruns/run"+to_string(itrain)+"/obs.txt";
 		fptr=fopen(filename.c_str(),"w");
 		for(iobs=0;iobs<NObs;iobs++){
 			fprintf(fptr,"%s %lf %lf\n",obsname[iobs].c_str(),Ytrain[iobs],SigmaY[iobs]);

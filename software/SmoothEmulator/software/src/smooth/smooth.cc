@@ -12,7 +12,7 @@ CSmooth::CSmooth(unsigned int NPars_Set,unsigned int maxrank_set){
 
 CSmooth::CSmooth(){
 	CparameterMap parmap;
-	parmap.ReadParsFromFile("parameters/emulator_parameters.txt");
+	parmap.ReadParsFromFile("smooth_ parameters/emulator_parameters.txt");
 	NPars=parmap.getI("SmoothEmulator_NPars",0);
 	MaxRank=parmap.getI("Smooth_MAXRANK",5);
 	if(MaxRank>5){

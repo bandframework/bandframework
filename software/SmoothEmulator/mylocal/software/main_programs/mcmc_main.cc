@@ -8,7 +8,7 @@ int main(){
 	NMSUUtils::CparameterMap *parmap=master.parmap;
 	NBandSmooth::CMCMC mcmc(&master);
 	master.ReadCoefficientsAllY();
-	master.ReadTrainingInfo();
+	//master.ReadTrainingInfo();
 	//master.TestAtTrainingPts();
 	
 	// Prompt user for model parameter values

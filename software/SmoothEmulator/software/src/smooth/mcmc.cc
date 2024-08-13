@@ -17,7 +17,7 @@ CMCMC::CMCMC(CSmoothMaster *master_set){
 	priorinfo=master->priorinfo;
 	CLLCalc::priorinfo=priorinfo;
 	parmap=master->parmap;
-	parmap->ReadParsFromFile("parameters/mcmc_parameters.txt");
+	parmap->ReadParsFromFile("smooth_parameters/mcmc_parameters.txt");
 	string logfilename=parmap->getS("MCMC_LogFileName","Screen");
 	if(logfilename!="Screen"){
 		CLog::Init(logfilename);

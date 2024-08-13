@@ -30,7 +30,7 @@ int main(){
 	
 	
 	
-	filename="Info/modelpar_info.txt";
+	filename="smooth_data/Info/modelpar_info.txt";
 	fptr=fopen(filename.c_str(),"r");
 	NPars=0;
 	while(!feof(fptr)){
@@ -52,7 +52,7 @@ int main(){
 	}
 	fclose(fptr);
 	
-	filename="Info/observable_info.txt";
+	filename="smooth_data/Info/observable_info.txt";
 	fptr=fopen(filename.c_str(),"r");
 	NObs=0;
 	while(!feof(fptr)){
@@ -76,7 +76,7 @@ int main(){
 	NTrain=0;
 	bool existence;
 	do{
-		string filename="modelruns/run"+to_string(NTrain);
+		string filename="smooth_data/modelruns/run"+to_string(NTrain);
 		filesystem::path f{filename};
 		existence=filesystem::exists(f);
 		if(existence){
@@ -101,7 +101,7 @@ int main(){
 	string command="mkdir -p fullmodel_testdata";
 	system(command.c_str());
 	theta.resize(NPars);
-	expfilename="Info/experimental_info.txt";
+	expfilename="smooth_data/Info/experimental_info.txt";
 	expfptr=fopen(expfilename.c_str(),"w");
 	exptheta.resize(NPars);
 	for(ipar=0;ipar<NPars;ipar++){
@@ -114,7 +114,7 @@ int main(){
 			A[ic]=100.0*randy.ran_gauss();
 		}
 		for(itrain=0;itrain<NTrain;itrain++){
-			filename="modelruns/run"+to_string(itrain)+"/mod_parameters.txt";
+			filename="smooth_data/modelruns/run"+to_string(itrain)+"/mod_parameters.txt";
 			fptr=fopen(filename.c_str(),"r");
 			for(ipar=0;ipar<NPars;ipar++){
 				fscanf(fptr,"%s %lf",parname_c,&x);
@@ -123,7 +123,7 @@ int main(){
 			}
 			fclose(fptr);
 			y=smooth.CalcY(A,LAMBDA,theta);
-			filename="modelruns/run"+to_string(itrain)+"/obs.txt";
+			filename="smooth_data/modelruns/run"+to_string(itrain)+"/obs.txt";
 			if(iy==0)
 				fptr_out=fopen(filename.c_str(),"w");
 			else
