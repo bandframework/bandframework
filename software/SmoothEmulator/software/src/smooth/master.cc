@@ -331,7 +331,6 @@ void CSmoothMaster::TestVsFullModelAlt(){
 }
 
 void CSmoothMaster::TestVsFullModel(){
-	printf("check aa\n");
 	string TestListStr = parmap->getS("SmoothEmulator_TestPts","1");
 	
 	vector<unsigned int> TestList;
@@ -371,7 +370,6 @@ void CSmoothMaster::TestVsFullModel(){
 		//CLog::Info("Writing test_vs_full_model results to "+filename+"\n");
 		
 		for(itest=0;itest<ntestpts;itest++){
-			printf("check aaa\n");
 			filename="smooth_data/modelruns/run"+to_string(TestList[itest])+"/mod_parameters.txt";
 			printf("filename=%s\n",filename.c_str());
 			fptr=fopen(filename.c_str(),"r");
@@ -381,15 +379,12 @@ void CSmoothMaster::TestVsFullModel(){
 				ipar=priorinfo->GetIPosition(modparname);
 				testpars.X[ipar]=Xread;
 			}
-			printf("check bbb\n");
 			fclose(fptr);
 			testpars.TranslateX_to_Theta();
 			CalcY(iY,testpars.Theta,Y,SigmaY_emulator);
 			
 			filename="smooth_data/modelruns/run"+to_string(TestList[itest])+"/obs.txt";
-			printf("check ccc filename=%s\n",filename.c_str());
 			fptr=fopen(filename.c_str(),"r");
-			printf("check cccc\n");
 			iread=-1;
 			do{
 				iread+=1;
@@ -397,7 +392,6 @@ void CSmoothMaster::TestVsFullModel(){
 				obsname=string(obsnamechars);
 				
 			}while(iread<observableinfo->NObservables && obsname!=observableinfo->observable_name[iY]);
-			printf("check ddd\n");
 			fclose(fptr);
 			if(fabs(Y-realY)<SigmaY_emulator)
 				nfit+=1;

@@ -5,7 +5,7 @@
 
 \subsection{Summary}
 
-Smooth emulator finds a sample set of Taylor expansion coefficients that reproduce a set of observables at a set of training points. The process of finding those coefficients is referred to as ``tuning''. For a given observable, a particular sample set of coefficients gives the following emulated function:
+Smooth emulator finds an optimum set of Taylor expansion coefficients that reproduce a set of observables at a set of training points. The process of finding those coefficients is referred to as ``tuning''. For a given observable, a particular sample set of coefficients gives the following emulated function:
 \begin{align*}\eqnumber
 E(\vec{\theta})&=\sum_{\vec{n}, s.t. \sum_in_i\le {\rm MaxRank}}d(\vec{n})A_{\vec{n}}
 \left(\frac{\theta_1}{\Lambda}\right)^{n_1}
@@ -20,7 +20,7 @@ As described in Sec. \ref{sec:theory}, the coefficients are chosen weighted by t
 \begin{eqnarray}\label{eq:EmuWeight}
 P(\vec{A})=\prod_n\frac{1}{\sqrt{2\pi\sigma_A^2}}e^{-A_n^2/2\sigma_A^2},
 \end{eqnarray}
-where $\sigma_A$ is varied to maximize the overall probability given the constraint of reproducing the training points. More discussion is provided in Sec. \ref{sec:theory}. Whereas {\it Smooth Emulator} does a nice job of finding an optimum value for $\sigma_A$ if $\Lambda$ is known, the smoothness parameter $\Lambda$ is unfortunately difficult to optimize. For the moment, this is treated purely as prior knowledge, or expectation. If the User expects the full model to be very smooth, i.e. the quadratic contributions to be much smaller than the linear contributions and so on, a larger value (e.g 3.0), might be chosen. If the full-model output might be almost wavy, then a smaller value (e.g. 1.5) might be chosen. The emulator uncertainties will be smaller for larger $\Lambda$.
+where $\sigma_A$ is varied to maximize the overall probability given the constraint of reproducing the training points. More discussion is provided in Sec. \ref{sec:theory}. Whereas {\it Smooth Emulator} does a nice job of finding an optimum value for $\sigma_A$ if $\Lambda$ is known, the smoothness parameter $\Lambda$ is unfortunately difficult to optimize. For the moment, this is treated purely as prior knowledge, or expectation. If the User expects the full model to be very smooth, i.e. the quadratic contributions to be much smaller than the linear contributions and so on, a larger value (e.g 5.0), might be chosen. If the full-model output might be almost wavy, then a smaller value (e.g. 2) might be chosen. The emulator uncertainties will be smaller for larger $\Lambda$.
 
 By setting parameters, as described below, {\it Smooth Emulator} can be tuned one of three different ways
 \begin{itemize}\itemsep=0pt
@@ -40,7 +40,7 @@ In the following subsections, we first review the format for each of the require
 
 Before training the emulator, one must first run the full model at a given set of training points. In addition to a parameter file (described in the next sub-section), which sets numerous options, the User must provide the following:
 \begin{enumerate}\itemsep=0pt
-\item A file listing the names of observables and an estimate of the variance of each observable throughout the model-parameter space, $\sigma_A$. This file is named {\tt Info/observable\_info.txt}, where the path is relative to the project directory. The file might look like
+\item A file listing the names of observables and an estimate of the variance of each observable throughout the model-parameter space, $\sigma_A$. This file is named\\{\tt smooth\_data/Info/observable\_info.txt}, where the path is relative to the project directory. The file might look like
 {\tt
 \begin{verbatim}
  obsname1  SigmaA1_init
@@ -52,7 +52,7 @@ Before training the emulator, one must first run the full model at a given set o
  \hspace*{28pt}$\vdots$\\
 The initial $\sigma_A$ is only relevant if one is using one of the Monte Carlo tuning methods, (b) or (c) above, as it provides an initial guess for the parameter $\sigma_A$ above when using one of the Monte Carlo methods.
 
-\item A file listing the names of the model parameters that also describes their priors. This file is {\tt Info/modelpar\_info.txt}. The file might have the following form:
+\item A file listing the names of the model parameters that also describes their priors. This file is {\tt smooth\_data/Info/modelpar\_info.txt}. The file might have the following form:
 {\tt
 \begin{verbatim}
 parname1 uniform   0      1.0E-3
@@ -64,7 +64,7 @@ parname4 uniform   30.0   50.0
  \hspace*{28pt}$\vdots$\\
 If the prior is {\tt uniform} the two following numbers provide the minimum and maximum of the interval. If the prior is {\tt gaussian} the two subsequent values represent the center and r.m.s. width of the Gaussian. This same file was required for running {\it Simplex Sampler}.
 
-\item A list of the model-parameter values, $\vec{\theta}_{\rm train}$, at each training point. These points can be generated by {\it Simplex Sampler}, as described in Sec. \ref{sec:simplex}, or they can be generated by hand. If the number of full-model runs performed is $N_{\rm train}$, Smooth emulator requires files for each run. Each file is named {\tt \$\{MODEL\_RUN\_DIRNAME\}/runI/mod\_parameters.txt}, where $0\le I<N_{\rm train}$, and $I$ denotes the point in  parameter space for the $I^{\rm th}$ full-model training run. The directory {\tt \$\{MODEL\_RUN\_DIRNAME\}/} is typically {\tt \$\{MY\_PROJECT\}/modelruns}, but can be defined otherwise (see below). For example the file {\tt modelruns/run0/mod\_parameters.txt} might look like
+\item A list of the model-parameter values, $\vec{\theta}_{\rm train}$, at each training point. These points can be generated by {\it Simplex Sampler}, as described in Sec. \ref{sec:simplex}, or they can be generated by hand. If the number of full-model runs performed is $N_{\rm train}$, Smooth emulator requires files for each run. Each file is named {\tt smooth\_data/modelruns/runI/mod\_parameters.txt}, where $0\le I<N_{\rm train}$, and $I$ denotes the point in  parameter space for the $I^{\rm th}$ full-model training run. {\tt mod\_parameters.txt} might look like
 {\tt
 \begin{verbatim}
  parname1  8.34E-4
@@ -75,7 +75,7 @@ If the prior is {\tt uniform} the two following numbers provide the minimum and 
 \vspace*{-16pt}
  \hspace*{28pt}$\vdots$\\
 
-\item At each training point, the User must provide the full model's value for each observable. In the same directory where the model-parameter values are stored, {\it Smooth Emulator} requires the observables calculated at the training points mentioned above. This information is provided in {\tt \$\{MODEL\_RUN\_DIRNAME\}/runI/obs.txt}. An example of such a file is:
+\item At each training point, the User must provide the full model's value for each observable. In the same directory where the model-parameter values are stored, {\it Smooth Emulator} requires the observables calculated at the training points mentioned above. This information is provided in {\tt smooth\_data/modelruns/runI/obs.txt}. An example of such a file is:
 {\tt
 \begin{verbatim}
  obsname1  -51.4645   2.5
@@ -89,7 +89,7 @@ The first number is the calculated value of the observable, and the second is th
 
 
 \subsection{Experimental Measurement Information}
-Once the emulator is tuned and before it is applied to a Markov Chain investigation of the likelihood, the software needs to know the experimental measurement and uncertainty. That information must be entered in the {\tt Info/experimental\_info.txt} file. The file should have the format:
+Once the emulator is tuned and before it is applied to a Markov Chain investigation of the likelihood, the software needs to know the experimental measurement and uncertainty. That information must be entered in the {\tt smooth\_data/Info/experimental\_info.txt} file. The file should have the format:
 {\tt
 \begin{verbatim}
  obsname1  -12.93    0.95   0.5
@@ -106,7 +106,8 @@ The first number is the measured value and the second is the experimentally repo
 
 \subsection{{\it Smooth Emulator} Parameters (not model parameters!)}
 
-{\it Smooth Emulator} requires a parameter file, {\tt \$\{MY\_PROJECT\}/parameters/emulator\_parameters.txt}. The parameter file is simply a list, of parameter names followed by values. 
+{\it Smooth Emulator} requires a parameter file,\\
+{\tt \$\{MY\_PROJECT\}/smooth\_data/smooth\_parameters/emulator\_parameters.txt}. The parameter file is simply a list, of parameter names followed by values. 
 
 {\tt
 \begin{verbatim}
@@ -114,8 +115,8 @@ The first number is the measured value and the second is the experimentally repo
   SmoothEmulator_LAMBDA 2.0 #  Smoothness parameter
   SmoothEmulator_MAXRANK 5
   SmoothEmulator_ConstrainA0 true
-  SmoothEmulator_ModelRunDirName modelruns
   SmoothEmulator_TrainingPts 0-27
+  SmoothEmulator_TestPts 28-50
   SmoothEmulator_UsePCA   false
   SmoothEmulator_TuneChooseExact true
  #
@@ -154,13 +155,44 @@ W(A_i)=\frac{1}{\sqrt{2\pi\sigma_A^2}}e^{-A_i^2/2\sigma_A^2}.
 \]
 The term $\sigma_A$ is allowed to vary during the tuning to maximize the likelihood of the expansion. If the User wishes to exempt the lowest term, i.e. the constant term in the Taylor expansion from the weight, the User may set {\tt SmoothEmulator\_ConstrainA0} to {\tt false}. The default is {\tt false}.
 
-\item {\bf SmoothEmulator\_ModelRunDirName}\\
-This gives the directory in which the training data from the full model runs is stored. The default is {\tt modelruns}, which is the same default {\tt Simplex Sampler} uses for writing the coordinates of the training points.
-
 \item {\bf SmoothEmulator\_TrainingPts}\\
 This lists which full-model training runs SmoothEmulator will use to train the emulator. This provides the User with the flexibility to use some subset for training, as may be the case when testing the accuracy. The default is ``1''. An example the User might enter could be\\
 {\tt ~SmoothEmulator\_TrainingPts  0-4,13,15}\\
-This would choose the training information from the directories {\tt run0,run1,run2,run3,run4},\\{\tt run13} and {\tt run15}, which would be found in the directory denoted by the\\{\tt SmoothEmulator\_ModelRunDirName} parameter.
+This would choose the training information from the directories {\tt run0,run1,run2,run3,run4},\\{\tt run13} and {\tt run15}, which would be found in \\{\tt smooth\_data/modelruns/}.
+
+\item {\bf SmoothEmulator\_TestPts}\\
+This lists which full-model training runs SmoothEmulator will use to test the emulator away from where the emulator was tuned. This provides the User with the flexibility to use some subset for training, as may be the case when testing the accuracy. The default is ``1''. An example the User might enter could be\\
+{\tt ~SmoothEmulator\_TestPts 5-12,14,16-50 }\\
+This would choose the model output information from the specified directories, {\tt run5,run6}$\cdots$ found in \\{\tt smooth\_data/modelruns/}.
+
+\item {\bf SmoothEmulator\_TrainingFormat}\\
+This defines the format to be used for reading the training data. There are two choices. The default is:\\
+~{\tt SmoothEmulator\_TrainingFormat training\_format\_smooth}\\
+This reads model output from the {\tt smooth\_data/modelruns/} directory. The second choice is:\\
+~{\tt SmoothEmulator\_TrainingFormat training\_format\_surmise}\\
+This latter choice reads the training information from files defined by the parameters\\
+{\tt SmoothEmulator\_TrainingThetasFilename} and {\tt 
+ SmoothEmulator\_TrainingObsFilename}. For example, the following lines would set the format and read the input from the specified files:\\
+ {\tt\begin{verbatim}
+ SmoothEmulator_TrainingFormat training_format_surmise
+ SmoothEmulator_TrainingThetasFilename TrainingThetas.txt
+ SmoothEmulator_TrainingObsFilename TrainingObs.txt
+ \end{verbatim}}
+The format for the file specified by {\tt SmoothEmulator\_TrainingThetasFilename} should be:
+\vspace*{-8pt}
+{\tt\begin{verbatim}
+X1   X2   X3   ....
+X1   X2   X3   ....
+\end{verbatim}}
+\vspace*{-8pt}
+Here, each row represents the model parameters for a different training point. All the lines will be used to tune the emulator. The format for the file {\tt SmoothEmulator\_TrainingObsFilename} should be:
+\vspace*{-8pt}
+{\tt\begin{verbatim}
+Y1   Y2   Y3   ....
+Y1   Y2   Y3   ....
+\end{verbatim}}
+\vspace*{-8pt}
+Again, each row should correspond to a different training point. The two files above should thus have the same number of rows.
 
 \item {\bf SmoothEmulator\_UsePCA}\\
 By default, this is set to {\tt false}. If one wishes to emulate the PCA observables, i.e. those that are linear combinations of the real observables, this should be set to true. One must then be sure to have run the pca decomposition programs first. For more, see Sec. \ref{sec:pca}. 
@@ -234,7 +266,7 @@ The executable {\tt smoothy\_tune} should now appear in the {\tt \$\{MY\_LOCAL\}
   ~/MY_PROJECT % smoothy_tune
 \end{verbatim}
 }
-This should read in all the necessary information, tune the emulators for all the observables and write the Taylor-expansion coefficients to file.  The optimum coefficients are stored in the file {\tt coefficients/OBS\_NAME/ABest.bin}, where {\tt OBS\_NAME} is the observable name. If a Monte Carlo tuning method was applied, there are several sets of coefficients stored,\\{\tt coefficients/OBS\_NAME/sampleI.bin}, where $0\le I<N_{\rm sample}$. Along with the coefficients, in the same directory {\it Smooth Emulator} writes a file for each observable. These files are named {\tt coefficients/OBS\_NAME/meta.txt}.  This file provides information, such as the maximum rank and net number of model parameters, to make it possible to read the coefficients later on. For the non-Monte-Carlo method,  files {\tt coefficients/OBS\_NAME/BetaBest.bin} are stored for later use in calculating the uncertainties.
+This should read in all the necessary information, tune the emulators for all the observables and write the Taylor-expansion coefficients to file.  The optimum coefficients are stored in the file {\tt smooth\_data/coefficients/OBS\_NAME/ABest.bin}, where {\tt OBS\_NAME} is the observable name. If a Monte Carlo tuning method was applied, there are several sets of coefficients stored,\\{\tt smooth\_data/coefficients/OBS\_NAME/sampleI.bin}, where $0\le I<N_{\rm sample}$. Along with the coefficients, in the same directory {\it Smooth Emulator} writes a file for each observable. These files are named {\tt smooth\_data/coefficients/OBS\_NAME/meta.txt}.  This file provides information, such as the maximum rank and net number of model parameters, to make it possible to read the coefficients later on. For the non-Monte-Carlo method,  files {\tt smooth\_data/coefficients/OBS\_NAME/BetaBest.bin} are stored for later use in calculating the uncertainties.
 
 Similarly, there is a code {\tt \$\{MY\_LOCAL\}/main\_programs/smoothy\_calcobs\_main.cc}, which provides an example of how one might read the coefficients and generate predictions for the emulator at specified points in parameter space:
 {\tt
@@ -353,7 +385,7 @@ This object stores the emulator parameters described above. It is a simple inher
 {\tt
 \begin{verbatim}
  CparameterMap parmap;
- parmap.ReadParsFromFile("parameters/emulator_parameters.txt")
+ parmap.ReadParsFromFile("smooth_data/smooth_parameters/emulator_parameters.txt")
 \end{verbatim}}
 The argument can be either a C++ string or a character array. The CSmoothMaster constructor takes a pointer to a CparameterMap object as a argument. If one wishes to print the parameters, the function is {\tt parmap.PrintPars()}. To set a parameter within a program, {\tt parmap.set(string,value)}, where {\tt value} can be any of several types, e.g. bool, double, an integer, long long integer, string, $\cdots$. To retrieve a value from the map, the commands are {\tt getB, getI, getLongI, getS, getD}, $\cdots$, for {\tt bool, int, long long int} $\cdots$ types. For example, 
 {\tt
@@ -363,7 +395,7 @@ The argument can be either a C++ string or a character array. The CSmoothMaster 
 would retrieve the value of $\Lambda$, and if the map did not include {\tt SmoothEmulator\_LAMBDA}, it would return a default value of 2.0.
 
 \item {\tt CPriorInfo}\\
-This object stores information about the prior. The {\tt CSmoothMaster} object includes such an object, and automatically, during its construction, the {\tt CSmoothMaster} object reads in the {\tt Info/modelpar\_info.txt} file and creates the object. The functionalities of potential interest might be addressed from a main program via:\\
+This object stores information about the prior. The {\tt CSmoothMaster} object includes such an object, and automatically, during its construction, the {\tt CSmoothMaster} object reads in the {\tt smooth\_data/Info/modelpar\_info.txt} file and creates the object. The functionalities of potential interest might be addressed from a main program via:\\
 {\tt
 \begin{verbatim}
  smoothmaster.priorinfo.PrintInfo();  // prints out the parameter priors
@@ -403,7 +435,7 @@ This object stores general information about all the observables, including thei
    // finds name give position
  void ReadObservableInfo(string filename);
    // reads information about observable, either from
-   //Info/observable_info.txt o Info/pca_info.txt 
+   //smooth\_data/Info/observable_info.txt or smooth\_data/Info/pca_info.txt 
  void ReadExperimentalInfo(string filename);
    // reads experimental measurement and uncertainty (used in MCMC)
  vector<double> YExp,SigmaExp;
