@@ -112,7 +112,6 @@ void CSmoothMaster::GenerateCoefficientSamples(){
 }
 
 void CSmoothMaster::SetThetaTrain(){
-	printf("---- Inside CSmoothMaster::SetThetaTrain(), NObservables=%d\n",observableinfo->NObservables);
 	for(unsigned int iY=0;iY<observableinfo->NObservables;iY++){
 		emulator[iY]->SetThetaTrain();
 	}
@@ -332,6 +331,7 @@ void CSmoothMaster::TestVsFullModelAlt(){
 }
 
 void CSmoothMaster::TestVsFullModel(){
+	printf("check aa\n");
 	string TestListStr = parmap->getS("SmoothEmulator_TestPts","1");
 	
 	vector<unsigned int> TestList;
@@ -371,8 +371,9 @@ void CSmoothMaster::TestVsFullModel(){
 		//CLog::Info("Writing test_vs_full_model results to "+filename+"\n");
 		
 		for(itest=0;itest<ntestpts;itest++){
+			printf("check aaa\n");
 			filename="smooth_data/modelruns/run"+to_string(TestList[itest])+"/mod_parameters.txt";
-			//printf("reading %s: \n",filename.c_str());
+			printf("filename=%s\n",filename.c_str());
 			fptr=fopen(filename.c_str(),"r");
 			for(iread=0;iread<NPars;iread++){
 				fscanf(fptr,"%s %lf %lf",modparnamechars,&Xread,&SigmaXRead);
@@ -380,13 +381,15 @@ void CSmoothMaster::TestVsFullModel(){
 				ipar=priorinfo->GetIPosition(modparname);
 				testpars.X[ipar]=Xread;
 			}
+			printf("check bbb\n");
 			fclose(fptr);
 			testpars.TranslateX_to_Theta();
 			CalcY(iY,testpars.Theta,Y,SigmaY_emulator);
 			
-			filename="modelruns/run"+to_string(TestList[itest])+"/obs.txt";
-			//printf("reading %s: \n",filename.c_str());
+			filename="smooth_data/modelruns/run"+to_string(TestList[itest])+"/obs.txt";
+			printf("check ccc filename=%s\n",filename.c_str());
 			fptr=fopen(filename.c_str(),"r");
+			printf("check cccc\n");
 			iread=-1;
 			do{
 				iread+=1;
@@ -394,6 +397,7 @@ void CSmoothMaster::TestVsFullModel(){
 				obsname=string(obsnamechars);
 				
 			}while(iread<observableinfo->NObservables && obsname!=observableinfo->observable_name[iY]);
+			printf("check ddd\n");
 			fclose(fptr);
 			if(fabs(Y-realY)<SigmaY_emulator)
 				nfit+=1;

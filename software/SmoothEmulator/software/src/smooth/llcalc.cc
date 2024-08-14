@@ -8,7 +8,6 @@ bool CLLCalc::IGNORE_EMULATOR_ERROR=false;
 CPriorInfo *CLLCalc::priorinfo=NULL;
 
 CLLCalc::CLLCalc(){
-	bestLL=-1.0E100;
 }
 
 CLLCalc::CLLCalc(CSmoothMaster *master_set){
@@ -25,7 +24,6 @@ CLLCalc::CLLCalc(CSmoothMaster *master_set){
 	for(unsigned int iy=0;iy<NObs;iy++){
 		dYdTheta[iy].resize(NPars);
 	}	
-	bestLL=-1000000;
 	priorinfo=master_set->priorinfo;
 }
 
@@ -48,7 +46,6 @@ CLLCalcSmooth::CLLCalcSmooth(CSmoothMaster *master_set){
 	for(unsigned int iy=0;iy<NObs;iy++){
 		dYdTheta[iy].resize(NPars);
 	}
-	bestLL=-1000000;
 	priorinfo=master_set->priorinfo;
 }
 
@@ -125,21 +122,6 @@ void CLLCalcSmooth::CalcLLPlusDerivatives(vector<double> &theta,double &LL,vecto
 			dLL_dTheta[ipar]-=theta[ipar]*pow(CModelParameters::GSCALE,2);
 		}
 	}
-	/*
-	if(LL>bestLL){
-		bestLL=LL;
-		CLog::Info("-------------------------------\n");
-		CLog::Info("Theta=");
-		for(ipar=0;ipar<NPars;ipar++){
-			CLog::Info(to_string(modpars->Theta[ipar])+" ");
-		}
-		CLog::Info("\nY = ");
-		for(iy=0;iy<NObs;iy++){
-			CLog::Info(to_string(Y[iy])+"=?"+to_string(obsinfo->YExp[iy])+" ");
-		}
-		CLog::Info("\nbestLL="+to_string(bestLL)+"\n");
-	}
-	*/
 	
 	
 }

@@ -21,13 +21,6 @@ void CalcY(vector<double> &xmin,vector<double> &xmax,vector<double> &x,vector<do
 		xbar[ipar]=0.5*(xmin[ipar]+xmax[ipar]);
 		theta[ipar]=2*(x[ipar]-xbar[ipar])/(xmax[ipar]-xmin[ipar]);
 	}
-	/*
-	t[0]=0.5*theta[0]+0.5*theta[1]+0.5*theta[2];
-	t[1]=0.5*theta[0]-0.5*theta[1]+0.5*theta[3];
-	t[2]=0.1*theta[0]+0.2*theta[2]+0.3*theta[3]+0.4*theta[4]+0.5*theta[5];
-	t[3]=-theta[3]-0.2*theta[5];
-	t[4]=theta[4]+0.4*theta[3]-0.5*theta[6];
-	t[5]=-0.5*theta[5]-0.3*theta[1]+0.1*theta[3];*/
 	
 	t[0]=0.8*theta[0]+0.6*theta[1];
 	t[1]=0.71*theta[0]+0.5*theta[1]-0.5*theta[4];
@@ -56,12 +49,15 @@ void CalcY(vector<double> &xmin,vector<double> &xmax,vector<double> &x,vector<do
 		}
 	}
 	
-	Y[0]=450.0+100.0*sin(t[0]/Lambda);
-	Y[1]=725.0+150.0*cos(t[1]/Lambda);
-	Y[2]=1100.0+200.0*(t[2]+exp(t[2]/Lambda));
+	Y[0]=450.0+100.0*Lambda*sin(t[0]/Lambda);
+	Y[1]=725.0+150*t[1]+150.0*Lambda*(1.0-cos(t[1]/Lambda));
+	Y[2]=1100.0+200.0*(-t[2]+Lambda*(1.0-exp(t[2]/Lambda)));
 	Y[3]=5.5+2.5*t[3];
-	Y[4]=0.4+0.25*log(1.0+(t[4]*t[4]/((1.0+t[4]*t[4]))/(Lambda*Lambda)));
-	Y[5]=0.6+0.4*t[5];
+	Y[4]=0.4+0.35*Lambda*log(1.0+0.2*t[4]/((1.0+(t[4]/Lambda)*(t[4]/Lambda))));
+	Y[5]=0.2+0.4*t[5]+0.4*t[5]*t[5]/Lambda;
+	
+	//int iy=2;
+	//printf("t[%d]=%g,  Y[%d]=%g,\n",iy,t[iy],iy,Y[iy]);
 }
 
 int main(){
@@ -159,7 +155,7 @@ int main(){
 	X.resize(NPars);
 	string command="mkdir -p fullmodel_testdata";
 	system(command.c_str());
-	command="rm -f fullmodel_testdata/*.txt";
+	command="rm -f smooth_data/fullmodel_testdata/*.txt";
 	system(command.c_str());
 	unsigned int itest,Ntest=50;
 	
@@ -174,7 +170,7 @@ int main(){
 		}
 		CalcY(xmin,xmax,X,Y,&randy);
 		for(iobs=0;iobs<NObs;iobs++){
-			filename="fullmodel_testdata/"+obsname[iobs]+".txt";
+			filename="smooth_data/fullmodel_testdata/"+obsname[iobs]+".txt";
 			fptr=fopen(filename.c_str(),"a");
 			for(ipar=0;ipar<NPars;ipar++){
 				fprintf(fptr,"%12.5e ",theta[ipar]);

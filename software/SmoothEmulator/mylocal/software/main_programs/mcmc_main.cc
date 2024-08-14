@@ -4,7 +4,7 @@
 #include "msu_smooth/mcmc.h"
 using namespace std;
 int main(){
-	NBandSmooth::CSmoothMaster master;	
+	NBandSmooth::CSmoothMaster master;
 	NMSUUtils::CparameterMap *parmap=master.parmap;
 	NBandSmooth::CMCMC mcmc(&master);
 	master.ReadCoefficientsAllY();

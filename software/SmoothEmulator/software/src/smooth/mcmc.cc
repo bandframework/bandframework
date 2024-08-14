@@ -17,7 +17,7 @@ CMCMC::CMCMC(CSmoothMaster *master_set){
 	priorinfo=master->priorinfo;
 	CLLCalc::priorinfo=priorinfo;
 	parmap=master->parmap;
-	parmap->ReadParsFromFile("smooth_parameters/mcmc_parameters.txt");
+	parmap->ReadParsFromFile("smooth_data/smooth_parameters/mcmc_parameters.txt");
 	string logfilename=parmap->getS("MCMC_LogFileName","Screen");
 	if(logfilename!="Screen"){
 		CLog::Init(logfilename);
@@ -26,7 +26,7 @@ CMCMC::CMCMC(CSmoothMaster *master_set){
 	NPars=master->NPars;
 	trace_filename=parmap->getS("MCMC_TRACE_FILENAME","mcmc_trace/trace.txt");
 	Xtrace_filename=parmap->getS("MCMC_TRACE_FILENAME","mcmc_trace/Xtrace.txt");
-	string command="mkdir -p mcmc_trace";
+	string command="mkdir -p smooth_data/mcmc_trace";
 	system(command.c_str());
 	OPTIMIZESTEPS=parmap->getB("MCMC_OPTIMIZESTEPS",false);
 	IGNORE_EMULATOR_ERROR=parmap->getB("MCMC_IGNORE_EMULATOR_ERROR",false);
@@ -233,7 +233,7 @@ void CMCMC::WriteTrace(){
 	unsigned int itrace,ipar,ntrace=trace.size();
 	FILE *fptr;
 	CLog::Info("writing, ntrace = "+to_string(ntrace)+"\n");
-	fptr=fopen(trace_filename.c_str(),"w");
+	fptr=fopen(("smooth_data/"+trace_filename).c_str(),"w");
 	for(itrace=0;itrace<ntrace;itrace++){
 		for(ipar=0;ipar<NPars;ipar++){
 			fprintf(fptr,"%8.5f ",trace[itrace][ipar]);
@@ -249,7 +249,7 @@ void CMCMC::WriteXTrace(){
 	unsigned int itrace,ipar,ntrace=trace.size();
 	FILE *fptr;
 	CLog::Info("writing, ntrace = "+to_string(ntrace)+"\n");
-	fptr=fopen(Xtrace_filename.c_str(),"w");
+	fptr=fopen(("smooth_data/"+Xtrace_filename).c_str(),"w");
 	for(itrace=0;itrace<ntrace;itrace++){
 		for(ipar=0;ipar<NPars;ipar++){
 			modpars.Theta[ipar]=trace[itrace][ipar];

@@ -63,7 +63,6 @@ namespace NBandSmooth{
 	
 	class CLLCalc{
 	public:
-		double bestLL;
 		CLLCalc();
 		CLLCalc(CSmoothMaster *master);
 		unsigned int NPars,NObs;

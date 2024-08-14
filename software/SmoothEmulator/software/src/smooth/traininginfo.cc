@@ -131,7 +131,6 @@ void CTrainingInfo::ReadTrainingInfoSmoothFormat(){
 	}
 	for(itrain=0;itrain<NTrainingPts;itrain++){
 		modelpars[itrain]->TranslateX_to_Theta();
-		modelpars[itrain]->Print();
 	}
 
 }
@@ -140,7 +139,6 @@ void CTrainingInfo::ReadTrainingInfoSurmiseFormat(){
 	if(smoothmaster->SmoothEmulator_TrainingFormat != "training_format_surmise"){
 		CLog::Fatal("SmoothEmulator_TrainingFormat should be set to training_format_surmise\n if ReadTrainingInfoSurmiseFormat() is to be used\n");
 	}
-	printf("howdy\n");
 	unsigned int itrain,ipar,iobs;
 	unsigned int NModelPars=CModelParameters::NModelPars;
 	unsigned int NObs=smoothmaster->observableinfo->NObservables;
@@ -148,7 +146,7 @@ void CTrainingInfo::ReadTrainingInfoSurmiseFormat(){
 	string obs_name,filename;
 	double y,x;
 	
-	filename="smooth_data/"+smoothmaster->TrainingThetasFileName;
+	filename=smoothmaster->TrainingThetasFileName;
 	FILE *fptr=fopen(filename.c_str(),"r");
 	itrain=0;
 	do{
@@ -160,7 +158,6 @@ void CTrainingInfo::ReadTrainingInfoSurmiseFormat(){
 					modelpars[itrain]=new CModelParameters();
 				}
 				modelpars[itrain]->X[ipar]=x;
-				//printf("X[%d][%d]=%g\n",itrain,ipar,modelpars[itrain]->X[ipar]);
 			}
 		}
 		fgets(dummy,10000,fptr);
@@ -170,8 +167,7 @@ void CTrainingInfo::ReadTrainingInfoSurmiseFormat(){
 	fclose(fptr);
 	
 	NTrainingPts=itrain;
-	filename="smooth_data/"+smoothmaster->TrainingObsFileName;
-	printf("ntrain=%d, NObs=%d, filename=%s\n",NTrainingPts,NObs,filename.c_str());
+	filename=smoothmaster->TrainingObsFileName;
 	fptr=fopen(filename.c_str(),"r");
 	
 	YTrain.resize(NObs);
@@ -181,7 +177,6 @@ void CTrainingInfo::ReadTrainingInfoSurmiseFormat(){
 		SigmaYTrain[iobs].resize(NTrainingPts);
 	}
 	
-	printf("check a\n");
 	for(itrain=0;itrain<NTrainingPts;itrain++){
 		for(iobs=0;iobs<NObs;iobs++){
 			fscanf(fptr,"%lf",&y);
@@ -194,12 +189,10 @@ void CTrainingInfo::ReadTrainingInfoSurmiseFormat(){
 		fgets(dummy,10000,fptr);
 	}
 	
-	printf("NTrainingPts=%d\n",NTrainingPts);
 	fclose(fptr);
 	
 	for(itrain=0;itrain<NTrainingPts;itrain++){
 		modelpars[itrain]->TranslateX_to_Theta();
-		modelpars[itrain]->Print();
 	}
 
 }

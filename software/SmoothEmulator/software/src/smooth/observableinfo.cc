@@ -63,7 +63,7 @@ void CObservableInfo::ReadExperimentalInfo(string filename){
 	unsigned int iY,NObsRead=0;
 	YExp.resize(NObservables);
 	SigmaExp.resize(NObservables);
-	FILE *fptr=fopen(filename.c_str(),"r");
+	FILE *fptr=fopen(("smooth_data/"+filename).c_str(),"r");
 	do{
 		fscanf(fptr,"%s",dummy);
 		if(!feof(fptr)){

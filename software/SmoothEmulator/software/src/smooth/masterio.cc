@@ -4,11 +4,9 @@ using namespace NBandSmooth;
 
 void CSmoothMaster::ReadTrainingInfo(){
 	if(SmoothEmulator_TrainingFormat == "training_format_smooth"){
-		printf("AAAAAAA\n");
 		traininginfo->ReadTrainingInfoSmoothFormat();
 	}
 	else if(SmoothEmulator_TrainingFormat == "training_format_surmise"){
-		printf("BBBBBBBB\n");
 		traininginfo->ReadTrainingInfoSurmiseFormat();
 	}
 }
