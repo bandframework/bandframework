@@ -119,9 +119,9 @@ int main(){
 	
 	// Write observable info for every training point
 	
-	FILE *fptr_thetas=fopen("smooth_data/TrainingThetas.txt","w");
-	FILE *fptr_obs=fopen("smooth_data/TrainingObs.txt","w");
-	FILE *fptr_sigmay=fopen("smooth_data/TrainingSigmaY.txt","w");
+	FILE *fptr_thetas=fopen("TrainingThetas.txt","w");
+	FILE *fptr_obs=fopen("TrainingObs.txt","w");
+	FILE *fptr_sigmay=fopen("TrainingSigmaY.txt","w");
 	
 	for(itrain=0;itrain<NTrain;itrain++){
 		filename="smooth_data/modelruns/run"+to_string(itrain)+"/mod_parameters.txt";
