@@ -42,7 +42,7 @@ The User needs to create a project directory from which the User would perform m
 }
 Hence forth, {\tt \$\{MY\_PROJECT\}} is a name chosen by the User, and will refer to the directory, including the path, from which the User will perform most of the analysis. The User may wish to have several such directories, located according to the User's preference. Any time a new analysis is performed with new parameters, and if the User wishes to save the previous analysis, a new {\tt \$\{MY\_PROJECT\}} directory should be created. These directories should be outside the main distribution, i.e. outside the {\tt bandframework/} path so that the User's work does not interfere with the repository. 
 
-Within the {\tt templates/} directory, there is also a directory {\tt ../templates/mylocal/}. The directory {\tt \$\{GITHOME\_SMOOTH\}/mylocal/} is an exact copy. The {\tt mylocal/} directory contains the main programs and the {\it Smooth Emulator} executables which will be stored in {\tt \$\{GITHOME\_SMOOTH\}/mylocal/bin}. Because the User may well wish to edit the main programs, or to add similar programs, this provides the User a space to make such edits, all while leaving an original copy of the directory in the {\tt templates/} directory. 
+Within the {\tt templates/} directory, there is also a directory {\tt ../templates/mylocal/}. The {\tt mylocal/} directory contains the main programs and the {\it Smooth Emulator} executables which will be stored in {\tt \$\{GITHOME\_SMOOTH\}/mylocal/bin}. Because the User may well wish to edit the main programs, or to add similar programs, this provides the User a space to make such edits, all while leaving an original copy of the directory in the {\tt templates/} directory. 
 
 For the remainder of this manual, {\tt \$\{GITHOME\_SMOOTH\}}, {\tt \$\{MY\_LOCAL\}} and {\tt \$\{MY\_PROJECT\}} will be used to denote the location of these directories.
 
@@ -73,7 +73,15 @@ There seems to be a common problem that {\tt cmake} misreports the path of the {
 }
 The final arguments may need to be changed depending on the User's location of the packages. If the User wishes to choose a specific C++ compiler, the {\tt cmake} command should be replaced with {\tt cmake -D YOUR\_PREFERRED\_COMPILER}. 
 
-At this point all the libraries are built, but this does not include the main programs. The main programs are short, and are meant to serve as examples which the User might copy and edit at will. Below, this illustrates how to compile the programs used for generating training points with Simplex and for tuning the emulator with Smoothy:
+At this point all the libraries are built, but this does not include the main programs. The main programs are short, and are meant to serve as examples which the User might copy and edit at will. Before compiling, one needs to set an environmental variable so that the compilation can find the libraries needed for compilation.
+{\tt
+\begin{verbatim}
+    % export GITHOME_BAND_SMOOTH=/Users/CarlosSmith/.../bandframework/software/SmoothEmulator
+\end{verbatim}
+}
+The first part of the path needs to be replaced with the location of the {\tt bandframework} git repository. If one prefers not to set an environmental variable, one can instead edit {\tt \$\{MY\_LOCAL\}/software/CMakeLists.txt}, and replace the line where the variable {\tt GITHOME\_BAND\_SMOOTH} is set to the shell's environmental variable with one where it is set explicitly.
+
+Below, this illustrates how to compile the programs used for generating training points with Simplex and for tuning the emulator with {\it Smooth Emulator}:
 {\tt
 \begin{verbatim}
     % cd ${MY_LOCAL}/software
@@ -83,10 +91,13 @@ At this point all the libraries are built, but this does not include the main pr
     .
 \end{verbatim}
 }
-The {\tt cmake} command will also recompile the libraries in {\tt \$\{GITHOME\_SMOOTH\}/software/} if necessary. Several source codes for main programs can be found in {\tt \$\{MY\_LOCAL\}/software/main\_programs/}. If you build your own main programs (probably using these as examples), you can edit the {\tt CMakeList.txt} file in {\tt \$\{MY\_LOCAL\}/software/main\_programs/}, using the existing entries as an example. The executables should appear in {\tt \$\{MY\_LOCAL\}/bin/}. 
+The {\tt cmake} command will also recompile the main libraries in {\tt \$\{GITHOME\_SMOOTH\}/software/} if necessary. Several source codes for main programs can be found in {\tt \$\{MY\_LOCAL\}/software/main\_programs/}. If you build your own main programs (probably using these as examples), you can edit the {\tt CMakeList.txt} file in {\tt \$\{MY\_LOCAL\}/software/main\_programs/}, using the existing entries as an example. The executables should appear in {\tt \$\{MY\_LOCAL\}/bin/}. 
 
 \subsection{The {\tt MY\_PROJECT} Directory}
 
-Within {\tt \$\{MY\_PROJECT\}/} there are four sub-directories (assuming it was created from the template). The first is {\tt \$\{MY\_PROJECT\}/Info/}. Information about the model parameters, and their priors is stored in {\tt \$\{MY\_PROJECT\}/Info/modelpar\_info.txt}, and information about the observables is stored in {\tt \$\{MY\_PROJECT\}/observable\_info.txt}. The {\tt \$\{MY\_PROJECT\}/parameters} directory stores user-defined parameter files used by {\it Simplex Sampler},\\ {\tt \$\{MY\_PROJECT\}/parameters/simplex\_parameters.txt}, and by {\it Smooth Emulator}\\{\tt \$\{MY\_PROJECT\}/parameters/emulator\_parameters.txt}. The {\tt\$\{MY\_PROJECT\}/modelruns} directory will store information for each full-model run. The directories {\tt  \$\{MY\_PROJECT\}/modelruns/run0/}, {\tt  \$\{MY\_PROJECT\}/modelruns/run1}, $\cdots$, have files describing the model parameters for each run, along with the output required by the emulator for each specific full-model run. For example, the {\tt  \$\{MY\_PROJECT\}/modelruns/run1/} directory has the files {\tt mod\_parameters.txt} and {\tt obs.txt}. The first file stores the model parameter values for that particular training run. The User then runs their full model based on those parameters and stores the corresponding observables in {\tt obs.txt}. The User may generate the {\tt mod\_parameters.txt} files using {\it Simplex Sampler}, or the user might generate them according to some other prescription. Once the User has then generated the {\tt obs.txt} files, {\it Smooth Emulator} can then build and tune the emulator. Finally the {\tt\$\{MY\_PROJECT\}/figs} directory contains python scripts for plotting results.
+Within {\tt \$\{MY\_PROJECT\}/} there are four sub-directories (assuming it was created from the template). The first is {\tt \$\{MY\_PROJECT\}/smooth\_data/Info/}. Information about the model parameters, and their priors is stored in {\tt \$\{MY\_PROJECT\}/smooth\_data/Info/modelpar\_info.txt}, and information about the observables is stored in {\tt \$\{MY\_PROJECT\}/observable\_info.txt}.\\
+The {\tt \$\{MY\_PROJECT\}/smooth\_data/parameters} directory stores user-defined parameter files used by {\it Simplex Sampler},\\ {\tt \$\{MY\_PROJECT\}/smooth\_data/parameters/simplex\_parameters.txt}, and by {\it Smooth Emulator}\\{\tt \$\{MY\_PROJECT\}/smooth\_data/parameters/emulator\_parameters.txt}.\\The {\tt\$\{MY\_PROJECT\}/modelruns} directory will store information for each full-model run.
+
+The directories {\tt  \$\{MY\_PROJECT\}smooth\_data/modelruns/run0/}, {\tt  .../modelruns/run1}, $\cdots$, have files describing the model parameters for each run, along with the output required by the emulator for each specific full-model run. For example, the {\tt  \$\{MY\_PROJECT\}/smooth\_data/modelruns/run1/} directory has the files {\tt mod\_parameters.txt} and {\tt obs.txt}. The first file stores the model parameter values for that particular training run. The User then runs their full model based on those parameters and stores the corresponding observables in {\tt obs.txt}. The User may generate the {\tt mod\_parameters.txt} files using {\it Simplex Sampler}, or the user might generate them according to some other prescription. Once the User has then generated the {\tt obs.txt} files, {\it Smooth Emulator} can then build and tune the emulator. Finally the {\tt\$\{MY\_PROJECT\}/figs} directory contains python scripts for plotting results.
 
 \end{document}
