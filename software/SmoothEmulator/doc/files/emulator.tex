@@ -242,9 +242,7 @@ To begin, we consider the source code {\tt \$\{MY\_LOCAL\}main\_programs/smoothy
 int main(){
   // First create CSmoothMaster
   CparameterMap *parmap=new CparameterMap();
-  CSmoothMaster master(parmap); 
-  // Read in Training Info
-  master.ReadTrainingInfo(); 
+  CSmoothMaster master(parmap);  
   // Tune for all observables "Y"
   master.TuneAllY();
   // Write coefficients to file
@@ -313,7 +311,7 @@ int main(){
 \item {\tt CSmoothMaster(CparameterMap *parmap)}\\
 This is the constructor. CparameterMap object stores temulator parameters (not model parameters). CparameterMap functionality described below.
 \item {\tt void ReadTrainingInfo()}\\
-This reads the training point information to be used for tuning.
+This reads the training point information to be used for tuning. It is done automatically when creating the {\tt CSmoothMaster} object.
 \item {\tt TuneAllY()}\\ //
 Tune all observables, $Y$.
 \item {\tt TuneY(string obsname)}\\
@@ -346,7 +344,7 @@ This is useful for comparing emulator to model evaluated at points not used for 
 {\tt
 \begin{verbatim}
 SmoothEmulator_TrainingPts 0-89
-SmoothEmulator_TrainingPts 90-99
+SmoothEmulator_TestPts 90-99
 \end{verbatim}}
 to train the emulator with the first 90 points and test it at the last 10 points. Tests for each observable are stored in a directory {\tt fullmodel\_testdata/}.
 
