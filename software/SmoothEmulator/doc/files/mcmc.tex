@@ -5,7 +5,7 @@
 
 \subsection{Preparing for MCMC using {\it Smooth Emulator}}
 
-The final step in Bayesian analyses is to generate MCMC traces through parameter space. {\it Smooth Emulator} software is designed for the MCMC programs to be run from within the {\tt \$\{MY\_PROJECT\}} directory. Once the emulator is tuned and before it is applied to a Markov Chain investigation of the likelihood, the software needs know the experimental measurement and uncertainty. That information must be entered in the {\tt Info/experimental\_info.txt} file. The file should have the format:
+The final step in Bayesian analyses is to generate MCMC traces through parameter space. {\it Smooth Emulator} software is designed for the MCMC programs to be run from within the {\tt \$\{MY\_PROJECT\}} directory. Once the emulator is tuned and before it is applied to a Markov Chain investigation of the likelihood, the software needs know the experimental measurement and uncertainty. That information must be entered in the {\tt smooth\_data/Info/experimental\_info.txt} file. The file should have the format:
 {\tt
 \begin{verbatim}
  obsname1  -12.93    0.95   0.5
@@ -33,7 +33,7 @@ One should tune the emulator before running {\tt mcmc}. This could involve runni
 
 \subsection{MCMC Parameter File}
 
-Next, one needs to edit the parameter file {\tt\$\{MY\_PROJECT\}/parameters/mcmc\_parameters.txt}. An example file is:
+Next, one needs to edit the parameter file {\tt\$\{MY\_PROJECT\}/smooth\_data/smooth\_parameters/mcmc\_parameters.txt}. An example file is:
 {\tt
 \begin{verbatim}
  #LogFileName mcmc_log.txt
@@ -95,7 +95,6 @@ ${MY_PROJECT}% ${MY_LOCAL}/bin/mcmc
 \end{itemize}
 The information for $\langle\delta \theta_i\delta\theta_{b}\rangle$ might be useful later on.
 
-
 \subsection{Reviewing the MCMC Source Code}\label{sec:mcmcsource}
 
 Finally, we review the source code in {\tt \$\{MY\_LOCAL\}/main\_programs/mcmc\_main.cc}:
@@ -103,7 +102,7 @@ Finally, we review the source code in {\tt \$\{MY\_LOCAL\}/main\_programs/mcmc\_
 \begin{verbatim}
 int main(){
   CparameterMap *parmap=new CparameterMap();
-  CSmoothMaster master(parmap);  
+  CSmoothMaster master(parmap);
   CMCMC mcmc(&master);
   master.ReadCoefficientsAllY();
   unsigned int Nburn=parmap->getI("MCMC_NBURN",1000);  // Steps for burn in
@@ -121,21 +120,5 @@ int main(){
 This is mostly self-explanatory. If one wishes to avoid writing out the trace, the line {\tt mcmc.WriteTrace} can be deleted. If the User wishes to run the code in batch mode, the output can be directed to a file, {\tt mcmc\_log.txt}, by adding the line\\
 \hspace*{20pt}{\tt LogFileName mcmc\_log.txt} \\
 to the parameter file {\tt parameters/mcmc\_parameters.txt}.
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
 
 \end{document}
