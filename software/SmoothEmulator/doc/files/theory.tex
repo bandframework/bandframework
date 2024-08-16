@@ -207,165 +207,119 @@ T_{ai}\equiv\mathcal{T}_i(\vec{\theta}_a),
 \end{eqnarray}
 where $\vec{\theta}_a$ labels the training points, $0< a\le N_{\rm train}$, and $N_{\rm train}<<N_{\rm coef}$. 
 
-\subsubsection{Finding the Optimum Coefficients}
+\subsubsection{Finding the Optimum Coefficients and Uncertainty}
 
-The goal is to find the coefficients, $A_{i>N_{\rm train}}$, that maximizes the probability given that the first $N_{\rm train}$ coefficients are determined by Eq. (\ref{eq:AofTAalphabeta}),
-\begin{eqnarray}
-P(\vec{A})&\sim&\frac{1}{(2\pi\sigma^2)^{N_{\rm coef}/2}}\int \prod_{t\le N_{\rm coef}}\delta[y_m(\vec{\theta}_t)-E(\vec{\theta}_t)]
-\prod_idA_i~\exp\left\{
+The goal is to find the coefficients, $A_{i>N_{\rm train}}$, that maximizes the probability given the constraints of matching the training data,
+\begin{eqnarray}\label{eq:Nexact}
+P(\vec{A})&\sim&\frac{1}{(2\pi\sigma_A^2)^{N_{\rm coef}/2}}\int \prod_{a=1}^{ N_{\rm train}}\delta[y(\vec{\theta}_a)-E(\vec{\theta}_a)]
+\prod_{i=1}^{N_{\rm coef}}dA_i~\exp\left\{
 -\frac{1}{2\sigma^2}A_i^2
 \right\}
 \end{eqnarray}
 The average coefficient, and correlation of coefficients can be expressed in the following form after replacing the delta function,
 \begin{align*}\eqnumber
-\langle A_j\rangle&=\mathcal{N}^{-1}\int \prod_i dAi~ A_j \exp\left[
+\langle A_j\rangle&=\mathcal{N}^{-1}\int \prod_i \frac{dA_i}{\sqrt{2\pi\sigma_A^2}}~ A_j \exp\left[
+-\sum_\ell\frac{A_\ell^2}{2\sigma_A^2}\right]\int \prod_a\frac{dk_a}{2\pi}\exp\left[ik_b(y_b-A_iT_i(\vec{\theta}_b))\right],\\
+\langle A_jA_k\rangle&=\mathcal{N}^{-1}\int \prod_i \frac{dA_i}{\sqrt{2\pi\sigma_A^2}}~ A_jA_k \exp\left[
 -\frac{A_i^2}{2\sigma_A^2}\right]\int \prod_a\frac{dk_a}{2\pi}\exp\left[ik_b(y_b-A_iT_i(\vec{\theta}_b))\right],\\
-\langle A_jA_k\rangle&=\mathcal{N}^{-1}\int \prod_i dAi~ A_jA_k \exp\left[
--\frac{A_i^2}{2\sigma_A^2}\right]\int \prod_a\frac{dk_a}{2\pi}\exp\left[ik_b(y_b-A_iT_i(\vec{\theta}_b))\right],\\
-\mathcal{N}^{-1}&=\int \prod_i dAi~ \exp\left[
--\frac{A_i^2}{2\sigma_A^2}\right]\int \frac{dk}{2\pi}\exp\left[ik_b(y_b-A_iT_i(\vec{\theta}_b))\right].
+\mathcal{N}&=\int \prod_i \frac{dA_i}{\sqrt{2\pi\sigma_A^2}}~ \exp\left[
+-\frac{A_i^2}{2\sigma_A^2}\right]\int \frac{dk}{2\pi}\exp\left[ik_b(y_b-A_\ell T_\ell(\vec{\theta}_b))\right].
 \end{align*}
-
-
+Here, $y_a=y(\vec{\theta}_a)$, the full model value calculated at the training point $a$.
 
 After completing the square, the correlation can be written as
 \begin{align*}\eqnumber
-\langle A_kA_j\rangle &=\mathcal{N}^{-1}\int\prod_a\frac{dk_a}{2\pi}e^{ik_by_b}~\\
+\langle A_jA_k\rangle &=\mathcal{N}^{-1}\int\prod_a\frac{dk_a}{2\pi}e^{ik_by_b}~\\
 &~~\int \prod_i dA_i~A_kA_j
 \exp\left[-\frac{1}{2\sigma_A^2}\left(A_i+i\sigma_A^2T_i(\vec{\theta}_b)k_b\right)^2
--\frac{\sigma_A^2}{2}\left(T_i(\vec{\theta}_b)k_b\right)^2
+-\frac{\sigma_A^2}{2}\left(\sum_\ell T_\ell(\vec{\theta}_b)k_b\right)^2
 \right]\\
 &=\mathcal{N}^{-1}
-\int\prod_a\frac{dk_a}{2\pi}~\exp\left[-\frac{\sigma_A^2}{2}(T_j(\vec{\theta}_b)k_b)^2+ik_by_b\right]\\
-&~~\int \prod_i dA_i~A_kA_j(A_k-i\sigma_A^2T_k(\vec{\theta}_b)k_b)(A_j-i\sigma_A^2T_j(\vec{\theta}_c)k_c)
-\exp\left[-\frac{A_\ell^2}{2\sigma_A^2}\right]
+\int\prod_a\frac{dk_a}{2\pi}~\exp\left[-\frac{2}{2\sigma_A^2}(T_j(\vec{\theta}_b)k_b)^2+ik_by_b\right]\\
+&~~\int \prod_i dA_i~(A_k-i\sigma_A^2T_k(\vec{\theta}_b)k_b)(A_j-i\sigma_A^2T_j(\vec{\theta}_c)k_c)
+\exp\left[-\sum_\ell\frac{A_\ell^2}{2\sigma_A^2}\right]
+\end{align*}
+Similarly,
+\begin{align*}\eqnumber
+\langle A_j\rangle &=-\mathcal{N}^{-1}
+\int\prod_a\frac{dk_a}{2\pi}~\exp\left[-\frac{1}{2\sigma_A^2}(T_j(\vec{\theta}_b)k_b)^2+ik_by_b\right]\\
+&~~\int \prod_i \frac{dA_i}{\sqrt{2\pi\sigma_A^2}}~i\sigma_A^2T_j(\vec{\theta}_c)k_c
+\exp\left[-\frac{A_\ell^2}{2\sigma_A^2}\right],\\
+\mathcal{N}&=
+\int\prod_a\frac{dk_a}{2\pi}~\exp\left[-\frac{1}{2\sigma_A^2}(T_j(\vec{\theta}_b)k_b)^2+ik_by_b\right].
 \end{align*}
 
-
-By defining the following operators,
+We define the following operators,
 \begin{align*}\eqnumber
 \mathcal{O}_{ab}^{jk}&\equiv T_j(\vec{\theta}_a)T_k(\vec{\theta}_b),\\
 \mathcal{O}_{ab}&\equiv \sum_iT_i(\vec{\theta}_a)T_i(\vec{\theta}_b)=\sum_i\mathcal{O}_{ab}^{ii},
 \end{align*}
-
+Doing the integrals for $\mathcal{N}$ and $\langle A_j\rangle$,
+\begin{align*}\eqnumber\label{eq:netexactprob}
+\mathcal{N}&=\sigma_A^{-N_{\rm train}}\left({\rm det}\mathcal{O}\right)^{1/2}\exp\left[-\frac{1}{2\sigma_A^2}y_a\mathcal{O}^{-1}_{ab}y_b\right].
+\end{align*}
+One can then find the moments of the integral over $k$,
 \begin{align*}\eqnumber
-\langle A_kA_j\rangle &=\int\prod\frac{dk_a}{2\pi}~\exp\left[-\frac{\sigma_A^2}{2}k_b\mathcal{O}_{bc}k_c+ik_by_c\right]
-\left(\sigma_A^2\delta_{jk}-\sigma_A^4y_b\mathcal{O}_{bc}^{jk}y_c\right)
+\langle k_a\rangle&=-i\partial_{y_a}\ln(\mathcal{N})=\frac{i}{\sigma_A^2}\mathcal{O}^{-1}_{ab}y_b,\\
+\langle \delta k_a\delta k_b\rangle&=-\partial_{y_a}\partial_{y_b}\ln(\mathcal{N})=\frac{1}{\sigma_A^2}\mathcal{O}_{ab}^{-1}.
+\end{align*}
+The moments are then:
+\begin{align*}\eqnumber\label{eq:exactmoments}
+\langle A_j\rangle&=T_j(\vec{\theta}_a)\mathcal{O}^{-1}_{ab}y_b,\\
+\langle\delta A_j\delta A_k\rangle&=\delta_{jk}\sigma_A^2-\sigma_A^2\mathcal{O}^{-1}_{ab}\mathcal{O}^{jk}_{ab}\\
+&=\delta_{jk}\sigma_A^2-\sigma_A^2\mathcal{O}^{-1}_{ab}T_j(\vec{\theta}_a)T_k(\vec{\theta_b}).
 \end{align*}
 
+The observables and their fluctuations are then:
+\begin{align*}\eqnumber
+\langle y(\vec{\theta})\rangle&=\langle A_j\rangle T_j(\vec{\theta}),\\
+\langle \delta y(\vec{\theta})^2\rangle&=
+\langle \delta A_j\delta A_k\rangle T_j(\vec{\theta})T_k(\vec{\theta}).
+\end{align*}
+After definining
+\begin{align*}\eqnumber
+\chi_a&\equiv\mathcal{O}^{-1}_{ab}y_b,\\
+S_a(\vec{\theta})&\equiv T_j(\vec{\theta})T_j(\vec{\theta}_a),
+\end{align*}
+the mean and fluctuation can be written as
+\begin{align*}\eqnumber
+\label{eq:exactsydely2}
+\langle y(\vec{\theta})\rangle&=\chi_aS_a(\vec{\theta}),\\
+\langle \delta y(\vec{\theta})^2\rangle&=
+\sigma_A^2 T_j(\vec{\theta})T_j(\vec{\theta})
+-\sigma_A^2S_a(\vec{\theta})\mathcal{O}^{-1}_{ab}S_b(\vec{\theta}).
+\end{align*}
+Whereas $\langle y(\vec{\theta})\rangle$ depends linearly on the training values, $y_{a=1,N_{\rm train}}$, the uncertainty, $\langle\delta y(\vec{\theta})^2\rangle$ depends only on the location of the training points. 
 
+If one set $\vec{\theta}=\vec{\theta}_c$, one of the training points, then
+\begin{align*}\eqnumber
+S_a(\vec{\theta}_c)&=\mathcal{O}_{ac},\\
+T_j(\vec{\theta}_c)T_j(\vec{\theta}_c)&=\mathcal{O}_{cc},~{\rm no~sum~over~}c,
+\end{align*}
+and
+\begin{align*}\eqnumber
+\langle \delta y(\vec{\theta}_c)^2\rangle
+&=\sigma_A^2\mathcal{O}_{cc}-\sigma_A^2\mathcal{O}_{ca}
+\mathcal{O}^{-1}_{ab}\mathcal{O}_{bc}=0.
+\end{align*}
+Thus, there is no uncertainty when evaluated at the training points.
 
+Before considering a specific position, $\vec{\theta}$, one first calculates and stores the vector $\chi$ and the matrix $\mathcal{O}^{-1}$.  This involves inverting a $N_{\rm train}\times N_{\rm train}$ matrix. Then, when considering a specific $\vec{\theta}$, one calculates $S_a(\vec{\theta})$ for each $a$. This involves calculating a double sum with $N_{\rm train}\times N_{\rm coef}$ elements. Once these are stored, calculating $\langle\delta y^2\rangle$ involves calculating a double sum with an additional $N_{\rm train}\times N_{\rm train}$ elements. Thus, calculating $S_a(\vec{\theta})$ is where the bulk of the calculation occurs.  Because $N_{\rm train}\lesssim 100$ and $N_{\rm coef}$ might be of in the tens of thousands (depending on the number of parameters and maximum rank), one should be able to calculate $\langle y\rangle$ and $\langle\delta y^2\rangle$ in much less than a second. Nonetheless, hen performing an MCMC calculation, one might calculate for millions of values of $\vec{\theta}$, which can push the calculation into the ranges of minutes or even hours if one has a dozen parameters or more.
 
+The calculations above could have been performed finding the coefficients to maximize the probability, $P(\vec{A})$, rather than the mean coefficients, but the answer is exactly the same.
 
-Note that this algorithm never involves a double sum with both indices over all $N_{\rm coef}$. Nor does it involve any matrix manipulations, or linear equation solving involving matrices of $N_{\rm coef}\times N_{\rm coef}$. Assuming that the number of training points is no more than a few hundred, this algorithm should be rather quick.
+\subsubsection{Choosing the Variance for the Coefficients for the Exact Solution}
 
-\subsubsection{Finding the Uncertainty when Calculating $E(\vec{\theta}$)}
-
-Next, one needs to express the uncertainty at a point in parameter space $\sigma_E^2(\vec{\theta})=\vec{\theta}$, $\langle(\delta E(\vec{\theta}))^2\rangle$. This is given by 
-\begin{eqnarray}
-\sigma_E^2&=&\frac{\partial E}{\partial A_i}\frac{\partial E}{\partial A_j}\langle \delta A_i\delta A_j\rangle. 
-\end{eqnarray}
-Once again, the indices $i,j$ refer to components with $i>N_{\rm train}$. We begin with 
-\begin{eqnarray}
-E(\vec{\theta})&=&T_a(\vec{\theta})A_a+T_i(\vec{\theta})A_i,\\
-\nonumber
-T_a(\vec{\theta})&=&\frac{1}{\Lambda^K}\frac{\theta_1^{n_{1a}}\theta_2^{n_{2a}}\cdots}{\sqrt{n_{1a}!n_{2a}!\cdots}}.
-\end{eqnarray}
-If one chooses $\vec{\theta}$ equal to one of the training points, $t$, then $T_a(\vec{\theta}_t)=T_{ta}$. The differential of $E(\vec{\theta})$ is
-\begin{eqnarray}
-\delta E(\vec{\theta})&=&\sum_aT_a(\vec{\theta})\delta A_a+\sum_iT_i(\vec{\theta})\delta A_i.
-\end{eqnarray}
-Substituting for $A_a$ in terms of $A_a$, 
-\begin{eqnarray}
-\delta E(\vec{\theta})&=&\left[T_i(\vec{\theta})-T_a(\vec{\theta})\beta_{ai}\right]\delta A_i.
-\end{eqnarray}
-Next, one needs to calculate $\langle\delta A_i\delta A_j\rangle$. Expanding around the minimum, the exponential of the probability becomes
-\begin{eqnarray}
-P(\delta\vec{A})&\propto&
-\exp\left\{
--\frac{1}{2\sigma^2}\left(\sum_a(\delta A_a)^2+\sum_i(\delta A_i)^2\right)
-\right\}\\
-\nonumber
-&=&\exp\left\{
--\frac{1}{2\sigma^2}\sum_{ij}\left(\delta_{ij}+\beta_{ai}\beta_{aj}\right)\delta A_i\delta A_j
-\right\}.
-\end{eqnarray}
-Defining
-\begin{eqnarray}
-D_{ij}&=&\delta_{ij}+\sum_a\beta_{ai}\beta_{aj},
-\end{eqnarray}
-the fluctuation of the coefficients is
-\begin{eqnarray}
-\langle\delta A_i\delta A_j\rangle&=D^{-1}_{ij}.
-\end{eqnarray}
-Again, if there are many coefficients, inverting the matrix could be numerically costly. But one can realize that the inverse matrix should be of the form
-\begin{eqnarray}\label{eq:DinvDef}
-D^{-1}_{ij}&=&\delta_{ij}+\sum_{ab}\psi_{ab}\beta_{ai}\beta_{bj},
-\end{eqnarray}
-and solve for the $N_{\rm train}\times N_{\rm train}$ values of $\psi_{ab}$. This leads to
-\begin{eqnarray}
-D^{-1}_{ik}D_{kj}&=&
-\delta_{ij}+\sum_{ab}\beta_{ai}\beta_{bj}(\delta_{ab}+\psi_{ab})+\sum_{abc}\beta_{ai}\beta_{ak}\beta_{ck}\beta_{bj}\psi_{cb}.
-\end{eqnarray}
-For this to be satisfied for any pair of $i,j$,
-\begin{eqnarray}
-\delta_{ab}&=&-\psi_{ab}-\sum_cB_{ac}\psi_{bc}.
-\end{eqnarray}
-This gives
-\begin{eqnarray}
-\psi_{ab}&=&-Q^{-1}_{ab},\\
-\nonumber
-Q_{ab}&=&\delta_{ab}+B_{ab}.
-\end{eqnarray}
-Finally, this gives
-\begin{eqnarray}\label{eq:dy2}
-\langle(\delta y)^2\rangle&=&
-\left\{T_i(\vec{\theta})-T_{a}(\vec{\theta})\beta_{ai}\right\}D^{-1}_{ij}
-\left\{T_j(\vec{\theta})-T_b(\vec{\theta})\beta_{bj}\right\}.
-\end{eqnarray}
-One can look at the first term in Eq. (\ref{eq:dy2}), $(T_i(\vec{\theta})-T_{a}(\vec{\theta})\beta_{ai})$, and see that if $\theta$ is chosen to be one of the training points, that the resulting width will be zero. In that case, $T_{a}(\vec{\theta}_b)$ becomes the matrix element $T_{ab}$, and when multiplied by $\beta_{ai}=T^{-1}_{ab}T_{bi}$, becomes equal to $T_{ai}$. I.e.,
-\begin{eqnarray}
-T_a(\vec{\theta}_b)\beta_{ai}&=T_{ba}T^{-1}_{ac}T_{ci}=T_{bi}.
-\end{eqnarray}
-
-Inserting Eq. (\ref{eq:DinvDef}) and putting this all together, one has 8 terms altogether.
-\begin{eqnarray}
-\sigma_E^2(\vec{\theta})&=&
-\sigma^2_1+\sigma_2^2+\sigma^2_3+\sigma^2_4+\sigma^2_5+\sigma_6^2+\sigma^2_7+\sigma^2_8.
-\end{eqnarray}
-The individual terms are
-\begin{eqnarray}
-\sigma_1^2&=&T_i(\vec{\theta})T_i(\vec{\theta}),\\
-\nonumber
-\sigma_2^2&=&-T_a(\vec{\theta})\beta_{ai}T_i(\vec{\theta})=-T_a(\vec{\theta})S_a(\vec{\theta}),\\
-\nonumber
-\sigma_3^2&=&\sigma_2^2,\\
-\nonumber
-\sigma_4^2&=&T_a(\vec{\theta})B_{ab}T_b(\vec{\theta}),\\
-\nonumber
-\sigma_5^2&=&T_i(\vec{\theta})\beta_{ai}\psi_{ab}\beta_{bj}T_j(\vec{\theta})=S_a(\vec{\theta})\psi_{ab}S_b(\vec{\theta}),\\
-\nonumber
-\sigma_6^2&=&-T_a(\vec{\theta})B_{aa'}\psi_{a'b'}\beta_{b'j}T_j(\vec{\theta})=-T_a(\vec{\theta})B_{aa'}\psi_{a'b'}S_{b'}(\vec{\theta}),\\
-\nonumber
-\sigma_7^2&=&\sigma_6^2,\\
-\nonumber
-\sigma_8^2&=&T_a(\vec{\theta})B_{aa'}\psi_{a'b'}B_{b'b}T_b(\vec{\theta}).
-\end{eqnarray}
-Here, we have defined the quantity 
-\begin{eqnarray}
-S_a(\vec{\theta})&\equiv \beta_{ai}T_i(\vec{\theta}).
-\end{eqnarray}
-By first calculating $S_a(\vec{\theta})$, this allows one to avoid any sums over two indices $i$ and $j$. One can also avoid expedite the calculations of $\sigma_6^2$ and $\sigma_8^2$ by calculating and storing
-\begin{eqnarray}
-H^{(6)}_{ab}&=&B_{aa'}\psi_{a'b},\\
-H^{(8)}_{ab}&=&B_{aa'}\psi_{a'b'}B_{b'b}.
-\end{eqnarray}
-These quantities need be calculated only once as they do not depend on $\vec{\theta}$. One then has
-\begin{eqnarray}
-\sigma_6^2&=&-T_{a}(\vec{\theta})H^{(6)}_{ab}S_b(\vec{\theta}),\\
-\sigma_8^2&=&T_a(\vec{\theta})H^{(8)}_{ab}T_b(\vec{\theta}).
-\end{eqnarray}
-This avoids any $N_{\rm train}^3$ or $N_{\rm train}^4$ calculations. Thus, assuming $N_{\rm coef}>>N_{\rm train}$, the largest numeric penalty in calculating $\sigma^2$ is in the $N_{\rm train}\times N_{\rm coef}$ loop required to calculate $S_a(\vec{\theta})$ for all $a$. 
+Here, we find the optimum choice for $\sigma_A$, the variance of the coefficient in the absence of training data, in the previous section. For the derivations of $\langle y\rangle$ and $\langle\delta y^2\rangle$ in the previous section, the expression in Eq. (\ref{eq:exactmoments}) for $\langle A_i\rangle$ has no dependence on $\sigma_A$, which sets the variance of the coefficients. Further, the expression for $\langle\delta A_i^2\rangle$ does not depend on the model training values, $y_{a=1,N_{\rm train}}$. The net probability from Eq. (\ref{eq:netexactprob}) was found to be in Eq. (\ref{eq:Nexact}) to be
+\begin{align*}\eqnumber\label{eq:netexactprob}
+\int \prod_i dA_i P(\vec{A},\sigma^2)&=\mathcal{N}\\
+&=\sigma_A^{-N_{\rm train}}\left({\rm det}\mathcal{O}\right)^{1/2}\exp\left[-\frac{1}{2\sigma_A^2}y_a\mathcal{O}^{-1}_{ab}y_b\right].
+\end{align*}
+Our goal here is to find the value of $\sigma_A$ that maximizes $\mathcal{N}$. Setting the derivative w.r.t. $\sigma_A^2$ equal to zero,
+\begin{align*}\eqnumber
+0&=\frac{N_{\rm train}}{\sigma_A^2}\mathcal{N}-\frac{1}{\sigma_A^4}y_a\mathcal{O}^{-1}_{ab}y_b,\\
+\sigma_A^2&=\frac{1}{N_{\rm train}}y_a\mathcal{O}^{-1}_{ab}y_b.
+\end{align*}
 
 \section{Theoretical Basis of {\it Simplex Sampler}}\label{sec:simplextheory}
 
@@ -381,8 +335,6 @@ One might also wish to use enough training points to uniquely determine the emul
 Choosing the training points depends on prior expectation of the emulated function. The simplex choice for the first $N_{\rm train}=N+1$ points seems logical. Even if another method, such as a Gaussian process emulator is to implemented, such methods are often based on first understanding the linear behavior. The simplex strategy would seem a good way to pick the first $N+1$ training points.
 
 One issue with the simplex is that the first set of $N+1$ training points would all be placed at the same radius. If the prior parameter distribution is uniform within an $N-$dimensional hyper cube, the training  points could be rather far from the corners in that space. Issues with such priors are discussed in the next section.
-
-
 
 \subsection{The Pernicious Nature of Step-Function Priors in High Dimension}
 

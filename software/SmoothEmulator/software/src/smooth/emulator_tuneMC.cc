@@ -4,8 +4,6 @@ using namespace std;
 using namespace NBandSmooth;
 using namespace NMSUUtils;
 
-
-
 void CSmoothEmulator::TuneMCMC(){
 	if(!pca_ignore){
 		vector<double> *Aswitch,*Aptr,*ATrialptr;

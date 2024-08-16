@@ -151,4 +151,3 @@ void CSmooth::CalcYDYDTheta(vector<double> &A,double LAMBDA,vector<double> &thet
 	Y*=rfactor;
 }
 */
-
