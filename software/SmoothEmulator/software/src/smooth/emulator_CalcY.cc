@@ -127,8 +127,8 @@ void CSmoothEmulator::GetExactUncertainty(vector<double> &Theta_s,double &uncert
 	
 	for(a=0;a<NTrainingPts;a++){
 		S(a)=0.0;
-		for(i=NTrainingPts;i<NCoefficients;i++){
-			S(a)+=beta(a,i)*T(i);
+		for(i=0;i<NCoefficients;i++){
+			S(a)+=T[a][j]*;
 		}
 	}
 

@@ -43,9 +43,10 @@ namespace NBandSmooth{
 		vector<double> SigmaASample;
 		vector<double> A,ATrial,ABest;
 		vector<vector<double>> ThetaTrain;
-		vector<vector<double>> B;
-		vector<vector<double>> H6,H8;
-		Eigen::MatrixXd beta,Psi;
+		EigenMatrix Xd B,Binv;
+		EigenVector Xd chi;
+		//vector<vector<double>> H6,H8;
+		//Eigen::MatrixXd beta,Psi;
 
 		CSmoothEmulator(string observable_name_set,bool pca_ignore_set);
 

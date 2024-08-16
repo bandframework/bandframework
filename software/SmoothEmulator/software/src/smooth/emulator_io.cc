@@ -89,25 +89,14 @@ void CSmoothEmulator::ReadCoefficients(){
 	
 		if(TuneChooseExact){
 			ABest.resize(NCoefficients);
-			beta.resize(NTrainingPts,NCoefficients);
 			filename=dirname+"/ABest.bin";
 			fptr=fopen(filename.c_str(),"rb");
 			for(ic=0;ic<NCoefficients;ic++){
 				fread(&(ABest[ic]),sizeof(double),1,fptr);
 			}
 			fclose(fptr);
-			filename=dirname+"/BetaBest.bin";
-			fptr=fopen(filename.c_str(),"rb");
-			for(ic=0;ic<NCoefficients;ic++){
-				for(a=0;a<NTrainingPts;a++){
-					fread(&betaread,sizeof(double),1,fptr);
-					beta(a,ic)=betaread;
-				}
-			}
-			fclose(fptr);
 		
 			GetExactQuantities();
-		
 			GetExactSigmaA();
 		
 		}
