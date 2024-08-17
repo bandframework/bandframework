@@ -53,11 +53,13 @@ As shown in the [template](/resources/sdkpolicies/template.md) and [linked SDK c
 Please use the following to cite the BAND Framework:
 
     @techreport{bandframework,
-        title       = { {BANDFramework: An} Open-Source Framework for {B}ayesian Analysis of Nuclear Dynamics},
-        author      = {Moses Y-H. Chan and Richard James DeBoer and Richard J. Furnstahl and Dananjaya Liyanage and Filomena M. Nunes and 
-        Daniel Odell and Daniel R. Phillips and Matthew Plumlee and Alexandra C. Semposki and \"Ozge S\"urer and Stefan M. Wild},
+        title       = {{BANDFramework: An} Open-Source Framework for {B}ayesian Analysis of Nuclear Dynamics},
+        author      = {Kyle Beyer and Landon Buskirk and Moses Y-H. Chan and Tyler H. Chang and Richard James DeBoer and 
+        Richard J. Furnstahl and Pablo Giuliani and Kyle Godbey and Kevin Ingles and Dananjaya Liyanage and Filomena M. Nunes and 
+        Daniel Odell and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and Alexandra C. Semposki and \"Ozge S\"urer and 
+        Stefan M. Wild and John C. Yannotty},
         institution = {},
-        number      = {Version 0.2.0},
-        year        = {2022},
+        number      = {Version 0.3.0+dev},
+        year        = {2023},
         url         = {https://github.com/bandframework/bandframework}
     }
