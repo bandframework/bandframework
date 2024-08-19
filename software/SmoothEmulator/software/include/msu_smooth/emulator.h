@@ -29,66 +29,51 @@ namespace NBandSmooth{
 	public:
 		unsigned int iY; // labels observable from observable info
 		string observable_name;
-		Eigen::MatrixXd Ttilde,TtildeInv,ExactVariance;
 		vector<vector<double>> T;
 
-		double SigmaA0,SigmaAMin,SigmaA,SigmaATrial,MCStepSize,MCSigmaAStepSize,LAMBDA;
+		double LAMBDA,SigmaA;
 		double A2barRatio,logP;
 
 		unsigned int NMC;   // NMC is for generating independent samplings of A in Tune
 		unsigned int NASample;
-		bool TuneChooseMCMC,ConstrainA0,CutOffA,UseSigmaY,FirstTune,TuneChooseExact,TuneChooseMCMCPerfect;
+		bool ConstrainA0,UseSigmaY;
 		bool pca_ignore;
-		vector<vector<double>> ASample;
-		vector<double> SigmaASample;
-		vector<double> A,ATrial,ABest;
-		vector<vector<double>> ThetaTrain;
-		EigenMatrix Xd B,Binv;
-		EigenVector Xd chi;
+		vector<double> ABest;
+		vector<vector<double>> ThetaTrain,TTrain;
+		Eigen::MatrixXd B,Binv;
 		//vector<vector<double>> H6,H8;
 		//Eigen::MatrixXd beta,Psi;
 
 		CSmoothEmulator(string observable_name_set,bool pca_ignore_set);
 
 		void CalcTForTraining();
-		void CalcAFromTraining(vector<double> &AA);
-		void OldCalcAFromTraining(vector<double> &AA);
 		void PrintA(vector<double> &Aprint);
 
 		void SetThetaTrain();
 		void Tune();
-		void TuneMCMC();
-		void TuneMCMC_withSigma();
-		void TunePerfectMCMC();
-		
-		void TuneExact();
-		void GenerateUncertaintyMatrices();
-		void GetExactQuantities();
-		void GetExactSigmaA();
+		void GetSigmaA();
 		void CalcExactLogP();
 		
-		double GetLog_AProb(vector<double> &AA,double SigmaA);
+		double GetLog_AProb(vector<double> &AA);
 
 		void SetA_Zero(vector<double> &A);
 		void SetA_RanGauss(double ASigmaA,vector<double> &AA);
 		void SetA_Constant(double ASigmaA,vector<double> &AA);
 		void SetA_RanSech(double ASigmaA,vector<double> &AA);
 
-		double SigmaAbar;
-		unsigned int NSigmaA;
-
 		void GenerateASamples();
 		void CalcY(CModelParameters *modpars,double &Y,double &SigmaY);
 		void CalcY(vector<double> &Theta,double &Y,double &SigmaY);
 		void CalcYOnly(CModelParameters *modpars,double &Y);
 		void CalcYOnly(vector<double> &Theta,double &Y);
+		
 		//void CalcYDYDTheta(CModelParameters *modpars,double &Y,vector<double> &dYdTheta,double &SigmaY);
 		void CalcYDYDTheta(CModelParameters *modpars,double &Y,vector<double> &dYdTheta,double &SigmaY);
 		void CalcYDYDTheta(vector<double> &Theta,double &Y,vector<double> &dYdTheta,double &SigmaY);
 		void WriteCoefficients();
 		void ReadCoefficients();
-		void GetExactUncertainty(vector<double> &Theta_s,double &sigma);
-		void CalcYAndExactUncertainty(vector<double> &Theta_s,double &Y,double &uncertainty);
+		void GetUncertainty(vector<double> &Theta_s,double &sigma);
+		void CalcYAndUncertainty(vector<double> &Theta_s,double &Y,double &uncertainty);
 
 		void Init();
 
