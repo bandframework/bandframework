@@ -29,7 +29,6 @@ namespace NBandSmooth{
 	public:
 		unsigned int iY; // labels observable from observable info
 		string observable_name;
-		vector<vector<double>> T;
 
 		double LAMBDA,SigmaA;
 		double A2barRatio,logP;
@@ -62,19 +61,20 @@ namespace NBandSmooth{
 		void SetA_RanSech(double ASigmaA,vector<double> &AA);
 
 		void GenerateASamples();
-		void CalcY(CModelParameters *modpars,double &Y,double &SigmaY);
-		void CalcY(vector<double> &Theta,double &Y,double &SigmaY);
-		void CalcYOnly(CModelParameters *modpars,double &Y);
-		void CalcYOnly(vector<double> &Theta,double &Y);
+		double GetYOnly(CModelParameters *modpars);
+		double GetYOnly(vector<double> &Theta);
+		double GetUncertainty(CModelParameters *modpars);
+		double GetUncertainty(vector<double> &Theta_s);
+		void CalcYAndUncertainty(vector<double> &Theta_s,double &Y,double &uncertainty);
+		
+		
 		
 		//void CalcYDYDTheta(CModelParameters *modpars,double &Y,vector<double> &dYdTheta,double &SigmaY);
 		void CalcYDYDTheta(CModelParameters *modpars,double &Y,vector<double> &dYdTheta,double &SigmaY);
 		void CalcYDYDTheta(vector<double> &Theta,double &Y,vector<double> &dYdTheta,double &SigmaY);
 		void WriteCoefficients();
 		void ReadCoefficients();
-		void GetUncertainty(vector<double> &Theta_s,double &sigma);
-		void CalcYAndUncertainty(vector<double> &Theta_s,double &Y,double &uncertainty);
-
+		
 		void Init();
 
 		static CSmoothMaster *smoothmaster;

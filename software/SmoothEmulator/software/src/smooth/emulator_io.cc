@@ -14,8 +14,7 @@ void CSmoothEmulator::PrintA(vector<double> &Aprint){
 
 void CSmoothEmulator::WriteCoefficients(){
 	if(!pca_ignore){
-		unsigned int NCoefficients=smooth->NCoefficients;
-		unsigned int isample,ic,a;
+		unsigned int ic;
 		FILE *fptr;
 		string filename;
 		string dirname="smooth_data/"+smoothmaster->CoefficientsDirName+"/"+observable_name;
@@ -39,7 +38,7 @@ void CSmoothEmulator::WriteCoefficients(){
 
 void CSmoothEmulator::ReadCoefficients(){
 	if(!pca_ignore){
-		unsigned int isample,ic,a,NPars_test,MaxRank_test,NC_test;
+		unsigned int ic,NPars_test,MaxRank_test,NC_test;
 		unsigned int NCoefficients=smooth->NCoefficients;
 		FILE *fptr;
 		string filename;

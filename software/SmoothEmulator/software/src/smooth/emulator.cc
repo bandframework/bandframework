@@ -23,10 +23,10 @@ CSmoothEmulator::CSmoothEmulator(string observable_name_set,bool pca_ignore_set)
 }
 
 void CSmoothEmulator::Tune(){
-	int a,b,ic;
+	unsigned int a,b,ic,NCoefficients=smooth->NCoefficients;
 	vector<double> chi;
 	
-	ABest.resize(smooth->NCoefficients);
+	ABest.resize(NCoefficients);
 	ThetaTrain.clear();
 	TTrain.clear();
 	ThetaTrain.resize(NTrainingPts);
@@ -35,12 +35,14 @@ void CSmoothEmulator::Tune(){
 		ThetaTrain[itrain].resize(NPars);
 		TTrain[itrain].resize(NPars);
 		ThetaTrain[itrain]=smoothmaster->traininginfo->modelpars[itrain]->Theta;
-		TTrain[itrain]=smooth->GetT(ic,LAMBDA,ThetaTrain[itrain]);
+		for(ic=0;ic<smooth->NCoefficients;ic++){
+			TTrain[itrain][ic]=smooth->GetT(ic,LAMBDA,ThetaTrain[itrain]);
+		}
 	}
 	B.resize(NTrainingPts,NTrainingPts);
 	Binv.resize(NTrainingPts,NTrainingPts);
-	for(a=0;a<NTraining;a++){
-		for(b=0;b<NTraining;b++){
+	for(a=0;a<NTrainingPts;a++){
+		for(b=0;b<NTrainingPts;b++){
 			B(a,b)=0.0;
 			for(ic=0;ic<NCoefficients;ic++){
 				B(a,b)+=TTrain[a][ic]*TTrain[b][ic];
@@ -51,14 +53,14 @@ void CSmoothEmulator::Tune(){
 	chi.resize(NTrainingPts);
 	for(a=0;a<NTrainingPts;a++){
 		chi[a]=0.0;
-		for(b=0;b<NTraining;b++){
-			chi[a]+=Binv(a,b)*master->traininginfo->YTrain[b];
+		for(b=0;b<NTrainingPts;b++){
+			chi[a]+=Binv(a,b)*smoothmaster->traininginfo->YTrain[b][iY];
 		}
 	}
 	for(ic=0;ic<NCoefficients;ic++){
 		ABest[ic]=0.0;
 		for(a=0;a<NTrainingPts;a++){
-			ABest[ic]+=chi[ia]*TTrain[a][ic];
+			ABest[ic]+=chi[a]*TTrain[a][ic];
 		}
 	}
 	GetSigmaA();
