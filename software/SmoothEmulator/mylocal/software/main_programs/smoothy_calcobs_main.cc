@@ -4,7 +4,7 @@
 using namespace std;
 int main(){
 	NBandSmooth::CSmoothMaster master;
-	master.ReadCoefficientsAllY();
+	master.TuneAllY();
 	NBandSmooth::CModelParameters *modpars=new NBandSmooth::CModelParameters(); // contains info about single point
 	modpars->priorinfo=master.priorinfo;
 	master.priorinfo->PrintInfo();

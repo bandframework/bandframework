@@ -76,7 +76,6 @@ CSmoothMaster::CSmoothMaster(){
 		}
 	}
 	ReadTrainingInfo();
-	SetThetaTrain();
 }
 
 void CSmoothMaster::TuneAllY(){
@@ -98,18 +97,12 @@ void CSmoothMaster::TuneY(unsigned int iY){
 	emulator[iY]->Tune();
 }
 
-void CSmoothMaster::GenerateCoefficientSamples(){
+/*void CSmoothMaster::GenerateCoefficientSamples(){
 	for(unsigned int iY=0;iY<observableinfo->NObservables;iY++){
 		CLog::Info("Tuning Emulator for "+observableinfo->GetName(iY)+"\n");
 		emulator[iY]->GenerateASamples();
 	}
-}
-
-void CSmoothMaster::SetThetaTrain(){
-	for(unsigned int iY=0;iY<observableinfo->NObservables;iY++){
-		emulator[iY]->SetThetaTrain();
-	}
-}
+}*/
 
 void CSmoothMaster::CalcY(unsigned int iY,CModelParameters *modelpars,double &Y,double &SigmaY_emulator){
 	emulator[iY]->CalcYAndUncertainty(modelpars->Theta,Y,SigmaY_emulator);
@@ -179,6 +172,15 @@ double CSmoothMaster::GetYOnly(string obsname,vector<double> &theta){
 
 double CSmoothMaster::GetYOnly(unsigned int iY,vector<double> &theta){
 	return emulator[iY]->GetYOnly(theta);
+}
+
+double CSmoothMaster::GetUncertainty(string obsname,vector<double> &theta){
+	unsigned int iY=observableinfo->GetIPosition(obsname);
+	return emulator[iY]->GetUncertainty(theta);
+}
+
+double CSmoothMaster::GetUncertainty(unsigned int iY,vector<double> &theta){
+	return emulator[iY]->GetUncertainty(theta);
 }
 
 void CSmoothMaster::CalcAllYOnly(CModelParameters *modelpars,vector<double> &Y){

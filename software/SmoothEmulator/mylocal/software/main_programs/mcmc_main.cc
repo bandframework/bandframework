@@ -5,9 +5,9 @@
 using namespace std;
 int main(){
 	NBandSmooth::CSmoothMaster master;
+	master.TuneAllY();
 	NMSUUtils::CparameterMap *parmap=master.parmap;
 	NBandSmooth::CMCMC mcmc(&master);
-	master.ReadCoefficientsAllY();
 	//master.ReadTrainingInfo();
 	//master.TestAtTrainingPts();
 	

@@ -5,7 +5,7 @@
 using namespace std;
 int main(){
 	NBandSmooth::CSmoothMaster master;
-	master.ReadCoefficientsAllY();
+	master.TuneAllY();
 	master.TestAtTrainingPts();
 	return 0;
 }

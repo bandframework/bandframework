@@ -60,7 +60,7 @@ namespace NBandSmooth{
 		void SetA_Constant(double ASigmaA,vector<double> &AA);
 		void SetA_RanSech(double ASigmaA,vector<double> &AA);
 
-		void GenerateASamples();
+		//void GenerateASamples();
 		double GetYOnly(CModelParameters *modpars);
 		double GetYOnly(vector<double> &Theta);
 		double GetUncertainty(CModelParameters *modpars);
