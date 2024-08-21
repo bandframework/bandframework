@@ -76,18 +76,18 @@ CSmoothMaster::CSmoothMaster(){
 		}
 	}
 	ReadTrainingInfo();
+	
 }
 
 void CSmoothMaster::TuneAllY(){
 	for(unsigned int iY=0;iY<observableinfo->NObservables;iY++){
 		if((UsePCA && !pca_ignore[iY]) || !UsePCA){
-			CLog::Info("---- Tuning for "+observableinfo->observable_name[iY]+" ----\n");
+			//CLog::Info("---- Tuning for "+observableinfo->observable_name[iY]+" ----\n");
 			emulator[iY]->Tune();
 		}
 	}
 }
 	
-
 void CSmoothMaster::TuneY(string obsname){
 	unsigned int iY=observableinfo->GetIPosition(obsname);
 	emulator[iY]->Tune();
@@ -174,12 +174,20 @@ double CSmoothMaster::GetYOnly(unsigned int iY,vector<double> &theta){
 	return emulator[iY]->GetYOnly(theta);
 }
 
+double CSmoothMaster::GetYOnly(int iY,vector<double> theta){
+	return emulator[iY]->GetYOnly(theta);
+}
+
 double CSmoothMaster::GetUncertainty(string obsname,vector<double> &theta){
 	unsigned int iY=observableinfo->GetIPosition(obsname);
 	return emulator[iY]->GetUncertainty(theta);
 }
 
 double CSmoothMaster::GetUncertainty(unsigned int iY,vector<double> &theta){
+	return emulator[iY]->GetUncertainty(theta);
+}
+
+double CSmoothMaster::GetUncertainty(int iY,vector<double> theta){
 	return emulator[iY]->GetUncertainty(theta);
 }
 
@@ -296,6 +304,7 @@ void CSmoothMaster::TestVsFullModelAlt(){
 	vector<double> testtheta;
 	FILE *fptr,*fptr_out;
 	string filename;
+	fitpercentage=0.0;
 	for(iY=0;iY<NObservables;iY++){
 		nfit=ntest=0;
 		filename="smooth_data/fullmodel_testdata/"+observableinfo->observable_name[iY]+".txt";
@@ -323,7 +332,9 @@ void CSmoothMaster::TestVsFullModelAlt(){
 		fclose(fptr);		
 		fclose(fptr_out);
 		CLog::Info(observableinfo->observable_name[iY]+": "+to_string(nfit)+" out of "+to_string(ntest)+" points within 1 sigma\n");
+		fitpercentage+=100.0*double(nfit)/double(ntest);
 	}
+	fitpercentage=fitpercentage/double(NObservables);
 }
 
 void CSmoothMaster::TestVsFullModel(){

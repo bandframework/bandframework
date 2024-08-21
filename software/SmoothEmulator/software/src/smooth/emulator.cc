@@ -33,7 +33,7 @@ void CSmoothEmulator::Tune(){
 	TTrain.resize(NTrainingPts);
 	for(unsigned int itrain=0;itrain<NTrainingPts;itrain++){
 		ThetaTrain[itrain].resize(NPars);
-		TTrain[itrain].resize(NPars);
+		TTrain[itrain].resize(NCoefficients);
 		ThetaTrain[itrain]=smoothmaster->traininginfo->modelpars[itrain]->Theta;
 		for(ic=0;ic<smooth->NCoefficients;ic++){
 			TTrain[itrain][ic]=smooth->GetT(ic,LAMBDA,ThetaTrain[itrain]);
@@ -54,7 +54,7 @@ void CSmoothEmulator::Tune(){
 	for(a=0;a<NTrainingPts;a++){
 		chi[a]=0.0;
 		for(b=0;b<NTrainingPts;b++){
-			chi[a]+=Binv(a,b)*smoothmaster->traininginfo->YTrain[b][iY];
+			chi[a]+=Binv(a,b)*smoothmaster->traininginfo->YTrain[iY][b];
 		}
 	}
 	for(ic=0;ic<NCoefficients;ic++){
@@ -76,13 +76,14 @@ void CSmoothEmulator::GetSigmaA(){
 	}
 	sigmaA2=sigmaA2/double(NTrainingPts);
 	SigmaA=sqrt(sigmaA2);
+	//CLog::Info("SigmaA="+to_string(SigmaA)+"\n");
 }
 
 
 
 void CSmoothEmulator::CalcExactLogP(){
-	double P=pow(SigmaA,-NTrainingPts)/sqrt(B.determinant());
-	logP=log(P);
+	double detB=B.determinant();
+	logP=-0.5*log(fabs(detB))-NTrainingPts*log(SigmaA);
 }
 
 void CSmoothEmulator::SetA_Zero(vector<double> &A){

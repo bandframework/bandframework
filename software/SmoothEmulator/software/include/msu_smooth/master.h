@@ -45,13 +45,17 @@ namespace NBandSmooth{
 		bool UsePCA;
 		string SmoothEmulator_TrainingFormat;
 		vector<bool> pca_ignore;
-		double pca_minvariance;
+		double pca_minvariance,fitpercentage;
 
 		void ReadTrainingInfo();
 		//void GenerateCoefficientSamples();
 		void TuneAllY(); // tune all observables
 		void TuneY(string obsname); // tune one observable
 		void TuneY(unsigned int iY); // tune one observable
+		
+		double addxy(double x,double y){
+			return x+y;
+		}
 		
 		void CalcAllY(CModelParameters *modelpars,vector<double> &Y,vector<double> &SigmaY_emulator);
 		void CalcAllY(vector<double> &theta,vector<double> &Y,vector<double> &SigmaY_emulator);
@@ -65,11 +69,13 @@ namespace NBandSmooth{
 		void CalcY(string obsname,vector<double> &theta,double &Y,double &SigmaY_emulator);
 		double GetUncertainty(string obsname,vector<double> &theta);
 		double GetUncertainty(unsigned int iY,vector<double> &theta);
+		double GetUncertainty(int iY,vector<double> theta);
 		
 		double GetYOnly(unsigned int iY,CModelParameters *modelpars);
 		double GetYOnly(unsigned int iY,vector<double> &theta);
 		double GetYOnly(string obsname,CModelParameters *modelpars);
 		double GetYOnly(string obsname,vector<double> &theta);
+		double GetYOnly(int iY,vector<double> theta);
 		
 		void CalcAllYdYdTheta(CModelParameters *modelpars,vector<double> &Y,
 		vector<double> &SigmaY_emulator,vector<vector<double>> &dYdTheta);
@@ -100,5 +106,7 @@ namespace NBandSmooth{
 	};
 
 };
+
+//#include "msu_smooth/smoothbind.h"
 
 #endif

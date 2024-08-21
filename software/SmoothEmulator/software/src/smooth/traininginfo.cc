@@ -38,6 +38,7 @@ CTrainingInfo::CTrainingInfo(CObservableInfo *observableinfo_set,CPriorInfo *pri
 
 void CTrainingInfo::ReadTrainingInfoSmoothFormat(){
 	unsigned int itrain,ilist,ifile,iy,nsuccess=0,ipar,nread;
+	unsigned int NObs=smoothmaster->observableinfo->NObservables;
 	char filename[300],obs_charname[300],mod_par_name[300];
 	string obs_name;
 	double y,sigmay,x;
@@ -75,13 +76,12 @@ void CTrainingInfo::ReadTrainingInfoSmoothFormat(){
 		modelpars[itrain]=new CModelParameters();
 	}
 	
-	YTrain.resize(NTrainingPts);
-	SigmaYTrain.resize(NTrainingPts);
-	for(itrain=0;itrain<NTrainingPts;itrain++){
-		YTrain[itrain].resize(smoothmaster->observableinfo->NObservables);
-		SigmaYTrain[itrain].resize(smoothmaster->observableinfo->NObservables);
+	YTrain.resize(NObs);
+	SigmaYTrain.resize(NObs);
+	for(iy=0;iy<NObs;iy++){
+		YTrain[iy].resize(NTrainingPts);
+		SigmaYTrain[iy].resize(NTrainingPts);
 	}
-		
 	
 	for(itrain=0;itrain<NTrainingPts;itrain++){
 		ifile=NTrainingList[itrain];
@@ -194,5 +194,5 @@ void CTrainingInfo::ReadTrainingInfoSurmiseFormat(){
 	for(itrain=0;itrain<NTrainingPts;itrain++){
 		modelpars[itrain]->TranslateX_to_Theta();
 	}
-
+	
 }

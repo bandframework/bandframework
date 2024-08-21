@@ -26,10 +26,6 @@ int main(){
 	printf("Enter LAMBDA: ");
 	scanf("%lf",&LAMBDA);
 	
-	
-	
-	
-	
 	filename="smooth_data/Info/modelpar_info.txt";
 	fptr=fopen(filename.c_str(),"r");
 	NPars=0;
@@ -45,6 +41,7 @@ int main(){
 		}
 	}
 	fclose(fptr);
+	
 	filename="figs/modelpar_info.txt";
 	fptr=fopen(filename.c_str(),"w");
 	for(ipar=0;ipar<NPars;ipar++){
@@ -72,7 +69,7 @@ int main(){
 		fprintf(fptr,"%s  %s\n",obsname[iy].c_str(),obsname[iy].c_str());
 	}
 	fclose(fptr);
-	
+		
 	NTrain=0;
 	bool existence;
 	do{
@@ -97,8 +94,8 @@ int main(){
 			thetatest[itest][ipar]=-1.0+2.0*randy.ran();
 		}
 	}
-
-	string command="mkdir -p fullmodel_testdata";
+	
+	string command="mkdir -p smooth_data/fullmodel_testdata";
 	system(command.c_str());
 	theta.resize(NPars);
 	expfilename="smooth_data/Info/experimental_info.txt";
@@ -122,6 +119,7 @@ int main(){
 				theta[ipar]=-1.0+2.0*(x-xmin[ipar])/(xmax[ipar]-xmin[ipar]);
 			}
 			fclose(fptr);
+			
 			y=smooth.CalcY(A,LAMBDA,theta);
 			filename="smooth_data/modelruns/run"+to_string(itrain)+"/obs.txt";
 			if(iy==0)
@@ -132,7 +130,7 @@ int main(){
 			fclose(fptr_out);
 		}
 
-		filename="fullmodel_testdata/"+obsname[iy]+".txt";
+		filename="smooth_data/fullmodel_testdata/"+obsname[iy]+".txt";
 		fptr=fopen(filename.c_str(),"w");
 		for(itest=0;itest<Ntest;itest++){
 			y=smooth.CalcY(A,LAMBDA,thetatest[itest]);
@@ -142,7 +140,6 @@ int main(){
 			fprintf(fptr,"%17.10e\n",y);
 		}
 		fclose(fptr);
-		
 		
 		y=smooth.CalcY(A,LAMBDA,exptheta);
 		fprintf(expfptr,"%s  %lf  3.0 0.0\n",obsname[iy].c_str(),y);

@@ -46,6 +46,11 @@ add_executable(smoothy_testvsfullmodelalt ${MAIN_PROGRAM_DIR}/smoothy_testvsfull
 add_dependencies(smoothy_testvsfullmodelalt extern_smooth)
 target_link_libraries(smoothy_testvsfullmodelalt ${GITHOME_BAND_SMOOTH}/software/lib/libsmooth.a  ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a   ${EIGEN3_LIBRARY})
 #################################################
+set(SOURCE_FILES ${MAIN_PROGRAM_DIR}/smoothy_testvslambda_main.cc)
+add_executable(smoothy_testvslambda ${MAIN_PROGRAM_DIR}/smoothy_testvslambda_main.cc)
+add_dependencies(smoothy_testvslambda extern_smooth)
+target_link_libraries(smoothy_testvslambda ${GITHOME_BAND_SMOOTH}/software/lib/libsmooth.a  ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a   ${EIGEN3_LIBRARY})
+#################################################
 set(SOURCE_FILES ${MAIN_PROGRAM_DIR}/pca_calctransformation_main.cc)
 add_executable(pca_calctransformation ${MAIN_PROGRAM_DIR}/pca_calctransformation_main.cc)
 add_dependencies(pca_calctransformation extern_smooth)

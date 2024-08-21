@@ -68,15 +68,14 @@ double CSmoothEmulator::GetUncertainty(vector<double> &Theta_s){
 			S[a]+=TTrain[a][i]*T[i];
 		}
 	}
-	
 
 	unc2=0.0;
-	for(i=NTrainingPts;i<NCoefficients;i++){
+	for(i=0;i<NCoefficients;i++){
 		unc2+=T[i]*T[i];
 	}
 	for(a=0;a<NTrainingPts;a++){
 		for(b=0;b<NTrainingPts;b++){
-			unc2-=S[a]*B(a,b)*S[b];
+			unc2-=S[a]*Binv(a,b)*S[b];
 		}
 	}
 	return SigmaA*sqrt(fabs(unc2));

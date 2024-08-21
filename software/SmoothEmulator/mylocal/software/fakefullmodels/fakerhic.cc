@@ -153,7 +153,7 @@ int main(){
 	
 	// Write fullmodel test data for random points
 	X.resize(NPars);
-	string command="mkdir -p fullmodel_testdata";
+	string command="mkdir -p smooth_data/fullmodel_testdata";
 	system(command.c_str());
 	command="rm -f smooth_data/fullmodel_testdata/*.txt";
 	system(command.c_str());
