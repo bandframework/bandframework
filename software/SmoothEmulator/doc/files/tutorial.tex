@@ -4,7 +4,7 @@
 \section{Tutorial}\label{sec:tutorial}
 
 \subsection{Overview}
-A template project directory is provided that the User may copy to their own space, then use this as a foundation from which to embark on their own analysis. This directory includes information files, describing the parameter priors and the observables, that correspond to an artificial model that is also provided as a template. Working through the steps in this section constitutes a tutorial, both for running {\it Simplex Sampler} and for running {\it Smooth Emulator}.
+Template project directories and files are provided with the intention that the User will copy them to their own space, then use this as a foundation from which to embark on their own analysis. This directory includes information files, describing the parameter priors and the observables, that correspond to an artificial model that is also provided as a template. Working through the steps in this section constitutes a tutorial, both for running {\it Simplex Sampler} and for running {\it Smooth Emulator}.
 
 This section describes the steps of how the User would
 \begin{enumerate}\itemsep=0pt
@@ -23,15 +23,23 @@ Installation and compilation is described in Sec. \ref{sec:installation}. As was
 
 \begin{tabular}{rl}\hline
 {\tt \$\{GITHOME\_BAND\_SMOOTH\}} & \parbox{5in}{~\\Location of Git Repository, e.g.\\{\tt /Users/CarlosSmith/bandframework/software/SmoothEmulator}\\}\\
-{\tt \$\{MY\_LOCAL\}} & \parbox{5in}{Should be a subdirectory of {\tt \$\{GITHOME\_BAND\_SMOOTH\}/}\\
-Directory including executables, {\tt \$\{MY\_LOCAL\}/bin}\\and main programs, {\tt \$\{MY\_LOCAL\}/software/main\_programs}\\}\\
-{\tt \$\{MY\_PROJECT\}} & \parbox{5in}{Work space where parameter files, data, results and figures are created and stored. User may have several different such directories}\\ \hline
+{\tt \$\{MY\_LOCAL\}} & \parbox{5in}{Can be placed anywhere. Executables are store in\\ {\tt \$\{MY\_LOCAL\}/bin} and main programs, and source codes for main\\ programs are found within {\tt \$\{MY\_LOCAL\}/software/main\_programs}\\}\\
+{\tt \$\{MY\_PROJECT\}} & \parbox{5in}{Can be placed anywhere. Work spaces where parameter files, data, results and figures are created and stored. User may have several different such directories\\}\\
+ \hline
 \end{tabular}
 
-Then, the user should have established a personalized project directory by duplicating the {\tt \$\{GITHOME\_BAND\_SMOOTH\}/templates/myproject/} directory onto their computer. The User should have also compiled the main libraries
+At this point, the user should have established a personalized project directory by copying the {\tt \$\{GITHOME\_BAND\_SMOOTH\}/templates/} directory to a convenient location. For example,
+{\tt
+\begin{verbatim}
+	% cp -r ${GITHOME_BAND_SMOTH}/templates /Users/CarlosSmith/mysmoothy
+\end{verbatim}}
+In this case {\tt \$\{MY\_LOCAL\}} will now refer to {\tt Users/CarlosSmith/mysmoothy/mylocal} and {\tt \$\{MY\_PROJECT\}} will now refer to a specific project at {\tt Users/CarlosSmith/mysmoothy/myproject}.
+
+The User should have also compiled the main libraries
 {\tt
 \begin{verbatim}
    ${GITHOME_BAND_SMOOTH}/software% cmake .
+   ${GITHOME_BAND_SMOOTH}/software% make
 \end{verbatim}
 }
 and the main programs,
@@ -43,7 +51,7 @@ and the main programs,
 }
 This will compile all the main source programs in {\tt \$\{MY\_LOCAL\}/software/main\_programs/*.cc} and a ``fake'' full model to be used in the tutorial {\tt \$\{MY\_LOCAL\}/software/fakefulmodels/fakerhic.cc}. The repository was organized to encourage Users to edit any files in {\tt \$\{MY\_LOCAL\}/}. If the User wishes to restore any original files, a copy can be found at {\tt \$\{GITHOME\_BAND\_SMOOTH\}/templates/mylocal}.
 
-Several executables should now appear in {\tt \$\{MY\_LOCAL\}/bin/}: {\tt simplex, smoothy\_tune, mcmc, smoothy\_testattrainingpts, smoothy\_testvsfullmodel, smoothy\_testvsfullmodelalt, pca\_calctransformation, pca\_readinfo\_calcy} and {\tt fakerhic}. The User might find it convenient to add {\tt \$\{MY\_LOCAL\}/bin} to their path. The reason these are compiled in the User's space, separate from the main libraries, is that the User may well wish to create their own main programs, and this arrangement allows the User to compile their own versions, while leaving the original programs from the templates directory and the lower-level source code unchanged. 
+Several executables should now appear in {\tt \$\{MY\_LOCAL\}/bin/}: {\tt simplex, smoothy\_tune, mcmc, smoothy\_testattrainingpts, smoothy\_testvsfullmodel, smoothy\_testvsfullmodelalt} and {\tt fakerhic}. The User might find it convenient to add {\tt \$\{MY\_LOCAL\}/bin} to their path. The reason these are compiled in the User's space, separate from the main libraries, is that the User may well wish to create their own main programs, and this arrangement allows the User to compile their own versions, while leaving the original programs from the templates directory and the lower-level source code unchanged. 
 
 \subsection{Creating Necessary Info Files}
 The User will run the software from the {\tt \$\{MY\_PROJECT\}/} directory. Before a User can run {\it Simplex Sampler} they must create information files that describe the model-parameter priors and list the observable names. Both files are need to be in the {\tt \$\{MY\_PROJECT\}} directory. The first file is {\tt smooth\_data/Info/modelpar\_info.txt}, which describes the model parameters and their priors. For the purposes of this tutorial, a file already exists,

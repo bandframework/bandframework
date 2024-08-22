@@ -259,7 +259,7 @@ the mean and fluctuation can be written as
 \sigma_A^2 T_j(\vec{\theta})T_j(\vec{\theta})
 -\sigma_A^2S_a(\vec{\theta}) B^{-1}_{ab}S_b(\vec{\theta}).
 \end{align*}
-Whereas $\langle y(\vec{\theta})\rangle$ depends linearly on the training values, $y_{a=1,N_{\rm train}}$, the emulator's uncertainty, $\langle\delta E(\vec{\theta})^2\rangle$ depends only on the location of the training points. 
+Whereas $\langle E(\vec{\theta})\rangle$ depends linearly on the training values, $y_{a=1,N_{\rm train}}$, the emulator's uncertainty, $\langle\delta E(\vec{\theta})^2\rangle$ depends only on the location of the training points. 
 
 If one sets $\vec{\theta}=\vec{\theta}_c$, one of the training points, and if $\Delta=0$, then
 \begin{align*}\eqnumber
@@ -268,16 +268,16 @@ T_j(\vec{\theta}_c)T_j(\vec{\theta}_c)&= B_{cc},~{\rm no~sum~over~}c,
 \end{align*}
 and
 \begin{align*}\eqnumber
-\langle \delta y(\vec{\theta}_c)^2\rangle
+\langle \delta E(\vec{\theta}_c)^2\rangle
 &=\sigma_A^2 B_{cc}-\sigma_A^2 B_{ca}
  B^{-1}_{ab} B_{bc}=0.
 \end{align*}
 Thus, there is no uncertainty when evaluated at the training points. When $\Delta\ne 0$, the uncertainty at a training point, $\vec{\theta}_c$ is
 \begin{align*}\eqnumber
-\langle\delta E(\vec{\theta}_c^2)\rangle&=
+\langle\delta E(\vec{\theta}_c)^2\rangle&=
 \Delta_{cc}-\frac{1}{\sigma_A^2}\Delta_{ca}B^{-1}_{ab}\Delta_{bc},~~~({\rm no~sum~over~} c). 
 \end{align*}
-Because the matrices $T_i(\vec{\theta}_a)T_i(\vec{\theta}_b)$ and $\Delta_{ab}$ are both positive definite, the uncertainty above is manifestly positive.
+If $\Delta$ is small, the uncertainty of the emulator is simple given by $\Delta$, however it is somewhat reduced for larger $\Delta$. Because the matrices $T_i(\vec{\theta}_a)T_i(\vec{\theta}_b)$ and $\Delta_{ab}$ are both positive definite, the uncertainty squared above is manifestly positive.
 
 Before considering a specific position, $\vec{\theta}$, one first calculates and stores the vector $\chi$ and the matrix $ B^{-1}$.  This involves inverting a $N_{\rm train}\times N_{\rm train}$ matrix. Then, when considering a specific $\vec{\theta}$, one calculates $S_a(\vec{\theta})$ for each $a$. This involves calculating a double sum with $N_{\rm train}\times N_{\rm coef}$ elements. Once these are stored, calculating $\langle\delta y^2\rangle$ involves calculating a double sum with an additional $N_{\rm train}\times N_{\rm train}$ elements. Thus, calculating $S_a(\vec{\theta})$ is where the bulk of the calculation occurs.  Because $N_{\rm train}\lesssim 100$ and $N_{\rm coef}$ might be of in the tens of thousands (depending on the number of parameters and maximum rank), one should be able to calculate $\langle y\rangle$ and $\langle\delta y^2\rangle$ in much less than a second. Nonetheless, when performing an MCMC calculation, one might calculate for millions of values of $\vec{\theta}$, which can push the calculation into the ranges of minutes or even hours if one has a dozen parameters or more.
 
@@ -287,14 +287,16 @@ The calculations above could have been performed finding the coefficients to max
 
 Here, we find the optimum choice for $\sigma_A$, the variance of the coefficient in the absence of training data, in the previous section. For the derivations of $\langle y\rangle$ and $\langle\delta y^2\rangle$ in the previous section, the expression in Eq. (\ref{eq:exactmoments}) for $\langle A_i\rangle$ has no dependence on $\sigma_A$, which sets the variance of the coefficients. Further, the expression for $\langle\delta A_i^2\rangle$ does not depend on the model training values, $y_{a=1,N_{\rm train}}$. The net probability from Eq. (\ref{eq:netexactprob}) was found to be in Eq. (\ref{eq:Nexact}) to be
 \begin{align*}\eqnumber\label{eq:netexactprob}
-\int \prod_i dA_i P(\vec{A},\sigma^2)&= \mathcal{Z}\\
+\int \prod_i dA_i P(\vec{A},\sigma^2,\Lambda)&= \mathcal{Z}\\
 &=\sigma_A^{-N_{\rm train}}\left({\rm det} B\right)^{1/2}\exp\left[-\frac{1}{2\sigma_A^2}y_a B^{-1}_{ab}y_b\right].
 \end{align*}
-Our goal here is to find the value of $\sigma_A$ that maximizes $ \mathcal{Z}$. Setting the derivative w.r.t. $\sigma_A^2$ equal to zero,
+Our goal here is to find the value of $\sigma_A$ that maximizes $ \mathcal{Z}$. For the case where $\Delta=0$, one can find $\sigma_A$ rather easily. In that case, setting the derivative w.r.t. $\sigma_A^2$ equal to zero,
 \begin{align*}\eqnumber
-0&=\frac{N_{\rm train}}{\sigma_A^2} \mathcal{Z}-\frac{1}{\sigma_A^4}y_a B^{-1}_{ab}y_b,\\
+0&=\frac{N_{\rm train}}{\sigma_A^2} \mathcal{Z}-\frac{\mathcal{Z}}{\sigma_A^4}y_a B^{-1}_{ab}y_b,\\
 \sigma_A^2&=\frac{1}{N_{\rm train}}y_a B^{-1}_{ab}y_b.
 \end{align*}
+
+However, the situation is becomes more complicated if $\Delta\ne 0$. 
 
 \section{Theoretical Basis of {\it Simplex Sampler}}\label{sec:simplextheory}
 

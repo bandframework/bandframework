@@ -50,6 +50,14 @@ void CSmoothEmulator::Tune(){
 		}
 	}
 	Binv=B.inverse();
+	
+	GetSigmaA();  // note this ignores effect of model randomness(SigmaYTrain) in setting SigmaA
+	
+	for(a=0;a<NTrainingPts;a++){
+		B(a,a)+=pow(smoothmaster->traininginfo->SigmaYTrain[iY][a]/SigmaA,2);
+	}
+	Binv=B.inverse();
+	
 	chi.resize(NTrainingPts);
 	for(a=0;a<NTrainingPts;a++){
 		chi[a]=0.0;
@@ -63,7 +71,7 @@ void CSmoothEmulator::Tune(){
 			ABest[ic]+=chi[a]*TTrain[a][ic];
 		}
 	}
-	GetSigmaA();
+	CalcExactLogP();
 }
 
 void CSmoothEmulator::GetSigmaA(){
