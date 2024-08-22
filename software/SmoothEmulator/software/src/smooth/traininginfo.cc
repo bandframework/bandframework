@@ -5,7 +5,6 @@ using namespace NBandSmooth;
 using namespace NMSUUtils;
 CSmoothMaster* CTrainingInfo::smoothmaster=NULL;
 
-
 CTrainingInfo::CTrainingInfo(CObservableInfo *observableinfo_set,CPriorInfo *priorinfo_set){
 	observableinfo=observableinfo_set;
 	priorinfo=priorinfo_set;

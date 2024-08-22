@@ -157,17 +157,10 @@ void CPCA::CalcTransformationInfo(){
 	
 	// Write Info File for PCA
 	
-	double SA0Zsquared,SA0Y,SA0Z;
 	fptr=fopen("PCA_Info/observable_info.txt","w");
 	for(iz=0;iz<NObs;iz++){
-		SA0Zsquared=0.0;
-		for(iy=0;iy<NObs;iy++){
-			SA0Y=observable_info->SigmaA0[iy];
-			SA0Zsquared+=SA0Y*SA0Y*eigvecs(iz,iy)*eigvecs(iz,iy);
-		}
-		SA0Z=sqrt(SA0Zsquared);
 		pcaname="z"+to_string(iz);
-		fprintf(fptr,"%s %g\n",pcaname.c_str(),SA0Z);
+		fprintf(fptr,"%s\n",pcaname.c_str());
 	}
 	fclose(fptr);
 	
