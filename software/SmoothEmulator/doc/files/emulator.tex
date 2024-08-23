@@ -40,17 +40,16 @@ In the following subsections, we first review the format for each of the require
 
 Before training the emulator, one must first run the full model at a given set of training points. In addition to a parameter file (described in the next sub-section), which sets numerous options, the User must provide the following:
 \begin{enumerate}\itemsep=0pt
-\item A file listing the names of observables and an estimate of the variance of each observable throughout the model-parameter space, $\sigma_A$. This file is named\\{\tt smooth\_data/Info/observable\_info.txt}, where the path is relative to the project directory. The file might look like
+\item A file listing the names of observables. This file is named\\{\tt smooth\_data/Info/observable\_info.txt}, where the path is relative to the project directory. The file might look like
 {\tt
 \begin{verbatim}
- obsname1  SigmaA1_init
- obsname2  SigmaA2_init
- obsname3  SigmaA3_init
- obsname4  SigmaA4_init 
+ obsname1 
+ obsname2
+ obsname3
+ obsname4  
 \end{verbatim}}
 \vspace*{-16pt}
  \hspace*{28pt}$\vdots$\\
-The initial $\sigma_A$ is only relevant if one is using one of the Monte Carlo tuning methods, (b) or (c) above, as it provides an initial guess for the parameter $\sigma_A$ above when using one of the Monte Carlo methods.
 
 \item A file listing the names of the model parameters that also describes their priors. This file is {\tt smooth\_data/Info/modelpar\_info.txt}. The file might have the following form:
 {\tt
