@@ -369,32 +369,25 @@ Of course, these problems would be largely avoided if the number of parameters w
 
 \section{Tests of {\it Smooth Emulator}}
 
-Here, we show several results for testing {\it Smooth Emulator}. For these tests we consider a surrogate full-model generated from Taylor expansions with randomized coefficients, exactly according to the form assumed by the emulator. These functions are characterized by a smoothness parameter, $\Lambda$, a variance for the coefficients, $\sigma_A$, and a maximum rank. If the emulator works correctly, 68\% of the discrepancies in emulated functions, compared to the true model, should fall within one standard deviation. 
-
-
-
-
-
-
-First, we show some results of one-parameter emulators. For a linear fit, two parameters (slope and intercept) would suffice. But because higher-rank contributions exist, there is a spread of functions is that narrows with increasing smoothness parameter as shown in Fig. \ref{fig:onedim}. Figure \ref{fig:onedim} also shows how increasing the number of training points, from two to three, also narrows the range of possible values. 
+Here, we show several results for testing {\it Smooth Emulator}. For these tests we consider a surrogate full-model generated from Taylor expansions with randomized coefficients, exactly according to the form assumed by the emulator. These functions are characterized by a smoothness parameter, $\Lambda$, a variance for the coefficients, $\sigma_A$, and a maximum rank. If the emulator works correctly, 68\% of the discrepancies in emulated functions, compared to the true model, should fall within one standard deviation. Performing the same test as described in the tutorial, Fig. \ref{fig:smoothtest_vsfullmodel} compares emulator predictions to 50 different surrogate models. Each surrogate model was constructed according to Taylor expansions with $\Lambda=3$, a maximum rank of 4, and $\sigma_A=100$. Although only 50 such models are illustrated here, this was attempted with 5000 models, and it was found that the percentage of predictions within one sigma was within a few tenths of a percent of the 68\% expected, thus validating both the emulator's prediction of both its value and its estimate of its uncertainty.
 \begin{figure}
-\includegraphics[width=0.32\textwidth]{onepar2points/onepartest_Lambda2}\hspace*{0.02\textwidth}
-\includegraphics[width=0.32\textwidth]{onepar2points/onepartest_Lambda4}\hspace*{0.02\textwidth}
-\includegraphics[width=0.32\textwidth]{onepar3points/onepartest_Lambda2}
-\caption{\label{fig:onedim}
-Real functions (black lines) are emulated with the {\it Smooth Emulator} (default settings). Ten different functions were generated sampled by the Monte Carlo method. The spread of the lines represents the uncertainty. The spread is reduced by either reducing the smoothness parameter, $\Lambda$, or by increasing the number of sampling points.}
+\centerline{\includegraphics[width=0.6\textwidth]{YvsY_smooth}}
+\caption{\label{fig:smoothtest_vsfullmodel}
+Emulator predictions are compared to a surrogate model with Taylor expansions based on $\Lambda=3$ and $\sigma_A=100$. As can be seen approximately 68\% of the predictions were within one sigma of the true model, validating the emulator, both in regards to its predicted value and its uncertainty estimate.}
 \end{figure}
 
-Next, we repeat the same test with six parameters. The prior distribution of parameters was uniform in the region $-1<\theta_i<1$. In this case, the {\it Simplex Sampler} was used to choose the training points. The full model, $F$, was constructed from sample smooth functions, with the coefficients generated randomly and a smoothness parameter set to three or six. The $A_{\vec{n}=0}$ coefficient for the full model was set to zero to better accommodate viewing results. The emulator was not given that information. Twenty instances of full models were emulated. For each full model five random points in parameter space were chosen. The emulator value and its uncertainty are plotted alongside the full-model values in Fig. \ref{fig:sixpars}. The 100 comparisons show that the emulator accurately predicts the uncertainty. This is not surprising, because the emulator used the same smoothness parameter as was used to construct the full models. The width parameters, $\sigma$, were explored stochastically, and remarkably they seem to fluctuate around the same value used to construct the full model, albeit with fluctuations of the order of 30\%. 
+Figure \ref{fig:vslambda} shows the average of surrogate-model predictions $\ln(Z)$, $\sigma_A$ and the percentage of predictions within one sigma over 500 instances. These are shown as a function of the emulator's $\Lambda$. Because the surrogate models were constructed with $\Lambda=3$, the value of $\ln(Z)$ should be a maximum there. Further, for $\Lambda=3$, the extracted value of $\sigma_A$ should be 100, and 68\% of emulator predictions should be within the emulator's uncertainty estimate. The emulator passes all these tests beautifully, but as can be seen, whereas the prediction of $\sigma_A$ is remarkably accurate, the value of $\ln(Z)$ is quite uncertain. Thus, finding $\Lambda$ for a given emulator might be problematic. Figure \ref{fig:logPinstances} shows $\ln(Z)$ for several individual models. This was repeated for 5, 10 and 15 parameters. For smaller numbers of parameters, using $\ln(Z)$ vs $\Lambda$ to determine $\Lambda$  is especially problematic. Thus, the User might want to simply fix $\Lambda$ at some value, e.g 2.5, and live with the consequences.
 
-Figure \ref{fig:sixpars} first shows the 100 comparisons for the case with the smoothness parameter, $\Lambda=3$. The simplest simplex form was applied, which has seven parameters, the same number one would use for a linear fit. Uncertainties were provided by finding 16 independent samplings of $A$ coefficients and of $\sigma$, then using the variance of the 16 samples to define the uncertainty. Variant {\it a} of the default emulator was used, i.e. the coefficient $A_0$ was not given a constraining prior distribution, whereas all other coefficients were weight by a Gaussian of width $\sigma$. In the other two panels of Fig. \ref{fig:sixpars}, the procedure was repeated but once with a higher smoothness parameter, and once with a the 28 training points, placed according to the procedure mentioned in Sec. \ref{sec:simplex}, where an additional set of points in parameter space was generated by choosing points that bisect all the lines connecting points in the original simplex, then doubling their radius. As expected, smoother functions are more easily emulated with a given number of training points, and using more training points also improves the accuracy. 
 \begin{figure}
-\includegraphics[width=0.32\textwidth]{sixpars/NPars6_Lambda3_NTrain7}\hspace*{0.02\textwidth}
-\includegraphics[width=0.32\textwidth]{sixpars/NPars6_Lambda6_NTrain7}\hspace*{0.02\textwidth}
-\includegraphics[width=0.32\textwidth]{sixpars/NPars6_Lambda3_NTrain28}
-\caption{\label{fig:sixpars}
-Using 20 instances of full models using six parameters, choosing 5 random points in parameter space for each model, the emulator (circles) and its uncertainty were compared to the full-model values (squares). Neighboring points of the same color emulated the same full model. The accuracy improves if a smoother function is considered (middle panel), or if more training points are used (right panel). Estimates of the uncertainty seem reasonable given that the uncertainties illustrated in the figure represent one standard deviation. It should be emphasized that this consistency depends critically on the fact that the emulator chose the same smoothness parameter as was used to generate the full models.
-}
+\parbox[t]{0.45\textwidth}{
+\centerline{\includegraphics[width=0.45\textwidth]{vslambda}}
+\caption{\label{fig:vslambda}
+A ensemble of 5000 surrogate models, each generated with $\Lambda=3$ an $\sigma_A=100$ were emulated. The extracted values of $\ln(Z)$ an $\sigma_A$, along with the percentage of emulator predictions withing the emulator's uncertainty were plotted agains the value of $\Lambda$ assumed for the emulator. Indeed, for $\Lambda=3$, $\ln(Z)$ is at a maximum, $\sigma_A=100$ and 68\% of the predictions are within the estimated uncertainty. Unfortunately, $\ln(Z)$ has a high instance-to-instance variability.}}
+~~~~\parbox[t]{0.45\textwidth}{ \vspace*{-266pt}
+\centerline{\includegraphics[width=0.45\textwidth]{logPinstances}}
+\caption{\label{fig:logPinstances}
+For 20 instances of the surrogate function, $\ln(Z)$ is plotted vs. $\Lambda$. Although if one were to average over thousands of surrogate models, one could extract $\Lambda$ accurately, the extraction is rather inaccurate on a model-by-model basis. This is especially true if the model has smaller numbers of parameters.}}
 \end{figure}
+
 
 \end{document}
