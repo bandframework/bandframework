@@ -53,10 +53,6 @@ namespace NBandSmooth{
 		void TuneY(string obsname); // tune one observable
 		void TuneY(unsigned int iY); // tune one observable
 		
-		double addxy(double x,double y){
-			return x+y;
-		}
-		
 		void CalcAllY(CModelParameters *modelpars,vector<double> &Y,vector<double> &SigmaY_emulator);
 		void CalcAllY(vector<double> &theta,vector<double> &Y,vector<double> &SigmaY_emulator);
 		void CalcAllYOnly(CModelParameters *modelpars,vector<double> &Y);

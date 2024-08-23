@@ -286,40 +286,42 @@ int main(){
 
 \subsection{Useful Functionalities of {\tt CSmoothMaster} Object}
 
-{\it Smooth Emulator} was designed so that the User can write their own main programs and access the functionality mainly through references to the {\tt CSmoothMaster} object. Additionally, the User will find it useful to access the {\tt CModelParameters}, {\tt CparameterMap}, {\tt CPriorInfo}, and {\tt CObservableInfo} objects. Here is a compendium of calls to the {\tt CSmoothMaster}:
+{\it Smooth Emulator} was designed so that the User can write their own main programs and access the functionality mainly through references to the {\tt CSmoothMaster} object. Additionally, the User might find it useful to access the {\tt CModelParameters}, {\tt CparameterMap}, {\tt CPriorInfo}, and {\tt CObservableInfo} objects. Here is a compendium of calls to the {\tt CSmoothMaster}:
 \begin{itemize}\itemsep=0pt
 \item {\tt CSmoothMaster(CparameterMap *parmap)}\\
 This is the constructor. CparameterMap object stores temulator parameters (not model parameters). CparameterMap functionality described below.
 \item {\tt void ReadTrainingInfo()}\\
 This reads the training point information to be used for tuning. It is done automatically when creating the {\tt CSmoothMaster} object.
-\item {\tt TuneAllY()}\\ //
+\item {\tt void TuneAllY()}\\ //
 Tune all observables, $Y$.
-\item {\tt TuneY(string obsname)}\\
+\item {\tt void TuneY(string obsname)}\\
 Tunes one observable, by observable name.
-\item {\tt TuneY(unsigned int iY)}\\
+\item {\tt void TuneY(unsigned int iY)}\\
 Tune one observable, referenced by index.
-\item {\tt CalcAllY(CModelParameters *modelpars,vector<double> \&Y,\\vector<double> \&SigmaY\_emulator)}\\
+\item {\tt void CalcAllY(CModelParameters *modelpars,vector<double> \&Y,\\vector<double> \&SigmaY\_emulator)}\\
 Calculates all observables. CModelParameters object stores information about a single point in model-parameter space. Object described further below.
-\item {\tt CalcY(unsigned int iY,CModelParameters *modelpars,double \&Y,\\double \&SigmaY\_emulator)}\\
+\item {\tt void CalcY(unsigned int iY,CModelParameters *modelpars,double \&Y,\\double \&SigmaY\_emulator)}\\
 Calculates observable referenced by index.
-\item {\tt CalcY(string obsname,CModelParameters *modelpars,double \&Y,\\double \&SigmaY\_emulator)}\\
+\item {\tt void CalcY(string obsname,CModelParameters *modelpars,double \&Y,\\double \&SigmaY\_emulator)}\\
 Calculates observable referenced by observable name.
-\item {\tt CalcAllYdYdTheta(CModelParameters *modelpars,vector<double> \&Y,\\
+\item {\tt void CalcAllYdYdTheta(CModelParameters *modelpars,vector<double> \&Y,\\
 vector<double> \&SigmaY\_emulator,vector<vector<double>> \&dYdTheta)}\\
 Also calculates derivatives w.r.t. $\vec{\theta}$. Especially useful for some Markov chain searches in parameter space, e.g. Langevin approaches.
-\item {\tt CalcYdYdTheta(string obsname,CModelParameters *modelpars,double \&Y,\\double \&SigmaY\_emulator,vector<double> \&dYdTheta)}\\
+\item {\tt void CalcYdYdTheta(string obsname,CModelParameters *modelpars,double \&Y,\\double \&SigmaY\_emulator,vector<double> \&dYdTheta)}\\
 Same, but for one observable referenced by observable name.
-\item {\tt CalcYdYdTheta(unsigned int iY,CModelParameters *modelpars,double \&Y,\\double \&SigmaY\_emulator,vector<double> \&dYdTheta)}\\
+\item {\tt void CalcYdYdTheta(unsigned int iY,CModelParameters *modelpars,double \&Y,\\double \&SigmaY\_emulator,vector<double> \&dYdTheta)}\\
 Same, but by index.
-\item {\tt CalcAllLogP()}\\
-Prints technical information the User may find helpful in evaluating whether the choice of $\Lambda$ is reasonable. For each observable, it calculates the ratio of the r.m.s. coefficients of rank-two to those of rank-one. One would roughly expect the ratio to be unity if $\Lambda$ is appropriate, but from testing the measure is so noisy that it is not useful on a observable-by-observable basis. It also calculates the probability for the optimum coefficient set. This would be maximized for best choices of $\Lambda$, but again is highly sensitive to fluctuations. Thus this information is not recommended for actual tuning $\Lambda$. 
-\item {\tt TestAtTrainingPts()}\\
+\item {\tt void CalcAllYOnly(CModelParameters *modelpars,vector<double> \&Y)} and {\tt CalcAllYOnly(vector<double> \&theta,vector<double> \&Y)} calculates the observable but with the uncertainty.
+\item {\tt double GetUncertainty(string obsname,vector<double> \&theta)} and {\tt GetUncertainty(unsigned int iY,vector<double> \&theta)} returns the emulator uncertainty only, for a specific observable.		
+\item {\tt void CalcAllLogP()}\\
+Prints technical information the User may find helpful in evaluating whether the choice of $\Lambda$ is reasonable. For each observable, it calculates the ratio of the r.m.s. coefficients of rank-two to those of rank-one. One would roughly expect the ratio to be unity if $\Lambda$ is appropriate, but from testing the measure is so noisy that it is not useful on a observable-by-observable basis. It also calculates the probability for the optimum coefficient set. This would be maximized for best choices of $\Lambda$, but again is highly sensitive to fluctuations. Thus this information is not recommended for actual tuning $\Lambda$.
+\item {\tt void TestAtTrainingPts()}\\
 Compares emulator predictions to full model calculations at training points. Observables should match and uncertainties should vanish.
-\item {\tt TestAtTrainingPts(string obsname)}\\
+\item {\tt void TestAtTrainingPts(string obsname)}\\
 Same but for a single observable referenced by observable name.
-\item {\tt TestAtTrainingPts(unsigned int iY)}\\
+\item {\tt void TestAtTrainingPts(unsigned int iY)}\\
 Same but for a single observable referenced by index.
-\item {\tt TestVsFullModel()}\\
+\item {\tt void TestVsFullModel()}\\
 This is useful for comparing emulator to model evaluated at points not used for training. You can set the emulator parameter {\tt SmoothEmulator\_TestPts} in the same manner as was done for the emulator parameter {\tt SmoothEmulator\_TrainingPts}. It will compare the emulator to the results in the run directories specified here. Usually, one wishes to compare at points not used for training. Fore example, if there were 100 run directories, one might set
 {\tt
 \begin{verbatim}
@@ -328,7 +330,7 @@ SmoothEmulator_TestPts 90-99
 \end{verbatim}}
 to train the emulator with the first 90 points and test it at the last 10 points. Tests for each observable are stored in a directory {\tt fullmodel\_testdata/}.
 
-\item {\tt TestVsFullModelAlt()}\\
+\item {\tt void TestVsFullModelAlt()}\\
 This is useful for comparing emulator to model evaluated at points not used for training. For the full model, make a sub-directory within the project directory called {\tt fullmodeltestdata/}. Within that subdirectory, for each observable create a file called {\tt OBSNAME.txt}, where {\tt OBSNAME} is the name for each observable. Each file should have the format
 {\tt
 \begin{verbatim}
@@ -340,19 +342,20 @@ X_1  X_2  ...  X_N  Y
 
 Each line describes a point in parameter space and the observable calculated by the full model. {\tt master.TestVsFullModel()} will calculate the emulated value at each $\vec{X}$ and compare the full-model value to the emulator value. It will also give the uncertainty. If the uncertainty is well represented, 68 \% of the emulated values should be within the uncertainty.
 
-\item {\tt WriteCoefficientsAllY()}\\
-Writes the Taylor coefficients for all observables.
-\item {\tt WriteCoefficients(string obsname)}\\
+\item {\tt void WriteCoefficientsAllY()}\\
+Writes the Taylor coefficients for all observables. Because tuning is so fast, the User can usually avoid reading and writing coefficients, and instead simply re-perform the tuning. 
+\item {\tt void WriteCoefficients(string obsname)}\\
 Writes only those for one observable referenced by observable name.
-\item {\tt WriteCoefficients(unsigned int iY)}\\
+\item {\tt void WriteCoefficients(unsigned int iY)}\\
 Writes only for one observable reference by index.
-\item {\tt ReadCoefficientsAllY()}\\
+\item {\tt void ReadCoefficientsAllY()}\\
 Reads all Taylor coefficients from file.
-\item {\tt ReadCoefficients(string obsname)}\\
+\item {\tt void ReadCoefficients(string obsname)}\\
 Reads Taylor coefficients for one observable referenced by observable name.
-\item {\tt ReadCoefficients(unsigned int iY)}\\
+\item {\tt void ReadCoefficients(unsigned int iY)}\\
 Reads Taylor coefficients for one observable referenced by observable index.
 \end{itemize}
+It would probably be useful to view the header file for the {\tt master} class, {\tt \${GITHOME\_BAND\_SMOOTH}/software/include/msu\_smooth/master.h}.
 
 \subsection{Other Potentially Useful {\it Smooth Emulator Objects}}
 
