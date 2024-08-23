@@ -283,7 +283,7 @@ Before considering a specific position, $\vec{\theta}$, one first calculates and
 
 The calculations above could have been performed finding the coefficients to maximize the probability, $P(\vec{A})$, rather than the mean coefficients, but the answer is exactly the same.
 
-\subsubsection{Choosing the Variance for the Coefficients for the Exact Solution}
+\subsubsection{Choosing the Variance for the Coefficients and the Smoothness Parameter}
 
 Here, we find the optimum choice for $\sigma_A$, the variance of the coefficient in the absence of training data, in the previous section. For the derivations of $\langle y\rangle$ and $\langle\delta y^2\rangle$ in the previous section, the expression in Eq. (\ref{eq:exactmoments}) for $\langle A_i\rangle$ has no dependence on $\sigma_A$, which sets the variance of the coefficients. Further, the expression for $\langle\delta A_i^2\rangle$ does not depend on the model training values, $y_{a=1,N_{\rm train}}$. The net probability from Eq. (\ref{eq:netexactprob}) was found to be in Eq. (\ref{eq:Nexact}) to be
 \begin{align*}\eqnumber\label{eq:netexactprob}
@@ -293,10 +293,15 @@ Here, we find the optimum choice for $\sigma_A$, the variance of the coefficient
 Our goal here is to find the value of $\sigma_A$ that maximizes $ \mathcal{Z}$. For the case where $\Delta=0$, one can find $\sigma_A$ rather easily. In that case, setting the derivative w.r.t. $\sigma_A^2$ equal to zero,
 \begin{align*}\eqnumber
 0&=\frac{N_{\rm train}}{\sigma_A^2} \mathcal{Z}-\frac{\mathcal{Z}}{\sigma_A^4}y_a B^{-1}_{ab}y_b,\\
+\eqnumber \label{eq:sigmaAguess}
 \sigma_A^2&=\frac{1}{N_{\rm train}}y_a B^{-1}_{ab}y_b.
 \end{align*}
 
-However, the situation is becomes more complicated if $\Delta\ne 0$. 
+However, the situation is becomes more complicated if $\Delta\ne 0$. Fortunately, our tests show that the value of $\sigma_A^2$ is only very slightly changed by random uncertainties if those uncertainties are less than 10 percent of $\sigma_A$. For that reason, {\it Smooth Emulator} ignores $\Delta_{ab}$ while choosing $\sigma_A$. Tests (see last subsection) showed that the appropriate value of $\sigma_A$ can usually be found to within 10\%. 
+
+Choosing the smoothness parameter, $\Lambda$, is unfortunately not simple. Given the lack of an analytic solution, one can simply plot $\ln(Z)$ vs $\Lambda$. However, it was found (as shown in the final subsection here) that afater using a function for the surrogate full-model characterized by a known $\Lambda$, the value at which $\ln(Z)$ is minimized can vary significantly from the true value. Though this method reproduces the correct value if averaged over many possible surrogate functions, it varies too much on a per-emulation basis to be useful. For example, for some instances of sample functions, it was found that $\ln(Z)$ would be maximized for $\Lambda<1.5$, even when the surrogate-model function was generated with $\Lambda=3$.
+
+Our conclusion (see final sub-section) regarding the ability {\it Smooth Emulator} to determine $\sigma_A$ and $\Lambda$ is that $\sigma_A$ can be found quite robustly using the simple analytic form in Eq. (\ref{eq:SigmaAguess}), but that the determination of $\Lambda$ is questionable. Fortunately, the predicted values of the emulated function are not strongly sensitive to $\Lambda$, but the estimated emulator uncertainties are somewhat sensitive. Thus, one can plot $\ln(Z)$ vs $\Lambda$ to get some insight, but the result should be taken with caution. It might make more sense to set $\Lambda$ to some guess, perhaps 2.5, then just live with the knowledge that this might not be the best choice. If one can perform numerous additional full-model runs at points not used for training, one can choose $\Lambda$ such that the uncertainties are large enough to capture 68\% of the points within one standard deviation. From the experience of trying many functions, it would seem that optimizing $\Lambda$ in this way can improve the uncertainty estimates by approximately 50\%. I.e. changing $\Lambda$ by factors of 2 or 4, tends to change the estimated uncertainties by tens of percent.
 
 \section{Theoretical Basis of {\it Simplex Sampler}}\label{sec:simplextheory}
 
@@ -307,9 +312,20 @@ a&=\sqrt{\frac{d^2}{N^2}-r_{N-1}^2}.
 \end{align*}
 Now, each of the $N$ points is located a distance $Na$ away from the center of the $N-$dimensional origin. This procedure can applied iteratively to generate the vertices of the simplex.
 
-One might also wish to use enough training points to uniquely determine the emulator in the case that the function is quadratic. There are $N(N+1)/2$ additional points, which is exactly the number of segments connecting the $N+1$ equally-spaced vertices of the  $N-$dimensional simplex. If placed at the midpoints of the segments, these points would be closer to the  origin than the vertices. One of the simplex options is to place these points at the midpoints, then double their radii while maintaining their direction. This would result in arrays of points at two different radii, with $N+1$ points positioned at the lower radius and $N(N+1)/2$ points being placed at the larger radius.
+One might also wish to use enough training points to uniquely determine the emulator in the case that the function is quadratic. There are $N(N+1)/2$ additional points, which is exactly the number of segments connecting the $N+1$ equally-spaced vertices of the  $N-$dimensional simplex. If placed at the midpoints of the segments, these points would be closer to the  origin than the vertices. One of the simplex options is to place these points at the midpoints, then expand their radii while maintaining their direction. This would result in arrays of points at two different radii, with $N+1$ points positioned at the lower radius and $N(N+1)/2$ points being placed at the larger radius.
 
-Choosing the training points depends on prior expectation of the emulated function. The simplex choice for the first $N_{\rm train}=N+1$ points seems logical. Even if another method, such as a Gaussian process emulator is to implemented, such methods are often based on first understanding the linear behavior. The simplex strategy would seem a good way to pick the first $N+1$ training points.
+From symmetry considerations, this method should produce either an extrema of effectiveness in regards to angular positioning (assuming Gaussian priors, which are rotationally invariant). I.e. any repositioning of a training point by a small differential $d\vec{\theta}$ should not change the effectiveness if that differential does not change the radius of the point. However, one can expand all the radii of all the inner-positioned simplex, or all the radii of the other points, without changing the symmetry. Thus, the radii must be chosen to maximize the constraining power of the training data. To that end, a study was pursued where the overall integrated uncertainty was minimized as a function of the radius. Only the case of the simple simplex was considered, and only for the case of Gaussian priors. The minimum was found to depend on the maximum rank of the emulator, the smoothness parameter, and the number of observables. However, the minimum was always very broad, as shown in Fig. \ref{fig:SimplexUncertainty}. For that reason, the radii were chosen rather ad hoc:
+\begin{itemize}
+\item Simple Simplex ($N+1$ points, Type 1):\\
+The radii of each point was chosen to be $1-1/(N+1)$.
+\item Simplex plus bisecting points ($N+1$ inner points plus $N(N+1)$ outer points:\\
+The outer points were positioned at a radius $1-1/(N+1)$, while the inner points were positioned at a radius which was smaller by a factor of $1/\sqrt{2}$.
+\end{itemize}
+\begin{figure}
+\centerline{\includegraphics[width=0.6\textwidth]{SimplexUncertainty}}
+\caption{\label{fig:SimplexUncertainty}
+The integrated uncertainty for training with points set in a simplex geometry is found to depend only weakly on the radius. A Gaussian prior was assumed. The weak dependence was used to justify using a rather ad-hoc choice of radii for the simplex points, or as in the case of type 2, a second radius for the bisecting points.}
+\end{figure}
 
 One issue with the simplex is that the first set of $N+1$ training points would all be placed at the same radius. If the prior parameter distribution is uniform within an $N-$dimensional hyper cube, the training  points could be rather far from the corners in that space. Issues with such priors are discussed in the next section.
 
@@ -351,7 +367,14 @@ Thus, in 10 dimensions, if the training points are placed at a distance $a$ from
 
 Of course, these problems would be largely avoided if the number of parameters was a half dozen or fewer, or if one was confident that the function was extremely smooth. In the first two sections of this paper, the smoothness parameter, $\Lambda$, was set to a constant. There might be prior knowledge that certain parameters affect the observables only weakly. In that case, the response to these parameters can be considered as linear. This could be done by scaling those parameters so that they vary over a smaller range. If a parameter varies only between $-0.1$ and $0.1$, that effectively applies a smoothness parameter in those directions that is ten times higher. Unfortunately, the choice of which parameters to rescale in this fashion would likely vary depending on which observable is being emulated. Because all the observables might be calculated in a full model run, one needs to identify parameters that would likely have weak response on all observables. 
 
-\section{Tests of the {\it Smooth Emulator} using {\it Simplex Sampler} for Training}
+\section{Tests of {\it Smooth Emulator}}
+
+Here, we show several results for testing {\it Smooth Emulator}. For these tests we consider a surrogate full-model generated from Taylor expansions with randomized coefficients, exactly according to the form assumed by the emulator. These functions are characterized by a smoothness parameter, $\Lambda$, a variance for the coefficients, $\sigma_A$, and a maximum rank. If the emulator works correctly, 68\% of the discrepancies in emulated functions, compared to the true model, should fall within one standard deviation. 
+
+
+
+
+
 
 First, we show some results of one-parameter emulators. For a linear fit, two parameters (slope and intercept) would suffice. But because higher-rank contributions exist, there is a spread of functions is that narrows with increasing smoothness parameter as shown in Fig. \ref{fig:onedim}. Figure \ref{fig:onedim} also shows how increasing the number of training points, from two to three, also narrows the range of possible values. 
 \begin{figure}

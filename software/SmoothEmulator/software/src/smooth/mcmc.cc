@@ -232,7 +232,7 @@ void CMCMC::PerformMetropolisTrace(unsigned int Ntrace,unsigned int Nskip){
 void CMCMC::WriteTrace(){
 	unsigned int itrace,ipar,ntrace=trace.size();
 	FILE *fptr;
-	CLog::Info("writing, ntrace = "+to_string(ntrace)+"\n");
+	CLog::Info("writing Theta values, ntrace = "+to_string(ntrace)+"\n");
 	fptr=fopen(("smooth_data/"+trace_filename).c_str(),"w");
 	for(itrace=0;itrace<ntrace;itrace++){
 		for(ipar=0;ipar<NPars;ipar++){
@@ -248,7 +248,7 @@ void CMCMC::WriteXTrace(){
 	
 	unsigned int itrace,ipar,ntrace=trace.size();
 	FILE *fptr;
-	CLog::Info("writing, ntrace = "+to_string(ntrace)+"\n");
+	CLog::Info("writing X values, ntrace = "+to_string(ntrace)+"\n");
 	fptr=fopen(("smooth_data/"+Xtrace_filename).c_str(),"w");
 	for(itrace=0;itrace<ntrace;itrace++){
 		for(ipar=0;ipar<NPars;ipar++){

@@ -26,10 +26,8 @@ void CSimplexSampler::SetThetaSimplex(){
 		SetThetaType1();
 	else if(TrainType==2)
 		SetThetaType2();
-	else if(TrainType==3)
-		SetThetaType3();
 	else{
-		CLog::Fatal("Inside CSimplexSampler::SetThetaSimplex, TrainType must be 1,2 or 3\n");
+		CLog::Fatal("Inside CSimplexSampler::SetThetaSimplex, TrainType must be 1 or 2\n");
 	}
 	CLog::Info("NTrainingPts="+to_string(NTrainingPts)+"\n");
 }
@@ -142,67 +140,6 @@ void CSimplexSampler::SetThetaType2(){
 			CLog::Info("Rmax/BiggestTheta="+to_string(Rmax/BiggestTheta)+"\n");			
 		}
 	}
-}
-
-void CSimplexSampler::SetThetaType3(){
-	CLog::Info("WARNING: Using Simplex_TrainType=3 sometimes bombs due to\nencountering non-invertible matrices when solving for coefficients\n");
-	unsigned int ipar,itrain,jtrain;
-	double R,z,RTrain1,RTrain2;
-
-	RTrain2=1.0-1.0/double(NPars+1);
-	RTrain1=RTrain2/sqrt(2.0);
-	ThetaTrain.resize(2*NPars+3);
-
-	for(itrain=0;itrain<NPars+1;itrain++){
-		ThetaTrain[itrain].resize(NPars);
-		for(ipar=0;ipar<NPars;ipar++)
-			ThetaTrain[itrain][ipar]=0.0;
-	}
-	R=1.0;
-	ThetaTrain[0][0]=-R;
-	ThetaTrain[1][0]=R;
-	for(itrain=2;itrain<NPars+1;itrain++){
-		z=R*itrain/sqrt(double(itrain*itrain)-1.0);
-		for(jtrain=0;jtrain<itrain;jtrain++){
-			ThetaTrain[jtrain][itrain-1]=-z/double(itrain);
-		}
-		ThetaTrain[itrain][itrain-1]=z;
-		R=z;
-	}
-	for(itrain=0;itrain<NPars+1;itrain++){
-		R=0.0;
-		for(ipar=0;ipar<NPars;ipar++){
-			R+=ThetaTrain[itrain][ipar]*ThetaTrain[itrain][ipar];
-		}
-		R=sqrt(R);
-		for(ipar=0;ipar<NPars;ipar++){
-			ThetaTrain[itrain][ipar]*=(RTrain1/R);
-		}
-	}
-
-
-	//make reflection points
-	for(itrain=NPars+1;itrain<2*NPars+2;itrain++){
-		ThetaTrain[itrain].resize(NPars);
-		R=0.0;
-		for(ipar=0;ipar<NPars;ipar++){
-			ThetaTrain[itrain][ipar]=-ThetaTrain[itrain-NPars-1][ipar];
-			R+=ThetaTrain[itrain][ipar]*ThetaTrain[itrain][ipar];
-		}
-		R=sqrt(R);
-		for(ipar=0;ipar<NPars;ipar++){
-			ThetaTrain[itrain][ipar]*=(RTrain2/R);
-		}
-		
-	}
-	
-	// Put last point at origin
-	ThetaTrain[2*NPars+2].resize(NPars);
-	for(ipar=0;ipar<NPars;ipar++){
-		ThetaTrain[2*NPars+2][ipar]=0.0;
-	}
-	NTrainingPts=2*NPars+3;
-
 }
 
 void CSimplexSampler::WriteModelPars(){

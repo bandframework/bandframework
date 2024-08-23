@@ -143,29 +143,19 @@ Before building and tuning the emulator, the User needs to edit one additional f
 {\tt
 \begin{verbatim}
 #LogFileName smoothlog.txt # comment out for interactive running
-  SmoothEmulator_LAMBDA 2.5 # smoothness parameter
-  SmoothEmulator_MAXRANK 5
-  SmoothEmulator_ConstrainA0 false
-  SmoothEmulator_ModelRunDirName modelruns
-  SmoothEmulator_TrainingPts 0-27
-  SmoothEmulator_UsePCA   false
-  SmoothEmulator_TuneExact true
- #
- # These are only used if you are using MCMC tuning rather than Exact method
-  SmoothEmulator_TuneChooseMCMC false # set false if NPars<5
-  SmoothEmulator_TuneChooseMCMCPerfect false #
-  SmoothEmulator_MCMC_NASample 8  # No. of coefficient samples
-  SmoothEmulator_MCStepSize 0.01
-  SmoothEmulator_MCMC_CutoffA false # Used only if SigmaA constrained by SigmaA0
-  SmoothEmulator_MCSigmaAStepSize 1.0  #
-  SmoothEmulator_MCMCUseSigmaY false # If false, also varies SigmaA
-  SmoothEmulator_MCMC_NMC 20000  # Steps between samples 
- #
- # This is for the MCMC search of parameter space (not for the emulator tuning)
- MCMC_METROPOLIS_STEPSIZE 0.01
+ SmoothEmulator_LAMBDA 2.5 # smoothness parameter
+ SmoothEmulator_MAXRANK 4
+ SmoothEmulator_ConstrainA0 false
+ SmoothEmulator_TrainingPts 0-27
+ SmoothEmulator_TestPts 1
+ SmoothEmulator_UsePCA false
+ SmoothEmulator_TrainingFormat training_format_smooth
+ #SmoothEmulator_TrainingFormat training_format_surmise
+ SmoothEmulator_TrainingThetasFilename TrainingThetas.txt
+ SmoothEmulator_TrainingObsFilename TrainingObs.txt
 \end{verbatim}
 }
-The parameters are described in detail in Sec. \ref{sec:emulator}. Because {\tt SmoothEmulator\_TuneExact} is set to {\tt true}, the Monte Carlo methods are not invoked and none of the parameters with {\tt MCMC} in their names are relevant. The most relevant parameter is setting the smoothness parameter. Also, it is important to make sure that {\tt SmoothEmulator\_TrainingPts} is set to the correct number of training points. The Constrain A0 parameter decides where the first term of the Taylor expansion is used to estimate the variance of the coefficients, which then affects the emulator's estimate of its uncertainty.
+The parameters are described in detail in Sec. \ref{sec:emulator}. The most relevant parameter is setting the smoothness parameter. Also, it is important to make sure that {\tt SmoothEmulator\_TrainingPts} is set to the correct number of training points. 
 
 Now, running {\tt smoothy\_tune}, produces the following output,
 
@@ -178,9 +168,13 @@ ${MY_PROJECT}/rhic% ${MY_LOCAL}/bin/smoothy_tune
  ---- Tuning for Rinv ----
  ---- Tuning for v2 ----
  ---- Tuning for RAA ----
+    .
+    .
 \end{verbatim}
 }
-The program generates Taylor coefficients which are saved in the {\tt coefficients/} directory. Each observable has its own sub-directory with its name. In this case, {\tt smoothy\_tune} created the directories, {\tt coefficients/rhic/RAA}, {\tt coefficients/Rinv}, {\tt coefficients/menapt\_kaon}, {\tt coefficients/meanpt\_pion}, {\tt coefficients/meanpt\_proton} and {\tt coefficients/v2}. Within each of these sub-directories {\tt smoothy\_tune} created files {\tt meta.txt}, {\tt ABest.txt} and {\tt BetaBest.txt}.The number or parameters, the maximum rank of the Taylor expansion and the overall number of Taylor coefficients are give in {\tt meta.txt}. The file {\tt ABest.txt} provides the actual coefficients of the Taylor expansion, and {\tt BetaBest.txt} gives an array used to calculate the uncertainty. If one of the Monte Carlo methods is chosen, rather than the default analytic tuning method, the file {BetaBest.txt} is replaced by several files, {\tt sample0.txt, sample1.txt}$\cdots$, which provide several samples of Taylor coefficients. For the tutorial, the parameter file {\tt smooth\_data/smooth\_parameters/emulator\_parameters.txt} has the parameters set to use apply analytic tuning rather than Monte Carlo tuning.
+
+
+The program generates Taylor coefficients which are saved in the {\tt coefficients/} directory. Each observable has its own sub-directory with its name. In this case, {\tt smoothy\_tune} created the directories, {\tt coefficients/rhic/RAA}, {\tt coefficients/Rinv}, {\tt coefficients/menapt\_kaon}, {\tt coefficients/meanpt\_pion}, {\tt coefficients/meanpt\_proton} and {\tt coefficients/v2}. Within each of these sub-directories {\tt smoothy\_tune} created files {\tt meta.txt}, {\tt ABest.txt} and {\tt BetaBest.txt}.The number or parameters, the maximum rank of the Taylor expansion and the overall number of Taylor coefficients are give in {\tt meta.txt}. The file {\tt ABest.txt} provides the actual coefficients of the Taylor expansion, and {\tt BetaBest.txt} gives an array used to calculate the uncertainty. 
 
 To get an idea of how one might build one's own main program to access the capabilities used above, the source code for {\tt \$\{MY\_LOCAL\}/software/main\_programs/smoothy\_tune\_main.cc} is:
 {\tt
@@ -192,95 +186,88 @@ using namespace std;
 int main(){
 	NMSUUtilsCparameterMap *parmap=new CparameterMap();
 	NBandSmooth::CSmoothMaster master(parmap);	
-	master.ReadTrainingInfo();
 	master.TuneAllY();
 	master.WriteCoefficientsAllY();
+	master.TestAtTrainingPts();
 	return 0;
 }
 \end{verbatim}}
-Hopefully, the User will find this and the other main-program source codes to be fairly self-explanatory. Nonetheless, detailed explanations can be found in Sec. \ref{sec:emulator}.
+Hopefully, the User will find this and the other main-program source codes to be fairly self-explanatory. Nonetheless, detailed explanations can be found in Sec. \ref{sec:emulator}. Given that the tuning is very fast, there is little need to write the coefficients as any subsequent use of the emulators can simply repeat the tuning, rather than reading in the coefficients.
 
 \section{Testing the Emulator at the Training Points}
-{\it Smooth Emulator} should return the training values at the training points. If one runs the executable {\tt smoothy\_train\_test}, it will first read in the coefficient information along with the training information. The program then emulates the model at the training points and compares the emulated value to the training value. Running the program gives the output:
+The last line in the source code above tells {\it Smooth Emulator} to evaluate the emulator at the training points. The remainder of the outpus is:
 {\tt
 \begin{verbatim}
-${MY_PROJECT}/rhic% ${MY_LOCAL}/bin/smoothy_testattrainingpts
- --- Y_train     Y_emulator    Sigma_emulator ----
+  .
+  .
+--- Y_train     Y_emulator    Sigma_emulator ----
 ------ itrain=0 --------
-Y[0]= 4.026e+02 =?  4.026e+02  +/-  1.14910e-07
-Y[1]= 7.049e+02 =?  7.049e+02  +/-  1.41579e-07
-Y[2]= 1.112e+03 =?  1.112e+03  +/-  1.90839e-07
-Y[3]= 4.953e+00 =?  4.953e+00  +/-  2.05171e-09
-Y[4]= 3.720e-01 =?  3.720e-01  +/-  2.85035e-10
-Y[5]= 6.226e-01 =?  6.226e-01  +/-  4.36786e-10
+Y[0]= 3.999e+02 =?  3.999e+02  +/-  1.11725e-04
+Y[1]= 6.758e+02 =?  6.758e+02  +/-  1.71543e-04
+Y[2]= 1.090e+03 =?  1.090e+03  +/-  3.46421e-04
+Y[3]= 4.916e+00 =?  4.916e+00  +/-  1.93211e-06
+Y[4]= 3.691e-01 =?  3.691e-01  +/-  2.94503e-07
+Y[5]= 1.980e-01 =?  1.980e-01  +/-  5.60746e-07
 ------ itrain=1 --------
-Y[0]= 4.667e+02 =?  4.667e+02  +/-  7.32386e-08
-Y[1]= 7.758e+02 =?  7.758e+02  +/-  9.02363e-08
-Y[2]= 1.094e+03 =?  1.094e+03  +/-  1.21633e-07
-Y[3]= 5.110e+00 =?  5.110e+00  +/-  1.30767e-09
-Y[4]= 4.620e-01 =?  4.620e-01  +/-  1.81669e-10
-Y[5]= 7.040e-01 =?  7.040e-01  +/-  2.78389e-10
+Y[0]= 4.686e+02 =?  4.686e+02  +/-  7.64376e-05
+Y[1]= 7.596e+02 =?  7.596e+02  +/-  1.17363e-04
+Y[2]= 1.107e+03 =?  1.107e+03  +/-  2.37007e-04
+Y[3]= 5.013e+00 =?  5.013e+00  +/-  1.32187e-06
+Y[4]= 4.705e-01 =?  4.705e-01  +/-  2.01488e-07
+Y[5]= 3.210e-01 =?  3.210e-01  +/-  3.83641e-07
 ------ itrain=2 --------
-Y[0]= 4.617e+02 =?  4.617e+02  +/-  2.17777e-07
-Y[1]= 6.909e+02 =?  6.909e+02  +/-  2.68321e-07
-Y[2]= 1.071e+03 =?  1.071e+03  +/-  3.61679e-07
-Y[3]= 4.999e+00 =?  4.999e+00  +/-  3.88841e-09
-Y[4]= 3.575e-01 =?  3.575e-01  +/-  5.40200e-10
-Y[5]= 6.648e-01 =?  6.648e-01  +/-  8.27799e-10
------- itrain=3 --------
-Y[0]= 4.574e+02 =?  4.574e+02  +/-  2.92485e-08
-Y[1]= 7.132e+02 =?  7.132e+02  +/-  3.60366e-08
-\end{verbatim}}
-$\vdots$\\
-{\tt
-\begin{verbatim}
+Y[0]= 4.721e+02 =?  4.721e+02  +/-  1.14852e-04
+Y[1]= 7.837e+02 =?  7.837e+02  +/-  1.76346e-04
+Y[2]= 1.129e+03 =?  1.129e+03  +/-  3.56118e-04
+  .
+  .
 ------ itrain=27 --------
-Y[0]= 4.527e+02 =?  4.527e+02  +/-  2.44311e-07
-Y[1]= 8.317e+02 =?  8.317e+02  +/-  3.01012e-07
-Y[2]= 1.112e+03 =?  1.112e+03  +/-  4.05745e-07
-Y[3]= 6.135e+00 =?  6.135e+00  +/-  4.36216e-09
-Y[4]= 3.312e-01 =?  3.312e-01  +/-  6.06017e-10
-Y[5]= 4.445e-01 =?  4.445e-01  +/-  9.28657e-10
+Y[0]= 4.527e+02 =?  4.527e+02  +/-  3.37022e-05
+Y[1]= 7.138e+02 =?  7.138e+02  +/-  5.17468e-05
+Y[2]= 1.075e+03 =?  1.075e+03  +/-  1.04499e-04
+Y[3]= 6.153e+00 =?  6.153e+00  +/-  5.82829e-07
+Y[4]= 3.235e-01 =?  3.235e-01  +/-  8.88382e-08
+Y[5]=-2.208e-02 =? -2.208e-02  +/-  1.69151e-07
 \end{verbatim}}
 
-The observables, $Y[0]\cdots Y[5]$ should be identical and the uncertainties at the training points should be zero. The fact that the uncertainties are not exactly zero derives from the numerical accuracy of the linear algebra routines.
+The observables, $Y[0]\cdots Y[5]$ should be identical and the uncertainties at the training points should be zero. The fact that the uncertainties are not exactly zero derives from the numerical accuracy of the linear algebra routines. For this model, the random uncertainties were set to zero. If non-zero random uncertainties had been applied (would require adjusting the last column in each of the {\tt smooth\_data/modelruns/run*/obs.txt} files) then the emulator would not have exactly reproduced the training values.
 
 \section{Generating Emulated Observables at Given Points}
-Finally, now that the emulator is tuned, one may wish to generate emulated values for the observables for specified points in model-parameter space. A sample program, {\tt \$\{MY\_LOCAL\}/bin/smoothy\_calcobs} is provided to illustrate how this can be accomplished. If one invokes the executable, using the same parameters as those used by {\tt smoothy\_tune}, the User is prompted to enter the coordinates of a point in model-parameter space, after which {\tt smoothy\_calcobs} prints out the observables. In this case, for the case where {\tt compressibility=205}, {\tt etaovers=0.2}, {\tt initial\_flow=0.7}, {\tt initial\_screening=0.4}, {\tt quenching\_length=1.2} and{\tt initial\_epsilon=23.0}
+Finally, now that the emulator is tuned, one may wish to generate emulated values for the observables for specified points in model-parameter space. A sample program, {\tt \$\{MY\_LOCAL\}/bin/smoothy\_calcobs} is provided to illustrate how this can be accomplished. If one invokes the executable, using the same parameters as those used by {\tt smoothy\_tune}, the User is prompted to enter the coordinates of a point in model-parameter space, after which {\tt smoothy\_calcobs} prints out the observables. In this case, for the case where {\tt compressibility=225}, {\tt etaovers=0.2}, {\tt initial\_flow=0.5}, {\tt initial\_screening=0.6}, {\tt quenching\_length=1.2} and{\tt initial\_epsilon=25.0}
 
 {\tt
 \begin{verbatim}
 ${MY_PROJECT}/rhic% ${MY_LOCAL}/bin/smoothy_calcobs
- Prior Info
- #   ParameterName Type   Xmin_or_Xbar  Xmax_or_SigmaX
-  0: compressibility     uniform        150        300
-  1: etaovers            uniform        0.05       0.32
-  2: initial_flow        uniform        0.3        1.2
-  3: initial_screening   uniform          0          1
-  4: quenching_length    uniform        0.5          2
-  5: initial_epsilon     uniform         15         30
- Enter value for compressibility:
- 205
- Enter value for etaovers:
- .2 
- Enter value for initial_flow:
- .7
- Enter value for initial_screening:
- 0.4
- Enter value for quenching_length:
- 1.2
- Enter value for initial_epsilon:
- 23.0
- ---- EMULATED OBSERVABLES ------
-meanpt_pion = 436.167 +/- 2.16724
-meanpt_kaon = 692.539 +/- 2.67022
-meanpt_proton = 1084.85 +/- 3.59929
-Rinv = 5.00013 +/- 0.0386959
-v2 = 0.361353 +/- 0.00537586
-RAA = 0.545491 +/- 0.00823794
+Prior Info
+#         ParameterName Type   Xmin_or_Xbar  Xmax_or_SigmaX
+ 0:   compressibility   uniform        150        300
+ 1:          etaovers   uniform       0.05       0.32
+ 2:      initial_flow   uniform       0.3        1.2
+ 3: initial_screening   uniform        0          1
+ 4:  quenching_length   uniform       0.5        2
+ 5:   initial_epsilon   uniform       15         30
+Enter value for compressibility:
+225
+Enter value for etaovers:
+0.2
+Enter value for initial_flow:
+0.5
+Enter value for initial_screening:
+0.6
+Enter value for quenching_length:
+1.2
+Enter value for initial_epsilon:
+25
+---- EMULATED OBSERVABLES ------
+meanpt_pion = 451.556 +/- 9.31878
+meanpt_kaon = 751.461 +/- 14.3082
+meanpt_proton = 903.253 +/- 28.8944
+Rinv = 5.13761 +/- 0.161154
+v2 = 0.247525 +/- 0.0245641
+RAA = 0.0800345 +/- 0.046771
 \end{verbatim}
 }
-Of course, it is unlikely the User will wish to enter model parameters interactively as was done above. To incorporate {\tt Smooth Emulator} into other programs, the User should inspect the main programs, e.g. {\tt \$\{MY\_LOCAL\}/software/main\_programs/smoothy\_calcobs\_main.cc}. The User can then design their own program based on this source code, and compile and link it by editing\\ {\tt \$\{MY\_LOCAL\}/software/main\_programs/CMakeLists.txt}. By editing the CMake file, replacing the lines unique to {\tt smoothy\_calcobs}, one can easily compile new executables based on the User's main programs. To understand what might be involved, the source code in\\ {\tt \$\{MY\_LOCAL\}/software/main\_programs/SmoothEmulator\_calcobs\_main.cc} is
+Of course, it is unlikely the User will wish to enter model parameters interactively as was done above. To incorporate {\tt Smooth Emulator} into other programs, the User should inspect the main programs, e.g. {\tt \$\{MY\_LOCAL\}/software/main\_programs/smoothy\_calcobs\_main.cc}. The User can then design their own program based on this source code, and compile and link it by editing\\ {\tt \$\{MY\_LOCAL\}/software/main\_programs/CMakeLists.txt}. By editing the CMake file, replacing the lines unique to {\tt smoothy\_calcobs}, one can easily compile new executables based on the User's main programs. To understand what might be involved, the source code in\\ {\tt \$\{MY\_LOCAL\}/software/main\_programs/smoothy\_calcobs\_main.cc} is
 {\tt
 \begin{verbatim}
 #include "msu_smoothutils/parametermap.h"
@@ -288,46 +275,47 @@ Of course, it is unlikely the User will wish to enter model parameters interacti
 #include "msu_smoothutils/log.h"
 using namespace std;
 int main(){
-   NMSUUtils::CparameterMap *parmap=new CparameterMap();
-   NBandSmooth::CSmoothMaster master(parmap);
-   master.ReadCoefficientsAllY();
-   NBandSmooth::CModelParameters *modpars=new NBandSmooth::CModelParameters(); // contains info about single point
-   modpars->priorinfo=master.priorinfo;
-   master.priorinfo->PrintInfo();
+	NBandSmooth::CSmoothMaster master;
+	master.ReadCoefficients();
+	//master.TuneAllY();
+	
+	//Create model parameter object to store information about a single set of model parameters
+	NBandSmooth::CModelParameters *modpars=new NBandSmooth::CModelParameters(); // contains info about single point
+	modpars->priorinfo=master.priorinfo;
+	// Print out the prior information
+	master.priorinfo->PrintInfo();
+	
+	// Prompt user for model parameter values and enter them into the modpars object
+	vector<double> X(modpars->NModelPars);
+	for(unsigned int ipar=0;ipar<modpars->NModelPars;ipar++){
+		cout << "Enter value for " << master.priorinfo->GetName(ipar) << ":\n";
+		cin >> X[ipar];
+	}
+	modpars->SetX(X);
+	
+	//  Calc Observables
+	NBandSmooth::CObservableInfo *obsinfo=master.observableinfo;
+	vector<double> Y(obsinfo->NObservables);
+	vector<double> SigmaY(obsinfo->NObservables);
+	master.CalcAllY(modpars,Y,SigmaY);
+	cout << "---- EMULATED OBSERVABLES ------\n";
+	for(unsigned int iY=0;iY<obsinfo->NObservables;iY++){
+		cout << obsinfo->GetName(iY) << " = " << Y[iY] << " +/- " << SigmaY[iY] << endl;
+	}
 
-   // Prompt user for model parameter values
-   vector<double> X(modpars->NModelPars);
-   for(unsigned int ipar=0;ipar<modpars->NModelPars;ipar++){
-      cout << "Enter value for " << master.priorinfo->GetName(ipar) << ":\n";
-      cin >> X[ipar];
-   }
-   modpars->SetX(X);
-   
-   //  Calc Observables
-   NBandSmooth::CObservableInfo *obsinfo=master.observableinfo;
-   vector<double> Y(obsinfo->NObservables);
-   vector<double> SigmaY(obsinfo->NObservables);
-   master.CalcAllY(modpars,Y,SigmaY);
-   cout << "---- EMULATED OBSERVABLES ------\n";
-   for(unsigned int iY=0;iY<obsinfo->NObservables;iY++){
-      cout << obsinfo->GetName(iY) << " = " << Y[iY] << " +/- " << SigmaY[iY] << endl;
-   }
-
-   return 0;
+	return 0;
+}\end{verbatim}
 }
-\end{verbatim}
-}
-The above illustrates how one can write a code that 
+The above illustrated how one can write a code that 
 \begin{itemize}\itemsep=0pt
-\item[a)] Reads the parameter file
-\item[b)] Creates a {\it master} emulator file (called master because it includes an emulator for each observable)
-\item[c)] Read the Taylor coefficients that were written when the emulator was tuned
+\item[a)] Reads the parameter file. 
+\item[b)] Creates a {\it master} emulator file.
+\item[c)] Read the Taylor coefficients that were written when the emulator was tuned. (One could have commented out this line and retuned instead)
 \item[d)] Creates a model-parameters object, {\tt modpars}, that stores the coordinates of the model-parameter point
 \item[e)] Reads in the model parameters interactively
 \item[f)] Calculates the observables from the emulator
-\item[g] Prints out the emulated observable and the uncertainty for for the emulator
+\item[g]  Prints out the emulated observable and the uncertainty for for the emulator
 \end{itemize}
-
 
 
 \subsection{Exploring the Posterior via Markov-Chain Monte-Carlo}
@@ -371,30 +359,31 @@ Running the MCMC program gives the following output:
 {\tt
 \begin{verbatim}
  ${MY_PROJECT}/rhic% ${MY_LOCAL}/bin/mcmc
- At beginning of Trace, LL=-9.538317
- At end of trace, best LL=-4.415930
- Best Theta=
- 0.186889  0.075493  0.165236  0.221045  0.187867  0.219744
- Metropolis success percentage=73.550000
- finished burn in
- At beginning of Trace, LL=-6.743758
- finished 10%
- finished 20%
- finished 30%
- finished 40%
- finished 50%
- finished 60%
- finished 70%
- finished 80%
- finished 90%
- finished 100%
- At end of trace, best LL=-4.381435
- Best Theta=
- 0.169135  0.141132  0.153260  0.212104  0.245712  0.193710
- Metropolis success percentage=75.474600
- writing, ntrace = 100001
+At beginning of Trace, LL=-68.728122
+At end of trace, best LL=1.223190
+Best Theta=
+0.233733  0.158783  0.201324  0.209576  0.008904  0.202032  
+Metropolis success percentage=55.010000
+finished burn in
+At beginning of Trace, LL=-3.055348
+finished 10%
+finished 20%
+finished 30%
+finished 40%
+finished 50%
+finished 60%
+finished 70%
+finished 80%
+finished 90%
+finished 100%
+At end of trace, best LL=1.375865
+Best Theta=
+0.236218  0.138233  0.183291  0.217895  0.033619  0.194723  
+Metropolis success percentage=57.355500
+writing Theta values, ntrace = 100001
+writing X values, ntrace = 100001
 \end{verbatim}}
-Here {\tt best LL} refers to the log-likelihood and {\tt Best Theta} refers to the value of $\vec{\theta}$ that gave the maximum log-likelihood. Values of {\tt Best Theta} and {\tt best LL} are given after the burn-in and after the trace. 
+Here {\tt best LL} refers to the log-likelihood and {\tt Best Theta} refers to the value of $\vec{\theta}$ that gave the maximum log-likelihood. Values of {\tt Best Theta} and {\tt best LL} are given after the burn-in and after the trace. One can read the source file, {\tt \$\{MY\_LOCAL\}/software/main\_programs/mcmc\_main.cc}
 
 The trace is written to {\tt mcmc\_trace/trace.txt}. It is in the format 
 {\tt
@@ -404,6 +393,7 @@ theta_1	theta_2 theta_3 theta_4 ...
 theta_1	theta_2 theta_3 theta_4 ...
 \end{verbatim}}
 \vspace*{-18pt}\hspace*{82pt}$\vdots$
+
 If {\tt MCMC\_NTRACE} is set to a million, there would be a million lines in the file. The program also calculated various covariances:
 $\langle\langle\delta\theta_i\delta\theta_j\rangle\rangle$,  $\langle\langle\delta\theta_i\delta Y_a\rangle\rangle$, and $\langle\langle\delta Y_a\delta Y_b\rangle\rangle$. The quantities $\langle\langle....\rangle\rangle$ refer to averages over the  posterior, i.e. averages over the trace. The eigenvalues and eigenvectors of $\langle\langle\delta\theta_i\delta\theta_j\rangle\rangle$ are also recorded. Hopefully, the User will find the file names in {\tt mcmc\_trace/} to be self-explanatory.
 
@@ -442,7 +432,7 @@ Again, the first column is identical to that in {\tt smooth\_data/Info/} and the
 To graph the posterior likelihood, first be sure to run the {\tt mcmc} program, then change into the {\tt figs/posterior} directory and enter the command:
 {\tt
 \begin{verbatim}
-${MY_PROJECT}/figs/posterior% ln -s ../../mcmc_trace/trace.txt .
+${MY_PROJECT}/figs/posterior% ln -s ../../smooth_data/mcmc_trace/trace.txt .
 ${MY_PROJECT}/figs/posterior% python3 posterior.py
 \end{verbatim}}
 One can replace ``{\tt ln -s}'' with ``cp'' or ``mv''. The script should create a file {\tt posterior.pdf}, which looks like:
@@ -465,7 +455,7 @@ RAA                  $R_{AA}$
 The first column should be exactly the same as the first line in the original file. After running the {\tt mcmc} program, the figure can be produced via the command
 {\tt
 \begin{verbatim}
-${MY_PROJECT}/figs/resolvingpower% ln -s ../../mcmc_trace/ResolvingPower.txt .
+${MY_PROJECT}/figs/resolvingpower% ln -s ../../smooth_data/mcmc_trace/ResolvingPower.txt .
 ${MY_PROJECT}/figs/resolving power% python3 RP.py
 \end{verbatim}}
 The figure should look like:
@@ -473,42 +463,36 @@ The figure should look like:
 \parbox{4.0in}{\centerline{\includegraphics[width=4.0in]{RP_rhic.pdf}}}
 \parbox{2.5in}{Resolving Power. Red bars represent positive correlations with $Y^{\rm exp}_a$ and $\theta_i$. Larger bars suggest that the particular observable contributes more to the constraint of the particular model parameter.}
 
-The third provide python script is in {\tt figs/YvY/} and it compares full-model runs (not used for tuning) to the emulator. This is useful for seeing whether the emulator's error estimates are reasonable. First, one must run the program that writes out the emulator predictions for the full-model runs. This is accomplished by the command:
+The third provided python script is in {\tt figs/YvY/} and it compares full-model runs (not used for tuning) to the emulator. This is useful for seeing whether the emulator's error estimates are reasonable. First, one must run the program that writes out the emulator predictions for the full-model runs. This is accomplished by the command:
 {\tt
 \begin{verbatim}
-${MY_PROJECT}% smoothy_testvsfullmodel
- meanpt_pion: 44 out of 50 points within 1 sigma
- meanpt_kaon: 40 out of 50 points within 1 sigma
- meanpt_proton: 36 out of 50 points within 1 sigma
- Rinv: 43 out of 50 points within 1 sigma
- v2: 46 out of 50 points within 1 sigma
- RAA: 44 out of 50 points within 1 sigma
+${MY_PROJECT}% smoothy_testvsfullmodelalt
+meanpt_pion: 27 out of 50 points within 1 sigma
+meanpt_kaon: 41 out of 50 points within 1 sigma
+meanpt_proton: 26 out of 50 points within 1 sigma
+Rinv: 32 out of 50 points within 1 sigma
+v2: 39 out of 50 points within 1 sigma
+RAA: 29 out of 50 points within 1 sigma
 \end{verbatim}}
 If the uncertainty were perfectly stated, 68\% of the points would be within one standard deviation. In this case the fraction was higher, which suggests that the uncertainty was somewhat overstated.
 
 To make the plot, first change into the {\tt figs/YvsY/} directory, and enter
 {\tt
 \begin{verbatim}
-${MY_PROJECT}/figs/YvsY% ln -s ../../fullmodel_testdata/ResolvingPower.txt .
+${MY_PROJECT}/figs/YvsY% ln -s ../../fullmodel_testdata .
 ${MY_PROJECT}/figs/YvsY% python3 YvsY.py
+ Observable names:
  ['meanpt_pion', 'meanpt_kaon', 'meanpt_proton', 'Rinv', 'v2', 'RAA']
- Enter iY: 2
- 36 of 49  points within 1 sigma
+ Enter iY: 4
+ 39 of 49  points within 1 sigma
 \end{verbatim}}
-The script will prompt the User for which observable to consider. In this case, choose 0-5 for the six possible observables. In this case '2' was entered and the chosen observable was {\tt meanpt\_proton}. 
+The script will prompt the User for which observable to consider. In this case, choose 0-5 for the six possible observables. In this case '4' was entered and the chosen observable was the elliptic flow {\tt v2}. 
 \parbox{4.5in}{\centerline{\includegraphics[width=4.0in]{YvsY_rhic.pdf}}}
 \parbox{2.25in}{Comparison of full-model values (black squares) for 50 points in parameter space to emulator values (red circles). The uncertainties are solely those associated with the emulation. If the uncertainties were accurately expressed, 68\% of the points would lie within the uncertainty intervals.}
 
+For this example the full-model test data was stored in a few files in the {\tt smooth\_data/fullmodel\_testdata/} directory, consistent with the SURMISE format. Another option would be to use full-model run data stored in the same format and location as the training data. In that case one would invoke the program {\tt smoothy\_testvsfullmodel} (with the {\tt alt}) and the testing runs would be denoted by the {\tt SmoothEmulator\_TestPts} parameter set in the {\tt smooth\_data/smooth\_parameters/emulator\_parameters.txt} file. Those model runs should be chosen separately from those used for training, i.e. those denoted by the {\tt SmoothEmulator\_TrainingPts} parameter.
+
 \subsection{PCA Analysis}
 The PCA functionality needs further testing and is not included in the tutorial at this time.
-
-
-
-
-
-
-
-
-
 
 \end{document}
