@@ -4,7 +4,6 @@ using namespace std;
 using namespace NBandSmooth;
 using namespace NMSUUtils;
 
-
 double  CSmoothEmulator::GetYOnly(CModelParameters *modpars){
 	return GetYOnly(modpars->Theta);
 }

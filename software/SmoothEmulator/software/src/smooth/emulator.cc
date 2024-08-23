@@ -87,8 +87,6 @@ void CSmoothEmulator::GetSigmaA(){
 	//CLog::Info("SigmaA="+to_string(SigmaA)+"\n");
 }
 
-
-
 void CSmoothEmulator::CalcExactLogP(){
 	double detB=B.determinant();
 	logP=-0.5*log(fabs(detB))-NTrainingPts*log(SigmaA);

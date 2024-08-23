@@ -133,35 +133,20 @@ The first number is the measured value and the second is the experimentally repo
 {\tt
 \begin{verbatim}
  #LogFileName smoothlog.txt # comment out for interactive running
-  SmoothEmulator_LAMBDA 2.0 #  Smoothness parameter
+  SmoothEmulator_LAMBDA 2.5 #  Smoothness parameter
   SmoothEmulator_MAXRANK 5
   SmoothEmulator_ConstrainA0 true
   SmoothEmulator_TrainingPts 0-27
   SmoothEmulator_TestPts 28-50
   SmoothEmulator_UsePCA   false
-  SmoothEmulator_TuneChooseExact true
   SmoothEmulator_TrainingFormat training_format_smooth
   #SmoothEmulator_TrainingFormat training_format_surmise
   SmoothEmulator_TrainingThetasFilename TrainingThetas.txt
   SmoothEmulator_TrainingObsFilename TrainingObs.txt
  #
- # These are only used if you are using MCMC tuning rather than Exact method
-  SmoothEmulator_TuneChooseMCMC false # set false if NPars<5
-  SmoothEmulator_MCMC_NASample 8  # No. of coefficient samples
-  SmoothEmulator_MCMC_StepSize 0.01
-  SmoothEmulator_TuneChooseMCMCPerfect false #
-  SmoothEmulator_MCMC_UseSigmaY false # Emulator only fits training data to within
-  # model random error
-  SmoothEmulator_MCMC_CutoffA false # Used only if SigmaA constrained by SigmaA0
-  SmoothEmulator_MCMC_SigmaAStepSize 1.0  #
-  SmoothEmulator_MCMC_NMC 20000  # Steps between samples 
- #
- # This is for the MCMC search of parameter space (not for the emulator tuning)
- MCMC_METROPOLIS_STEPSIZE 0.01
- RANDY_SEED.  1234
 \end{verbatim}
 }
-If any of these parameters are missing from the parameters file, {\it Smooth Emulator} will assign a default value.
+The last two filenames are only relevant if the SURMISE training format is used. If any of these parameters are missing from the parameters file, {\it Smooth Emulator} will assign a default value.
 
 \begin{itemize}\itemsep 0pt
 \item {\bf LogFileName}\\
@@ -224,39 +209,6 @@ Again, each row should correspond to a different training point. The two files a
 
 \item {\bf SmoothEmulator\_UsePCA}\\
 By default, this is set to {\tt false}. If one wishes to emulate the PCA observables, i.e. those that are linear combinations of the real observables, this should be set to true. One must then be sure to have run the pca decomposition programs first. For more, see Sec. \ref{sec:pca}. 
-
-\item {\bf SmoothEmulator\_TuneExact}\\
-This is set to {\tt true} by default. In this case {\it Smooth Emulator} finds the optimum set of coefficients and also records some other arrays necessary for calculating the emulator uncertainty. This is tuning type (a) above.
-
-\item {\bf RANDY\_SEED}\\
-This sets the seed for the random number generator. If the line is commented out, it will be set to {\tt std::time(NULL)}.
-
-\#\#\# None of the parameters below are relevant if {\tt SmoothEmulator\_TuneExact} is {\tt true}.
-
-\item {\bf SmoothEmulator\_TuneChooseMCMC}\\
-This is tuning type (b) above. Rather than finding the optimum set of coefficients, {\it Smooth Emulator} finds $N_{\rm sample}$ sets of coefficients consistent with the probability. All the sets exactly reproduce training observables. As this runs as a Markov chain, the independence of the sample may require a large number of steps between samplings. The default is {\tt false}.
-
-\item {\bf SmoothEmulator\_MCMC\_NASample}\\
-{\it Smooth Emulator} finds $N_{\rm sample}$ sets of coefficients. Each set reproduces the training points, but differs away from the training points. Setting $N_{\rm sample}\sim 10$ should reasonably represent the uncertainty of the emulator. The default is set at 8.
-
-\item {\bf SmoothEmulator\_MCMC\_NMC}\\
-This is the number of Markov Chain steps between samples. A larger number is required if the samplings are to be independent. The default is 20,000.
-
-\item {\bf SmoothEmulator\_MCMC\_StepSize}\\
-This is the size of the MCMC stepsize in $\theta$ space. MCMC approaches are most efficient if the success probability is near 0.5. If the probability is much higher, then the step size should be increased, and if it is much lower, the step size should be decreased. This affects only the efficiency, not the accuracy. The default of 0.01.
-
-\item {\bf SmoothEmulator\_TuneChooseMCMCPerfect}\\
-If there are a small number of model parameters, perhaps less than a half dozen, then rather than performing a Markov Chain one can choose the coefficients by a keep-or-reject method. The advantage of this approach is that $N_{\rm sample}$ coefficients are perfectly independent. The disadvantage is that the the percentage of ``keeps'' falls rapidly with an increasing number of parameters. For larger numbers of parameters it is usually more efficient to set this to its default, {\tt false}. 
-
-\item {\bf SmoothEmulator\_MCMC\_UseSigmaY}\\
-If the full model has significant random noise, the emulator should not be constrained to exactly reproduce the observables at the training points. This is tuning type (c) above. 
-
-\item {\bf SmoothEmulator\_MCMC\_CutoffA}\\
-This applies an additional multiplicative weight to the weight for $A$ above:
-\[
-W(A_i)_{\rm additional}=\frac{1}{1+\frac{1}{4}\frac{A_i^2}{\sigma_{A}^2}}.
-\] 
-Here $\sigma_{A0}$ is the initial guess for the spread. This can safeguard against the width $\sigma_A$ drifting off to arbitrarily large values. Unless necessary, it is recommended to leave this at the default, {\tt false}.
 
 \end{itemize}
 
@@ -471,7 +423,6 @@ This object stores general information about all the observables, including thei
 
 There is such an object in the {\tt CSmoothMaster} class. For example, to print the information about the observables from a main program, one would include the line:\\
  {\tt master->observableinfo->PrintInfo();}
-
 
 \end{itemize}
 
