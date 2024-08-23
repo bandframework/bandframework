@@ -82,7 +82,7 @@ CSmoothMaster::CSmoothMaster(){
 void CSmoothMaster::TuneAllY(){
 	for(unsigned int iY=0;iY<observableinfo->NObservables;iY++){
 		if((UsePCA && !pca_ignore[iY]) || !UsePCA){
-			//CLog::Info("---- Tuning for "+observableinfo->observable_name[iY]+" ----\n");
+			CLog::Info("---- Tuning for "+observableinfo->observable_name[iY]+" ----\n");
 			emulator[iY]->Tune();
 		}
 	}
