@@ -122,12 +122,11 @@ for ipanel in range (0,npanels):
       plt.xlim(-ThetaMax,ThetaMax)
       plt.plot(xarray,counts1d,linestyle='-',linewidth=3,color='r')
     
+#  plt.show()
 plt.savefig(outputfilename,format='pdf')
 plt.show()
 plt.close()
 # if you have Mac OS and want to see pdf file, comment out previous two lines and uncomment line below
 #os.system("open -a Preview "+outputfilename);
-# if you have Linux and want to see pdf file, comment out previous two lines and uncomment line below
-#os.system("okular "+outputfilename+"&");
 
 quit()

@@ -11,11 +11,10 @@ if writetitle:
   topmargin=0.07
 bottommargin=0.15 # adjust to fit x-axis labels
 leftmargin=0.36    # adjust to fit y-axis labels
-thetamax=1.4      # sets max display range of y axes
+thetamax=3.5      # sets max display range of y axes
 myfontsize=9      # base of all fonts
 barwidth=0.5      # larger number stretches figure horizontally
 panelheight=0.75  # larger values stretches figure vertically
-outputfilename='RP.pdf'
 
 # User can hopefully leave all this alone
 Ynames = []
@@ -55,9 +54,9 @@ Npanels=NPars
 for ipanel in range (0,Npanels):
   ax = fig.add_axes([leftmargin,bottommargin+ipanel*plotheight/Npanels,
   plotwidth,plotheight/Npanels])
-  ax.set_yticks(np.arange(-6,6,1), minor=False)
-  ax.set_yticks(np.arange(-6,6,0.5), minor=True)
-  ax.set_yticklabels(np.arange(-6,6,1), minor=False, family='serif', size=myfontsize)
+  ax.set_yticks(np.arange(-6,6,2), minor=False)
+  ax.set_yticks(np.arange(-6,6,1), minor=True)
+  ax.set_yticklabels(np.arange(-6,6,2), minor=False, family='serif', size=myfontsize)
 
   xi = RPdata[ipanel]
   xxi = 0.5*(np.abs(xi)+xi)
@@ -81,12 +80,9 @@ for ipanel in range (0,Npanels):
 
 plt.savefig('RP.pdf',format='pdf')
 
-plt.savefig(outputfilename,format='pdf')
 plt.show()
 plt.close()
 # if you have Mac OS and want to see pdf file, comment out previous two lines and uncomment line below
-#os.system("open -a Preview "+outputfilename);
-# if you have Linux and want to see pdf file, comment out previous two lines and uncomment line below
-#os.system("okular "+outputfilename+"&");
+#os.system("open -a Preview RP.pdf") # syntax works for Mac OS
 
 quit()
