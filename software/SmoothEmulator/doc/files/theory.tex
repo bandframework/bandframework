@@ -322,7 +322,7 @@ The radii of each point was chosen to be $1-1/(N+1)$.
 The outer points were positioned at a radius $1-1/(N+1)$, while the inner points were positioned at a radius which was smaller by a factor of $1/\sqrt{2}$.
 \end{itemize}
 \begin{figure}
-\centerline{\includegraphics[width=0.6\textwidth]{SimplexUncertainty}}
+\centerline{\includegraphics[width=0.6\textwidth]{figs/SimplexUncertainty}}
 \caption{\label{fig:SimplexUncertainty}
 The integrated uncertainty for training with points set in a simplex geometry is found to depend only weakly on the radius. A Gaussian prior was assumed. The weak dependence was used to justify using a rather ad-hoc choice of radii for the simplex points, or as in the case of type 2, a second radius for the bisecting points.}
 \end{figure}
@@ -371,7 +371,7 @@ Of course, these problems would be largely avoided if the number of parameters w
 
 Here, we show several results for testing {\it Smooth Emulator}. For these tests we consider a surrogate full-model generated from Taylor expansions with randomized coefficients, exactly according to the form assumed by the emulator. These functions are characterized by a smoothness parameter, $\Lambda$, a variance for the coefficients, $\sigma_A$, and a maximum rank. If the emulator works correctly, 68\% of the discrepancies in emulated functions, compared to the true model, should fall within one standard deviation. Performing the same test as described in the tutorial, Fig. \ref{fig:smoothtest_vsfullmodel} compares emulator predictions to 50 different surrogate models. Each surrogate model was constructed according to Taylor expansions with $\Lambda=3$, a maximum rank of 4, and $\sigma_A=100$. Although only 50 such models are illustrated here, this was attempted with 5000 models, and it was found that the percentage of predictions within one sigma was within a few tenths of a percent of the 68\% expected, thus validating both the emulator's prediction of both its value and its estimate of its uncertainty.
 \begin{figure}
-\centerline{\includegraphics[width=0.6\textwidth]{YvsY_smooth}}
+\centerline{\includegraphics[width=0.6\textwidth]{figs/YvsY_smooth}}
 \caption{\label{fig:smoothtest_vsfullmodel}
 Emulator predictions are compared to a surrogate model with Taylor expansions based on $\Lambda=3$ and $\sigma_A=100$. As can be seen approximately 68\% of the predictions were within one sigma of the true model, validating the emulator, both in regards to its predicted value and its uncertainty estimate.}
 \end{figure}
@@ -380,11 +380,11 @@ Figure \ref{fig:vslambda} shows the average of surrogate-model predictions $\ln(
 
 \begin{figure}
 \parbox[t]{0.45\textwidth}{
-\centerline{\includegraphics[width=0.45\textwidth]{vslambda}}
+\centerline{\includegraphics[width=0.45\textwidth]{figs/vslambda_trial}}
 \caption{\label{fig:vslambda}
 A ensemble of 5000 surrogate models, each generated with $\Lambda=3$ an $\sigma_A=100$ were emulated. The extracted values of $\ln(Z)$ an $\sigma_A$, along with the percentage of emulator predictions withing the emulator's uncertainty were plotted agains the value of $\Lambda$ assumed for the emulator. Indeed, for $\Lambda=3$, $\ln(Z)$ is at a maximum, $\sigma_A=100$ and 68\% of the predictions are within the estimated uncertainty. Unfortunately, $\ln(Z)$ has a high instance-to-instance variability.}}
 ~~~~\parbox[t]{0.45\textwidth}{ \vspace*{-266pt}
-\centerline{\includegraphics[width=0.45\textwidth]{logPinstances}}
+\centerline{\includegraphics[width=0.45\textwidth]{figs/logPinstances}}
 \caption{\label{fig:logPinstances}
 For 20 instances of the surrogate function, $\ln(Z)$ is plotted vs. $\Lambda$. Although if one were to average over thousands of surrogate models, one could extract $\Lambda$ accurately, the extraction is rather inaccurate on a model-by-model basis. This is especially true if the model has smaller numbers of parameters.}}
 \end{figure}

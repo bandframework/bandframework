@@ -437,7 +437,7 @@ ${MY_PROJECT}/figs/posterior% python3 posterior.py
 \end{verbatim}}
 One can replace ``{\tt ln -s}'' with ``cp'' or ``mv''. The script should create a file {\tt posterior.pdf}, which looks like:
 
-\parbox{4.5in}{\centerline{\includegraphics[width=4.5in]{posterior_rhic.pdf}}}
+\parbox{4.5in}{\centerline{\includegraphics[width=4.5in]{figs/posterior_rhic.pdf}}}
 ~~\parbox{2.0in}{Projections for the posterior likelihood from the MCMC trace. The contour lines represent $1-\sigma$, $2-\sigma$ and $3-\sigma$ likelihoods.}
 
 The likelihood is projected for individual model parameters, or for pairs. The plot is in terms of the scaled variables, $\theta_i$. To translate to the true model-parameter ranges, one can look at the {\tt smooth\_data/Info/modelpars\_info.txt} file, which gives the prior ranges of the model parameters before they are scaled to the -1 to 1 range. The file {\tt figs/directions.txt} shows how the User can alter plot. For example there is a line in the python script, {\tt ParsToPlot=[1,2,3,4,5,0]}, which the User can edit to change the ordering of the model-parameters, and to choose which model parameters are considered.
@@ -460,7 +460,7 @@ ${MY_PROJECT}/figs/resolving power% python3 RP.py
 \end{verbatim}}
 The figure should look like:
 
-\parbox{4.0in}{\centerline{\includegraphics[width=4.0in]{RP_rhic.pdf}}}
+\parbox{4.0in}{\centerline{\includegraphics[width=4.0in]{figs/RP_rhic.pdf}}}
 \parbox{2.5in}{Resolving Power. Red bars represent positive correlations with $Y^{\rm exp}_a$ and $\theta_i$. Larger bars suggest that the particular observable contributes more to the constraint of the particular model parameter.}
 
 The third provided python script is in {\tt figs/YvY/} and it compares full-model runs (not used for tuning) to the emulator. This is useful for seeing whether the emulator's error estimates are reasonable. First, one must run the program that writes out the emulator predictions for the full-model runs. This is accomplished by the command:
@@ -487,7 +487,7 @@ ${MY_PROJECT}/figs/YvsY% python3 YvsY.py
  39 of 49  points within 1 sigma
 \end{verbatim}}
 The script will prompt the User for which observable to consider. In this case, choose 0-5 for the six possible observables. In this case '4' was entered and the chosen observable was the elliptic flow {\tt v2}. 
-\parbox{4.5in}{\centerline{\includegraphics[width=4.0in]{YvsY_rhic.pdf}}}
+\parbox{4.5in}{\centerline{\includegraphics[width=4.0in]{figs/YvsY_rhic.pdf}}}
 \parbox{2.25in}{Comparison of full-model values (black squares) for 50 points in parameter space to emulator values (red circles). The uncertainties are solely those associated with the emulation. If the uncertainties were accurately expressed, 68\% of the points would lie within the uncertainty intervals.}
 
 For this example the full-model test data was stored in a few files in the {\tt smooth\_data/fullmodel\_testdata/} directory, consistent with the SURMISE format. Another option would be to use full-model run data stored in the same format and location as the training data. In that case one would invoke the program {\tt smoothy\_testvsfullmodel} (with the {\tt alt}) and the testing runs would be denoted by the {\tt SmoothEmulator\_TestPts} parameter set in the {\tt smooth\_data/smooth\_parameters/emulator\_parameters.txt} file. Those model runs should be chosen separately from those used for training, i.e. those denoted by the {\tt SmoothEmulator\_TrainingPts} parameter.
