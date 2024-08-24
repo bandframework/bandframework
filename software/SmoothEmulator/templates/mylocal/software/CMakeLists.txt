@@ -71,6 +71,7 @@ add_executable(mcmc ${MAIN_PROGRAM_DIR}/mcmc_main.cc)
 add_dependencies(mcmc extern_smooth)
 target_link_libraries(mcmc ${GITHOME_BAND_SMOOTH}/software/lib/libsmooth.a ${GITHOME_BAND_SMOOTH}/software/lib/libmsu_smoothutils.a   ${EIGEN3_LIBRARY})
 #################################################
+#
 # Some fake full models (for tutorial or emulator-testing purposes
 #################################################
 # fakesmooth
