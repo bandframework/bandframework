@@ -3,14 +3,17 @@
 #include "msu_smoothutils/log.h"
 using namespace std;
 int main(){
-	NMSUUtils::CparameterMap *parmap=new CparameterMap();
-	NBandSmooth::CSmoothMaster master(parmap);
-	master.ReadCoefficientsAllY();
+	NBandSmooth::CSmoothMaster master;
+	//master.ReadCoefficients();
+	master.TuneAllY();
+	
+	//Create model parameter object to store information about a single set of model parameters
 	NBandSmooth::CModelParameters *modpars=new NBandSmooth::CModelParameters(); // contains info about single point
 	modpars->priorinfo=master.priorinfo;
+	// Print out the prior information
 	master.priorinfo->PrintInfo();
 	
-	// Prompt user for model parameter values
+	// Prompt user for model parameter values and enter them into the modpars object
 	vector<double> X(modpars->NModelPars);
 	for(unsigned int ipar=0;ipar<modpars->NModelPars;ipar++){
 		cout << "Enter value for " << master.priorinfo->GetName(ipar) << ":\n";

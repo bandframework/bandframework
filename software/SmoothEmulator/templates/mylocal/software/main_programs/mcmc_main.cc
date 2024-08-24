@@ -4,28 +4,11 @@
 #include "msu_smooth/mcmc.h"
 using namespace std;
 int main(){
-	NMSUUtils::CparameterMap *parmap=new CparameterMap();
-	NBandSmooth::CSmoothMaster master(parmap);	
+	NBandSmooth::CSmoothMaster master;
+	master.TuneAllY();
+	//master.ReadTrainingInfo();
+	NMSUUtils::CparameterMap *parmap=master.parmap;
 	NBandSmooth::CMCMC mcmc(&master);
-	master.ReadCoefficientsAllY();
-	master.ReadTrainingInfo();
-	//master.TestAtTrainingPts();
-	
-	// Prompt user for model parameter values
-	vector<double> theta(master.priorinfo->NModelPars);
-	for(unsigned int ipar=0;ipar<master.priorinfo->NModelPars;ipar++){
-		theta[ipar]=0.2;
-	}
-	
-	//  Calc Observables
-	NBandSmooth::CObservableInfo *obsinfo=master.observableinfo;
-	vector<double> Y(obsinfo->NObservables);
-	vector<double> SigmaY(obsinfo->NObservables);
-	master.CalcAllY(theta,Y,SigmaY);
-	cout << "---- EMULATED OBSERVABLES ------\n";
-	for(unsigned int iY=0;iY<obsinfo->NObservables;iY++){
-		cout << obsinfo->GetName(iY) << " = " << Y[iY] << " +/- " << SigmaY[iY] << endl;
-	}
 	
 	unsigned int Nburn=parmap->getI("MCMC_NBURN",1000);  // Steps for burn in
 	unsigned int Ntrace=parmap->getI("MCMC_NTRACE",1000); // Record this many points
@@ -37,6 +20,7 @@ int main(){
 	mcmc.PruneTrace(); // Throws away all but last point
 	mcmc.PerformTrace(Ntrace,Nskip);
 	mcmc.WriteTrace();
+	mcmc.WriteXTrace();
 	mcmc.EvaluateTrace();
 
 	return 0;
