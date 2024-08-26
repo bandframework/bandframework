@@ -48,7 +48,7 @@ An administrator will take the following steps.
 
 - Once CI tests have passed on ``main``:
 
-  - A GitHub release will be taken from the ``main``
+  - A GitHub release will be taken from the ``main``.
 
 - If the merge was made from a release branch (instead of ``develop``), merge this
   branch into ``develop``.
