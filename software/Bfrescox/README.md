@@ -1,6 +1,6 @@
 # Bfrescox 
 
-Bfrescox is a BAND integration combining statistical calibration capabilities with the frescox scattering code for coupled-channels calculations.
+Bfrescox is a BAND integration combining statistical calibration capabilities with the frescox reaction code specifically for Continuum Discretized Coupled Channel (CDCC) calculations.
 
 A [BAND SDK v0.2 Community Policy](/resources/sdkpolicies/bandsdk.md) compatibility documentation for frescox is contained in [frescoxbandsdk.md](/software/Bfrescox/frescoxbandsdk.md).
 
