@@ -5,6 +5,8 @@ A release can be undertaken only by a project administrator.
 A project administrator should have an administrator role on the `bandframework
 GitHub <https://github.com/bandframework>`_.
 
+Best practice is to follow the version of this process as recorded on the ``develop`` and/or release branch(es). 
+
 Before release
 --------------
 
