@@ -24,6 +24,8 @@ Before release
 
 - Check `bandsdk.md </resources/sdkpolicies/bandsdk.md>`_ *Citing bandframework* for correctness.
 
+- Check `sdkpolicies README </resources/sdkpolicies/README.md>`_ for correctness (e.g., ensure that each software in the release has a working link for its SDK compliance).
+
 - Tests are run with source to be released (this may iterate):
 
   - Online CI (GitHub Actions) tests must pass.
