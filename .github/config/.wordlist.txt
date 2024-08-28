@@ -91,6 +91,7 @@ isotonic
 JETSCAPE
 jgehrcke
 JIT
+JOSS
 Jupyter
 Kataria
 kyle
@@ -140,6 +141,7 @@ Plotly
 Plumlee
 png
 prattsc
+pre
 preprint
 privateband
 PTLMC
