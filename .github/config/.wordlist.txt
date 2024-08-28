@@ -90,6 +90,7 @@ ipynb
 isotonic
 JETSCAPE
 jgehrcke
+JIT
 Jupyter
 Kataria
 kyle
