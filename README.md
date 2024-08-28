@@ -39,7 +39,7 @@ As of version 0.3.0+dev, the following tools are included:
 
 - surmise ([v0.2.1](https://github.com/bandframework/surmise/releases/tag/v0.2.1 )): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - SaMBA ([v1.0.1](https://github.com/asemposki/SAMBA/releases/tag/v1.0.1 )): The Sandbox for Mixing via Bayesian Analysis.
-- parMOO ([v0.3.1](https://github.com/parmoo/parmoo/releases/tag/v0.3.1 )): A Python library for parallel multiobjective simulation optimization.
+- parMOO ([v0.4.0](https://github.com/parmoo/parmoo/releases/tag/v0.4.0 )): A Python library for parallel multiobjective simulation optimization.
 - rose ([v1.0.0](https://github.com/bandframework/rose/releases/tag/v1.0.0 )), a reduced-order scattering emulator
 - BMEX ([v0.1.1](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - Taweret ([v1.0.0](https://github.com/bandframework/Taweret/releases/tag/v1.0.0 )): A Python package containing multiple Bayesian Model Mixing methods.
