@@ -13,7 +13,7 @@ Release 0.4.0
 
 New capabilities and notable changes:
 
-- updated BAND-compatible parMOO to `v0.4.0 <https://github.com/parmoo/parmoo/releases/tag/v0.4.0>`_, which now includes JIT and AutoDiff capabilities via `jax`
+- updated BAND-compatible parMOO to `v0.4.0 <https://github.com/parmoo/parmoo/releases/tag/v0.4.0>`_, which now includes JIT compilation and automatic differentiation capabilities via `jax`
 
 
 Release 0.3.0
