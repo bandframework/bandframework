@@ -29,7 +29,7 @@
 |---|-----------------------|-------|-------------------------|
 | 1. | Support BAND community GNU Autoconf, CMake, or other build options. |Full| PUQ is a Python package and provides a setup.py file for installation. This is compatible with Python's built-in installation feature (``python setup.py install``). GNU Autoconf or CMake are unsuitable for a Python package. |
 | 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. | Full|  See the `README.rst` file in the top directory. |
-| 3. | Provide a documented, reliable way to contact the development team. |Full| The PUQ team can be contacted through the public [issues page on GitHub](https://github.com/parallelUQ/PUQ/issues) or via an e-mail to Özge Sürer. |
+| 3. | Provide a documented, reliable way to contact the development team. |Full| The PUQ team can be contacted through the public [issues page on GitHub](https://github.com/parallelUQ/PUQ/issues) or via an e-mail to Özge Sürer (see above). |
 | 4. | Come with an open-source license |Full| PUQ uses the MIT license. |
 | 5. | Provide a runtime API to return the current version number of the software. |Full| The version can be returned within Python via: `PUQ.__version__`. |
 | 6. | Provide a BAND team-accessible repository. |Full| https://github.com/parallelUQ/PUQ |
