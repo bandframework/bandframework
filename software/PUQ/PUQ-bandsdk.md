@@ -15,9 +15,12 @@
 
 
 **Website:** https://github.com/parallelUQ/PUQ
+
 **Contact:** surero@miamioh.edu
+
 **Icon:** https://github.com/parallelUQ/PUQ/tree/main/docs/img/Logo_PUQ.png
-**Description:**  Python package for generating experimental designs tailored for uncertainty quantification, featuring parallel implementations
+
+**Description:**  Python package for generating experimental designs tailored for uncertainty quantification, featuring parallel implementations.
 
 ### Mandatory Policies
 
@@ -48,7 +51,7 @@
 |**R7.**| Be buildable using 64-bit pointers; 32-bit is optional. |Full| There is no explicit use of pointers in PUQ, as Python handles pointers internally and depends on the install of Python, which will generally be 64-bit on supported systems. |
 |**R8.**| Do not assume a full MPI communicator; allow for user-provided MPI communicator. |N/a| None. |
 |**R9.**| Use a limited and well-defined name space (e.g., symbol, macro, library, include). |Full| PUQ uses `PUQ` namespace. Modules have `PUQ` prefix, and in `PUQ` folder. |
-|**R10.**| Give best effort at portability to key architectures. |Full| PUQ is being regularly tested on Mac OS, Linux, and MS Windows. The current set of automatically tested, common architectures is viewable [here](https://github.com/parallelUQ/PUQ/blob/master/.github/workflows/ . |
+|**R10.**| Give best effort at portability to key architectures. |Full| PUQ is being regularly tested on Mac OS, Linux, and MS Windows. The current set of automatically tested, common architectures is viewable [here](https://github.com/parallelUQ/PUQ/blob/master/.github/workflows/) . |
 |**R11.**| Install headers and libraries under `<prefix>/include` and `<prefix>/lib`, respectively. |Full| None.|
 |**R12.**| All BAND compatibility changes should be sustainable. |Full| The BAND-compatible package is in the standard release path. All the changes here should be sustainable.|
 |**R13.**| Respect system resources and settings made by other previously called packages. |Full| PUQ does not modify system resources or settings. |
