@@ -17,3 +17,4 @@ Examples of completed SDK policy compatibility documents include:
 -  [SAMBAbandsdk.md](https://github.com/asemposki/SAMBA/blob/main/SAMBAbandsdk.md)
 -  [surmisebandsdk.md](https://github.com/bandframework/surmise/blob/main/surmisebandsdk.md)
 -  [Taweretbandsdk.md](https://github.com/bandframework/Taweret/blob/main/Taweretbandsdk.md)
+-  [PUQ-bandsdk.md](/software/PUQ/PUQ-bandsdk.md)
