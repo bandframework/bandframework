@@ -117,7 +117,7 @@ python3 parmoo_fayans_test.py --comms local --nworkers 4
 
 Running the above test produces a CSV file containing ParMOO's final database of design parameter and objective values in `fayans_test_results.csv` and saves a pairwise scatter plot of the Pareto front in `Pareto Front.png`, which should look similar (i.e., small differences will be seen because of the randomization internal to these routines; reproducibility may be obtained on your machine by fixing the numpy random number generator seed) to
 
-![](https://github.com/parmoo/parmoo-solver-farm/blob/main/fayans-model-calibration-2024/Pareto-Front.png)
+![](https://github.com/parmoo/parmoo-solver-farm/blob/main/fayans-model-calibration-2022/Pareto-Front.png)
 
 See the code in [`parmoo_fayans_test.py`](https://github.com/parmoo/parmoo-solver-farm/blob/main/fayans-model-calibration-2024/parmoo_fayans_test.py) for more details on how to reproduce these results, and see the file [`parmoo_fayans_structured_solver.py`](https://github.com/parmoo/parmoo-solver-farm/blob/main/fayans-model-calibration-2024/parmoo_fayans_structured_solver.py) for an example of a production-ready structure-exploiting run.
 
