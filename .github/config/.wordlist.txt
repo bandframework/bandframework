@@ -20,6 +20,7 @@ BMEX
 brickbandsdk
 BRICK's
 buildable
+CDCC
 cels
 changelog
 CHANGELOG
@@ -43,6 +44,7 @@ deuteron
 dev
 directbayes
 directbayeswoodbury
+Discretized
 docstrings
 dodell
 EDF
@@ -88,6 +90,8 @@ ipynb
 isotonic
 JETSCAPE
 jgehrcke
+JIT
+JOSS
 Jupyter
 Kataria
 kyle
@@ -137,6 +141,7 @@ Plotly
 Plumlee
 png
 prattsc
+pre
 preprint
 privateband
 PTLMC
@@ -206,3 +211,5 @@ xfr
 X-SCAPE
 yml
 zNqg
+PUQ
+parallelUQ

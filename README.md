@@ -38,11 +38,12 @@ BAND Framework tools and examples are found in [software/](/software/).
 As of version 0.3.0+dev, the following tools are included:
 
 - surmise ([v0.2.1](https://github.com/bandframework/surmise/releases/tag/v0.2.1 )): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
-- SaMBA ([v1.0.1](https://github.com/asemposki/SAMBA/releases/tag/v1.0.1 )): The Sandbox for Mixing via Bayesian Analysis.
-- parMOO ([v0.3.1](https://github.com/parmoo/parmoo/releases/tag/v0.3.1 )): A Python library for parallel multiobjective simulation optimization.
-- rose ([v1.0.0](https://github.com/bandframework/rose/releases/tag/v1.0.0 )), a reduced-order scattering emulator
+- SaMBA ([v1.1.0](https://github.com/asemposki/SAMBA/releases/tag/v1.1.0 )): The Sandbox for Mixing via Bayesian Analysis.
+- parMOO ([v0.4.1](https://github.com/parmoo/parmoo/releases/tag/v0.4.1 )): A Python library for parallel multiobjective simulation optimization.
+- rose ([v1.0.0](https://github.com/bandframework/rose/releases/tag/v1.0.0 )): A reduced-order scattering emulator.
 - BMEX ([v0.1.1](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - Taweret ([v1.0.0](https://github.com/bandframework/Taweret/releases/tag/v1.0.0 )): A Python package containing multiple Bayesian Model Mixing methods.
+- PUQ ([v0.1.0](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
 
 The following examples of the use of surmise are part of version 0.3.0+dev:
 
@@ -62,7 +63,8 @@ You are free to use any pieces of the BAND Framework that will advance your own 
 BAND Framework currently includes some dependencies via git submodules. Currently, the following submodules are employed:
 
 * [software/](software/)QGP_Bayes
-* [software/](software/)SAMBA 
+* [software/](software/)rose
+* [software/](software/)SAMBA
 * [software/](software/)surmise
 * [software/](software/)Taweret
 
