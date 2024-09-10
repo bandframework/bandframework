@@ -46,6 +46,13 @@ namespace NBandSmooth{
 		string SmoothEmulator_TrainingFormat;
 		vector<bool> pca_ignore;
 		double pca_minvariance,fitpercentage;
+		
+		int GetNPars(){
+			return NPars;
+		}
+		int GetNObs(){
+			return observableinfo->NObservables;
+		}
 
 		void ReadTrainingInfo();
 		//void GenerateCoefficientSamples();
@@ -72,6 +79,8 @@ namespace NBandSmooth{
 		double GetYOnly(string obsname,CModelParameters *modelpars);
 		double GetYOnly(string obsname,vector<double> &theta);
 		double GetYOnly(int iY,vector<double> theta);
+		double GetYOnlyPython(int DiY,vector<double> theta);
+		vector<double> GetYSigmaPython(int DiY,vector<double> theta);
 		
 		void CalcAllYdYdTheta(CModelParameters *modelpars,vector<double> &Y,
 		vector<double> &SigmaY_emulator,vector<vector<double>> &dYdTheta);

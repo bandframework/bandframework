@@ -178,6 +178,29 @@ double CSmoothMaster::GetYOnly(int iY,vector<double> theta){
 	return emulator[iY]->GetYOnly(theta);
 }
 
+double CSmoothMaster::GetYOnlyPython(int DiY,vector<double> theta){
+	unsigned int iY=DiY;
+	if(iY>=0 && iY<observableinfo->NObservables)
+		return emulator[iY]->GetYOnly(theta);
+	else
+		return 0.0;
+}
+
+vector<double> CSmoothMaster::GetYSigmaPython(int DiY,vector<double> theta){
+	unsigned int iY=DiY;
+	double Y,SigmaY_emulator;
+	if(iY>=0 && iY<observableinfo->NObservables)
+		emulator[iY]->CalcYAndUncertainty(theta,Y,SigmaY_emulator);
+	else{
+		Y=SigmaY_emulator=0.0;
+	}
+	vector<double> YSigma;
+	YSigma.resize(2);
+	YSigma[0]=Y;
+	YSigma[1]=SigmaY_emulator;
+	return YSigma;		
+}
+
 double CSmoothMaster::GetUncertainty(string obsname,vector<double> &theta){
 	unsigned int iY=observableinfo->GetIPosition(obsname);
 	return emulator[iY]->GetUncertainty(theta);
