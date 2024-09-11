@@ -6,7 +6,7 @@ A [BAND SDK v0.2 Community Policy](/resources/sdkpolicies/bandsdk.md) compatibil
 
 After covering basic installation and usage, here we provide a short tutorial from the [ParMOO Solver Farm](https://github.com/parmoo/parmoo-solver-farm/) that illustrates how ParMOO can be deployed on problems such as the calibration of energy density functionals. 
 
-## ParMOO Installation and References
+## ParMOO Installation
 
 Complete installation and testing details for ParMOO are available at the [ParMOO repo](https://github.com/parmoo/parmoo). ParMOO documentation is available on [readthedocs](https://parmoo.readthedocs.io/).
 
@@ -23,14 +23,45 @@ For a full installation with all dependencies, including ``libEnsemble``, use:
 pip install < --user > "parmoo[extras]"
 ```
 
-ParMOO is also available on conda-forge or it can be installed from source using the `setup.py` file.
+You can also clone ParMOO from our GitHub_ and ``pip`` install it
+in-place, so that you can easily pull the latest version or checkout
+the ``develop`` branch for pre-release features.
+On Debian-based systems with a bash shell, this looks like:
+
+
+```
+git clone https://github.com/parmoo/parmoo
+cd parmoo
+pip install -e .
+```
+
+Alternatively, the latest release of ParMOO (including all required and
+optional dependencies) can be installed from the ``conda-forge`` channel using:
+
+
+```
+conda install --channel=conda-forge parmoo
+```
+
+Before doing so, it is recommended to create a new conda environment using:
+
+
+```
+conda create --name channel-name
+conda activate channel-name
+```
+
 For additional information, see [ParMOO's installation docs](https://parmoo.readthedocs.io/en/latest/install.html).
 
-One can cite ParMOO via the paper:
+## ParMOO References
+
+Please use one or more of the following to cite ParMOO.
+
+The JOSS paper:
 ```
 @article{parmoo,
     author={Chang, Tyler H. and Wild, Stefan M.},
-    title={{ParMOO}: A {P}ython library for parallel multiobjective simulation optimization},
+    title={{ParMOO}: A {P}ython Library for Parallel Multiobjective Simulation Optimization},
     journal = {Journal of Open Source Software},
     volume = {8},
     number = {82},
@@ -44,25 +75,37 @@ ParMOO's online documentation:
 
 ```
 @techreport{parmoo-docs,
-    title       = {{ParMOO}: {P}ython library for parallel multiobjective simulation optimization},
+    title       = {{ParMOO}: {P}ython Library for Parallel Multiobjective Simulation Optimization},
     author      = {Chang, Tyler H. and Wild, Stefan M. and Dickinson, Hyrum},
     institution = {Argonne National Laboratory},
-    number      = {Version 0.2.2},
-    year        = {2023},
+    number      = {Version 0.4.1},
+    year        = {2024},
     url         = {https://parmoo.readthedocs.io/en/latest}
 }
 ```
 
+Our design principles paper:
+
+```
+@techreport{ParMOODesign24,
+    title = {Designing a Framework for Solving Multiobjective Simulation Optimization Problems},
+    author = {Tyler H. Chang and Stefan M. Wild},
+    institution = {arXiv},
+    number = {2304.06881},
+    year = {2024},
+    url = {https://arxiv.org/abs/2304.06881},
+}
+```
 
 
 ## ParMOO Tutorial: Calibrating a NN Surrogate of the Fayans Energy Density Functional
 
-To try calibrating a Fayans EDF with ParMOO, clone the [Fayans Model Calibration example](https://github.com/parmoo/parmoo-solver-farm/tree/main/fayans-model-calibration-2022) from the [ParMOO Solver Farm](https://github.com/parmoo/parmoo-solver-farm/):
+To try calibrating a Fayans EDF with ParMOO, clone the [Fayans Model Calibration example](https://github.com/parmoo/parmoo-solver-farm/tree/main/fayans-model-calibration-2024) from the [ParMOO Solver Farm](https://github.com/parmoo/parmoo-solver-farm/):
 ```
 git clone https://github.com/parmoo/parmoo-solver-farm
 ```
 
-From within the subdirectory ``parmoo-solver-farm/fayans-model-calibration-2022``, make sure that all of the dependencies for this example are installed via:
+From within the subdirectory ``parmoo-solver-farm/fayans-model-calibration-2024``, make sure that all of the dependencies for this example are installed via:
 ```
 python3 -m pip install -r REQUIREMENTS.txt
 ```
@@ -76,7 +119,7 @@ Running the above test produces a CSV file containing ParMOO's final database of
 
 ![](https://github.com/parmoo/parmoo-solver-farm/blob/main/fayans-model-calibration-2022/Pareto-Front.png)
 
-See the code in [`parmoo_fayans_test.py`](https://github.com/parmoo/parmoo-solver-farm/blob/main/fayans-model-calibration-2022/parmoo_fayans_test.py) for more details on how to reproduce these results, and see the file [`parmoo_fayans_structured_solver.py`](https://github.com/parmoo/parmoo-solver-farm/blob/main/fayans-model-calibration-2022/parmoo_fayans_structured_solver.py) for an example of a production-ready structure-exploiting run.
+See the code in [`parmoo_fayans_test.py`](https://github.com/parmoo/parmoo-solver-farm/blob/main/fayans-model-calibration-2024/parmoo_fayans_test.py) for more details on how to reproduce these results, and see the file [`parmoo_fayans_structured_solver.py`](https://github.com/parmoo/parmoo-solver-farm/blob/main/fayans-model-calibration-2024/parmoo_fayans_structured_solver.py) for an example of a production-ready structure-exploiting run.
 
 Details on this problem, which involves a surrogate of the Fayans functional, can be found in Section 5 of the preprint [ArXiv:2304.06881](https://arxiv.org/abs/2304.06881).
 
