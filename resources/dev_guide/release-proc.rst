@@ -5,6 +5,8 @@ A release can be undertaken only by a project administrator.
 A project administrator should have an administrator role on the `bandframework
 GitHub <https://github.com/bandframework>`_.
 
+Best practice is to follow the version of this process as recorded on the ``develop`` and/or release branch(es). 
+
 Before release
 --------------
 
@@ -23,6 +25,8 @@ Before release
 - Check `README.md </README.md>`_ *Citing bandframework* for correctness (e.g., ensure that author list matches `AUTHORS </AUTHORS>`_).
 
 - Check `bandsdk.md </resources/sdkpolicies/bandsdk.md>`_ *Citing bandframework* for correctness.
+
+- Check `sdkpolicies README </resources/sdkpolicies/README.md>`_ for correctness (e.g., ensure that each software in the release has a working link for its SDK compliance).
 
 - Tests are run with source to be released (this may iterate):
 
@@ -46,7 +50,7 @@ An administrator will take the following steps.
 
 - Once CI tests have passed on ``main``:
 
-  - A GitHub release will be taken from the ``main``
+  - A GitHub release will be taken from the ``main``.
 
 - If the merge was made from a release branch (instead of ``develop``), merge this
   branch into ``develop``.

@@ -100,6 +100,7 @@ bibtex
 bmex
 brickbandsdk
 buildable
+CDCC
 cels
 changelog
 cmake
@@ -115,6 +116,7 @@ deuteron
 dev
 directbayes
 directbayeswoodbury
+Discretized
 docstrings
 dodell
 edu
@@ -144,6 +146,10 @@ io
 ipynb
 isotonic
 jgehrcke
+JIT
+JOSS
+Jupyter
+Kataria
 kyle
 lbl
 libEnsemble
@@ -170,6 +176,7 @@ parmoo
 pdf
 png
 prattsc
+pre
 preprint
 privateband
 py
@@ -218,3 +225,5 @@ xfr
 yml
 zNqg
 Özge
+PUQ
+parallelUQ
