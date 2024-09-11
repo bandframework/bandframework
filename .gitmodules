@@ -7,7 +7,7 @@
         branch = main
 [submodule "software/SAMBA"]
 	path = software/SAMBA
-	url = https://www.github.com/asemposki/SAMBA
+	url = https://github.com/asemposki/SAMBA.git
 [submodule "software/Taweret"]
 	path = software/Taweret
 	url = https://github.com/bandframework/Taweret
