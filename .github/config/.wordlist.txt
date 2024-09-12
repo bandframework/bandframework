@@ -155,6 +155,7 @@ msu
 multiobjective
 namespace
 nan
+NN
 nsat
 numpy
 nunes
