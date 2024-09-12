@@ -118,6 +118,7 @@ multiobjective
 namespace
 nan
 NN
+nsat
 numpy
 NumPy
 nunes

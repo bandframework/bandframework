@@ -31,4 +31,4 @@ jobs:
         uses: paramt/url-checker@master
         with:
           files: "README.md,software/README.md,resources/README.md,resources/sdkpolicies/README.md,resources/sdkpolicies/bandsdk.md,resources/sdkpolicies/template.md,resources/dev_guide/git_instructions_for_submodules.md"
-          blacklist: https://doi.org/10.1088/1361-6471/abf1df,BMEX-bandsdk.md,Taweretbandsdk.md,SAMBAbandsdk.md,brickbandsdk.md,surmisebandsdk.md,frescoxbandsdk.md,template.md,bandsdk.md,parmoo-bandsdk.md,foobandsdk.md,PUQ-bandsdk.md
+          blacklist: https://doi.org/10.1088/1361-6471/abf1df,BMEX-bandsdk.md,Taweretbandsdk.md,SAMBAbandsdk.md,brickbandsdk.md,surmisebandsdk.md,frescoxbandsdk.md,template.md,bandsdk.md,parmoo-bandsdk.md,foobandsdk.md,PUQ-bandsdk.md,nsat-bandsdk.md
