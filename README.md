@@ -45,14 +45,13 @@ As of version 0.3.0+dev, the following tools are included:
 - Taweret ([v1.0.0](https://github.com/bandframework/Taweret/releases/tag/v1.0.0 )): A Python package containing multiple Bayesian Model Mixing methods.
 - PUQ ([v0.1.0](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
 
-The following examples of the use of surmise are part of version 0.3.0+dev:
+The following examples are part of version 0.3.0+dev:
 
-- Bfrescox: A BAND extension of the frescox scattering code for coupled-channels calculations.
+- Bfrescox: A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
+- BRICK: The Bayesian R-matrix Inference Code Kit, facilitates extraction of R-matrix parameters from experimental data.
+- QGP_Bayes: A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP. 
+- nsat: A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 
-Version 0.3.0+dev also includes two examples of the use of Bayesian parameter estimation in nuclear-physics contexts:
-
-- BRICK: the Bayesian R-matrix Inference Code Kit, facilitates extraction of R-matrix parameters from experimental data.
-- QGP_Bayes: provides a tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP. 
 
 ## Downloading and using the BAND Framework
 
@@ -62,6 +61,7 @@ You are free to use any pieces of the BAND Framework that will advance your own 
 
 BAND Framework currently includes some dependencies via git submodules. Currently, the following submodules are employed:
 
+* [software/](software/)nuclear_saturation
 * [software/](software/)QGP_Bayes
 * [software/](software/)rose
 * [software/](software/)SAMBA
