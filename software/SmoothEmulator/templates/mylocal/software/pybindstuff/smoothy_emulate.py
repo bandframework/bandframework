@@ -1,5 +1,8 @@
-import emulator_smooth
 import numpy as np
+import sys
+print(sys.path)
+sys.path.insert(0,"/Users/scottpratt/git/smooth_projects/mylocal/software/pybindstuff")
+import emulator_smooth
 smoothmaster=emulator_smooth.emulator_smooth()
 
 NPars=smoothmaster.GetNPars()
