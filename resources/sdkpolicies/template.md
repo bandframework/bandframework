@@ -24,14 +24,14 @@
 **BAND SDK**
 | # | Policy                 |Support| Notes                   |
 |---|-----------------------|-------|-------------------------|
-| 1. | Support BAND community GNU Autoconf, CMake, or other build options. |Full| Short-explanation-here; optional link for more extensive details if needed, see below. [M1 details](#m1-details)|
-| 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. | Full| None. [M2 details](#m2-details)|
-| 3. | Provide a documented, reliable way to contact the development team. |Full| None.|
-| 4. | Come with an open-source license |Full| Uses 2-clause BSD license.|
-| 5. | Provide a runtime API to return the current version number of the software. |Full| None.|
-| 6. | Provide a BAND team-accessible repository. |Full| None.|
-| 7. | Must allow installing, building, and linking against an outside copy of all imported software that is externally developed and maintained .|Full| None.|
-| 8. |  Have no hardwired print or IO statements that cannot be turned off. |Full| None.|
+| 1. | Support BAND community GNU Autoconf, CMake, or other build options. |Full| Short-explanation-here; optional link for more extensive details if needed, see below. [M1 details](#m1-details) |
+| 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. |Full| None. [M2 details](#m2-details) |
+| 3. | Provide a documented, reliable way to contact the development team. |Full| None. |
+| 4. | Come with an open-source license. |Full| Uses 2-clause BSD license. |
+| 5. | Provide a runtime API to return the current version number of the software. |Full| None. |
+| 6. | Provide a BAND team-accessible repository. |Full| None. |
+| 7. | Must allow installing, building, and linking against an outside copy of all imported software that is externally developed and maintained. |Full| None. |
+| 8. | Have no hardwired print or IO statements that cannot be turned off. |Full| None. |
 
 M1 details <a id="m1-details"></a>: optional: provide more details about approach to addressing topic M1.
 
@@ -44,14 +44,14 @@ M2 details <a id="m2-details"></a>: optional: provide more details about approac
 |**R1.**| Have a public repository. |Partial| Repo is access controlled but available as release tarfile. |
 |**R2.**| Free all system resources acquired as soon as they are no longer needed. |Full| None. |
 |**R3.**| Provide a mechanism to export ordered list of library dependencies. |None| None. |
-|**R4.**| Document versions of packages that it works with or depends upon, preferably in machine-readable form.  |None| None. |
+|**R4.**| Document versions of packages that it works with or depends upon, preferably in machine-readable form. |None| None. |
 |**R5.**| Have SUPPORT, LICENSE, and CHANGELOG files in top directory.  |None| None. |
 |**R6.**| Have sufficient documentation to support use and further development.  |None| None. |
-|**R7.**| Be buildable using 64-bit pointers; 32-bit is optional. |Full| Package supports both 32 and 64 bit under same API.|
+|**R7.**| Be buildable using 64-bit pointers; 32-bit is optional. |Full| Package supports both 32 and 64 bit under same API. |
 |**R8.**| Do not assume a full MPI communicator; allow for user-provided MPI communicator. |N/a| None. |
-|**R9.**| Use a limited and well-defined name space (e.g., symbol, macro, library, include). |Full| None.|
-|**R10.**| Give best effort at portability to key architectures. |Full| None.|
-|**R11.**| Install headers and libraries under `<prefix>/include` and `<prefix>/lib`, respectively. |Full| None.|
-|**R12.**| All BAND compatibility changes should be sustainable. |Full| None.|
-|**R13.**| Respect system resources and settings made by other previously called packages. |Full| None.|
-|**R14.**| Provide a comprehensive test suite for correctness of installation verification. |Full| None.|
+|**R9.**| Use a limited and well-defined name space (e.g., symbol, macro, library, include). |Full| None. |
+|**R10.**| Give best effort at portability to key architectures. |Full| None. |
+|**R11.**| Install headers and libraries under `<prefix>/include` and `<prefix>/lib`, respectively. |Full| None. |
+|**R12.**| All BAND compatibility changes should be sustainable. |Full| None. |
+|**R13.**| Respect system resources and settings made by other previously called packages. |Full| None. |
+|**R14.**| Provide a comprehensive test suite for correctness of installation verification. |Full| None. |
