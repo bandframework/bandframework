@@ -1,7 +1,7 @@
 # BAND SDK v0.2 Community Policy Compatibility for SmoothEmulator
 
 
-> This document summarizes the efforts of current and future BAND member packages to achieve compatibility with the BAND SDK community policies.  Additional details on the BAND SDK are available [here](/resources/sdkpolicies/bandsdk.md) and should be considered when filling out this form. The most recent copy of this template exists [here](/resources/sdkpolicies/template.md).
+> This document summarizes the efforts of current and future BAND member packages to achieve compatibility with the BAND SDK community policies.  Additional details on the BAND SDK are available [here](https://github.com/bandframework/bandframework/blob/main/resources/sdkpolicies/bandsdk.md) and should be considered when filling out this form. The most recent copy of this template exists [here](https://github.com/bandframework/bandframework/blob/main/resources/sdkpolicies/template.md).
 >
 > This file should filled out and placed in the directory in the `bandframework` repository representing the software name appended by `bandsdk`.  For example, if you have a software `foo`, the compatibility file should be named `foobandsdk.md` and placed in the directory housing the software in the `bandframework` repository. No open source code can be included without this file.
 >
@@ -23,13 +23,13 @@
 | # | Policy                 |Support| Notes                   |
 |---|-----------------------|-------|-------------------------|
 | 1. | Support BAND community GNU Autoconf, CMake, or other build options. |Full| All software is compiled through CMake. |
-| 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. | Somewhat| User can run tutorial and check against expected output. |
-| 3. | Provide a documented, reliable way to contact the development team. |Full| Yes, in README|
-| 4. | Come with an open-source license |Full| Uses a [GPL v3 license](LICENSE.md).|
+| 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. |Somewhat| User can run tutorial and check against expected output. |
+| 3. | Provide a documented, reliable way to contact the development team. |Full| Yes, in README.|
+| 4. | Come with an open-source license. |Full| Uses a [GPL v3 license](LICENSE.md).|
 | 5. | Provide a runtime API to return the current version number of the software. |None| Unlikely to be implemented.|
 | 6. | Provide a BAND team-accessible repository. |Full| Smooth Emulator is available via https://github.com/bandframework/bandframework. |
 | 7. | Must allow installing, building, and linking against an outside copy of all imported software that is externally developed and maintained. |Full| No outside software.|
-| 8. |  Have no hardwired print or IO statements that cannot be turned off. |Full| Parameter files provide option to redirect output to file.|
+| 8. | Have no hardwired print or IO statements that cannot be turned off. |Full| Parameter files provide option to redirect output to file.|
 
 ### Recommended Policies
 
@@ -39,8 +39,8 @@
 |**R2.**| Free all system resources acquired as soon as they are no longer needed. |Not Checked| On todo list. |
 |**R3.**| Provide a mechanism to export ordered list of library dependencies. |None| Not planned, beyond what CMake reports. |
 |**R4.**| Document versions of packages that it works with or depends upon, preferably in machine-readable form.  |Full| Only package needed is Eigen, CMake sets version. |
-|**R5.**| Have SUPPORT, LICENSE, and CHANGELOG files in top directory.  |Partial| No CHANGELOG. |
-|**R6.**| Have sufficient documentation to support use and further development.  |Partial| Manual does not describe development. |
+|**R5.**| Have SUPPORT, LICENSE, and CHANGELOG files in top directory. |Partial| No CHANGELOG. |
+|**R6.**| Have sufficient documentation to support use and further development. |Partial| Manual does not describe development. |
 |**R7.**| Be buildable using 64-bit pointers; 32-bit is optional. |Full| Standard C++. |
 |**R8.**| Do not assume a full MPI communicator; allow for user-provided MPI communicator. |N/a| Will consider parallelism for future. |
 |**R9.**| Use a limited and well-defined name space (e.g., symbol, macro, library, include). |None| Not yet implemented.|
