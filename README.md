@@ -48,10 +48,10 @@ As of version 0.3.0+dev, the following tools are included:
 
 The following examples are part of version 0.3.0+dev:
 
-- Bfrescox: A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
-- BRICK: The Bayesian R-matrix Inference Code Kit, facilitates extraction of R-matrix parameters from experimental data.
-- QGP_Bayes: A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP. 
-- nsat: A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
+- [Bfrescox](/software/Bfrescox): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
+- [BRICK](/software/BRICK): The Bayesian R-matrix Inference Code Kit, facilitates extraction of R-matrix parameters from experimental data.
+- [QGP_Bayes](/software/QGP_Bayes): A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP. 
+- [nsat](/software/nuclear_saturation): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 
 
 ## Downloading and using the BAND Framework
