@@ -136,10 +136,10 @@ Inspecting the {\tt smooth\_data/modelruns/run0/obs.txt} file,
 }
 The second entry of each line is the value of the specified observable for that specific training point. The last entry is the random uncertainty associated with the full model. This is only relevant if the model has random fluctuations, meaning the re-running the model at the same point might result in different output. For this tutorial, the emulator will not consider such fluctuations (there is an emulator parameter that can be set to either consider the randomness or ignore it), so the third entry on each line is usually superfluous. 
 
-Additionally, {\tt fakerhic} created a directory {\tt \$\{MY\_PROJECT\}/fullmodel\_testdata/} which stores information about full-model runs at 50 randomly chosen points in the model-parameter space. These points are not used for tuning. This data can be used later to test the emulator. 
+Additionally, {\tt fakerhic} created a directory {\tt smooth\_data/fullmodel\_testdata/} which stores information about full-model runs at 50 randomly chosen points in the model-parameter space. These points are not used for tuning. This data can be used later to test the emulator. 
 
 \subsection{Running {\it Smooth Emulator}}
-Before building and tuning the emulator, the User needs to edit one additional file, the parameter file that sets numerous options for {\it Smooth Emulator}. For the template used in this tutorial, that file is
+Before building and tuning the emulator, the User needs to edit one additional file, the parameter file that sets numerous options for {\it Smooth Emulator}. This file is {\tt smooth\_data/smooth\_parameters/emulator\_parameters.txt}. For the template used in this tutorial, that file is
 {\tt
 \begin{verbatim}
 #LogFileName smoothlog.txt # comment out for interactive running
@@ -161,7 +161,7 @@ Now, running {\tt smoothy\_tune}, produces the following output,
 
 {\tt
 \begin{verbatim}
-${MY_PROJECT}/rhic% ${MY_LOCAL}/bin/smoothy_tune
+${MY_PROJECT}/fakerhic% ${MY_LOCAL}/bin/smoothy_tune
  ---- Tuning for meanpt_pion ----
  ---- Tuning for meanpt_kaon ----
  ---- Tuning for meanpt_proton ----
@@ -414,7 +414,7 @@ initial_flow              uniform    Init.Flow
 initial_screening         uniform    Screening
 quenching_length          uniform    $\lambda_{\rm quench}$
 initial_epsilon           uniform    $\epsilon_0$
-\end{verbatime}}
+\end{verbatim}}
 As one can see, the last column is used by MATPLOTLIB to label axes. The middle column is not currently used, but that might come into play if one wanted to alter the python scripts to use a different scale for gaussian priors.
 
 The second required file is {\tt \$\{MY\_PROJECT\}/figs/observable\_info.txt}, and the provided version is\\
@@ -463,7 +463,7 @@ The figure should look like:
 \parbox{4.0in}{\centerline{\includegraphics[width=4.0in]{figs/RP_rhic.pdf}}}
 \parbox{2.5in}{Resolving Power. Red bars represent positive correlations with $Y^{\rm exp}_a$ and $\theta_i$. Larger bars suggest that the particular observable contributes more to the constraint of the particular model parameter.}
 
-The third provided python script is in {\tt figs/YvY/} and it compares full-model runs (not used for tuning) to the emulator. This is useful for seeing whether the emulator's error estimates are reasonable. First, one must run the program that writes out the emulator predictions for the full-model runs. This is accomplished by the command:
+The third provided python script is in {\tt figs/YvsY/} and it compares full-model runs (not used for tuning) to the emulator. This is useful for seeing whether the emulator's error estimates are reasonable. First, one must run the program that writes out the emulator predictions for the full-model runs. This is accomplished by the command:
 {\tt
 \begin{verbatim}
 ${MY_PROJECT}% smoothy_testvsfullmodelalt
@@ -479,7 +479,7 @@ If the uncertainty were perfectly stated, 68\% of the points would be within one
 To make the plot, first change into the {\tt figs/YvsY/} directory, and enter
 {\tt
 \begin{verbatim}
-${MY_PROJECT}/figs/YvsY% ln -s ../../fullmodel_testdata .
+${MY_PROJECT}/figs/YvsY% ln -s ../../smooth_data/fullmodel_testdata .
 ${MY_PROJECT}/figs/YvsY% python3 YvsY.py
  Observable names:
  ['meanpt_pion', 'meanpt_kaon', 'meanpt_proton', 'Rinv', 'v2', 'RAA']

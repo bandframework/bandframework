@@ -5,7 +5,7 @@
 \section{Installation and Getting Started}\label{sec:installation}
 
 \subsection{Prerequisites}
-{\it Smooth Emulator} software should run on UNIX, Mac OS or Linux, but is not supported for Windows OS. {\it Smooth Emulator} is largely  written in C++. In addition to a C++ compiler, the user needs the following software installed.
+{\it Smooth Emulator} software should run on UNIX, Mac OS or Linux, but is not supported for Windows OS. {\it Smooth Emulator} is largely  written in C++. In addition to a C++ compiler (CMake files assume you have C++ 20 standard), the user needs the following software installed.
 
 \begin{itemize}
     \item git
@@ -73,7 +73,7 @@ There seems to be a common problem that {\tt cmake} misreports the path of the {
     % export EIGEN3_INCLUDE_DIR=/usr/local/include/eigen3
 \end{verbatim}
 }
-The final arguments may need to be changed depending on the User's location of the packages. If the User wishes to choose a specific C++ compiler, the {\tt cmake} command should be replaced with {\tt cmake -D YOUR\_PREFERRED\_COMPILER}. 
+The final arguments may need to be changed depending on the User's location of the packages. If the User wishes to choose a specific C++ compiler, the {\tt cmake} command should be replaced with {\tt cmake -D CMAKE\_CXX\_COMPILER=g++-11}, or whichever compiler is preferred. 
 
 At this point all the libraries are built, but this does not include the main programs. The main programs are short, and are meant to serve as examples which the User might copy and edit at will. Before compiling, one needs to set an environmental variable so that the compilation can find the libraries needed for compilation.
 {\tt

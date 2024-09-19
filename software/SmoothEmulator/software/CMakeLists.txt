@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 project(msu_smooth LANGUAGES CXX)
 
 message("Will Compile with " ${CMAKE_CXX_COMPILER})
-message("For different compiler enter: cmake -D YOUR_PREFERRED_COMPILER .")
+message("For different compiler enter: cmake -D CMAKE_CXX_COMPILER=YOUR_PREFERRED_COMPILER .")
 
 set(CMAKE_CXX_FLAGS "-W -Wall -march=native -std=c++20 -O2")
 
