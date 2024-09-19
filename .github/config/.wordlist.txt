@@ -188,6 +188,7 @@ sdkpolicies
 sexualized
 sfresco
 simulationpost
+SmoothEmulatorSDK
 socio
 softwaredocumentation
 subdirectories
