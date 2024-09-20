@@ -224,3 +224,5 @@ func
 init
 puq
 cd
+parametrization
+parametrizations

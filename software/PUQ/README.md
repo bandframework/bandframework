@@ -25,13 +25,13 @@ The template input file ``48Ca_template.in`` is provided to run the example.
 
 In this illustration, we acquire 64 data points (``-max_eval 64``), including an initial design of size 32 (``-n_init_thetas 32``) from a uniform prior. To acquire data points for calibrating the model via the expected integrated variance criterion (``al_func "eivar"``), run the following command:
 ```
-    python3 puq_bfresco_test.py -max_eval 64 -al_func "eivar" -n_init_thetas 32
+python3 puq_bfresco_test.py -max_eval 64 -al_func "eivar" -n_init_thetas 32
 ```
 
 Running this script takes approximately 150 seconds on a personal Mac laptop. Upon completion, the file ``Figure_fresco.jpg`` will be saved in the ``examples/fresco_example`` directory.
 
 After collecting data, we observe the cross sections evaluated with the acquired parameters.
 
-![](https://github.com/parallelUQ/PUQ/tree/main/examples/fresco_example/Figure_fresco.png)
+![Illustration of PUQ with Bfrescox](https://github.com/parallelUQ/PUQ/blob/main/examples/fresco_example/Figure_fresco.png)
 
 
