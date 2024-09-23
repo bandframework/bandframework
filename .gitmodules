@@ -17,3 +17,6 @@
 [submodule "software/jitr"]
 	path = software/jitr
 	url = git@github.com:beykyle/jitr.git
+[submodule "software/nuclear_saturation"]
+	path = software/nuclear_saturation
+	url = git@github.com:cdrischler/nuclear_saturation.git
