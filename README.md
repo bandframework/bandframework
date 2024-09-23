@@ -43,7 +43,7 @@ As of version 0.3.0+dev, the following tools are included:
 - rose ([v1.1.3](https://github.com/bandframework/rose/releases/tag/v1.1.3 )): A reduced-order scattering emulator.
 - BMEX ([v0.1.1](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - Taweret ([v1.0.0](https://github.com/bandframework/Taweret/releases/tag/v1.0.0 )): A Python package containing multiple Bayesian Model Mixing methods.
-- jitr ([v2.0](https://github.com/beykyle/jitr/releases/tag/v2.0 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration
+- jitr ([v2.0.1](https://github.com/beykyle/jitr/releases/tag/v2.0.1)): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration
 - PUQ ([v0.1.0](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
 
 The following examples are part of version 0.3.0+dev:
