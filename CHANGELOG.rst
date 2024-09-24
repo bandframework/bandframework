@@ -21,6 +21,7 @@ New capabilities and notable changes:
 - updated BAND-compatible rose to `v1.1.3 <https://github.com/bandframework/rose/releases/tag/v1.1.3>`_, includes new features on the backend for performance and greatly expands our test coverage
 - updated BAND-compatible SaMBA to `v1.1.0 <https://github.com/asemposki/SAMBA/releases/tag/v1.1.0>`_
 - updated BAND-compatible surmise to `v0.3.0 <https://github.com/bandframework/surmise/releases/tag/v0.3.0>`_, which adds coverage and other features and extends testing and documentation
+- updated BAND-compatible Taweret to `v1.1.0 <https://github.com/bandframework/Taweret/releases/tag/v1.1.0>`_, which adds documentation and tutorial notebooks
 
 Release 0.3.0
 -------------
