@@ -193,6 +193,7 @@ sdkpolicies
 sexualized
 sfresco
 simulationpost
+SmoothEmulatorSDK
 socio
 softwaredocumentation
 subdirectories
@@ -221,3 +222,12 @@ xfr
 yml
 zNqg
 Özge
+bfresco
+eivar
+eval
+func
+init
+puq
+cd
+parametrization
+parametrizations

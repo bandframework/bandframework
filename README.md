@@ -45,13 +45,14 @@ As of version 0.3.0+dev, the following tools are included:
 - Taweret ([v1.0.0](https://github.com/bandframework/Taweret/releases/tag/v1.0.0 )): A Python package containing multiple Bayesian Model Mixing methods.
 - jitr ([v2.0.1](https://github.com/beykyle/jitr/releases/tag/v2.0.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration
 - PUQ ([v0.1.0](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
+- [SmoothEmulator](/software/SmoothEmulator): A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
 
 The following examples are part of version 0.3.0+dev:
 
-- Bfrescox: A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
-- BRICK: The Bayesian R-matrix Inference Code Kit, facilitates extraction of R-matrix parameters from experimental data.
-- QGP_Bayes: A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP. 
-- nsat: A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
+- [Bfrescox](/software/Bfrescox): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
+- [BRICK](/software/BRICK): The Bayesian R-matrix Inference Code Kit, facilitates extraction of R-matrix parameters from experimental data.
+- [QGP_Bayes](/software/QGP_Bayes): A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP. 
+- [nsat](/software/nuclear_saturation): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 
 
 ## Downloading and using the BAND Framework
