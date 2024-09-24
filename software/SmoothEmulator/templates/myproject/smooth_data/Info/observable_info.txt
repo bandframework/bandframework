@@ -1,0 +1,7 @@
+# obs. name		SigmaA0	
+meanpt_pion		100		
+meanpt_kaon		150		
+meanpt_proton	200		
+Rinv				1.0     	
+v2					0.2		
+RAA				0.5

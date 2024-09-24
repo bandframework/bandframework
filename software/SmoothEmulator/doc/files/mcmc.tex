@@ -1,0 +1,138 @@
+\documentclass[UserManual.tex]{subfiles}
+\begin{document}
+\setcounter{section}{6}
+\section{Markov-Chain Monte Carlo (MCMC) Generation of the Posterior}\label{sec:mcmc}
+
+\subsection{Preparing for MCMC using {\it Smooth Emulator}}
+
+The final step in Bayesian analyses is to generate MCMC traces through parameter space. {\it Smooth Emulator} software is designed for the MCMC programs to be run from within the {\tt \$\{MY\_PROJECT\}} directory. Once the emulator is tuned and before it is applied to a Markov Chain investigation of the likelihood, the software needs know the experimental measurement and uncertainty. That information must be entered in the {\tt smooth\_data/Info/experimental\_info.txt} file. The file should have the format:
+{\tt
+\begin{verbatim}
+ obsname1  -12.93    0.95   0.5
+ obsname2  159.3     3.0    2.4
+ obsname3  -61.2.    1.52   0.9
+ obsname4  -1.875    0.075  0.03
+\end{verbatim}}
+\vspace*{-16pt}
+ \hspace*{28pt}$\vdots$\\
+The first number is the measured value and the second is the experimentally reported uncertainty. The third number is the uncertainty inherent to the theory, due to missing physics. For example, even if a model has all the parameters set to the exact value, e.g. some parameter of the standard value, the full-model can't be expected to exactly reproduce a correct measurement given that some physics is likely missing from the full model. For the MCMC software, the relevant uncertainty incorporates both, and only the combination of both, added in quadrature, affects the outcome. We emphasize that this last file is not needed to train and tune the emulator. It is needed once one performs the MCMC search of parameter space.
+
+The log-likelihood, $LL$, for the MCMC generation is assumed to be of a simple form. Summing over the observables $I$,
+\begin{eqnarray*}
+\sigma_{I,{\rm tot}}^{2}&=&\sigma_{I,{\rm exp}}^2+\sigma_{I,{\rm theory}}^2+\sigma_{I,{\rm emulator}}^2,\\
+LL&=&-\sum_{I}\frac{(Y_{I,{\rm exp}}-Y_{I,{\rm emu}})^{2}}{2\sigma_{I,{\rm tot}}^{2}}-\ln(\sigma_{I,{\rm tot}}).
+\end{eqnarray*}
+
+The main program that runs the mcmc code is {\tt\$\{MY\_LOCAL\}/software/main\_programs/mcmc\_main.cc}. To compile the program:
+{\tt
+\begin{verbatim}
+ ${MY_LOCAL}/software% make mcmc
+\end{verbatim}}
+
+One should tune the emulator before running {\tt mcmc}. This could involve running the emulator and saving the Taylor coefficients, or inserting the tuning into the main source code for {\tt mcmc} mentioned above.
+
+\subsection{MCMC Parameter File}
+
+Next, one needs to edit the parameter file {\tt\$\{MY\_PROJECT\}/smooth\_data/smooth\_parameters/mcmc\_parameters.txt}. An example file is:
+{\tt
+\begin{verbatim}
+ #LogFileName mcmc_log.txt
+ MCMC_LANGEVIN false
+ MCMC_METROPOLIS_STEPSIZE 0.04
+ MCMC_LANGEVIN_STEPSIZE 0.5
+ MCMC_NBURN  100000
+ MCMC_NTRACE 100000
+ MCMC_NSKIP  5
+ MCMC_IGNORE_EMULATOR_ERROR false
+ RANDY_SEED  12345
+\end{verbatim}}
+As was the case with {\it Smooth Emulator}, each parameter has a default value. Summarizing the parameters:
+\begin{itemize}\itemsep=0pt
+\item {\tt LogFileName}\\
+To run interactively, leave this line commented out. Otherwise, output will be directed to the designated file.
+\item {\tt MCMC\_LANGEVIN}\\
+The Langevin method can replace the Metropolis method, but it is not fully tested. If the default, {\tt false}, is set, the Metropolis method will be invoked. The Langevin method currently ignores the emulator uncertainty. At this time it is not clear that once it is invoked, it will significantly improve performance.
+\item {\tt MCMC\_METROPOLIS\_STEPSIZE}\\
+Metropolis algorithms require taking random steps in $\vec{\theta}$ space. If the steps are small, it takes longer to explore the space, but if the steps are very long, the success rate of the Metropolis steps becomes low. Maximum efficiency occurs when the Metropolis success rate, which is provided during running, is near 50\%. Rates of 20\% or 80\% are also fine, but if the rate is only a few percent of if it becomes close to 100\%, the User should adjust the parameter.
+\item{\tt MCMC\_LANGEVIN\_STEPSIZE}\\
+For the Langevin procedure, all steps are successful, but the accuracy can suffer if the steps are too large. (The Langevin option is still in development)
+\item{\tt MCMC\_NBURN}\\
+A certain number of Metropolis or Langevin steps should be taken before the trace is recorded so that the trace is not biased by the starting value.
+\item {\tt MCMC\_NTRACE}\\
+This is the number of points in the trace that are recorded for subsequent analysis. More points provides a more accurate representation of the posterior.
+\item {\tt MCMC\_NSKIP}\\
+Because succesive points in the trace are correlated, it makes sense to skip several points before skipping. For example, in the Metropolis procedure if the success rate is 50\%, the neighboring points have a 50\% chance of being the same. The values of {\tt MCMC\_NBURN}, {\tt MCMC\_NTRACE} and {\tt MCMC\_NSKIP} are stored by the {\tt CMCMC} objects, but are only set when the object calls the {\tt trace} function. Thus, default values are set at the time the call is made to the {\tt PerformTrace} funtion.  See Sec. \ref{sec:mcmcsource} below for an example of how this is used. 
+\item {\tt MCMC\_IGNORE\_EMULATOR\_ERROR}\\
+If this flag is set to {\tt true} the emulator error will be ignored. This significantly increases the speed of the MCMC procedure, but should not be done if the emulator error is significant.
+\end{itemize}
+
+\subsection{Running the MCMC Program}
+To run the provided MCMC program, to the project directory, and run the program {\tt mcmc}. Output should look something like this:
+{\tt
+\begin{verbatim}
+${MY_PROJECT}% ${MY_LOCAL}/bin/mcmc
+ At beginning of Trace, LL=-68.764478
+At end of trace, best LL=1.563806
+Best Theta=
+0.249554  0.153237  0.190531  0.210907  0.058929  0.230998  
+Metropolis success percentage=54.090000
+finished burn in
+At beginning of Trace, LL=-5.477040
+finished 10%
+finished 20%
+finished 30%
+finished 40%
+finished 50%
+finished 60%
+finished 70%
+finished 80%
+finished 90%
+finished 100%
+At end of trace, best LL=1.678685
+Best Theta=
+0.269108  0.099867  0.185094  0.204939  0.037417  0.207398  
+Metropolis success percentage=53.609600
+writing, ntrace = 100001
+writing, ntrace = 100001
+\end{verbatim}}
+For the sake of numerical efficiency {\tt ``Metropolis success percentage''} should be in the range of 50\%. If the efficiency is very near 100\%, it suggests the step sizes might be too small to best explore the entire model-parameter space. If the efficiency is near zero, the step size might be too large and too few successful Metropolis steps will be taken. This affects only the efficiency, not the validity, so any success percentage between 10\% and 90\% should suffice. In the output, {\tt ``LL''} refers to the log-likelihood. At the end of the burn-in, one hopes that best value of {\tt LL} is not much lower than the best value found from the entire trace. If not, one should probably increase the value of {\tt MCMC\_NBURN}. The values of {\tt ``Best Theta''} refer to the point in the trace with the highest {\tt LL}. 
+
+Information about the trace is found in the files located in the directory {\tt smooth\_data/mcmc\_trace/}:
+\begin{itemize}
+\item {\tt Xtrace.txt}: A list of the model-parameter values from the posterior sampling.
+\item {\tt trace.txt}: A list of the scaled model-parameter values ($\vec{\theta}$) from the posterior sampling.
+\item {\tt xbar\_thetabar.txt}: The average of the parameter values ($\vec{X}$), and the scaled values ($\vec{\theta}$) from the posterior.
+\item {\tt CovThetaTheta.txt}: This gives the $N_{\rm par}\times N_{\rm par}$ covariance matrix $\langle\delta \theta_i\delta\theta_j\langle$, describing the size and shape of the points in the trace.
+\item {\tt CovThetaTheta\_eigenvalues.txt}: That eigenvalues of that matrix
+\item {\tt CovThetaTheta\_eigenvecs.txt}: The eigenvectors
+\item {\tt ResolvingPower.txt}: An $N_{\rm pars}\times N_{\rm obs}$ matrix describing the influence of each observable in resolving each model parameter.
+\end{itemize}
+
+\subsection{Reviewing the MCMC Source Code}\label{sec:mcmcsource}
+
+Finally, we review the source code in {\tt \$\{MY\_LOCAL\}/software/main\_programs/mcmc\_main.cc}:
+{\tt
+\begin{verbatim}
+int main(){
+  CparameterMap *parmap=new CparameterMap();
+  CSmoothMaster master(parmap);
+  CMCMC mcmc(&master);
+  //master.ReadCoefficientsAllY();
+  master.TuneAllY();
+  unsigned int Nburn=parmap->getI("MCMC_NBURN",1000);  // Steps for burn in
+  unsigned int Ntrace=parmap->getI("MCMC_NTRACE",1000); // Record this many points
+  unsigned int Nskip=parmap->getI("MCMC_NSKIP",5); // Only record every Nskip^th point  
+  mcmc.PerformTrace(1,Nburn);  
+  CLog::Info("finished burn in\n");
+  mcmc.PruneTrace(); // Throws away all but last point
+  mcmc.PerformTrace(Ntrace,Nskip);
+  mcmc.EvaluateTrace();
+  mcmc.WriteTrace();
+  return 0;
+}
+\end{verbatim}}
+This is mostly self-explanatory. If one wishes to avoid writing out the trace, the line {\tt mcmc.WriteTrace} can be deleted. If the User wishes to run the code in batch mode, the output can be directed to a file, {\tt mcmc\_log.txt}, by adding the line\\
+\hspace*{20pt}{\tt LogFileName mcmc\_log.txt} \\
+to the parameter file {\tt parameters/mcmc\_parameters.txt}. The line {\tt mcmc.EvaluateTrace()} will evaluate the trace and calculate the resolving power and covariances.
+
+\end{document}
