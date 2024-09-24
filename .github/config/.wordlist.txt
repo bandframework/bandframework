@@ -34,10 +34,9 @@ Gitflow
 Gramacy
 JETSCAPE
 JIT
+jitrbandsdk
 JOSS
 Jupyter
-Jupyter
-Kataria
 Kataria
 LHS
 LLNL
@@ -139,6 +138,11 @@ io
 ipynb
 isotonic
 jgehrcke
+jitr
+JIT
+JOSS
+Jupyter
+Kataria
 kyle
 lbl
 libEnsemble
