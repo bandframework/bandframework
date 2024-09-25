@@ -121,7 +121,6 @@ frescoxbandsdk
 frib
 frontend
 functionals
-gKTCLEAGE
 germain
 github
 github's
