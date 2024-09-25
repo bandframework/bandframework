@@ -24,7 +24,7 @@ Before release
 
 - Check `README.md </README.md>`_ *Citing bandframework* for correctness (e.g., ensure that author list matches `AUTHORS </AUTHORS>`_).
 
-- Check `bandsdk.md </resources/sdkpolicies/bandsdk.md>`_ *Citing bandframework* for correctness. Ensure that SDK version listed is the same as in the provided `template </resources/sdkpolicies/template.md>`_
+- Check `bandsdk.md </resources/sdkpolicies/bandsdk.md>`_ *Citing bandframework* for correctness. Ensure that SDK version listed is the same as in the provided `template </resources/sdkpolicies/template.md>`_.
 
 - Check `sdkpolicies README </resources/sdkpolicies/README.md>`_ for correctness (e.g., ensure that each software in the release has a working link for its SDK compliance, also note any differences in the version of the SDK that each package lists versus the version at `bandsdk.md </resources/sdkpolicies/bandsdk.md>`_).
 
