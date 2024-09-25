@@ -81,7 +81,7 @@ If you have already cloned the repository, the following modified `git` commands
 - `git submodule update --init software/surmise`
   (variant of the previous item, in case you want to only get the surmise submodule)
 
-Note that submodules work modern git, version >= 2.38.0.
+Note that submodules work on modern git (i.e., version >= 2.38.0).
 
 ## Contributing to the BAND Framework
 
@@ -106,8 +106,8 @@ Please use the following to cite the BAND Framework:
         Daniel Odell and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and Alexandra C. Semposki and \"Ozge S\"urer and 
         Stefan M. Wild and John C. Yannotty},
         institution = {},
-        number      = {Version 0.3.0+dev},
-        year        = {2023},
+        number      = {Version 0.4.0+dev},
+        year        = {2024},
         url         = {https://github.com/bandframework/bandframework}
     }
     
@@ -127,6 +127,7 @@ If possible, please also cite the original BAND Framework paper:
         year = "2021"
     }
 
+Please also cite any of the underlying BAND Framework packages you employ, each of which includes citation or documentation information.
 
 ## Resources
 For more information, please see the [BAND framework website](https://bandframework.github.io/). 
