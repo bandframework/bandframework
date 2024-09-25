@@ -59,7 +59,7 @@ Please use the following to cite the BAND Framework:
         Daniel Odell and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and Alexandra C. Semposki and \"Ozge S\"urer and 
         Stefan M. Wild and John C. Yannotty},
         institution = {},
-        number      = {Version 0.3.0+dev},
-        year        = {2023},
+        number      = {Version 0.4.0+dev},
+        year        = {2024},
         url         = {https://github.com/bandframework/bandframework}
     }
