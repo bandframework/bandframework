@@ -93,7 +93,7 @@ Detailed instructions for contributing software, including by submodules, are fo
 
 ## License 
 
-All code included in the BAND Framework is open source, with the particular form of license contained in the top -level subdirectories of [software/](/software/).  If such a subdirectory does not contain a LICENSE file, then it is automatically licensed as described in the otherwise encompassing BAND Framework [LICENSE](/LICENSE).  
+All code included in the BAND Framework is open source, with the particular form of license contained in the top-level subdirectories of [software/](/software/).  If such a subdirectory does not contain a LICENSE file, then it is automatically licensed as described in the otherwise encompassing BAND Framework [LICENSE](/LICENSE).  
 
 ## Citing the BAND Framework
 
