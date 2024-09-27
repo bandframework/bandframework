@@ -103,7 +103,8 @@ Please use the following to cite the BAND Framework:
         title       = {{BANDFramework: An} Open-Source Framework for {B}ayesian Analysis of Nuclear Dynamics},
         author      = {Kyle Beyer and Landon Buskirk and Moses Y-H. Chan and Tyler H. Chang and Richard James DeBoer and Christian Drischler and 
         Richard J. Furnstahl and Pablo Giuliani and Kyle Godbey and Kevin Ingles and Dananjaya Liyanage and Filomena M. Nunes and 
-        Daniel Odell and Jared O'Neal and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and Alexandra C. Semposki and \"Ozge S\"urer and 
+        Daniel Odell and Jared O'Neal and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and 
+        Scott Pratt and Oleh Savchuk and Alexandra C. Semposki and \"Ozge S\"urer and 
         Stefan M. Wild and John C. Yannotty},
         institution = {},
         number      = {Version 0.4.0+dev},
