@@ -9,7 +9,7 @@ https://github.com/bandframework/bandframework/issues
 Release 0.4.0
 -------------
 
-:Date: MONTH DAY, 2024
+:Date: September 30, 2024
 
 New capabilities and notable changes:
 
@@ -22,6 +22,13 @@ New capabilities and notable changes:
 - updated BAND-compatible SaMBA to `v1.1.0 <https://github.com/asemposki/SAMBA/releases/tag/v1.1.0>`_
 - updated BAND-compatible surmise to `v0.3.0 <https://github.com/bandframework/surmise/releases/tag/v0.3.0>`_, which adds coverage and other features and extends testing and documentation
 - updated BAND-compatible Taweret to `v1.1.0 <https://github.com/bandframework/Taweret/releases/tag/v1.1.0>`_, which adds documentation and tutorial notebooks
+
+:Known issues:
+
+- update unit tests for each project under software
+- improve documentation
+- improve documentation and facilitation of migration from privateband and bandframework branches to bandframework
+
 
 Release 0.3.0
 -------------
