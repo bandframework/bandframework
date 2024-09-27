@@ -51,8 +51,8 @@ The following examples are part of version 0.3.0+dev:
 
 - [Bfrescox](/software/Bfrescox): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
 - [BRICK](/software/BRICK): The Bayesian R-matrix Inference Code Kit, facilitates extraction of R-matrix parameters from experimental data.
-- [QGP_Bayes](/software/QGP_Bayes): A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP. 
-- [nsat](/software/nuclear_saturation): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
+- [QGP_Bayes](https://github.com/danOSU/QGP_Bayes/tree/4b3e2364f87a29ad2469f2b072053420fdaac8e9): A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP. 
+- [nsat](https://github.com/cdrischler/nuclear_saturation/tree/c4cfa45a1180b2739e217102d7380736d6844a11): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 
 
 ## Downloading and using the BAND Framework
@@ -81,7 +81,7 @@ If you have already cloned the repository, the following modified `git` commands
 - `git submodule update --init software/surmise`
   (variant of the previous item, in case you want to only get the surmise submodule)
 
-Note that submodules work modern git, version >= 2.38.0.
+Note that submodules work on modern git (i.e., version >= 2.38.0).
 
 ## Contributing to the BAND Framework
 
@@ -93,7 +93,7 @@ Detailed instructions for contributing software, including by submodules, are fo
 
 ## License 
 
-All code included in the BAND Framework is open source, with the particular form of license contained in the top -level subdirectories of [software/](/software/).  If such a subdirectory does not contain a LICENSE file, then it is automatically licensed as described in the otherwise encompassing BAND Framework [LICENSE](/LICENSE).  
+All code included in the BAND Framework is open source, with the particular form of license contained in the top-level subdirectories of [software/](/software/).  If such a subdirectory does not contain a LICENSE file, then it is automatically licensed as described in the otherwise encompassing BAND Framework [LICENSE](/LICENSE).  
 
 ## Citing the BAND Framework
 
@@ -101,13 +101,14 @@ Please use the following to cite the BAND Framework:
 
     @techreport{bandframework,
         title       = {{BANDFramework: An} Open-Source Framework for {B}ayesian Analysis of Nuclear Dynamics},
-        author      = {Kyle Beyer and Landon Buskirk and Moses Y-H. Chan and Tyler H. Chang and Richard James DeBoer and 
+        author      = {Kyle Beyer and Landon Buskirk and Moses Y-H. Chan and Tyler H. Chang and Richard James DeBoer and Christian Drischler and 
         Richard J. Furnstahl and Pablo Giuliani and Kyle Godbey and Kevin Ingles and Dananjaya Liyanage and Filomena M. Nunes and 
-        Daniel Odell and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and Alexandra C. Semposki and \"Ozge S\"urer and 
+        Daniel Odell and Jared O'Neal and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and 
+        Scott Pratt and Oleh Savchuk and Alexandra C. Semposki and \"Ozge S\"urer and 
         Stefan M. Wild and John C. Yannotty},
         institution = {},
-        number      = {Version 0.3.0+dev},
-        year        = {2023},
+        number      = {Version 0.4.0+dev},
+        year        = {2024},
         url         = {https://github.com/bandframework/bandframework}
     }
     
@@ -127,6 +128,7 @@ If possible, please also cite the original BAND Framework paper:
         year = "2021"
     }
 
+Please also cite any of the underlying BAND Framework packages you employ, each of which includes citation or documentation information.
 
 ## Resources
 For more information, please see the [BAND framework website](https://bandframework.github.io/). 
