@@ -24,7 +24,7 @@ These tools are designed to:
 
 More about the goals and structure of the BAND project can be found in D.R. Phillips et al., "[Get on the BAND Wagon: a Bayesian framework for quantifying model uncertainties in nuclear dynamics"](https://doi.org/10.1088/1361-6471/abf1df), J. Phys. G **48** (2021) 7, 072001.
 
-A full list of BAND members together with a current list of  publications produced by the members using the tools and ideas of the project is available at https://bandframework.github.io
+A full list of BAND members together with a current list of  publications produced by the members using the tools and ideas of the project is available at https://bandframework.github.io.
 
 
 ## BAND Framework Elements
@@ -43,7 +43,7 @@ As of version 0.3.0+dev, the following tools are included:
 - rose ([v1.1.3](https://github.com/bandframework/rose/releases/tag/v1.1.3 )): A reduced-order scattering emulator.
 - BMEX ([v0.1.1](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - Taweret ([v1.1.0](https://github.com/bandframework/Taweret/releases/tag/v1.1.0 )): A Python package containing multiple Bayesian Model Mixing methods.
-- jitr ([v2.0.1](https://github.com/beykyle/jitr/releases/tag/v2.0.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration
+- jitr ([v2.0.1](https://github.com/beykyle/jitr/releases/tag/v2.0.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
 - PUQ ([v0.1.0](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
 - [SmoothEmulator](/software/SmoothEmulator): A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
 
