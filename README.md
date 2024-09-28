@@ -35,7 +35,7 @@ BAND Framework elements are of two main types:
 
 BAND Framework tools and examples are found in [software/](/software/).
 
-As of version 0.3.0+dev, the following tools are included:
+As of version 0.4.0+dev, the following tools are included:
 
 - surmise ([v0.3.0](https://github.com/bandframework/surmise/releases/tag/v0.3.0 )): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - SaMBA ([v1.1.0](https://github.com/asemposki/SAMBA/releases/tag/v1.1.0 )): The Sandbox for Mixing via Bayesian Analysis.
@@ -47,7 +47,7 @@ As of version 0.3.0+dev, the following tools are included:
 - PUQ ([v0.1.0](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
 - [SmoothEmulator](/software/SmoothEmulator): A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
 
-The following examples are part of version 0.3.0+dev:
+The following examples are part of version 0.4.0+dev:
 
 - [Bfrescox](/software/Bfrescox): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
 - [BRICK](/software/BRICK): The Bayesian R-matrix Inference Code Kit, facilitates extraction of R-matrix parameters from experimental data.
