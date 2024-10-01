@@ -31,11 +31,9 @@ A full list of BAND members together with a current list of  publications produc
 
 BAND Framework elements are of two main types:
 - BAND tools: these are pieces of python code that can be invoked to perform specific emulation, calibration, model-mixing, experimental-design, or linkage functions.
-- BAND examples: these are typically notebooks, that show how the BAND tools can be used, singly or in combination, to quantify uncertainty in a specific nuclear-physics problem. 
+- BAND examples: these are typically notebooks that are examples of principles Bayesian uncertainty quantification. These notebooks are constructed to solve a particular nuclear-physics problem, but contain software that BAND Framework users may wish to adapt to other scientific contexts. 
 
-BAND Framework tools and examples are found in [software/](/software/).
-
-As of version 0.4.0, the following tools are included:
+Framework elements can be found in [software/](/software/). As for version 0.4.0, the following tools are available there:
 
 - surmise ([v0.3.0](https://github.com/bandframework/surmise/releases/tag/v0.3.0 )): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - SaMBA ([v1.1.0](https://github.com/asemposki/SAMBA/releases/tag/v1.1.0 )): The Sandbox for Mixing via Bayesian Analysis.
