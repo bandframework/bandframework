@@ -33,7 +33,9 @@ BAND Framework elements are of two main types:
 - BAND tools: these are pieces of python code that can be invoked to perform specific emulation, calibration, model-mixing, experimental-design, or linkage functions.
 - BAND examples: these are notebooks that provide examples of principled Bayesian uncertainty quantification. They are constructed to solve a particular nuclear-physics problem, but contain software that BAND Framework users may wish to adapt to other scientific contexts. 
 
-Framework elements can be found in [software/](/software/). As for version 0.4.0, the following tools are available there:
+Framework elements can be found in [software/](/software/). 
+
+As of version 0.4.0, the following tools are available:
 
 - surmise ([v0.3.0](https://github.com/bandframework/surmise/releases/tag/v0.3.0 )): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - [SmoothEmulator](/software/SmoothEmulator): A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
