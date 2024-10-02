@@ -35,7 +35,7 @@ BAND Framework elements are of two main types:
 
 Framework elements can be found in [software/](/software/). 
 
-As of version 0.4.0, the following tools are available:
+As of version 0.4.0+dev, the following tools are included:
 
 - surmise ([v0.3.0](https://github.com/bandframework/surmise/releases/tag/v0.3.0 )): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - [SmoothEmulator](/software/SmoothEmulator): A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
@@ -44,7 +44,7 @@ As of version 0.4.0, the following tools are available:
 - Taweret ([v1.1.0](https://github.com/bandframework/Taweret/releases/tag/v1.1.0 )): A Python package containing multiple Bayesian Model Mixing methods.
 - PUQ ([v0.1.0](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
 
-The following examples are part of version 0.4.0:
+The following examples are part of version 0.4.0+dev:
 
 - [Bfrescox](/software/Bfrescox): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
 - BMEX ([v0.1.1](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
@@ -107,7 +107,7 @@ Please use the following to cite the BAND Framework:
         Scott Pratt and Oleh Savchuk and Alexandra C. Semposki and \"Ozge S\"urer and 
         Stefan M. Wild and John C. Yannotty},
         institution = {},
-        number      = {Version 0.4.0},
+        number      = {Version 0.4.0+dev},
         year        = {2024},
         url         = {https://github.com/bandframework/bandframework}
     }
