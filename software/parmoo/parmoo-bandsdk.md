@@ -14,7 +14,7 @@
 > Details on citing the current version of the BAND Framework can be found in the [README](https://github.com/bandframework/bandframework).
 
 **Website:** https://parmoo.readthedocs.io \
-**Contact:** parmoo@mcs.anl.gov \
+**Contact:** parmoo@lbl.gov \
 **Icon:** https://raw.githubusercontent.com/parmoo/parmoo/c4de84f3564245d12624081570b6c58923e56dec/docs/img/logo-ParMOO.svg \
 **Description:** ParMOO is a Python package for parallel multiobjective optimization that seeks to exploit simulation-based structure in objective and constraint functions.
 
@@ -26,7 +26,7 @@
 |---|-----------------------|-------|-------------------------|
 | 1. | Support BAND community GNU Autoconf, CMake, or other build options. |Full| ParMOO is a Python package and provides a setup.py file for installation. This is compatible with Python's built-in installation feature (``python setup.py install``) and with the pip installer. ParMOO is also available via [Conda-forge](https://anaconda.org/conda-forge/parmoo). GNU Autoconf or CMake are unsuitable for a Python package. |
 | 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. | Full| In addition to a README, ParMOO's installation can be tested via pytest by running ``python3 setup.py test``.|
-| 3. | Provide a documented, reliable way to contact the development team. |Full| The ParMOO team can be contacted through the public [issues page on GitHub](https://github.com/parmoo/parmoo/issues) or via an e-mail to [parmoo@mcs.anl.gov](parmoo@mcs.anl.gov).|
+| 3. | Provide a documented, reliable way to contact the development team. |Full| The ParMOO team can be contacted through the public [issues page on GitHub](https://github.com/parmoo/parmoo/issues) or via an e-mail to [parmoo@lbl.gov](parmoo@lbl.gov).|
 | 4. | Come with an open-source license |Full| ParMOO uses the BSD 3-Clause license. |
 | 5. | Provide a runtime API to return the current version number of the software. |Full| The version can be returned within Python via: `parmoo.__version__`.|
 | 6. | Provide a BAND team-accessible repository. |Full| https://github.com/parmoo/parmoo |

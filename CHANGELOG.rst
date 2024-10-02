@@ -6,6 +6,30 @@ Below are the release notes for all bandframework releases.
 May reference issues on:
 https://github.com/bandframework/bandframework/issues
 
+Release 0.4.0
+-------------
+
+:Date: October 2, 2024
+
+New capabilities and notable changes:
+
+- added BAND-compatible jitr, a package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration at `v2.0.1 <https://github.com/beykyle/jitr/releases/tag/v2.0.1>`_
+- added BAND-compatible `nsat <https://github.com/cdrischler/nuclear_saturation/tree/c4cfa45a1180b2739e217102d7380736d6844a11>`_, illustrating a Bayesian mixture model approach to quantifying the empirical nuclear saturation point
+- added BAND-compatible PUQ, a parallel package for generating experimental designs tailored for uncertainty quantification at `v0.1.0 <https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0>`_
+- added BAND-compatible `SmoothEmulator </software/SmoothEmulator>`_, a package for building and employing a smooth emulator
+- updated BAND-compatible parMOO to `v0.4.1 <https://github.com/parmoo/parmoo/releases/tag/v0.4.1>`_, which now includes JIT compilation and automatic differentiation capabilities via `jax`
+- updated BAND-compatible rose to `v1.1.3 <https://github.com/bandframework/rose/releases/tag/v1.1.3>`_, includes new features on the backend for performance and greatly expands our test coverage
+- updated BAND-compatible SaMBA to `v1.1.0 <https://github.com/asemposki/SAMBA/releases/tag/v1.1.0>`_
+- updated BAND-compatible surmise to `v0.3.0 <https://github.com/bandframework/surmise/releases/tag/v0.3.0>`_, which adds coverage and other features and extends testing and documentation
+- updated BAND-compatible Taweret to `v1.1.0 <https://github.com/bandframework/Taweret/releases/tag/v1.1.0>`_, which adds documentation and tutorial notebooks
+
+:Known issues:
+
+- update unit tests for each project under software
+- improve documentation
+- improve documentation and facilitation of migration from privateband and bandframework branches to bandframework
+
+
 Release 0.3.0
 -------------
 
