@@ -9,7 +9,7 @@ https://github.com/bandframework/bandframework/issues
 Release 0.4.0
 -------------
 
-:Date: October 1, 2024
+:Date: October 2, 2024
 
 New capabilities and notable changes:
 
