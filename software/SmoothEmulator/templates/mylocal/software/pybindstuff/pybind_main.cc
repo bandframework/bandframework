@@ -17,6 +17,10 @@ PYBIND11_MODULE(emulator_smooth, m) {
 					
 				.def("GetYSigmaPython", static_cast<vector<double> (NBandSmooth::CSmoothMaster::*)(int,vector<double> V)>(&NBandSmooth::CSmoothMaster::GetYSigmaPython), "Get YSigma, I guess")
 		
+		    .def("GetThetaFromX", static_cast<vector<double> (NBandSmooth::CSmoothMaster::*)(vector<double> V)>(&NBandSmooth::CSmoothMaster::GetThetaFromX), "Get ThetaFromX, I guess")
+					
+			  .def("GetXhetaFromTheta", static_cast<vector<double> (NBandSmooth::CSmoothMaster::*)(vector<double> V)>(&NBandSmooth::CSmoothMaster::GetXFromTheta), "Get XFromTheta, I guess")
+		
 				.def("TuneAllY",&NBandSmooth::CSmoothMaster::TuneAllY);
 
 }

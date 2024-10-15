@@ -186,21 +186,6 @@ double CSmoothMaster::GetYOnlyPython(int DiY,vector<double> theta){
 		return 0.0;
 }
 
-vector<double> CSmoothMaster::GetYSigmaPython(int DiY,vector<double> theta){
-	unsigned int iY=DiY;
-	double Y,SigmaY_emulator;
-	if(iY>=0 && iY<observableinfo->NObservables)
-		emulator[iY]->CalcYAndUncertainty(theta,Y,SigmaY_emulator);
-	else{
-		Y=SigmaY_emulator=0.0;
-	}
-	vector<double> YSigma;
-	YSigma.resize(2);
-	YSigma[0]=Y;
-	YSigma[1]=SigmaY_emulator;
-	return YSigma;		
-}
-
 double CSmoothMaster::GetUncertainty(string obsname,vector<double> &theta){
 	unsigned int iY=observableinfo->GetIPosition(obsname);
 	return emulator[iY]->GetUncertainty(theta);
@@ -435,4 +420,68 @@ void CSmoothMaster::TestVsFullModel(){
 		CLog::Info(observableinfo->observable_name[iY]+": "+to_string(nfit)+" out of "+to_string(ntestpts)+" points within 1 sigma\n");
 	}
 }
+
+	
+vector<double> CSmoothMaster::GetThetaFromX(vector<double> X){
+	double sigmax,xbar;
+	unsigned int ipar;
+	vector<double> Theta;
+	Theta.resize(X.size());
+
+	for(ipar=0;ipar<CModelParameters::NModelPars;ipar++){
+		if(priorinfo->type[ipar]=="uniform"){
+			Theta[ipar]=-1+2*((X[ipar]-priorinfo->xmin[ipar])/(priorinfo->xmax[ipar]-priorinfo->xmin[ipar]));
+		}
+		else if(priorinfo->type[ipar]=="gaussian"){
+			xbar=priorinfo->xmin[ipar];
+			sigmax=priorinfo->xmax[ipar];
+			Theta[ipar]=(X[ipar]-xbar)/(sigmax*CModelParameters::GSCALE);
+		}
+		else{
+			CLog::Fatal("Cannot translate X to Theta because type = "+priorinfo->type[ipar]+" is not recognized\n");
+		}
+	}
+	return Theta;
+		
+}
+
+vector<double> CSmoothMaster::GetXFromTheta(vector<double> Theta){
+	double sigmax,xbar;
+	unsigned int ipar;
+	vector<double> X;
+	X.resize(Theta.size());
+
+	for(ipar=0;ipar<CModelParameters::NModelPars;ipar++){
+		if(priorinfo->type[ipar]=="uniform"){
+			X[ipar]=priorinfo->xmin[ipar]+0.5*(1.0+Theta[ipar])*(priorinfo->xmax[ipar]-priorinfo->xmin[ipar]);
+		}
+		else if(priorinfo->type[ipar]=="gaussian"){
+			xbar=priorinfo->xmin[ipar];
+			sigmax=priorinfo->xmax[ipar];
+			X[ipar]=xbar+CModelParameters::GSCALE*sigmax*Theta[ipar];
+		}
+		else{
+			CLog::Fatal("Cannot translate Theta to X because type = "+priorinfo->type[ipar]+" is not recognized\n");
+		}
+	}
+	return X;
+	
+}
+
+vector<double> CSmoothMaster::GetYSigmaPython(int DiY,vector<double> theta){
+	unsigned int iY=DiY;
+	double Y,SigmaY_emulator;
+	if(iY>=0 && iY<observableinfo->NObservables)
+		emulator[iY]->CalcYAndUncertainty(theta,Y,SigmaY_emulator);
+	else{
+		Y=SigmaY_emulator=0.0;
+	}
+	vector<double> YSigma;
+	YSigma.resize(2);
+	YSigma[0]=Y;
+	YSigma[1]=SigmaY_emulator;
+	return YSigma;		
+}
+
+
 

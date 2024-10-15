@@ -5,6 +5,7 @@ set(GITHOME_BAND_SMOOTH $ENV{GITHOME_BAND_SMOOTH})
 set (MAIN_PROGRAM_DIR "../main_programs")
 set (FAKEFULLMODEL_DIR "../fakefullmodels")
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "$ENV{PWD}/../bin")
+set (PYBIND11_FINDPYTHON ON)
 
 add_custom_target(extern_smooth COMMAND make WORKING_DIRECTORY ${GITHOME_BAND_SMOOTH}/software)
 
