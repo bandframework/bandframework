@@ -107,6 +107,9 @@ namespace NBandSmooth{
 		void ReadCoefficientsAllY();
 		void ReadCoefficients(string obsname);
 		void ReadCoefficients(unsigned int iY);
+		
+		vector<double> GetXFromTheta(vector<double> Theta);
+		vector<double> GetThetaFromX(vector<double> X);
 
 	};
 
