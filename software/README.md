@@ -12,5 +12,6 @@ As of v0.5 the following packages are present in this directory.
 - rose ([v1.1.3](https://github.com/bandframework/rose/releases/tag/v1.1.3 )): A reduced-order scattering emulator.
 - Taweret ([v1.1.0]): A Python package containing multiple Bayesian Model Mixing methods.
 - PUQ ([v0.1.0](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
+- jitr ([v2.0.1](https://github.com/beykyle/jitr/releases/tag/v2.0.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
 
 Applications of these tools to nuclear-physics problems are provided in the ["BAND tool examples"](https://github.com/bandframework/bandtool_examples) directory. 
