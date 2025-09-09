@@ -1,13 +1,6 @@
 [submodule "software/surmise"]
 	path = software/surmise
 	url = https://github.com/bandframework/surmise
-[submodule "software/QGP_Bayes"]
-	path = software/QGP_Bayes
-	url = https://github.com/danOSU/QGP_Bayes.git
-        branch = main
-[submodule "software/SAMBA"]
-	path = software/SAMBA
-	url = https://github.com/asemposki/SAMBA.git
 [submodule "software/Taweret"]
 	path = software/Taweret
 	url = https://github.com/bandframework/Taweret
@@ -17,6 +10,3 @@
 [submodule "software/jitr"]
 	path = software/jitr
 	url = git@github.com:beykyle/jitr.git
-[submodule "software/nuclear_saturation"]
-	path = software/nuclear_saturation
-	url = git@github.com:cdrischler/nuclear_saturation.git
