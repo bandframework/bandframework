@@ -29,13 +29,14 @@ A full list of BAND members together with a current list of  publications produc
 
 ## BAND Framework Elements
 
-BAND Framework elements are of two main types:
-- BAND tools: these are pieces of python code that can be invoked to perform specific emulation, calibration, model-mixing, experimental-design, or linkage functions.
-- BAND examples: these are notebooks that provide examples of principled Bayesian uncertainty quantification. They are constructed to solve a particular nuclear-physics problem, but contain software that BAND Framework users may wish to adapt to other scientific contexts. 
+BAND Framework elements are of three main types:
+- BAND software: these are software tools that can be invoked to perform specific emulation, calibration, model-mixing, experimental-design, or linkage functions.
+- BAND software uses: these are analyses that employ a piece, or pieces, of BAND software to solve a nuclear-physics problem. 
+- BAND examples: these are stand-alone notebooks or code that provide examples of principled Bayesian uncertainty quantification. They are constructed to solve a particular nuclear-physics problem. They do not use any of the BAND software tools, but contain software that BAND Framework users may wish to adapt to other scientific contexts. 
 
-Framework elements can be found in [software/](/software/). 
+The Framework's software tools can be found in [software/](/software/). 
 
-As of version 0.4.0+dev, the following tools are included:
+As of version 0.5.0+dev, the following tools are included:
 
 - surmise ([v0.3.0](https://github.com/bandframework/surmise/releases/tag/v0.3.0 )): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - [SmoothEmulator](/software/SmoothEmulator): A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
@@ -44,11 +45,12 @@ As of version 0.4.0+dev, the following tools are included:
 - Taweret ([v1.1.0](https://github.com/bandframework/Taweret/releases/tag/v1.1.0 )): A Python package containing multiple Bayesian Model Mixing methods.
 - PUQ ([v0.1.0](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
 
-The following examples are part of version 0.4.0+dev:
+In [BANDsoftware_uses/](/BANDsoftware_uses/) you will find uses of one or more of these pieces of software:
+- [Bfrescox](/BANDsoftware_uses/Bfrescox): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
 
-- [Bfrescox](/software/Bfrescox): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
+The following [examples](/examples/) are part of version 0.5.0+dev:
 - BMEX ([v0.1.1](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
-- [BRICK](/software/BRICK): The Bayesian R-matrix Inference Code Kit, designed to facilitate extraction of R-matrix parameters from experimental data.
+- [BRICK](/BANDsoftware_uses/BRICK): The Bayesian R-matrix Inference Code Kit, designed to facilitate extraction of R-matrix parameters from experimental data.
 - jitr ([v2.0.1](https://github.com/beykyle/jitr/releases/tag/v2.0.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
 - [nsat](https://github.com/cdrischler/nuclear_saturation/tree/c4cfa45a1180b2739e217102d7380736d6844a11): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 - [QGP_Bayes](https://github.com/danOSU/QGP_Bayes/tree/4b3e2364f87a29ad2469f2b072053420fdaac8e9): A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP.
@@ -107,8 +109,8 @@ Please use the following to cite the BAND Framework:
         Scott Pratt and Oleh Savchuk and Alexandra C. Semposki and \"Ozge S\"urer and 
         Stefan M. Wild and John C. Yannotty},
         institution = {},
-        number      = {Version 0.4.0+dev},
-        year        = {2024},
+        number      = {Version 0.5.0+dev},
+        year        = {2025},
         url         = {https://github.com/bandframework/bandframework}
     }
     
