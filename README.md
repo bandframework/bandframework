@@ -65,10 +65,10 @@ You are free to use any pieces of the BAND Framework that will advance your own 
 
 BAND Framework currently includes some dependencies via git submodules. Currently, the following submodules are employed:
 
-* [software/](software/)nuclear_saturation
-* [software/](software/)QGP_Bayes
+* [examples/](examples/)nuclear_saturation
+* [examples/](examples/)QGP_Bayes
 * [software/](software/)rose
-* [software/](software/)SAMBA
+* [examples/](examples/)SAMBA
 * [software/](software/)surmise
 * [software/](software/)Taweret
 * [software/](software/)jitr
