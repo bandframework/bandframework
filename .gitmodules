@@ -10,3 +10,12 @@
 [submodule "software/jitr"]
 	path = software/jitr
 	url = git@github.com:beykyle/jitr.git
+[submodule "examples/SAMBA"]
+	path = examples/SAMBA
+	url = https://github.com/asemposki/SAMBA
+[submodule "examples/QGP_Bayes"]
+	path = examples/QGP_Bayes
+	url = https://github.com/danOSU/QGP_Bayes
+[submodule "examples/nuclear_saturation"]
+	path = examples/nuclear_saturation
+	url = https://github.com/cdrischler/nuclear_saturation
