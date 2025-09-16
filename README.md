@@ -43,6 +43,7 @@ As of version 0.4.0+dev, the following tools are included:
 - rose ([v1.1.3](https://github.com/bandframework/rose/releases/tag/v1.1.3 )): A reduced-order scattering emulator.
 - Taweret ([v1.1.0](https://github.com/bandframework/Taweret/releases/tag/v1.1.0 )): A Python package containing multiple Bayesian Model Mixing methods.
 - PUQ ([v0.1.0](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
+- jitr ([v2.0.1](https://github.com/beykyle/jitr/releases/tag/v2.0.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
 
 [BANDsoftware_uses/](/BANDsoftware_uses/) contains uses of one or more BAND software tools:
 - [Bfrescox](/BANDsoftware_uses/Bfrescox): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
@@ -50,7 +51,6 @@ As of version 0.4.0+dev, the following tools are included:
 The following [examples](/examples/) are included in version 0.4.0+dev:
 - BMEX ([v0.1.1](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - [BRICK](/examples/BRICK): The Bayesian R-matrix Inference Code Kit, designed to facilitate extraction of R-matrix parameters from experimental data.
-- jitr ([v2.0.1](https://github.com/beykyle/jitr/releases/tag/v2.0.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
 - [nsat](https://github.com/cdrischler/nuclear_saturation/tree/c4cfa45a1180b2739e217102d7380736d6844a11): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 - [QGP_Bayes](https://github.com/danOSU/QGP_Bayes/tree/4b3e2364f87a29ad2469f2b072053420fdaac8e9): A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP.
 - SaMBA ([v1.1.0](https://github.com/asemposki/SAMBA/releases/tag/v1.1.0 )): The Sandbox for Mixing via Bayesian Analysis.
@@ -66,11 +66,11 @@ BAND Framework currently includes some dependencies via git submodules. Currentl
 
 * [examples/](examples/)nuclear_saturation
 * [examples/](examples/)QGP_Bayes
-* [software/](software/)rose
 * [examples/](examples/)SAMBA
+* [software/](software/)jitr
+* [software/](software/)rose
 * [software/](software/)surmise
 * [software/](software/)Taweret
-* [software/](software/)jitr
 
 As a consequence, when cloning the BAND Framework repository, the submodules can be retrieved automatically via
 - `git clone --recursive` (in place of the usual `git clone`)
