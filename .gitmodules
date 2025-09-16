@@ -20,3 +20,6 @@
 [submodule "software/nuclear_saturation"]
 	path = software/nuclear_saturation
 	url = git@github.com:cdrischler/nuclear_saturation.git
+[submodule "software/LCGP"]
+	path = software/LCGP
+	url = git@github.com:mosesyhc/LCGP.git

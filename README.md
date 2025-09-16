@@ -43,6 +43,7 @@ As of version 0.4.0+dev, the following tools are included:
 - rose ([v1.1.3](https://github.com/bandframework/rose/releases/tag/v1.1.3 )): A reduced-order scattering emulator.
 - Taweret ([v1.1.0](https://github.com/bandframework/Taweret/releases/tag/v1.1.0 )): A Python package containing multiple Bayesian Model Mixing methods.
 - PUQ ([v0.1.0](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
+- lcgp ([v0.2.1](https://github.com/mosesyhc/lcgp/releases/tag/v0.2.1 )): A Gaussian process surrogate model for emulating stochastic simulation outputs. 
 
 The following examples are part of version 0.4.0+dev:
 
@@ -70,6 +71,7 @@ BAND Framework currently includes some dependencies via git submodules. Currentl
 * [software/](software/)surmise
 * [software/](software/)Taweret
 * [software/](software/)jitr
+* [software/](software/)lcgp
 
 As a consequence, when cloning the BAND Framework repository, the submodules can be retrieved automatically via
 - `git clone --recursive` (in place of the usual `git clone`)
