@@ -38,6 +38,7 @@ jitrbandsdk
 JOSS
 Jupyter
 Kataria
+lcgp
 LHS
 LLNL
 Loeppky
