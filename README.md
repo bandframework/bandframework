@@ -31,12 +31,11 @@ A full list of BAND members together with a current list of  publications produc
 
 BAND Framework elements are of three main types:
 - BAND software: these are software tools that can be invoked to perform specific emulation, calibration, model-mixing, experimental-design, or linkage functions.
-- BAND software uses: these are analyses that employ a piece, or pieces, of BAND software to solve a nuclear-physics problem. 
-- BAND examples: these are stand-alone notebooks or code that provide examples of principled Bayesian uncertainty quantification. They are constructed to solve a particular nuclear-physics problem. They do not use any of the BAND software tools, but contain software that BAND Framework users may wish to adapt to other scientific contexts. 
+- BAND software uses: these are analyses that employ BAND software to solve a nuclear physics problem. 
+- BAND examples: these are stand-alone notebooks or code that provide examples of principled Bayesian uncertainty quantification. They are constructed to solve a particular nuclear physics problem. They do not use any of the BAND software tools, but contain software that BAND Framework users may wish to adapt to other scientific contexts. 
 
-The Framework's software tools can be found in [software/](/software/). 
-
-As of version 0.5.0+dev, the following tools are included:
+The BAND Framework's software tools can be found in [software/](/software/). 
+As of version 0.4.0+dev, the following tools are included:
 
 - surmise ([v0.3.0](https://github.com/bandframework/surmise/releases/tag/v0.3.0 )): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - [SmoothEmulator](/software/SmoothEmulator): A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
@@ -45,10 +44,10 @@ As of version 0.5.0+dev, the following tools are included:
 - Taweret ([v1.1.0](https://github.com/bandframework/Taweret/releases/tag/v1.1.0 )): A Python package containing multiple Bayesian Model Mixing methods.
 - PUQ ([v0.1.0](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
 
-In [BANDsoftware_uses/](/BANDsoftware_uses/) you will find uses of one or more of these pieces of software:
+[BANDsoftware_uses/](/BANDsoftware_uses/) contains uses of one or more BAND software tools:
 - [Bfrescox](/BANDsoftware_uses/Bfrescox): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
 
-The following [examples](/examples/) are part of version 0.5.0+dev:
+The following [examples](/examples/) are included in version 0.4.0+dev:
 - BMEX ([v0.1.1](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - [BRICK](/examples/BRICK): The Bayesian R-matrix Inference Code Kit, designed to facilitate extraction of R-matrix parameters from experimental data.
 - jitr ([v2.0.1](https://github.com/beykyle/jitr/releases/tag/v2.0.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
@@ -102,14 +101,14 @@ All code included in the BAND Framework is open source, with the particular form
 Please use the following to cite the BAND Framework:
 
     @techreport{bandframework,
-        title       = {{BANDFramework: An} Open-Source Framework for {B}ayesian Analysis of Nuclear Dynamics},
+        title       = {{BANDFramework: An} Open-Source Framework for {Bayesian} Analysis of Nuclear Dynamics},
         author      = {Kyle Beyer and Landon Buskirk and Moses Y-H. Chan and Tyler H. Chang and Richard James DeBoer and Christian Drischler and 
         Richard J. Furnstahl and Pablo Giuliani and Kyle Godbey and Kevin Ingles and Dananjaya Liyanage and Filomena M. Nunes and 
         Daniel Odell and Jared O'Neal and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and 
         Scott Pratt and Oleh Savchuk and Alexandra C. Semposki and \"Ozge S\"urer and 
         Stefan M. Wild and John C. Yannotty},
         institution = {},
-        number      = {Version 0.5.0+dev},
+        number      = {Version 0.4.0+dev},
         year        = {2025},
         url         = {https://github.com/bandframework/bandframework}
     }
