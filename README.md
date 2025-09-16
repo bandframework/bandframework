@@ -44,6 +44,7 @@ As of version 0.4.0+dev, the following tools are included:
 - Taweret ([v1.1.0](https://github.com/bandframework/Taweret/releases/tag/v1.1.0 )): A Python package containing multiple Bayesian Model Mixing methods.
 - PUQ ([v0.1.0](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
 - jitr ([v2.0.1](https://github.com/beykyle/jitr/releases/tag/v2.0.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
+- lcgp ([v0.2.1](https://github.com/mosesyhc/lcgp/releases/tag/v0.2.1 )): A Gaussian process surrogate model for emulating stochastic simulation outputs. 
 
 [BANDsoftware_uses/](/BANDsoftware_uses/) contains uses of one or more BAND software tools:
 - [Bfrescox](/BANDsoftware_uses/Bfrescox): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
@@ -68,6 +69,7 @@ BAND Framework currently includes some dependencies via git submodules. Currentl
 * [examples/](examples/)QGP_Bayes
 * [examples/](examples/)SAMBA
 * [software/](software/)jitr
+* [software/](software/)lcgp
 * [software/](software/)rose
 * [software/](software/)surmise
 * [software/](software/)Taweret

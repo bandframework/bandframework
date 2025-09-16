@@ -10,6 +10,9 @@
 [submodule "software/jitr"]
 	path = software/jitr
 	url = git@github.com:beykyle/jitr.git
+[submodule "software/LCGP"]
+	path = software/LCGP
+	url = git@github.com:mosesyhc/LCGP.git
 [submodule "examples/SAMBA"]
 	path = examples/SAMBA
 	url = https://github.com/asemposki/SAMBA
@@ -19,3 +22,4 @@
 [submodule "examples/nuclear_saturation"]
 	path = examples/nuclear_saturation
 	url = https://github.com/cdrischler/nuclear_saturation
+
