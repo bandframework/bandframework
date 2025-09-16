@@ -2,6 +2,7 @@ ArXiv
 Autoconf
 BAND's
 BANDCamp
+BANDsoftware
 BMEX
 BRICK's
 Bayesbandsdk
