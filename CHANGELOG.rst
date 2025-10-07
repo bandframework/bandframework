@@ -6,6 +6,11 @@ Below are the release notes for all bandframework releases.
 May reference issues on:
 https://github.com/bandframework/bandframework/issues
 
+Release 0.5.0
+-------------
+
+- updated BAND-compatible rose to `v1.1.5 <https://github.com/bandframework/rose/releases/tag/v1.1.5>`_, which includes minor bug fixes
+
 Release 0.4.0
 -------------
 
