@@ -2,6 +2,7 @@ ArXiv
 Autoconf
 BAND's
 BANDCamp
+BANDsoftware
 BMEX
 BRICK's
 Bayesbandsdk
@@ -38,6 +39,7 @@ jitrbandsdk
 JOSS
 Jupyter
 Kataria
+lcgp
 LHS
 LLNL
 Loeppky
@@ -121,7 +123,6 @@ frescoxbandsdk
 frib
 frontend
 functionals
-gKTCLEAGE
 germain
 github
 github's
