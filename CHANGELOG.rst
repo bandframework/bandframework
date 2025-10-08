@@ -6,11 +6,11 @@ Below are the release notes for all bandframework releases.
 May reference issues on:
 https://github.com/bandframework/bandframework/issues
 
-
 Release 0.5.0
 -------------
 
-- updated jitr to version 2.5.1, which fixes bugs in calculating some observables, adds mass tables and a Reaction class, many examples, and other functionality. `v2.5.1 <https://github.com/beykyle/jitr/releases/tag/v2.5.1>`
+- updated BAND-compatible rose to `v1.1.7 <https://github.com/bandframework/rose/releases/tag/v1.1.7>`_, which includes minor bug fixes
+- updated BAND-compatible jitr to `v2.5.1 <https://github.com/beykyle/jitr/releases/tag/v2.5.1>`_, which fixes bugs in calculating some observables; also adds mass tables, a Reaction class, many examples, and other functionality. 
 
 Release 0.4.0
 -------------
