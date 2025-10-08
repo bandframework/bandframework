@@ -8,9 +8,19 @@ https://github.com/bandframework/bandframework/issues
 
 Release 0.5.0
 -------------
+:Date: TBD, 2025
 
-- updated BAND-compatible rose to `v1.1.7 <https://github.com/bandframework/rose/releases/tag/v1.1.7>`_, which includes minor bug fixes
-- updated BAND-compatible jitr to `v2.5.1 <https://github.com/beykyle/jitr/releases/tag/v2.5.1>`_, which fixes bugs in calculating some observables; also adds mass tables, a Reaction class, many examples, and other functionality. 
+New organization:
+
+- Refactored the bandframework into BAND software, BAND software uses, and BAND examples.
+
+New capabilities and notable changes:
+
+- Added BAND-compatible lcgp at `v0.2.1 <https://github.com/mosesyhc/LCGP/releases/tag/v0.2.1>`_, a tool for latent component Gaussian process emulation for multivariate stochastic simulations.
+- Updated BAND-compatible jitr to `v2.5.1 <https://github.com/beykyle/jitr/releases/tag/v2.5.1>`_, which fixes bugs in calculating some observables; also adds mass tables, a Reaction class, many examples, and other functionality. 
+- Updated BAND-compatible rose to `v1.1.7 <https://github.com/bandframework/rose/releases/tag/v1.1.7>`_, which includes minor bug fixes.
+- Updated BAND-compatible SAMBA to `v1.2.0 <https://github.com/asemposki/SAMBA/releases/tag/v1.2.0>`_, which fixes some GP mixing bugs. 
+
 
 Release 0.4.0
 -------------
