@@ -33,6 +33,7 @@ GPy
 GSL
 Gitflow
 Gramacy
+hetGPy
 JETSCAPE
 JIT
 jitrbandsdk
