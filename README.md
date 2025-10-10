@@ -45,7 +45,7 @@ As of version 0.4.0+dev, the following tools are included:
 - PUQ ([v0.1.1](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.1 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
 - jitr ([v2.5.1](https://github.com/beykyle/jitr/releases/tag/v2.5.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
 - lcgp ([v0.2.1](https://github.com/mosesyhc/lcgp/releases/tag/v0.2.1 )): A Gaussian process surrogate model for emulating stochastic simulation outputs.
-- pybmc ([v0.2.1](https://github.com/ascsn/pybmc/releases/tag/v0.2.3 )): A Python package for performing Bayesian model combination on various predictive models.
+- pybmc ([v0.2.3](https://github.com/ascsn/pybmc/releases/tag/v0.2.3 )): A Python package for performing Bayesian model combination on various predictive models.
 
 [BANDsoftware_uses/](/BANDsoftware_uses/) contains uses of one or more BAND software tools:
 - [Bfrescox](/BANDsoftware_uses/Bfrescox): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
