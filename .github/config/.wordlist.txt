@@ -35,6 +35,7 @@ GPy
 GSL
 Gitflow
 Gramacy
+hetGPy
 JETSCAPE
 JIT
 JOSS
@@ -168,6 +169,7 @@ nsat
 numpy
 nunes
 odell
+observables
 ohio
 orthogonalization
 ozgesurer
