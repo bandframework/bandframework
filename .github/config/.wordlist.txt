@@ -39,6 +39,7 @@ JIT
 jitrbandsdk
 JOSS
 Jupyter
+Jupyterbook
 Kataria
 lcgp
 LHS
