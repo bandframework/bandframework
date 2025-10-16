@@ -20,7 +20,8 @@ New capabilities and notable changes:
 - Updated BAND-compatible jitr to `v2.5.1 <https://github.com/beykyle/jitr/releases/tag/v2.5.1>`_, which fixes bugs in calculating some observables; also adds mass tables, a Reaction class, many examples, and other functionality. 
 - Updated BAND-compatible rose to `v1.1.7 <https://github.com/bandframework/rose/releases/tag/v1.1.7>`_, which includes minor bug fixes.
 - Updated BAND-compatible SAMBA to `v1.2.0 <https://github.com/asemposki/SAMBA/releases/tag/v1.2.0>`_, which fixes some GP mixing bugs. 
-- Updated BAND-compatible PUQ to `v0.1.1 <https://github.com/parallelUQ/PUQ/releases/tag/v0.1.1>`_, which extends hetGPy as a base surrogate module and includes two novel sequential design strategies for stochastic simulation models. 
+- updated BAND-compatible surmise to `v0.4.0 <https://github.com/bandframework/surmise/releases/tag/v0.4.0>`_, which improves coverage of test suite, integrates Jupyter Book usage examples, and reassigns research (not fully-tested) code.
+- Updated BAND-compatible PUQ to `v0.1.1 <https://github.com/parallelUQ/PUQ/releases/tag/v0.1.1>`_, which extends hetGPy as a base surrogate module and includes two novel sequential design strategies for stochastic simulation models.
 
 Release 0.4.0
 -------------
