@@ -3,6 +3,7 @@ Autoconf
 BAND's
 BANDCamp
 BANDsoftware
+BMC
 BMEX
 BRICK's
 Bayesbandsdk
@@ -29,6 +30,7 @@ Frederi
 Frescox
 Furnstahl
 GPL
+GPLv
 GPy
 GSL
 Gitflow
@@ -36,11 +38,9 @@ Gramacy
 hetGPy
 JETSCAPE
 JIT
-jitrbandsdk
 JOSS
 Jupyter
 Kataria
-lcgp
 LHS
 LLNL
 Loeppky
@@ -87,6 +87,7 @@ X-SCAPE
 aMWOoGvY
 al
 anl
+ascsn
 attr
 autofunction
 automodule
@@ -141,12 +142,14 @@ ipynb
 isotonic
 jgehrcke
 jitr
+jitrbandsdk
 JIT
 JOSS
 Jupyter
 Kataria
 kyle
 lbl
+lcgp
 libEnsemble
 ln
 macOS
@@ -155,6 +158,7 @@ mcs
 md
 miamioh
 mlbayeswoodbury
+mkdocs
 mosesyhc
 mplumlee
 msu
@@ -167,6 +171,7 @@ nunes
 odell
 observables
 ohio
+orthogonalization
 ozgesurer
 parMOO
 parallelUQ
@@ -178,6 +183,8 @@ pre
 preprint
 privateband
 py
+pybmc
+pybmc's
 pypi
 pytest
 qj
