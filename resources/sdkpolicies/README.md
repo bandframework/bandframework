@@ -18,6 +18,7 @@ Examples of completed SDK policy compatibility documents include:
 -  [nsat-bandsdk.md](https://github.com/cdrischler/nuclear_saturation/blob/main/nsat-bandsdk.md)
 -  [parmoo-bandsdk.md](/software/parmoo/parmoo-bandsdk.md)
 -  [PUQ-bandsdk.md](/software/PUQ/PUQ-bandsdk.md)
+-  [pybmc-bandsdk.md](/software/pybmc/pybmc-bandsdk.md)
 -  [QGP_Bayesbandsdk.md](https://github.com/danOSU/QGP_Bayes/blob/main/QGP_Bayesbandsdk.md)
 -  [SAMBAbandsdk.md](https://github.com/asemposki/SAMBA/blob/main/SAMBAbandsdk.md)
 -  [SmoothEmulatorSDK.md](/software/SmoothEmulator/SmoothEmulatorSDK.md)
