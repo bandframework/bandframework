@@ -16,7 +16,7 @@
 **Website:** https://bmex.dev \
 **Contact:** kyle@bmex.dev \
 **Icon:** https://raw.githubusercontent.com/massexplorer/bmex-static/main/public/bmex-ico.png \
-**Description:** The Bayesian Mass Explorer (BMEX) is a user-focused web application that provides a one-stop-shop for quantified theoretical model predictions of nuclear masses and related quantities.
+**Description:** The Bayesian Mass Explorer (BMEX) is a user-focused web application that provides a one-stop-shop for quantified theoretical model predictions of nuclear masses and related quantities. The version adopted for the BAND release is [V0.1.4](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.4)
 
 
 ### Mandatory Policies
