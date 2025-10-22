@@ -4,7 +4,7 @@
 
 The Bayesian Mass Explorer (BMEX) is a user-focused web application that provides a one-stop-shop for quantified theoretical model predictions of nuclear masses and related quantities.
 
-A [BAND SDK v0.2 Community Policy](/resources/sdkpolicies/bandsdk.md) compatibility documentation for BMEX is contained in [BMEX-bandsdk.md](/software/BMEX/BMEX-bandsdk.imd).
+A [BAND SDK v0.2 Community Policy](/resources/sdkpolicies/bandsdk.md) compatibility documentation for BMEX is contained in [BMEX-bandsdk.md](/examples/BMEX/BMEX-bandsdk.md). The version adopted for the BAND framework is [v0.1.4](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.4)
 
 
 ## Accessing BMEX
