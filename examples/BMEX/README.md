@@ -15,11 +15,10 @@ From the landing page, links to the various sub-applications can be found, with 
 One can cite the software with the following bibtex entry:
 ```
 @software{bmex,
-  author       = {Kyle Godbey, Landon Buskirk, and
-                  Pablo Giuliani},
+  author       = {Kyle Godbey and Landon Buskirk and Troy Dasher and Pablo Giuliani},
   title        = {{BMEX} - {T}he {B}ayesian {M}ass {E}xplorer},
-  month        = sep,
-  year         = 2023,
+  month        = jul,
+  year         = 2025,
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.7111988},
   url          = {https://doi.org/10.5281/zenodo.7111988}
