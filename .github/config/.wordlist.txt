@@ -96,6 +96,7 @@ bandframework
 bandsdk
 bibtex
 bmex
+bmm
 brickbandsdk
 buildable
 cels

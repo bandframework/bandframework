@@ -23,3 +23,6 @@
 	path = examples/nuclear_saturation
 	url = https://github.com/cdrischler/nuclear_saturation
 
+[submodule "examples/neutron-rich-bmm"]
+	path = examples/neutron-rich-bmm
+	url = https://github.com/asemposki/neutron-rich-bmm
