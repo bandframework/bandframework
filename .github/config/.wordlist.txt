@@ -46,6 +46,7 @@ LLNL
 Loeppky
 MCMC
 MERCHANTABILITY
+ModelDiscrepancy
 MPI
 MPIExecutor
 NN
