@@ -26,3 +26,6 @@
 [submodule "examples/neutron-rich-bmm"]
 	path = examples/neutron-rich-bmm
 	url = https://github.com/asemposki/neutron-rich-bmm
+[submodule "examples/ModelDiscrepancy"]
+	path = examples/ModelDiscrepancy
+	url = https://github.com/sjaiswal-tifr/ModelDiscrepancy
