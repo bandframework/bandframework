@@ -1,7 +1,7 @@
 # bandframework examples
 Here we present software and notebooks that enabled principled Bayesian uncertainty quantification in nuclear physics. The packages in this directory thus tend to be stand-alone pieces of software, that do not rely on other elements of the BAND framework. The tools provided here are therefore not meant to be general-purpose Bayesian methodologies, but instead are an application of Bayesian methods to a specific nuclear-physics problem. In many cases the software housed in this directory could be extended and developed for wider use in Bayesian analysis. 
 
-As of 0.4.0+dev this directory includes the following examples: 
+As of 0.5.0 this directory includes the following examples: 
 
 - [BMEX](BMEX/): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - [BRICK](BRICK/): The Bayesian R-matrix Inference Code Kit, designed to facilitate extraction of R-matrix parameters from experimental data.
