@@ -2,6 +2,8 @@ ArXiv
 Autoconf
 BAND's
 BANDCamp
+BANDsoftware
+BMC
 BMEX
 BRICK's
 Bayesbandsdk
@@ -28,13 +30,14 @@ Frederi
 Frescox
 Furnstahl
 GPL
+GPLv
 GPy
 GSL
 Gitflow
 Gramacy
+hetGPy
 JETSCAPE
 JIT
-jitrbandsdk
 JOSS
 Jupyter
 Kataria
@@ -43,6 +46,7 @@ LLNL
 Loeppky
 MCMC
 MERCHANTABILITY
+ModelDiscrepancy
 MPI
 MPIExecutor
 NN
@@ -84,6 +88,7 @@ X-SCAPE
 aMWOoGvY
 al
 anl
+ascsn
 attr
 autofunction
 automodule
@@ -92,6 +97,7 @@ bandframework
 bandsdk
 bibtex
 bmex
+bmm
 brickbandsdk
 buildable
 cels
@@ -121,7 +127,6 @@ frescoxbandsdk
 frib
 frontend
 functionals
-gKTCLEAGE
 germain
 github
 github's
@@ -139,12 +144,14 @@ ipynb
 isotonic
 jgehrcke
 jitr
+jitrbandsdk
 JIT
 JOSS
 Jupyter
 Kataria
 kyle
 lbl
+lcgp
 libEnsemble
 ln
 macOS
@@ -153,6 +160,7 @@ mcs
 md
 miamioh
 mlbayeswoodbury
+mkdocs
 mosesyhc
 mplumlee
 msu
@@ -163,7 +171,9 @@ nsat
 numpy
 nunes
 odell
+observables
 ohio
+orthogonalization
 ozgesurer
 parMOO
 parallelUQ
@@ -175,6 +185,8 @@ pre
 preprint
 privateband
 py
+pybmc
+pybmc's
 pypi
 pytest
 qj
