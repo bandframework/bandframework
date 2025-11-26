@@ -46,6 +46,7 @@ As of version 0.3.0+dev, the following tools are included:
 - jitr ([v2.0.1](https://github.com/beykyle/jitr/releases/tag/v2.0.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration
 - PUQ ([v0.1.0](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.0 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
 - [SmoothEmulator](/software/SmoothEmulator): A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
+- bfrescox ([v0.0.01-alpha](https://github.com/bandframework/Bfrescox/tree/v0.0.01-alpha)): A python wrapper for the Frescox coupled-channels scattering code.
 
 The following examples are part of version 0.3.0+dev:
 
@@ -70,6 +71,7 @@ BAND Framework currently includes some dependencies via git submodules. Currentl
 * [software/](software/)surmise
 * [software/](software/)Taweret
 * [software/](software/)jitr
+* [software/](software/)bfrescox
 
 As a consequence, when cloning the BAND Framework repository, the submodules can be retrieved automatically via
 - `git clone --recursive` (in place of the usual `git clone`)
