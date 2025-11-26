@@ -49,7 +49,7 @@ As of version 0.5.0, the following tools are included:
 - Bfrescox ([v0.0.1](https://github.com/bandframework/Bfrescox/tree/v0.0.1-alpha)): A Python wrapper for the Frescox coupled-channels scattering code.
 
 [BANDsoftware_uses/](/BANDsoftware_uses/) contains uses of one or more BAND software tools:
-- [Bfrescox](/BANDsoftware_uses/Bfrescox): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
+- [Bfrescox + surmise](/BANDsoftware_uses/Bfrescox): An example of using the Frescox scattering code with surmise to enable Bayesian parameter estimation for coupled-channels scattering.
 
 The following [examples](/examples/) are included in version 0.5.0:
 - BMEX ([v0.1.1](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
