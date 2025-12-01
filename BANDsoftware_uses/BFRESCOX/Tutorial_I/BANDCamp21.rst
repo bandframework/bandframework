@@ -11,10 +11,10 @@ In this tutorial, we use a Colab notebook, which allows you to run the code in a
 
 * `Tutorial I-Section I <BANDCamp_nbs/Bfrescox_intro.ipynb>`_ : To verify that the code works as expected.
 
-* `Tutorial I-Section II <https://colab.research.google.com/drive/1415C8aFZOuglhwzgLkydLMcaKNnFtsQ8?usp=sharing#scrollTo=kTCrv17X_umB>`_ : To illustrate the :math:`\\\chi^2` minimization wrapper for `frescox`.
+* `Tutorial I-Section II <BANDCamp_nbs/Bfrescox_fit.ipynb>`_ : To illustrate the :math:`\\\chi^2` minimization wrapper for `frescox`.
 
-* `Tutorial I-Section III <https://colab.research.google.com/drive/1rtHiu-f8hy0ICw8WscjLqWdDHvCtBoMb?usp=sharing#scrollTo=sptJ4wT2A6bY>`_ : A brief introduction to uncertainty quantification.
+* `Tutorial I-Section III <BANDCamp_nbs/Bfrescox_GPR.ipynb>`_ : A brief introduction to uncertainty quantification.
 
-* `Tutorial I-Section IV <https://colab.research.google.com/drive/12DTOXqdAVzWv4Ce6nMjY9hlLDTQsmKJE?usp=sharing#scrollTo=G0kj9Zhe1mZb>`_ : To illustrate how `frescox` interfaces with `surmise`.
+* `Tutorial I-Section IV <BANDCamp_nbs/Bfrescox_surmise.ipynb>`_ : To illustrate how `frescox` interfaces with `surmise`.
 
 * `Utils <https://colab.research.google.com/drive/1E2JFEqtFIZd1rDAURj9mxHd7yOtfuEnn?usp=sharing>`_ : Some utility functions that will help us during interactive exercises.
