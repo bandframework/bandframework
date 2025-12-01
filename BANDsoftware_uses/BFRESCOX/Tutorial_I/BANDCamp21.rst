@@ -9,7 +9,7 @@ This Bfrescox tutorial has four sections to illustrate how `frescox` interfaces 
 In this tutorial, we use a Colab notebook, which allows you to run the code in an interactive and consistent environment. You can then modify this code and run it on your preferred system(s).
 
 
-* `Tutorial I-Section I (/BANDCamp_nbs/Bfrescox_intro.ipynb) : To verify that the code works as expected.
+* Tutorial I-Section I (/BANDCamp_nbs/Bfrescox_intro.ipynb/) : To verify that the code works as expected.
 
 * `Tutorial I-Section II <https://colab.research.google.com/drive/1415C8aFZOuglhwzgLkydLMcaKNnFtsQ8?usp=sharing#scrollTo=kTCrv17X_umB>`_ : To illustrate the :math:`\\\chi^2` minimization wrapper for `frescox`.
 
