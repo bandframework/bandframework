@@ -7,4 +7,4 @@ BAND Camp 2021: Introduction to Bfrescox
 Python notebooks are designed to be run on Google Colab.
 
 Some parts, specifically related to the installation of Frescox, must be modified to your computer.
-Please see the `repo BFRESCOX <../../BFRESCOX/>`_ for more details.
+Please see the `repo BFRESCOX <../../>`_ for more details.
