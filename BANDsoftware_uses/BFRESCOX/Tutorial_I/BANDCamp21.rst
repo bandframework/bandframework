@@ -16,5 +16,3 @@ In this tutorial, we use a Colab notebook, which allows you to run the code in a
 * `Tutorial I-Section III <BANDCamp_nbs/Bfrescox_GPR.ipynb>`_ : A brief introduction to uncertainty quantification.
 
 * `Tutorial I-Section IV <BANDCamp_nbs/Bfrescox_surmise.ipynb>`_ : To illustrate how `frescox` interfaces with `surmise`.
-
-* `Utils <https://colab.research.google.com/drive/1E2JFEqtFIZd1rDAURj9mxHd7yOtfuEnn?usp=sharing>`_ : Some utility functions that will help us during interactive exercises.
