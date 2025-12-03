@@ -63,6 +63,6 @@ Please use the following to cite the BAND Framework:
     Stefan M. Wild and John C. Yannotty},
     institution = {},
         number      = {Version 0.4.0+dev},
-        year        = {2025},
+        year        = {2024},
         url         = {https://github.com/bandframework/bandframework}
     }
