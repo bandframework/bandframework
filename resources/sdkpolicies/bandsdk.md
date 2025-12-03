@@ -62,7 +62,7 @@ Please use the following to cite the BAND Framework:
     Scott Pratt and Oleh Savchuk and Alexandra C. Semposki and \"Ozge S\"urer and 
     Stefan M. Wild and John C. Yannotty},
     institution = {},
-        number      = {Version 0.5.0},
+        number      = {Version 0.4.0+dev},
         year        = {2025},
         url         = {https://github.com/bandframework/bandframework}
     }
