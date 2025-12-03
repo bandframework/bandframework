@@ -77,7 +77,7 @@ BAND Framework currently includes some dependencies via git submodules. Currentl
 * [software/](software/)rose
 * [software/](software/)surmise
 * [software/](software/)Taweret
-* [software/](software/)bfrescox
+* [software/](software/)Bfrescox
 
 As a consequence, when cloning the BAND Framework repository, the submodules can be retrieved automatically via
 - `git clone --recursive` (in place of the usual `git clone`)
