@@ -27,7 +27,7 @@ New capabilities and notable changes:
 - updated BAND-compatible Taweret to `v1.2.0 <https://github.com/bandframework/Taweret/releases/tag/v1.2.0>`_, which updates the infrastructure and notebooks, and improves the documentation.
 - Updated BAND-compatible PUQ to `v0.1.1 <https://github.com/parallelUQ/PUQ/releases/tag/v0.1.1>`_, which extends hetGPy as a base surrogate module and includes two novel sequential design strategies for stochastic simulation models.
 - Updated BAND example BMEX to `v0.1.4 <https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.4>`_, which includes minor quality of life improvements and bug fixes.
-- Add BAND-compatible Bfrescox at `v0.0.1 <https://github.com/bandframework/Bfrescox/tree/v0.0.1>`_, a Python wrapper for the Frescox coupled-channels scattering code.
+- Add BAND compatible Bfrescox at `v0.0.1-alpha <https://github.com/bandframework/Bfrescox/tree/v0.0.1-alpha>_`, a Python interface to the Frescox coupled-channels nuclear reaction code.
 
 Release 0.4.0
 -------------
@@ -89,7 +89,7 @@ New capabilities and notable changes:
 - updated BAND SDK to v0.2 to reflect state of community testing and documentation
 - added BAND-compatible surmise, a surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis
 - added BAND-compatible SaMBA, a sandbox for mixing via Bayesian analysis
-- added BAND-compatible Bfrescox, a BAND extension of the frescox scattering code for coupled-channels calculations
+- added BAND-compatible Bfrescox, a Python wrapper of the frescox scattering code for coupled-channels calculations
 - added BAND-compatible BRICK, a Bayesian R-matrix inference code kit facilitating extraction of R-matrix parameters from experimental data
 - added BAND-compatible QGP_Bayes, a tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP
 - added Code of Conduct
