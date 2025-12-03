@@ -4,7 +4,7 @@ This contains the core software tools for the bandframework.
 **Read [bandframework/resources/bandsdk](/resources/sdkpolicies/) and [CONTRIBUTING](CONTRIBUTING.rst) before attempting to contribute to
 this directory.**
 
-As of v0.5.0 the following packages are present in this directory. 
+As of v0.4.0+dev the following packages are present in this directory. 
 
 - surmise ([v0.4.0](https://github.com/bandframework/surmise/releases/tag/v0.4.0 )): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - [SmoothEmulator](/software/SmoothEmulator): A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
