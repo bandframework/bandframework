@@ -22,12 +22,10 @@
 [submodule "examples/nuclear_saturation"]
 	path = examples/nuclear_saturation
 	url = https://github.com/cdrischler/nuclear_saturation
+
 [submodule "examples/neutron-rich-bmm"]
 	path = examples/neutron-rich-bmm
 	url = https://github.com/asemposki/neutron-rich-bmm
 [submodule "examples/ModelDiscrepancy"]
 	path = examples/ModelDiscrepancy
 	url = https://github.com/sjaiswal-tifr/ModelDiscrepancy
-[submodule "software/Bfrescox"]
-	path = software/Bfrescox
-	url = https://github.com/bandframework/Bfrescox.git
