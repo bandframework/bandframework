@@ -28,6 +28,3 @@
 [submodule "examples/ModelDiscrepancy"]
 	path = examples/ModelDiscrepancy
 	url = https://github.com/sjaiswal-tifr/ModelDiscrepancy
-[submodule "software/Bfrescox"]
-	path = software/Bfrescox
-	url = https://github.com/bandframework/Bfrescox.git
