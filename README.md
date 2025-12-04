@@ -46,9 +46,10 @@ As of version 0.4.0+dev, the following tools are included:
 - jitr ([v2.5.1](https://github.com/beykyle/jitr/releases/tag/v2.5.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
 - lcgp ([v0.2.1](https://github.com/mosesyhc/lcgp/releases/tag/v0.2.1 )): A Gaussian process surrogate model for emulating stochastic simulation outputs.
 - pybmc ([v0.2.4](https://github.com/ascsn/pybmc/releases/tag/v0.2.4 )): A Python package for performing Bayesian model combination on various predictive models.
+- Bfrescox ([v0.0.1](https://github.com/bandframework/Bfrescox/tree/v0.0.1-alpha )): A Python wrapper for the Frescox coupled-channels scattering code.
 
 [BANDsoftware_uses/](/BANDsoftware_uses/) contains uses of one or more BAND software tools:
-- [Bfrescox](/BANDsoftware_uses/Bfrescox): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
+- [Bfrescox + surmise](/BANDsoftware_uses/Bfrescox): An example of using the Frescox scattering code with surmise to enable Bayesian parameter estimation for coupled-channels scattering.
 
 The following [examples](/examples/) are included in version 0.4.0+dev:
 - BMEX ([v0.1.1](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
@@ -76,6 +77,7 @@ BAND Framework currently includes some dependencies via git submodules. Currentl
 * [software/](software/)rose
 * [software/](software/)surmise
 * [software/](software/)Taweret
+* [software/](software/)Bfrescox
 
 As a consequence, when cloning the BAND Framework repository, the submodules can be retrieved automatically via
 - `git clone --recursive` (in place of the usual `git clone`)
