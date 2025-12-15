@@ -8,7 +8,6 @@ BMEX
 BRICK's
 Bayesbandsdk
 Bfrescox
-Bfrescoxbandsdk
 Bingham
 CDCC
 CHANGELOG

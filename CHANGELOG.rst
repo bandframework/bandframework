@@ -20,7 +20,6 @@ New capabilities and notable changes:
 - Added BAND-compatible ModelDiscrepancy at `v1.1.0 <https://github.com/sjaiswal-tifr/ModelDiscrepancy/tree/32d7d2c46009bc8c67a86580a088fb1b747ae029>`_, an example Bayesian framework for model-data comparison that accounts for theoretical uncertainties.
 - Added BAND-compatible neutron-rich-bmm at `v0.1.0 <https://github.com/asemposki/neutron-rich-bmm/releases/tag/v0.1.0>`_, an example of Gaussian process Bayesian model mixing for the dense matter equation of state.
 - Added BAND-compatible pybmc at `v0.2.4 <https://github.com/ascsn/pybmc/releases/tag/v0.2.4>`_, a tool for performing Bayesian model combination on various predictive models.
-- Added BAND compatible Bfrescox at `v0.0.1-alpha <https://github.com/bandframework/Bfrescox/tree/v0.0.1-alpha>_`, a Python interface to the Frescox coupled-channels nuclear reaction code.
 - Updated BAND-compatible jitr to `v2.5.1 <https://github.com/beykyle/jitr/releases/tag/v2.5.1>`_, which fixes bugs in calculating some observables; also adds mass tables, a Reaction class, many examples, and other functionality. 
 - Updated BAND-compatible rose to `v1.1.7 <https://github.com/bandframework/rose/releases/tag/v1.1.7>`_, which includes minor bug fixes.
 - Updated BAND-compatible SAMBA to `v1.2.0 <https://github.com/asemposki/SAMBA/releases/tag/v1.2.0>`_, which fixes some GP mixing bugs. 
@@ -89,7 +88,7 @@ New capabilities and notable changes:
 - updated BAND SDK to v0.2 to reflect state of community testing and documentation
 - added BAND-compatible surmise, a surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis
 - added BAND-compatible SaMBA, a sandbox for mixing via Bayesian analysis
-- added BAND-compatible Bfrescox, a Python wrapper of the Frescox scattering code for coupled-channels calculations
+- added BAND-compatible Bfrescox, a BAND extension of the frescox scattering code for coupled-channels calculations
 - added BAND-compatible BRICK, a Bayesian R-matrix inference code kit facilitating extraction of R-matrix parameters from experimental data
 - added BAND-compatible QGP_Bayes, a tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP
 - added Code of Conduct

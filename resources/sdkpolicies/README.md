@@ -25,4 +25,3 @@ Examples of completed SDK policy compatibility documents include:
 -  [SmoothEmulatorSDK.md](/software/SmoothEmulator/SmoothEmulatorSDK.md)
 -  [surmisebandsdk.md](https://github.com/bandframework/surmise/blob/main/surmisebandsdk.md)
 -  [Taweretbandsdk.md](https://github.com/bandframework/Taweret/blob/main/Taweretbandsdk.md)
--  [Bfrescoxbandsdk.md](https://github.com/bandframework/Bfrescox/blob/v0.0.1-alpha/Bfrescoxbandsdk.md)
