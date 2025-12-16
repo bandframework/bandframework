@@ -27,6 +27,7 @@ New capabilities and notable changes:
 - updated BAND-compatible Taweret to `v1.2.0 <https://github.com/bandframework/Taweret/releases/tag/v1.2.0>`_, which updates the infrastructure and notebooks, and improves the documentation.
 - Updated BAND-compatible PUQ to `v0.1.1 <https://github.com/parallelUQ/PUQ/releases/tag/v0.1.1>`_, which extends hetGPy as a base surrogate module and includes two novel sequential design strategies for stochastic simulation models.
 - Updated BAND example BMEX to `v0.1.4 <https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.4>`_, which includes minor quality of life improvements and bug fixes.
+- Added BAND compatible Bfrescox at `v0.0.1-alpha <https://github.com/bandframework/Bfrescox/tree/v0.0.1-alpha>`_, A Python wrapper for the Frescox coupled reaction channel code.
 
 Release 0.4.0
 -------------
