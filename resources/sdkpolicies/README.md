@@ -11,7 +11,7 @@ A parallel [directory](/resources/dev_guide) contains a basic development guide 
 Examples of completed SDK policy compatibility documents include:
 -  [BMEX-bandsdk.md](/software/BMEX/BMEX-bandsdk.md)
 -  [brickbandsdk.md](/software/BRICK/brickbandsdk.md)
--  [bfrescoxbandsdk.md](/software/Bfrescox/bfrescoxbandsdk.md)
+-  [bfrescoxbandsdk.md](https://github.com/bandframework/Bfrescox/blob/v0.0.1-alpha/Bfrescoxbandsdk.md)
 -  [jitrbandsdk.md](https://github.com/beykyle/jitr/blob/main/jitrbandsdk.md)
 -  [lcgp-bandsdk.md](https://github.com/mosesyhc/LCGP/blob/main/lcgp-bandsdk.md)
 -  [MD-bandsdk.md](https://github.com/sjaiswal-tifr/ModelDiscrepancy/blob/main/MD-bandsdk.md)
