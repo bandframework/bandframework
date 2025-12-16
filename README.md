@@ -49,7 +49,7 @@ As of version 0.4.0+dev, the following tools are included:
 - Bfrescox ([v0.0.1-alpha](https://github.com/bandframework/Bfrescox/releases/tag/v0.0.1-alpha )): A Python wrapper for the Frescox coupled reaction channel code.
 
 [BANDsoftware_uses/](/BANDsoftware_uses/) contains uses of one or more BAND software tools:
-- [Bfrescox](/BANDsoftware_uses/Bfrescox): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise.
+- [Bfrescox + surmise](/BANDsoftware_uses/BFRESCOX): An example of using the Frescox scattering code with surmise to enable Bayesian parameter estimation for coupled-channels scattering.
 
 The following [examples](/examples/) are included in version 0.4.0+dev:
 - BMEX ([v0.1.1](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.1 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
@@ -77,6 +77,7 @@ BAND Framework currently includes some dependencies via git submodules. Currentl
 * [software/](software/)rose
 * [software/](software/)surmise
 * [software/](software/)Taweret
+* [software/](software/)Bfrescox
 
 As a consequence, when cloning the BAND Framework repository, the submodules can be retrieved automatically via
 - `git clone --recursive` (in place of the usual `git clone`)
