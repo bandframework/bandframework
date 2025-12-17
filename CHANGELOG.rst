@@ -32,7 +32,8 @@ New capabilities and notable changes:
 
 :Known issues:
 
-- 
+- We do not yet have a stated policy on the use/documentation of AI tools.
+- If one installs all BAND packages in a particular order (and in a single virtual environment, etc.), there may be an incompatibility with the Eigen dependency; fixes are being explored.
 
 
 Release 0.4.0
