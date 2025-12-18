@@ -1,5 +1,5 @@
-# bandframework software
-This contains the core software tools for the bandframework. 
+# BAND Framework software
+This contains the core software tools for the BAND Framework. 
 
 **Read [CONTRIBUTING](/CONTRIBUTING.rst), and the [bandframework/resources/bandsdk](/resources/sdkpolicies/) 
 referenced therein, before attempting to contribute to this directory.**
