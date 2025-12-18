@@ -1,5 +1,5 @@
 # BAND Framework software
-This contains the core software tools for the BAND Framework. 
+This contains the core software tools for the BAND Framework. The main BAND Framework README is [here](../README.md). 
 
 **Read [CONTRIBUTING](/CONTRIBUTING.rst), and the [bandframework/resources/bandsdk](/resources/sdkpolicies/) 
 referenced therein, before attempting to contribute to this directory.**
@@ -17,5 +17,7 @@ As of v0.5.0 the following packages are present in this directory.
 - surmise (v0.4.0): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - Taweret (v1.2.0): A Python package containing multiple Bayesian Model Mixing methods.
 
-
 Applications of these tools to nuclear-physics problems are provided in the ["BAND software uses"](/BANDsoftware_uses) directory. 
+
+Note that the hash for each git submodule contained in this folder is set to the commit of the associated software element of the current BAND 
+Framework release. Any serious bug fixes in one of these software elements will occasion a new BAND Framework release. However, some software elements may have version releases that extend functionality in between BAND Framework releases. Please consult the release history of a particular software element to ensure you are using the version appropriate for your research application. 
