@@ -1,8 +1,8 @@
 # bandframework software
 This contains the core software tools for the bandframework. 
 
-**Read [bandframework/resources/bandsdk](/resources/sdkpolicies/) and [CONTRIBUTING](/CONTRIBUTING.rst) before attempting to contribute to
-this directory.**
+**Read [CONTRIBUTING](/CONTRIBUTING.rst), and the [bandframework/resources/bandsdk](/resources/sdkpolicies/) 
+referenced therein, before attempting to contribute to this directory.**
 
 As of v0.5.0 the following packages are present in this directory.
 
