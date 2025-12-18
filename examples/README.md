@@ -3,7 +3,7 @@ Here we present software and notebooks that enabled principled Bayesian uncertai
 
 As of 0.5.0 this directory includes the following examples: 
 
-- BMEX: A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
+- BMEX (v0.1.4): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - BRICK: The Bayesian R-matrix Inference Code Kit, designed to facilitate extraction of R-matrix parameters from experimental data.
 - ModelDiscrepancy (v1.1.0): A Bayesian framework for model-data comparison that accounts for theoretical uncertainties.
 - neutron-rich-bmm (v0.1.0): A Gaussian process Bayesian model mixing approach for microscopic constraints for the equation of state and structure of neutron stars.
