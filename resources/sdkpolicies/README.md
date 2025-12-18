@@ -4,6 +4,8 @@ This directory contains:
 - The [BAND SDK](bandsdk.md) 
 - A [template](template.md) of the BAND SDK Policy Compatibility Document, with instructions on how to fill out the document
 
+To be listed as a BAND Framework software package, we require that BAND software packages include a completed BAND SDK Compatibility Document; BAND software uses and BAND examples are encouraged to include such a document where appropriate. 
+
 A parallel [directory](/resources/dev_guide) contains a basic development guide with:
 - [Instructions for adding submodules for packages hosted elsewhere](/resources/dev_guide/git_instructions_for_submodules.md)
 - The BAND [release process](/resources/dev_guide/release-proc.rst)
