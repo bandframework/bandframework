@@ -48,7 +48,7 @@ As of version 0.5.0, the following tools are included:
 - Taweret ([v1.2.0](https://github.com/bandframework/Taweret/releases/tag/v1.2.0 )): A Python package containing multiple Bayesian Model Mixing methods.
 
 
-[BANDsoftware_uses/](/BANDsoftware_uses/) contains uses of one or more BAND software tools:
+As of version 0.5.0, [BANDsoftware_uses/](/BANDsoftware_uses/) contains uses of one or more BAND software tools:
 - [Bfrescox + surmise](/BANDsoftware_uses/BFRESCOX): An example of using the Frescox scattering code with surmise to enable Bayesian parameter estimation for coupled-channels scattering.
 
 The following [examples](/examples/) are included in version 0.5.0:
