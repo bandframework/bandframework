@@ -3,3 +3,5 @@ This directory contains examples of the application of one or more BAND software
 
 - Bfrescox + surmise: combining the Frescox scattering code with surmise to enable Bayesian parameter estimation for coupled-channels scattering.
 
+The main BAND Framework README is [here](../README.md). 
+
