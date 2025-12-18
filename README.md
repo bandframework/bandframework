@@ -48,9 +48,9 @@ As of version 0.5.0, the following tools are included:
 - Taweret ([v1.2.0](https://github.com/bandframework/Taweret/releases/tag/v1.2.0 )): A Python package containing multiple Bayesian Model Mixing methods.
 
 
-As of version 0.5.0, [BANDsoftware_uses/](/BANDsoftware_uses/) contains uses of one or more BAND software tools:
-- [Bfrescox + surmise](/BANDsoftware_uses/BFRESCOX): An example of using the Frescox scattering code with surmise to enable Bayesian parameter estimation for coupled-channels scattering.
-
+As of version 0.5.0, [BANDsoftware_uses/](/BANDsoftware_uses/) contains the following examples of the application of one or more of the above BAND software tools to nuclear physics problems:
+- [Bfrescox + surmise](/BANDsoftware_uses/BFRESCOX): combining the Frescox scattering code with surmise to enable Bayesian parameter estimation for coupled-channels scattering.
+  
 The following [examples](/examples/) are included in version 0.5.0:
 - BMEX ([v0.1.4](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.4 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - [BRICK](/examples/BRICK): The Bayesian R-matrix Inference Code Kit, designed to facilitate extraction of R-matrix parameters from experimental data.
