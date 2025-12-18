@@ -211,6 +211,7 @@ softwaredocumentation
 subdirectories
 subdirectory
 submodule
+submoduled
 submodules
 surero
 surmisebandsdk
