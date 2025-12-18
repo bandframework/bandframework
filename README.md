@@ -82,6 +82,8 @@ If you have already cloned the repository, the following modified `git` commands
 - `git submodule update --init software/surmise`
   (variant of the previous item, in case you want to only get the surmise submodule)
 
+In each BAND Framework release the hash for a particular submodule is set to a specific commit of the associated software element. While erious bug fixes in a submodule will occasion a new BAND Framework release, some pieces of software may extend functionality without the tag here in the framework being updated. To ensure you are using the version of submoduled software appropriate for your research application you should consult the release history of that piece of software. 
+
 Note that submodules work on modern git (i.e., version >= 2.38.0).
 
 ## Contributing to the BAND Framework
