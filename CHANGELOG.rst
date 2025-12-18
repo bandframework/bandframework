@@ -35,7 +35,7 @@ New capabilities and notable changes:
 - We do not yet have a stated policy on the use/documentation of AI tools.
 - If one installs all BAND packages in a particular order (and in a single virtual environment, etc.), there may be an incompatibility with the Eigen dependency; fixes are being explored.
 - `Notebooks <https://github.com/bandframework/bandframework/tree/develop/BANDsoftware_uses/BFRESCOX>`_  demonstrating the use of the Frescox coupled reaction channels code in BANDsoftware_uses directory need to be updated so that they employ BAND-compatible `Bfrescox <https://github.com/bandframework/Bfrescox/releases/tag/v0.0.1-alpha>`_.
-- The bandframework repository contains different content, including Jupyter notebooks, that could be presented to the public via a single BAND framework Jupyter book. This might simplify reviewing since verifying that books run through could be accompished by github actions. 
+- The bandframework repository contains different content, including Jupyter notebooks, that could be presented to the public via a single BAND framework Jupyter notebook. This might simplify reviewing since verifying that books run through could be accomplished by github actions. 
 
 
 
