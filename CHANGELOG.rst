@@ -17,7 +17,7 @@ New organization:
 New capabilities and notable changes:
 
 - added BAND-compatible lcgp at `v0.2.1 <https://github.com/mosesyhc/LCGP/releases/tag/v0.2.1>`_, a tool for latent component Gaussian process emulation for multivariate stochastic simulations.
-- added BAND-compatible ModelDiscrepancy at `v1.1.0 <https://github.com/sjaiswal-tifr/ModelDiscrepancy/tree/32d7d2c46009bc8c67a86580a088fb1b747ae029>`_, an example Bayesian framework for model-data comparison that accounts for theoretical uncertainties.
+- added BAND-compatible ModelDiscrepancy at `v1.1.0 <https://github.com/sjaiswal-tifr/ModelDiscrepancy/releases/tag/v1.1.0>`_, an example Bayesian framework for model-data comparison that accounts for theoretical uncertainties.
 - added BAND-compatible neutron-rich-bmm at `v0.1.0 <https://github.com/asemposki/neutron-rich-bmm/releases/tag/v0.1.0>`_, an example of Gaussian process Bayesian model mixing for the dense matter equation of state.
 - added BAND-compatible pybmc at `v0.2.4 <https://github.com/ascsn/pybmc/releases/tag/v0.2.4>`_, a tool for performing Bayesian model combination on various predictive models.
 - added BAND-compatible Bfrescox at `v0.0.1-alpha <https://github.com/bandframework/Bfrescox/releases/tag/v0.0.1-alpha>`_, A Python wrapper for the Frescox coupled reaction channels code.
