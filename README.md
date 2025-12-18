@@ -67,17 +67,10 @@ You are free to use any pieces of the BAND Framework that will advance your own 
 
 ## Submodules
 
-BAND Framework currently includes some dependencies via git submodules. Currently, the following submodules are employed:
+BAND Framework currently includes some dependencies via git submodules. Currently, submodules are employed in the directories:
 
-* [examples/](examples/)nuclear_saturation
-* [examples/](examples/)QGP_Bayes
-* [examples/](examples/)SAMBA
-* [software/](software/)jitr
-* [software/](software/)lcgp
-* [software/](software/)rose
-* [software/](software/)surmise
-* [software/](software/)Taweret
-* [software/](software/)Bfrescox
+* [examples/](examples/)
+* [software/](software/)
 
 As a consequence, when cloning the BAND Framework repository, the submodules can be retrieved automatically via
 - `git clone --recursive` (in place of the usual `git clone`)
