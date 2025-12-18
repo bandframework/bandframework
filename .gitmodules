@@ -6,7 +6,7 @@
 	url = https://github.com/bandframework/Taweret
 [submodule "software/rose"]
 	path = software/rose
-	url = https://github.com/bandframework/rose
+	url = https://github.com/bandframework/rose.git
 [submodule "software/jitr"]
 	path = software/jitr
 	url = git@github.com:beykyle/jitr.git
