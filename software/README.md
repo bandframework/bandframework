@@ -11,8 +11,8 @@ As of v0.5.0 the following packages are present in this directory.
 - lcgp (v0.2.1): A Gaussian process surrogate model for emulating stochastic simulation outputs.
 - parMOO (v0.4.1): A Python library for parallel multiobjective simulation optimization.
 - PUQ (v0.1.1): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
-- pybmc (v0.2.4: A Python package for performing Bayesian model combination on various predictive models.
-- rose (v1.1.7: A reduced-order scattering emulator.
+- pybmc (v0.2.4): A Python package for performing Bayesian model combination on various predictive models.
+- rose (v1.1.7): A reduced-order scattering emulator.
 - SmoothEmulator: A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
 - surmise (v0.4.0): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - Taweret (v1.2.0): A Python package containing multiple Bayesian Model Mixing methods.
