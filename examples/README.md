@@ -7,7 +7,7 @@ As of 0.5.0 this directory includes the following examples:
 - BRICK: The Bayesian R-matrix Inference Code Kit, designed to facilitate extraction of R-matrix parameters from experimental data.
 - ModelDiscrepancy (v1.1.0): A Bayesian framework for model-data comparison that accounts for theoretical uncertainties.
 - neutron-rich-bmm (v0.1.0): A Gaussian process Bayesian model mixing approach for microscopic constraints for the equation of state and structure of neutron stars.
-- nsat: A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
+- nuclear_saturation: A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 - QGP_Bayes: A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP.
 - SaMBA (v1.2.0): The Sandbox for Mixing via Bayesian Analysis.
 
