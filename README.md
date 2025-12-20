@@ -58,7 +58,7 @@ The following [examples](/examples/) are included in version 0.4.0+dev:
 - neutron-rich-bmm ([v0.1.0](https://github.com/asemposki/neutron-rich-bmm/releases/tag/v0.1.0 )): An example of Gaussian process Bayesian model mixing for the dense matter equation of state.
 - [nsat](https://github.com/cdrischler/nuclear_saturation/tree/c4cfa45a1180b2739e217102d7380736d6844a11): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 - [QGP_Bayes](https://github.com/danOSU/QGP_Bayes/tree/4b3e2364f87a29ad2469f2b072053420fdaac8e9): A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP.
-- SaMBA ([v1.2.0](https://github.com/asemposki/SAMBA/tree/3f255109624be5fa5e761f4acfad35b9d61a00d1 )): The Sandbox for Mixing via Bayesian Analysis.
+- SAMBA ([v1.2.1](https://github.com/asemposki/SAMBA/releases/tag/v1.2.1 )): The Sandbox for Mixing via Bayesian Analysis.
 
 
 ## Downloading and using the BAND Framework
