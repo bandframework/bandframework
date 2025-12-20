@@ -8,7 +8,7 @@ https://github.com/bandframework/bandframework/issues
 
 Release 0.5.0
 -------------
-:Date: December 18, 2025
+:Date: December 22, 2025
 
 New organization:
 
