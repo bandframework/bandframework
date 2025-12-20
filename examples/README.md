@@ -9,5 +9,5 @@ As of 0.5.0 this directory includes the following examples:
 - neutron-rich-bmm (v0.1.0): A Gaussian process Bayesian model mixing approach for microscopic constraints for the equation of state and structure of neutron stars.
 - nuclear_saturation: A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 - QGP_Bayes: A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP.
-- SaMBA (v1.2.0): The Sandbox for Mixing via Bayesian Analysis.
+- SaMBA (v1.2.1): The Sandbox for Mixing via Bayesian Analysis.
 
