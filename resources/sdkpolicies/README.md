@@ -11,8 +11,8 @@ A parallel [directory](/resources/dev_guide) contains a basic development guide 
 - The BAND [release process](/resources/dev_guide/release-proc.rst)
 
 Examples of completed SDK policy compatibility documents include:
--  [BMEX-bandsdk.md](/software/BMEX/BMEX-bandsdk.md)
--  [brickbandsdk.md](/software/BRICK/brickbandsdk.md)
+-  [BMEX-bandsdk.md](/examples/BMEX/BMEX-bandsdk.md)
+-  [brickbandsdk.md](/examples/BRICK/brickbandsdk.md)
 -  [bfrescoxbandsdk.md](https://github.com/bandframework/Bfrescox/blob/main/Bfrescoxbandsdk.md)
 -  [frescoxbandsdk.md](/BANDsoftware_uses/Bfrescox/frescoxbandsdk.md)
 -  [jitrbandsdk.md](https://github.com/beykyle/jitr/blob/main/jitrbandsdk.md)
