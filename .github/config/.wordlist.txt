@@ -52,6 +52,7 @@ NN
 NumPy
 Nunes
 OAC
+Özge
 Ozge
 PCGP
 PCGPwM
