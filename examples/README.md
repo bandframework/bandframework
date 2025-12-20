@@ -9,5 +9,5 @@ As of 0.4.0+dev this directory includes the following examples:
 - [neutron-rich-bmm](https://github.com/asemposki/neutron-rich-bmm/tree/07054335346e4a26ed919967e818cccd2d52c7ef): A Gaussian process Bayesian model mixing approach for microscopic constraints for the equation of state and structure of neutron stars.
 - [nsat](https://github.com/cdrischler/nuclear_saturation/tree/06cf466c2ab5f6e1fccafc18807c7dd99aff05c7): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 - [QGP_Bayes](https://github.com/danOSU/QGP_Bayes/tree/4b3e2364f87a29ad2469f2b072053420fdaac8e9): A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP.
-- SaMBA ([v1.2.0](https://github.com/asemposki/SAMBA/tree/3f255109624be5fa5e761f4acfad35b9d61a00d1 )): The Sandbox for Mixing via Bayesian Analysis.
+- SaMBA ([v1.2.1](https://github.com/asemposki/SAMBA/tree/9fa6c55d7966457e271b3e2a660eba4bcc1dcd6b )): The Sandbox for Mixing via Bayesian Analysis.
 
