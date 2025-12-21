@@ -191,6 +191,7 @@ prattsc
 pre
 preprint
 privateband
+ptemcee
 puq
 py
 pybmc
