@@ -24,7 +24,7 @@ These tools are designed to:
 
 More about the goals and structure of the BAND project can be found in D.R. Phillips et al., "[Get on the BAND Wagon: a Bayesian framework for quantifying model uncertainties in nuclear dynamics"](https://doi.org/10.1088/1361-6471/abf1df), J. Phys. G **48** (2021) 7, 072001.
 
-A full list of BAND members together with a current list of  publications produced by the members using the tools and ideas of the project is available at https://bandframework.github.io.
+A full list of BAND members, together with a current list of  publications produced by the members using the tools and ideas of the project, is available at https://bandframework.github.io.
 
 
 ## BAND Framework Elements
@@ -63,7 +63,7 @@ The following [examples](/examples/) are included in version 0.5.0:
 
 ## Downloading and using the BAND Framework
 
-You are free to use any pieces of the BAND Framework that will advance your own research. Please cite the framework, and the original BAND paper, as detailed below under "Citing the BAND Framework".
+You are free to use any pieces of the BAND Framework that will advance your own research. Please cite the framework and the original BAND paper, as detailed below under "Citing the BAND Framework".
 
 ## Submodules
 
@@ -82,7 +82,7 @@ If you have already cloned the repository, the following modified `git` commands
 - `git submodule update --init software/surmise`
   (variant of the previous item, in case you want to only get the surmise submodule)
 
-In each BAND Framework release the hash for a particular submodule is set to a specific commit of the associated software element. While serious bug fixes in a submodule will occasion a new BAND Framework release, some pieces of software may extend functionality without the tag here in the framework being updated. To ensure you are using the version of submoduled software appropriate for your research application you should consult the release history of that piece of software. 
+In each BAND Framework release, the hash for a particular submodule is set to a specific commit of the associated software element. While serious bug fixes in a submodule will occasion a new BAND Framework release, some pieces of software may extend functionality without the tag here in the framework being updated. To ensure you are using the version of submoduled software appropriate for your research application, you should consult the release history of that piece of software. 
 
 Note that submodules work on modern git (i.e., version >= 2.38.0).
 
