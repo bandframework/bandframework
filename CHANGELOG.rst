@@ -34,7 +34,7 @@ New capabilities and notable changes:
 
 - We do not yet have a stated policy on the use/documentation of AI tools.
 - If one installs all BAND packages in a particular order (and in a single virtual environment, etc.), there may be an incompatibility with the Eigen dependency; fixes are being explored.
-- `Notebooks <https://github.com/bandframework/bandframework/tree/develop/BANDsoftware_uses/BFRESCOX>`_  demonstrating the use of the Frescox coupled reaction channels code in BANDsoftware_uses directory need to be updated so that they employ BAND-compatible `Bfrescox <https://github.com/bandframework/Bfrescox/releases/tag/v0.0.1-alpha>`_.
+- `Notebooks <https://github.com/bandframework/bandframework/tree/v05release/BANDsoftware_uses/Bfrescox>`_  demonstrating the use of the Frescox coupled reaction channels code in BANDsoftware_uses directory need to be updated so that they employ BAND-compatible `Bfrescox <https://github.com/bandframework/Bfrescox/releases/tag/v0.0.1-alpha>`_.
 - The bandframework repository contains different content, including Jupyter notebooks, that could be presented to the public via a single BAND framework Jupyter notebook. This might simplify reviewing since verifying that books run through could be accomplished by github actions. 
 - The `BRICK tutorial notebook <https://github.com/bandframework/bandframework/blob/v05release/examples/BRICK/tutorial/tutorial.ipynb>`_ does not run correctly unless AZURE2 is installed at the command line. However, AZURE2 at the command line is currently only available in its Linux-compatible version. Linux users who wish to run the BRICK tutorial can request access to AZURE2 `here <https://azure.nd.edu/registration.php>`_, and then install it so it runs at the command line. 
 
