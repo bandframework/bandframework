@@ -14,7 +14,7 @@ We demonstrate our sequential strategy using a nuclear physics model to predict 
 
 Further details on this problem, including a benchmark comparing various acquisition functions and parallel implementations, can be found in Section 8.3 of the paper by [Sürer, Plumlee, and Wild, 2024](https://www.tandfonline.com/doi/abs/10.1080/00401706.2023.2246157?src=&journalCode=utch20).
 
-After installing ``PUQ``, ``frescox`` must also be installed to collect data using the sequential procedure. Additional notes on obtaining and building ``frescox`` can be found in the [Bfrescox README](/software/Bfrescox/README.md).
+After installing ``PUQ``, ``frescox`` must also be installed to collect data using the sequential procedure. Additional notes on obtaining and building ``frescox`` can be found in the [Bfrescox README](/BANDsoftware_uses/Bfrescox/README.md).
 
 From the root directory of ``PUQ``, navigate to the ``examples/fresco_example`` directory:
 ```
