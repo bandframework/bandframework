@@ -204,6 +204,7 @@ reStructuredText
 readthedocs
 repo
 reproducibility
+rosebandsdk
 rst
 runtime
 scikit
