@@ -35,7 +35,7 @@ BAND Framework elements are of three main types:
 - BAND examples: these are stand-alone notebooks or code that provide examples of principled Bayesian uncertainty quantification. They are constructed to solve a particular nuclear physics problem. They do not use any of the BAND software tools, but contain software that BAND Framework users may wish to adapt to other scientific contexts. 
 
 The BAND Framework's software tools can be found in [software/](/software/). 
-As of version 0.5.0, the following tools are included:
+As of version 0.5.0+dev, the following tools are included:
 - Bfrescox ([v0.0.1-alpha](https://github.com/bandframework/Bfrescox/releases/tag/v0.0.1-alpha )): A Python wrapper for the Frescox coupled reaction channel code.
 - jitr ([v2.5.1](https://github.com/beykyle/jitr/releases/tag/v2.5.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
 - LCGP ([v0.2.1](https://github.com/mosesyhc/lcgp/releases/tag/v0.2.1 )): A Gaussian process surrogate model for emulating stochastic simulation outputs.
@@ -48,10 +48,10 @@ As of version 0.5.0, the following tools are included:
 - Taweret ([v1.2.0](https://github.com/bandframework/Taweret/releases/tag/v1.2.0 )): A Python package containing multiple Bayesian Model Mixing methods.
 
 
-As of version 0.5.0, [BANDsoftware_uses/](/BANDsoftware_uses/) contains the following examples of the application of one or more of the above BAND software tools to nuclear physics problems:
+As of version 0.5.0+dev, [BANDsoftware_uses/](/BANDsoftware_uses/) contains the following examples of the application of one or more of the above BAND software tools to nuclear physics problems:
 - [Bfrescox + surmise](/BANDsoftware_uses/Bfrescox): combining the Frescox scattering code with surmise to enable Bayesian parameter estimation for coupled-channels scattering.
   
-The following [examples](/examples/) are included in version 0.5.0:
+The following [examples](/examples/) are included in version 0.5.0+dev:
 - BMEX ([v0.1.4](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.4 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - [BRICK](/examples/BRICK): The Bayesian R-matrix Inference Code Kit, designed to facilitate extraction of R-matrix parameters from experimental data.
 - ModelDiscrepancy ([v1.1.0](https://github.com/sjaiswal-tifr/ModelDiscrepancy/releases/tag/v1.1.0 )): A Bayesian framework for model-data comparison that accounts for theoretical uncertainties.
@@ -111,7 +111,7 @@ Please use the following to cite the BAND Framework:
         and Matthew T. Pratola and Scott Pratt and Oleh Savchuk and Alexandra C. Semposki and \"Ozge S\"urer and 
         Stefan M. Wild and John C. Yannotty},
         institution = {},
-        number      = {Version 0.5.0},
+        number      = {Version 0.5.0+dev},
         year        = {2025},
         url         = {https://github.com/bandframework/bandframework}
     }
