@@ -499,7 +499,7 @@ The script should create a figure, {\tt posterior.pdf}, shown in Fig. \ref{fig:p
 \caption{\label{fig:posterior_tutorial}
 Projections for the posterior likelihood from the MCMC trace. The contour lines represent $1-\sigma$, $2-\sigma$ and $3-\sigma$ likelihoods.}
 \end{figure}
-The likelihood is projected for individual model parameters (along the diagonal), or for pairs (off-diagonal). The plot is in terms of the scaled variables, $\theta_i$. To translate to the true model-parameter ranges, one can look at the {\tt smooth\_data/Info/modelpars\_info.txt} file, which gives the prior ranges of the model parameters before they are scaled to the -1 to 1 range. The file {\tt figs/directions.pdf} shows how you can alter the plot. For example there is a line in the python script, {\tt ParsToPlot=[1,2,3,4,5]}, which you can edit to change the ordering of the model-parameters, and to choose which model parameters are considered.
+The likelihood is projected for individual model parameters (along the diagonal), or for pairs (off-diagonal). The plot is in terms of the scaled variables, $\theta_i$. To translate to the true model-parameter ranges, one can look at the {\tt smooth\_data/Info/modelpars\_info.txt} file, which gives the prior ranges of the model parameters before they are scaled to the -1 to 1 range. The file {\tt figs/directions.pdf} shows how you can alter the plot. For example there is a line in the Python script, {\tt ParsToPlot=[1,2,3,4,5]}, which you can edit to change the ordering of the model-parameters, and to choose which model parameters are considered.
 
 \subsubsection{Viewing the Resolving Power}
 
@@ -519,7 +519,7 @@ One measure of the resolving power is:
 \begin{align*}\eqnumber
 \mathcal{R}_{ia}&\equiv\frac{\partial\langle\langle\theta_i\rangle\rangle}{\partial Y_a^{\rm exp}}\langle \delta Y_a^2\rangle^{1/2}.
 \end{align*}
-This quantifies how the posterior value of $\theta_i$ changes as the experimental value changes if the experimental value, $Y_a^{\rm exp}$, changes an amount characteristic of the variance of $Y_a$ across the prior. Higher values of $\mathcal{R}_{ia}$ for different $a$ demonstrate the relative contributions of different observables $a$ to constrain a model parameter $i$. The resolving power matrix is written to {\tt MCMC\_trace/ResolvingPower.txt}. The resolving power is a function of the covariances listed above (see \href{preprint.pdf}{\tt preprint.pdf}). The data for the resolving power was also created by running {\tt smoothy\_mcmc}. To plot the resolving power move the data file {\tt smooth\_data/MCMC/ResolvingPower.txt} to {\tt figs/figdata/}. You can then run the PYTHON script:
+This quantifies how the posterior value of $\theta_i$ changes as the experimental value changes if the experimental value, $Y_a^{\rm exp}$, changes an amount characteristic of the variance of $Y_a$ across the prior. Higher values of $\mathcal{R}_{ia}$ for different $a$ demonstrate the relative contributions of different observables $a$ to constrain a model parameter $i$. The resolving power matrix is written to {\tt MCMC\_trace/ResolvingPower.txt}. The resolving power is a function of the covariances listed above (see \href{preprint.pdf}{\tt preprint.pdf}). The data for the resolving power was also created by running {\tt smoothy\_mcmc}. To plot the resolving power move the data file {\tt smooth\_data/MCMC/ResolvingPower.txt} to {\tt figs/figdata/}. You can then run the Python script:
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
 ..% \textcolor{darkred}{cp $\{MY_ANALYSIS\}/smooth\_data/MCMC/ResolvingPower.txt $\{MY_ANALYSIS\}/figs/figdata/}
 ..% \textcolor{darkred}{cd $\{MY_ANALYSIS\}/figs/resolvingpower}
@@ -529,7 +529,7 @@ NPars= 6  NObs= 10
 }\vspace*{-8pt}
 The resulting figure, {\tt RP.pdf}, is shown if Fig. \ref{fig:RP_tutorial}
 
-If you have an Apple computer, or if you are running Linux with the PDF viewer, {\tt okular}, you can edit the python scripts mentioned above and uncomment the approriate line shown in green and comment out the {\tt plt.show()} and {\tt plt.close()} lines. The lines at the end of {\tt RP.py} are
+If you have an Apple computer, or if you are running Linux with the PDF viewer, {\tt okular}, you can edit the Python scripts mentioned above and uncomment the approriate line shown in green and comment out the {\tt plt.show()} and {\tt plt.close()} lines. The lines at the end of {\tt RP.py} are
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
  .
 plt.show()
@@ -541,7 +541,7 @@ plt.close()
  .
 \end{Verbatim}
 }\vspace*{-8pt}
-You can then see the actual PDF file while the script is running. Similar changes can be made to all three PYTHON plotting scripts mentioned here.
+You can then see the actual PDF file while the script is running. Similar changes can be made to all three Python plotting scripts mentioned here.
 
 \end{sloppypar}
 \end{document}
