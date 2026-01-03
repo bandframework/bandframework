@@ -65,11 +65,11 @@ then
    elif command -v evince &> /dev/null
    then
       evince YvsY/YvsY_obs3.pdf &
-      evince testfigs/YvsY_obs3_test.pdf &
+      evince testfigs/YvsY_obs3t.pdf &
       evince posterior/posterior.pdf &
-      evince testfigs/posterior_test.pdf &
+      evince testfigs/posterior.pdf &
       evince resolvingpower/RP.pdf &
-      evince testfigs/RP_test.pdf &
+      evince testfigs/RP.pdf &
    else
       echo "Need to install okular or evince pdf viewers for this script to work"
       echo "You can compare figures named figs/testfigs/*_test.pdf to new figures by hand"
