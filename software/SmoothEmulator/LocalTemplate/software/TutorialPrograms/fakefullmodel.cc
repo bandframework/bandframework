@@ -1,7 +1,5 @@
-#include "msu_smoothutils/parametermap.h"
+#include "msu_smoothutils/commonutils.h"
 #include "msu_smooth/smooth.h"
-#include "msu_smoothutils/log.h"
-#include "msu_smoothutils/parametermap.h"
 #include <filesystem>
 
 using namespace std;

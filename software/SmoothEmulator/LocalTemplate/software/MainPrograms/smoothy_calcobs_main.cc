@@ -1,4 +1,4 @@
-#include "msu_smoothutils/parametermap.h"
+#include "msu_smoothutils/commonutils.h"
 #include "msu_smooth/master.h"
 #include "msu_smoothutils/log.h"
 using namespace std;
