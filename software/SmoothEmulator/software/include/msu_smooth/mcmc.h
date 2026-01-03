@@ -7,10 +7,7 @@
 #include <array>
 #include <fstream>
 #include <Eigen/Dense>
-#include "msu_smoothutils/parametermap.h"
-#include "msu_smoothutils/misc.h"
-#include "msu_smoothutils/randy.h"
-#include "msu_smoothutils/log.h"
+#include "msu_smoothutils/commonutils.h"
 #include "msu_smooth/master.h"
 
 

@@ -6,7 +6,7 @@
 #include <vector>
 #include <array>
 #include <fstream>
-#include "msu_smoothutils/misc.h"
+#include "msu_smoothutils/commonutils.h"
 #include <vector>
 #include <map>
 

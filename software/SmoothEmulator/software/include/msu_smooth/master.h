@@ -9,9 +9,7 @@
 #include <Eigen/Dense>
 #include <sstream>
 #include <iomanip>
-#include "msu_smoothutils/parametermap.h"
-#include "msu_smoothutils/misc.h"
-#include "msu_smoothutils/randy.h"
+#include "msu_smoothutils/commonutils.h"
 #include "msu_smooth/emulator.h"
 #include "msu_smooth/modelparinfo.h"
 #include "msu_smooth/smooth.h"

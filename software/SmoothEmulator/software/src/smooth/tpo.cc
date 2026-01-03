@@ -2,7 +2,6 @@
 #include "msu_smooth/modelparinfo.h"
 #include <cstdlib>
 #include <algorithm>
-#include "msu_smoothutils/randy.h"
 
 using namespace std;
 using namespace NBandSmooth;

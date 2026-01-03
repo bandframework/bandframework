@@ -1,6 +1,5 @@
 #include "msu_smooth/master.h"
 #include "msu_smooth/mcmc.h"
-#include "msu_smoothutils/misc.h"
 
 using namespace std;
 using namespace NBandSmooth;
