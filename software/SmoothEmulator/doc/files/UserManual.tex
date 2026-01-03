@@ -3,9 +3,11 @@
 \usepackage{subfiles}
 %\usepackage{indentfirst}
 \usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{float}
 \usepackage[
         pdfencoding=auto,%
-        pdftitle={Smooth Emulator and Simplex Sampler}
+        pdftitle={Smooth Emulator and Training Point Optimizer}
         pdfauthor={Scott Pratt},%
         pdfstartview=FitV,%
         colorlinks=true,%
@@ -14,11 +16,13 @@
         urlcolor=blue,
 				breaklinks=true]{hyperref}
 %\usepackage[anythingbreaks,hyphenbreaks]{breakurl}
-\usepackage{xurl}
+\usepackage{xurl,hyperref}
+\usepackage[utf8]{inputenc}
 \usepackage{comment}
 %\usepackage{pdfsync}
 \usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage{color}
 %\usepackage{nopageno}
 \usepackage{bm}
 \usepackage{dsfont}
@@ -32,8 +36,43 @@
 %\usepackage[headheight=110pt]{geometry}
 \usepackage{bm}
 
+\def\theenumi{\Roman{enumi}}
+
 \numberwithin{equation}{section} 
-\numberwithin{figure}{section} 
+\numberwithin{figure}{section}
+
+\usepackage[most]{tcolorbox}
+\tcbset{
+frame code={}
+center title,
+left=0pt,
+right=0pt,
+top=0pt,
+bottom=0pt,
+colback=gray!25,
+colframe=white,
+width=\dimexpr\textwidth\relax,
+enlarge left by=0mm,
+boxsep=5pt,
+arc=0pt,outer arc=0pt,
+}
+
+\usepackage{xcolor}
+\definecolor{darkred}{rgb}{0.85,0.0,0.0}
+\definecolor{darkgreen}{rgb}{0.0,0.55,0.0}
+\definecolor{lightgray}{rgb}{0.85,0.85,0.85}
+\newenvironment{sloppypar*}
+ {\sloppy\ignorespaces}
+ {\par}
+
+%\usepackage{fancyvrb}[commandchars=\\\{\}]
+\usepackage{fvextra}[commandchars=\\\{\}]
+%\DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+%commandchars=\\\{\},
+%breaklines, breaknonspaceingroup, breakanywhere}
+\fvset{breaklines}
+\fvset{highlightlines=1-1000}
+\fvset{highlightcolor=lightgray}
 
 %\usepackage[most]{tcolorbox}
 %\tcbset{
@@ -44,7 +83,7 @@
 %top=0pt,
 %bottom=0pt,
 %colback=gray!25,
-%colframe=white,
+%colframe=white,w
 %width=\dimexpr\textwidth\relax,
 %enlarge left by=0mm,
 %boxsep=5pt,
@@ -73,6 +112,8 @@
 %\newcommand{\solution}[1]{ }
 \newcommand\identity{\mathds{1}}
 
+\setcounter{tocdepth}{2}
+
 \setlength{\headheight}{16pt}
 \parskip 6pt
 \parindent 0pt
@@ -82,16 +123,16 @@
 \voffset -1in
 
 %\newcommand{\bm}{\boldmath}
-\boldmath
+%\boldmath
 %
-\begin{document}
 
+\begin{document}
 
 \begin{titlepage}
    \begin{center}
        \vspace*{1.5cm}
 
-       {\bf\LARGE {\it Smooth Emulator \&  Simplex Sampler}}\\
+       {\bf\LARGE {\it Smooth Emulator \&  Training Point Optimizer}}\\
        \vspace*{8pt}
 
        {\bf\Large User Manual}
@@ -154,14 +195,18 @@
 
 \section{Overview}\label{sec:overview}
 
-This manual describes how to install and run {\it Smooth Emulator} software. The software performs three basic functions. First, the {\it {\it Simplex Sampler}} chooses a set of points in model parameter space, at which full model runs will performed to then tune the emulator. The user must provide a description of the model parameters and the prior in a text files in a standard format. There are several options, the first of which is to choose the points that represent a simplex, e.g. an equilateral triangle in two dimensions or a tetrahedron in three dimensions. In a simplex, all points are equidistant from one another, and the number of training points is $N_p+1$, where $N_p$ is the number of parameters. In addition to the standard simplex, there are additional options which are motivated by the simplex form. For the standard form the  $N_p+1$ training points in the simplex match the number of points needed to determine a linear fit. Another choice, which is based on the simplex chooses enough points to determine a quadratic fit, $(N_p+1)(N_p+2)/2$. The software will write the information about the training points in a standard format, which is described in the manual. If the user decides to use training points from a different procedure, the user can still record the information about the points in a same format, and the emulator tuning will still work, as the emulator itself is not predicated on a specific choice of training points.
+{\it Smooth Emulator} software is designed with the idea that the full-model to be emulated is {\it smooth}. I.e., if one were represent the behavior as a Taylor expansion, one would expect higher-order terms to contribute less than lower-order terms. The programs that choose the training points are based on such an assumption, and the emulator's mathematical form also presumes such behavior. Applying the software to emulation of a full-model that has sharp peaks or valleys is probably dubious. The programs tend to run quickly as long as the number of model-parameters is of the order a dozen or less.
 
- The user is then responsible for running the full model at the training points and expressing observables, and the uncertainties, for each training point in a standard format. The manual describes the output format.
+The software performs three basic functions.
+\begin{enumerate}\itemsep=0pt
+\item Provide an optimum set of training points in model parameter space, at which full model runs will performed to then tune the emulator. The User must first provide a list of model parameters and a description of their priors, along with a measure of the relative importance of each model parameter.
+\item After the User provides a list of observables, the User runs their full model at each of the training points and provides values and uncertainties for each observable at each training point. {\it Smooth Emulator} software then creates and tunes emulators for each observable. The emulator form is based on two hyper-parameters, an amplitude and a convergence length. Both hyper-parameters are found by the tuning procedure. The emulator is mathematically equivalent to a Gaussian process (GP) emulator with a quadratic kernel, with the convergence length being the correlation length of a GP emulator.
+\item Once the User provides a list of experimentally measured observables and uncertainties, an MCMC program samples the prior and provides a sampling of points in the model-parameter space that are consistent with the posterior likelihood. An analysis program uses the list of representative points to calculate the mean and covariances of the posterior distribution. The program also provides the resolving power of how each observable constrains each model parameter.
+\end{enumerate}
 
- The second functionality of the software is to build and tune the emulator, referred here as {\it {\it Smooth Emulator}}. The emulator reads the information above, along with another user-provided parameter file to choose which observables are to be emulated, which parameters will be varied, and which emulator options will be applied. After being trained, the Taylor coefficients representing the emulator are written to a file. One can always add additional training points, and retrain the emulator. 
+The structure is designed so that the User stores all the information for a specific analysis in a specific analysis directory, e.g. {\tt  \$\{MY\_ANALYSIS\}/}. All programs, aside from PYTHON scripts for plotting, are then run from that directory.  A subdirectory, {\tt  \$\{MY\_ANALYSIS\}/smooth\_data/Info}, contains simple text files edited by the User to describe the model-parameter priors, the observables to be emulated and evaluated, and the experimentally observed values. A second subdirectory, {\tt \$\{MY\_ANALYSIS\}/smooth\_data/Options} contains text files defining options the User can set related to the {\it Smooth Emulator} software. The training point optimization software creates directories {\tt  \$\{MY\_ANALYSIS\}/smooth\_data/FullModelRuns/runI} where each training point, {\tt $\hdots$/runI}, refers to a single point in model-parameter space used for training. The training point optimizer program creates a listing of a set of training points, where the values of the model parameters for each training point are written to files. The User's job is then to create text files giving the values of the observables calculated by the full model for each training point. These files are stored in the directory {\tt \$\{MY\_ANALYSIS\}/smooth\_data/FullModelRuns/}. The MCMC program writes the MCMC trace information to files in {\tt smooth\_data/MCMC/}. {\it Smooth Emulator} provides programs that analyze the trace to provide averages and covariances of the the posterior, as well as measures of the resolving power. Several PYTHON scripts are located in {\tt \$\{MY\_ANALYSIS\}/figs/}.  
 
-The third functionality of the software is to perform a MCMC exploration of parameter space using the emulator. This user must express the experimental observables and their uncertainties in a standard format. The MCMC software will read the emulator coefficients from file and perform the MCMC exploration. This procedure is also guided by a simple text file of parameters. The MCMC software uses python and Matplotlib to generate plots that describe the posterior. 
-
+{\it Smooth Emulator} software is designed to be modular. Programs for each of the three functionalities listed above can be performed independently because files are all in simple text formats. For example, one can generate the training points, then use those training points emulators from other software packages. However, the User will likely have to spend more time translating text files to formats used by other programs. Aside from the plotting scripts, {\tt Smooth Emulator} software is written in C++. The software, and this manual, were built on the assumption that the User has some familiarity with C++. Defining options, setting priors, are all done by editing simple text files. The software then performs its task by reading such files. Given that generating the data from the full-model runs used to train the emulator is likely to be a lengthy process, perhaps involving weeks of running on large facilities, the software is designed with the idea that a User will wish to have data written in simple formats so that it can be readily copied as need be. 
 
 \newpage
 
@@ -169,7 +214,11 @@ The third functionality of the software is to perform a MCMC exploration of para
 
 \newpage
 
-\subfile{simplex.tex}
+\subfile{theory.tex}
+
+\newpage
+
+\subfile{tpo.tex}
 
 \newpage
 
@@ -181,11 +230,15 @@ The third functionality of the software is to perform a MCMC exploration of para
 
 \newpage
 
-\subfile{pca.tex}
+\subfile{mcmc.tex}
 
 \newpage
 
-\subfile{mcmc.tex}
+\subfile{figs.tex}
+
+\newpage
+
+\subfile{parametermap.tex}
 
 \newpage
 
@@ -193,7 +246,7 @@ The third functionality of the software is to perform a MCMC exploration of para
 
 \newpage
 
-\subfile{theory.tex}
+\subfile{python.tex}
 
 \end{document}
 

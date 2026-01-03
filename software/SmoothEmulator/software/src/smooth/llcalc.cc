@@ -28,23 +28,18 @@ CLLCalc::CLLCalc(CSmoothMaster *master_set){
 }
 
 CLLCalcSmooth::CLLCalcSmooth(CSmoothMaster *master_set){
-	master=master_set;
-	NPars=master->NPars;
-	priorinfo=master->priorinfo;
-	obsinfo=master->observableinfo;
-	if(master->UsePCA){
-		obsinfo->ReadExperimentalInfo("PCA_Info/experimental_info.txt"); // might want to change this later to be more flexible
-	}
-	else{
-		obsinfo->ReadExperimentalInfo("Info/experimental_info.txt"); // might want to change this later to be more flexible
-	}
-	NObs=obsinfo->NObservables;
-	Y.resize(NObs);
-	dYdTheta.resize(NObs);
-	SigmaY.resize(NObs);
-	SigmaY_emulator.resize(NObs);
-	for(unsigned int iy=0;iy<NObs;iy++){
-		dYdTheta[iy].resize(NPars);
+   master=master_set;
+   NPars=master->NPars;
+   priorinfo=master->priorinfo;
+   obsinfo=master->observableinfo;
+   obsinfo->ReadExperimentalInfo("Info/experimental_info.txt"); // might want to change this later to be more flexible
+   NObs=obsinfo->NObservables;
+   Y.resize(NObs);
+   dYdTheta.resize(NObs);
+   SigmaY.resize(NObs);
+   SigmaY_emulator.resize(NObs);
+   for(unsigned int iy=0;iy<NObs;iy++){
+      dYdTheta[iy].resize(NPars);
 	}
 	priorinfo=master_set->priorinfo;
 }
@@ -54,15 +49,17 @@ void CLLCalc::CalcLL(vector<double> &theta,double &LL){
 	(void) LL;
 }
 
+/*
 void CLLCalc::CalcLLPlusDerivatives(vector<double> &theta,double &LL,vector<double> &dLL_dtheta){
 	(void) theta;
 	(void) LL;
 	(void) dLL_dtheta;
 }
+*/
 
 void CLLCalcSmooth::CalcLL(vector<double> &theta,double &LL){
 	unsigned int iy,ipar;
-	double sigma2;
+	double sigma2,root3=sqrt(3.0);
 	bool insidebounds=true;
 	LL=0.0;
 	for(ipar=0;ipar<NPars;ipar++){
@@ -73,10 +70,10 @@ void CLLCalcSmooth::CalcLL(vector<double> &theta,double &LL){
 	}
 	if(insidebounds){
 		if(IGNORE_EMULATOR_ERROR){
-			master->CalcAllYOnly(theta,Y);
+			master->GetAllYOnlyFromTheta(theta,Y);
 		}
 		else
-			master->CalcAllY(theta,Y,SigmaY_emulator);
+			master->GetAllYFromTheta(theta,Y,SigmaY_emulator);
 		for(iy=0;iy<NObs;iy++){
 			sigma2=obsinfo->SigmaExp[iy]*obsinfo->SigmaExp[iy];
 			if(!IGNORE_EMULATOR_ERROR){
@@ -87,15 +84,17 @@ void CLLCalcSmooth::CalcLL(vector<double> &theta,double &LL){
 		}
 		for(ipar=0;ipar<NPars;ipar++){
 			if(priorinfo->type[ipar]=="gaussian"){
-				LL-=0.5*pow(theta[ipar]*CModelParameters::GSCALE,2);
+				LL-=0.5*pow(theta[ipar]*root3/priorinfo->ThetaScale[ipar],2);
 			}
 		}
 	}
 }
 
+/*
 void CLLCalcSmooth::CalcLLPlusDerivatives(vector<double> &theta,double &LL,vector<double> &dLL_dTheta){
+
 	unsigned int iy,ipar;
-	double sigma2,delY;
+	double sigma2,delY,root3=sqrt(3.0);
 	vector<vector<double>> dYdTheta;
 	dYdTheta.resize(NObs);
 	for(iy=0;iy<NObs;iy++){
@@ -118,10 +117,9 @@ void CLLCalcSmooth::CalcLLPlusDerivatives(vector<double> &theta,double &LL,vecto
 	}
 	for(ipar=0;ipar<NPars;ipar++){
 		if(priorinfo->type[ipar]=="gaussian"){
-			LL-=0.5*pow(theta[ipar]*CModelParameters::GSCALE,2);
-			dLL_dTheta[ipar]-=theta[ipar]*pow(CModelParameters::GSCALE,2);
+			LL-=0.5*pow(theta[ipar]*root3,2);
+			dLL_dTheta[ipar]-=theta[ipar]*3;
 		}
 	}
-	
-	
 }
+*/

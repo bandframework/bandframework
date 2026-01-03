@@ -25,6 +25,8 @@ namespace NBandSmooth{
 
 	class CMCMC{
 	public:
+		//bool OPTIMIZESTEPS;
+		bool IGNORE_EMULATOR_ERROR;
 		CparameterMap *parmap;
 		CSmoothMaster *master;
 		Crandy *randy;
@@ -34,7 +36,6 @@ namespace NBandSmooth{
 		unsigned int NPars,NObs;
 		vector<vector<double>> trace;
 		string trace_filename,Xtrace_filename;
-		bool langevin;
 		double stepsize;
 		
 		void ClearTrace(); // erases trace info so one can start over, resets at theta=0.
@@ -42,27 +43,24 @@ namespace NBandSmooth{
 		
 		void PerformTrace(unsigned int Ntrace,unsigned int Nskip);
 		void PerformMetropolisTrace(unsigned int Ntrace,unsigned int Nskip);
-		void PerformLangevinTrace(unsigned int Ntrace,unsigned int Nskip);
 		void WriteTrace();
-		void WriteXTrace();
 		void ReadTrace();
 		void EvaluateTrace();
 		
 		//void OptimizeSteps();
-		bool OPTIMIZESTEPS;
-		bool IGNORE_EMULATOR_ERROR;
 		Eigen::VectorXcd stepvec,stepvecprime,dTdTEigenVals;
 		Eigen::MatrixXd dThetadTheta;
 		Eigen::MatrixXcd dTdTEigenVecs;
 
 		void CalcLL(vector<double> &theta,double &LL);
-		void CalcLLPlusDerivatives(vector<double> &theta,double &LL,vector<double> &dLL_dtheta);
+		//void CalcLLPlusDerivatives(vector<double> &theta,double &LL,vector<double> &dLL_dtheta);
 		CLLCalcSmooth *llcalc;
 		static CPriorInfo *priorinfo;
 	};
 	
 	class CLLCalc{
 	public:
+		static bool IGNORE_EMULATOR_ERROR;
 		CLLCalc();
 		CLLCalc(CSmoothMaster *master);
 		unsigned int NPars,NObs;
@@ -71,16 +69,15 @@ namespace NBandSmooth{
 		CObservableInfo *obsinfo;
 		CSmoothMaster *master;
 		virtual void CalcLL(vector<double> &theta,double &LL);
-		virtual void CalcLLPlusDerivatives(vector<double> &theta,double &LL,vector<double> &dLL_dtheta);
+		//virtual void CalcLLPlusDerivatives(vector<double> &theta,double &LL,vector<double> &dLL_dtheta);
 		static CPriorInfo *priorinfo;
-		static bool IGNORE_EMULATOR_ERROR;
 	};
 	
 	class CLLCalcSmooth : public CLLCalc{
 	public:
 		CLLCalcSmooth(CSmoothMaster *master);
 		void CalcLL(vector<double> &theta,double &LL);
-		void CalcLLPlusDerivatives(vector<double> &theta,double &LL,vector<double> &dLL_dtheta);
+		//void CalcLLPlusDerivatives(vector<double> &theta,double &LL,vector<double> &dLL_dtheta);
 	};
 
 };

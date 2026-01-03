@@ -1,11 +1,12 @@
-#ifndef __TRAININGINFO_H__
-#define __TRAININGINFO_H__
+#ifndef __testingINFO_H__
+#define __testingINFO_H__
 #include <cstdlib>
 #include <cmath>
 #include <cstdio>
 #include <vector>
 #include <array>
 #include <fstream>
+#include <iomanip>
 #include <filesystem>
 
 #include "msu_smoothutils/parametermap.h"
@@ -25,19 +26,16 @@ using namespace NMSUUtils;
 namespace NBandSmooth{
 	class CSmoothMaster;
 
-	class CTrainingInfo{
+	class CTestingInfo{
 	public:
-      CTrainingInfo(CObservableInfo *observableinfo,CPriorInfo *priorinfo);
-      friend class CSmoothMaster;
-      friend class CSmoothEmulator;
-   private:
+		CObservableInfo *observableinfo;
 		CPriorInfo *priorinfo;
-      CObservableInfo *observableinfo;
-		unsigned int NTrainingPts,NObservables;
-		vector<unsigned int> NTrainingList;
-		vector<vector<double>> YTrain,SigmaYTrain;
+		CTestingInfo(CObservableInfo *observableinfo,CPriorInfo *priorinfo);
+		unsigned int NTestingPts,NObservables;
+		vector<unsigned int> NtestingList;
+		vector<vector<double>> YTest,SigmaYTest;
 		vector<CModelParameters *> modelpars;
-		void ReadTrainingInfo();
+		void ReadTestingInfo();
 		static CSmoothMaster *smoothmaster;
 	};
 

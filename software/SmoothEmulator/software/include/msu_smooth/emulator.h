@@ -27,62 +27,38 @@ namespace NBandSmooth{
 
 	class CSmoothEmulator{
 	public:
+      CSmoothEmulator(string observable_name_set);
+      friend class CSmoothMaster;
+   private:
+      bool INCLUDE_LAMBDA_UNCERTAINTY,FIXLAMBDA;
 		unsigned int iY; // labels observable from observable info
 		string observable_name;
 
-		double LAMBDA,SigmaA;
-		double A2barRatio,logP;
-
-		unsigned int NMC;   // NMC is for generating independent samplings of A in Tune
-		unsigned int NASample;
-		bool ConstrainA0,UseSigmaY;
-		bool pca_ignore;
-		vector<double> ABest;
-		vector<vector<double>> ThetaTrain,TTrain;
+		double LAMBDA,SigmaA,ALPHA,LambdaVariance;
+		double logP,detBB,d2lndetBBdLambda2;
+		vector<vector<double>> ThetaTrain;
 		Eigen::MatrixXd B,Binv;
-		//vector<vector<double>> H6,H8;
-		//Eigen::MatrixXd beta,Psi;
-
-		CSmoothEmulator(string observable_name_set,bool pca_ignore_set);
-
-		void CalcTForTraining();
-		void PrintA(vector<double> &Aprint);
-
+		Eigen::MatrixXd Bprime,Bprimeprime;
+		Eigen::VectorXd chi,chiprime;
+		Eigen::Matrix2d W,Winv;
+      void Init();
+		double GetCorrelation(vector<double> &theta1,vector<double> &theta2);
+		void CalcWBprimeChi();
+		double GetSigma2_Lambda(vector<double> &theta);
 		void SetThetaTrain();
 		void Tune();
-		void GetSigmaA();
-		void CalcExactLogP();
-		
-		double GetLog_AProb(vector<double> &AA);
-
-		void SetA_Zero(vector<double> &A);
-		void SetA_RanGauss(double ASigmaA,vector<double> &AA);
-		void SetA_Constant(double ASigmaA,vector<double> &AA);
-		void SetA_RanSech(double ASigmaA,vector<double> &AA);
-
-		//void GenerateASamples();
-		double GetYOnly(CModelParameters *modpars);
-		double GetYOnly(vector<double> &Theta);
-		double GetUncertainty(CModelParameters *modpars);
-		double GetUncertainty(vector<double> &Theta_s);
-		void CalcYAndUncertainty(vector<double> &Theta_s,double &Y,double &uncertainty);
-		
-		
-		
-		//void CalcYDYDTheta(CModelParameters *modpars,double &Y,vector<double> &dYdTheta,double &SigmaY);
-		void CalcYDYDTheta(CModelParameters *modpars,double &Y,vector<double> &dYdTheta,double &SigmaY);
-		void CalcYDYDTheta(vector<double> &Theta,double &Y,vector<double> &dYdTheta,double &SigmaY);
-		void WriteCoefficients();
-		void ReadCoefficients();
-		
-		void Init();
-
+		void Tune(double LambdaSet); // fix Lambda
+		void CalcSigmaA();
+		void CalcSigmaALambda();
+		void CalcLambdaVariance();
+		void CalcLogP();
+		void CalcB();
+		void GetYAndUncertaintyFromTheta(vector<double> &Theta,double &Y,double &uncertainty);
 		static CSmoothMaster *smoothmaster;
 		static unsigned int NPars;
-		static CSmooth *smooth;
 		static CparameterMap *parmap;
-		static Crandy *randy;
-		static unsigned int NTrainingPts;
+   public:
+		static unsigned int NTrainingPts,NTestingPts;
 
 	};
 

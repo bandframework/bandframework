@@ -19,8 +19,6 @@ namespace NBandSmooth{
 	public:
 		//has actual values of the parameter
 		CModelParameters();
-		vector<double> X;
-		vector<double> Theta;
 		void TranslateTheta_to_X();
 		void TranslateX_to_Theta();
 		void Print();
@@ -28,9 +26,10 @@ namespace NBandSmooth{
 		void Copy(CModelParameters *mp);
 		void SetX(vector<double> &xset);
 		void SetTheta(vector<double> &thetaset);
-		static unsigned int NModelPars;
-		static CPriorInfo *priorinfo;
-		static double GSCALE;
+      vector<double> X;
+      vector<double> Theta;
+      static CPriorInfo *priorinfo;
+      static unsigned int NModelPars;
 	};
 
 };

@@ -25,7 +25,6 @@ namespace NBandSmooth{
 		vector<vector<unsigned int>> IPar;
 		vector<unsigned int> dupfactor;
 		vector<unsigned int> rank;
-		bool UseRFactor;
 
 		CSmooth();
 		CSmooth(unsigned int NPars_Set,unsigned int maxrank);
