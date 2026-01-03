@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 4.0 FATAL_ERROR)
 project(smoothproject)
 set(CMAKE_VERBOSE_MAKEFILE on)
 project(smooth_mainprograms CXX)

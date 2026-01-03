@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 4.0)
 set(CMAKE_VERBOSE_MAKEFILE on)
 project(emulator_smooth CXX)
 set(SMOOTH_HOME $ENV{SMOOTH_HOME})
