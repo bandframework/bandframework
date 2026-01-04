@@ -21,24 +21,24 @@ The binding of C++ libraries to Python is accomplished through pybind11. The pyb
 The User should now compile the software:
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
-..% \textcolor{darkred}{cd $\{SMOOTH_LOCAL\}/software/pybind_stuff}
-$\{SMOOTH_LOCAL\}/software/pybind_stuff% \textcolor{darkred}{cmake .}
-$\{SMOOTH_LOCAL\}/software/pybind_stuff% \textcolor{darkred}{make}
+..% \textcolor{darkred}{cd $\{SMOOTH_HOME\}/software/pybind_stuff}
+$\{SMOOTH_HOME\}/software/pybind_stuff% \textcolor{darkred}{cmake .}
+$\{SMOOTH_HOME\}/software/pybind_stuff% \textcolor{darkred}{make}
 \end{Verbatim}
 }\vspace*{-8pt}
 
 \subsection{Editing and Running a Python Script}
-The Python script must be located in a analysis directory, i.e. one where there is a {\tt smooth\_data/} directory set up in the manner required by the emulator software. An example Python script is in the {\tt \$\{SMOOTH\_LOCAL\}/software/pybind\_stuff/} directory. It can be moved to the analysis directory.
+The Python script must be located in a analysis directory, i.e. one where there is a {\tt smooth\_data/} directory set up in the manner required by the emulator software. An example Python script is in the {\tt \$\{SMOOTH\_HOME\}/software/pybind\_stuff/} directory. It can be moved to the analysis directory.
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
-..% \textcolor{darkred}{cp $\{SMOOTH_LOCAL\}/software/pybind_stuff/smoothy_emulate.py $\{MY_ANALYSIS\}/}
+..% \textcolor{darkred}{cp $\{SMOOTH_HOME\}/software/pybind_stuff/smoothy_emulate.py $\{MY_ANALYSIS\}/}
 ..% \textcolor{darkred}{cd $\{MY_ANALYSIS\}/} 
 \end{Verbatim}
 }\vspace*{-8pt}
-If the User has defined an environment variable, {\tt \$\{SMOOTH\_LOCAL\}}, to the parent directory of {\tt software/pybind\_stuff}, the script is ready to run. Otherwise the User needs to edit the following line from the Python script.
+If the User has defined an environment variable, {\tt \$\{SMOOTH\_HOME\}}, to the parent directory of {\tt software/pybind\_stuff}, the script is ready to run. Otherwise the User needs to edit the following line from the Python script.
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
-sys.path.insert(0,os.environ['SMOOTH_LOCAL']+"/software/pybind_stuff")
+sys.path.insert(0,os.environ['SMOOTH_HOME']+"/software/pybind_stuff")
 \end{Verbatim}
 }\vspace*{-8pt}
 The User can switch out this line for
@@ -52,7 +52,7 @@ Here {\tt XXXXXX} is replaced by the absolute path.
 To run the script,
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
-$\{MY_ANALYSIS\}% \textcolor{darkred}{python3 smoothy_emulate.py}
+$\{MY_ANALYSIS\}% \textcolor{darkred}{python3 $\{SMOOTH_HOME\}/software/pybind_stuff/smoothy_emulate.py}
 Adding this to path: XXXXXX
 X= [20. 20. 20. 20. 20. 20.]
 Y[ 0 ]= 62.06376520471999  SigmaY= 0.46481585069318604
@@ -69,14 +69,14 @@ Y[ 9 ]= 64.70923479158401  SigmaY= 0.7742206531639135
 }\vspace*{-8pt}
 The script took the point in model-parameter space, $(20,20,20,20,20,20)$, and calculated all three observables along with their uncertainties.
 
-The Python script is
+The user might find it easier to move the Python script to the current directory so that they can avoid typing in the long path. The Python script, {\tt smoothy\_emulate.py}, is
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
 import numpy as np
 import sys
 import os
-print('Adding this to path: '+os.environ['SMOOTH_LOCAL'])
-sys.path.insert(0,os.environ['SMOOTH_LOCAL']+"/software/pybind_stuff")
+print('Adding this to path: '+os.environ['SMOOTH_HOME'])
+sys.path.insert(0,os.environ['SMOOTH_HOME']+"/software/pybind_stuff")
 import emulator_smooth
 smoothmaster=emulator_smooth.emulator_smooth()
 smoothmaster.TuneAllY()
@@ -113,7 +113,7 @@ Y[iY]=smoothmaster.GetYOnlyFromThetaPython(iY,theta)
 Hopefully, the User will find the functionality of this code to be self-explanatory. These calls should be sufficient to incorporate training and calling the emulator into any Python script.
 
 \subsection{Making More Functionality Available via Python}
-The easiest way to add more functions is to edit and extend the file {\tt \$\{SMOOTH\_LOCAL\}/software/pybind\_stuff/pybind\_main.cc}. One can see how all the functions above were defined. One can extend this to more of the functions defined in the header file {\tt \$\{SMOOTH\_HOME\}/software/include/msu\_smooth/master.h}. However, one should remember that the binding cannot easily change the functionality of functions with arguments passed by reference. Thus, if the User wishes to find some variable, e.g. {\tt Z}, from some C++ function that is written in the form {\tt void ThisIsMyMethodToGetZ(double \&Z,double x,double y)}, they will instead have to write a new C++ function in the form {\tt double ThisIsMyMethodToGetZ(double x,double z)}, where the new function returns {\tt Z} rather than having it updated by the function. For example to return the emulated value and uncertainty, a function was created of the form {\tt vector<double> GetYSigmaFromXPython(int iY,vector<double> X)}. The returned vector was 2-dimensional with {\tt Y[iY]} being the first element and {\tt sigmaY[iY]} being the second element.
+The easiest way to add more functions is to edit and extend the file {\tt \$\{SMOOTH\_HOME\}/software/pybind\_stuff/pybind\_main.cc}. One can see how all the functions above were defined. One can extend this to more of the functions defined in the header file {\tt \$\{SMOOTH\_HOME\}/software/include/msu\_smooth/master.h}. However, one should remember that the binding cannot easily change the functionality of functions with arguments passed by reference. Thus, if the User wishes to find some variable, e.g. {\tt Z}, from some C++ function that is written in the form {\tt void ThisIsMyMethodToGetZ(double \&Z,double x,double y)}, they will instead have to write a new C++ function in the form {\tt double ThisIsMyMethodToGetZ(double x,double z)}, where the new function returns {\tt Z} rather than having it updated by the function. For example to return the emulated value and uncertainty, a function was created of the form {\tt vector<double> GetYSigmaFromXPython(int iY,vector<double> X)}. The returned vector was 2-dimensional with {\tt Y[iY]} being the first element and {\tt sigmaY[iY]} being the second element.
 
 \end{sloppypar}
 \end{document}

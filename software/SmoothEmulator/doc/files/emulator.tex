@@ -38,7 +38,7 @@ Closed form for the uncertainties, as provided in \href{./smoothdraft.pdf}{{\tt 
 
 Given the training data, {\it Smooth Emulator} finds a best estimate of the two hyper-parameters. From \href{./smoothdraft.pdf}{{\tt smoothdraft.pdf}} one can see that the choice of the two hyper-parameters for very similar functions can vary substantially, because there is weak sensitivity to the ratio $\Lambda/\sigma_A$, and strong sensitivity to the product $\sigma_A\Lambda$. Nonetheless, the emulator does a good job in predicting its uncertainty.
 
-The executables based on {\it Smooth Emulator} are located in the User's {\tt \$\{SMOOTH\_LOCAL\}/bin} directory. Examples of such executables are {\tt smoothy\_tune} or {\tt smoothy\_calcobs}. These functions must be executed from within the User's analysis directory. In the following subsections, we first review the format for each of the required input files, then describe how to run {\it Smooth Emulator}, how its output is stored.
+The executables based on {\it Smooth Emulator} are located in the User's {\tt \$\{SMOOTH\_HOME\}/bin} directory. Examples of such executables are {\tt smoothy\_tune} or {\tt smoothy\_calcobs}. These functions must be executed from within the User's analysis directory. In the following subsections, we first review the format for each of the required input files, then describe how to run {\it Smooth Emulator}, how its output is stored.
 
 
 \subsection{Preparing Files for {\it Smooth Emulator}}
@@ -143,16 +143,16 @@ This is also only relevant if {\tt SmoothEmulator\_TrainingFormat} is set to {\t
 
 \subsection{Running {\it Smooth Emulator} Programs}
 
-The source code for several {\it Smooth Emulator} main programs can be found in the \\{\tt \$\{SMOOTH\_LOCAL\}/software/main\_programs/} directory. They are separated from the bulk of the software, which is in the {\tt \$\{bandframework\}/SmoothEmulator/software/} directory. The main programs are designed so that the User can easily copy and edit them to create versions that might be more appropriate to the User's specific needs. When compiled, from the {\tt \$\{SMOOTH\_LOCAL\}/software/} directory, the executables appear in the {\tt \$\{SMOOTH\_LOCAL\}/bin/} directory. If the User wishes to make new executables, it is perhaps easiest to edit and rename the existing programs in the {\tt \$\{SMOOTH\_LOCAL\}/software/main\_programs/} directory and then add the appropriate line to the {\tt \$\{SMOOTH\_LOCAL\}/software/CMakeLists.txt} file. After briefly discussing how to run the codes, a review of the four codes that use the emulation functionality is provided. The source code for these four codes is provided here with the purpose of showing the User how they might use these codes as bases for designing and coding their own main programs.
+The source code for several {\it Smooth Emulator} main programs can be found in the \\{\tt \$\{SMOOTH\_HOME\}/software/MainPrograms/} directory. They are separated from the bulk of the software, which is in the {\tt \$\{bandframework\}/SmoothEmulator/software/} directory. The main programs are designed so that the User can easily copy and edit them to create versions that might be more appropriate to the User's specific needs. When compiled, from the {\tt \$\{SMOOTH\_HOME\}/software/} directory, the executables appear in the {\tt \$\{SMOOTH\_HOME\}/bin/} directory. If the User wishes to make new executables, it is perhaps easiest to edit and rename the existing programs in the {\tt \$\{SMOOTH\_HOME\}/software/MainPrograms/} directory and then add the appropriate line to the {\tt \$\{SMOOTH\_HOME\}/software/CMakeLists.txt} file. After briefly discussing how to run the codes, a review of the four codes that use the emulation functionality is provided. The source code for these four codes is provided here with the purpose of showing the User how they might use these codes as bases for designing and coding their own main programs.
 
-From within the {\tt \$\{SMOOTH\_LOCAL\}/software/} directory, one can compile the programs with the command:
+From within the {\tt \$\{SMOOTH\_HOME\}/software/} directory, one can compile the programs with the command:
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
- $\{SMOOTH_LOCAL\}/software% cmake .
- $\{SMOOTH_LOCAL\}/software% make
+ $\{SMOOTH_HOME\}/software% cmake .
+ $\{SMOOTH_HOME\}/software% make
 \end{Verbatim}
 }\vspace*{-8pt}
 
-The executables should now appear in the {\tt \$\{SMOOTH\_LOCAL\}/bin/} directory. If one enters {\tt make} {\it program name} only that program  will be compiled. One can peruse the source codes in {\tt \$\{SMOOTH\_LOCAL\}/software/MainPrograms}. Assuming the directory {\tt \$\{SMOOTH\_LOCAL\}/bin/} has been added to the User's path, the User may switch to the User's analysis directory, and enter the program name, e.g.
+The executables should now appear in the {\tt \$\{SMOOTH\_HOME\}/bin/} directory. If one enters {\tt make} {\it program name} only that program  will be compiled. One can peruse the source codes in {\tt \$\{SMOOTH\_HOME\}/software/MainPrograms}. Assuming the directory {\tt \$\{SMOOTH\_HOME\}/bin/} has been added to the User's path, the User may switch to the User's analysis directory, and enter the program name, e.g.
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
   $\{MY_ANALYSIS\}% smoothy_testattrainingpts
 \end{Verbatim}
@@ -174,7 +174,7 @@ This program builds and tunes the emulator, then compares the emulator predictio
 
 The first column denotes the specific training point, the second and third columns represents the observable as calculated by the full model and emulator, with the emulator's uncertainty provided in the last column. After printing the information for the first observable, the program then provides the comparison for the subsequent observables.
 
-The main program,\\{\tt \$\{SMOOTH\_LOCAL\}/software/main\_programs/smoothy\_testattrainingpts\_main.cc}, for this executable is rather short and simple:
+The main program,\\{\tt \$\{SMOOTH\_HOME\}/software/MainPrograms/smoothy\_testattrainingpts\_main.cc}, for this executable is rather short and simple:
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
 int main()\{
    NBandSmooth::CSmoothMaster master;
@@ -212,7 +212,7 @@ int main()\{
 }\vspace*{-8pt}
 
 \subsubsection{{\tt smoothy\_calcobs}}
-This program prompts the User for the model parameters, then prints out the predictions for all the observables. The source code, {\tt \$\{SMOOTH\_LOCAL\}/software/main\_programs/smoothy\_calcobs\_main.cc}, provides an example how the User might write a program to access more specific output:
+This program prompts the User for the model parameters, then prints out the predictions for all the observables. The source code, {\tt \$\{SMOOTH\_HOME\}/software/MainPrograms/smoothy\_calcobs\_main.cc}, provides an example how the User might write a program to access more specific output:
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
 int main()\{
@@ -251,7 +251,7 @@ int main()\{
 Again, this source code illustrates how the User can access the functionality of the emulator through member functions of the {\tt CSmoothMaster} class.
 
 \subsubsection{{\tt smoothy\_mcmc}}
-As the title suggests, this program runs the MCMC exploration of model-parameter space using the emulator. The source code for the included main program, {\tt \$\{SMOOTH\_LOCAL\}/software/main\_programs/smoothy\_mcmc\_main.cc}, uses the functionality of both the {\tt CSmoothMaster} class and the {\tt CMCMC} class. The MCMC codes are discussed in detail in Chapter \ref{sec:mcmc}.
+As the title suggests, this program runs the MCMC exploration of model-parameter space using the emulator. The source code for the included main program, {\tt \$\{SMOOTH\_HOME\}/software/MainPrograms/smoothy\_mcmc\_main.cc}, uses the functionality of both the {\tt CSmoothMaster} class and the {\tt CMCMC} class. The MCMC codes are discussed in detail in Chapter \ref{sec:mcmc}.
 
 \subsection{Functions and Methods of the {\tt CSmoothMaster} and Related Classes}
 {\it Smooth Emulator} was designed so that the User can write their own main programs and access the functionality mainly through references to the {\tt CSmoothMaster} object. Additionally, the User might find it useful to access the {\tt CModelParameters}, {\tt CparameterMap}, {\tt CPriorInfo}, and {\tt CObservableInfo} objects. Here is a compendium of calls to the {\tt CSmoothMaster}:

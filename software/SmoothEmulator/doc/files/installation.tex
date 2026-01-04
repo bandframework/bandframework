@@ -4,13 +4,15 @@
 \section{Installation and Getting Started}\label{sec:installation}
 
 \subsection{Overview}
-This section describes how to download and install {\it Smooth Emulator} software. The software is downloaded as part of the BAND git repository. {\it Smooth Emulator} software is all contained within a single directory of that repository. That directory will be copied and reside locally on the User's computer. The software is designed so that it can be divided and copied into two directories. One holds the great majority of the header files and source code. The User will probabily wish to copy this directory to a new location outside of the repository. It is not expected that the User would edit these files, especially given that portion of the code is not designed for easy modification. A second set of codes is meant to be copied into a new location. This includes the source codes for the main programs, which tend to be very short. It is expected that the User would likely edit these codes or make altered copies. The compiled executables are also meant to be stored in this directory. The repository also includes a template directory, which the User can copy multiple times to serve as a starting point for different analyses. It is envisioned that each analysis would be performed within a second directory. The template directory also serves as a starting point for the tutorial described in Chapter \ref{sec:tutorial}.
+This section describes how to download and install {\it Smooth Emulator} software. The software is downloaded as part of the BAND git repository. {\it Smooth Emulator} software is all contained within a single directory of that repository. Once downloaded, the {\it Smooth Emulator} portion of the software can be copied to a location of the User's choosing. The source code in that directory can then be compiled. For performing analyses, the User should copy a directory from the distribution, which then serves as a template. A separate directory should be copied for any given analysis. The source code is split into different directories. One set of codes is used to produce libraries. Other codes are the main programs, which tend to be simple short programs, which then make calls to the libraries. These short codes are designed so that they can be copied and altered to address the User's needs. The template analysis directory also serves for the tutorial described in Chapter \ref{sec:tutorial}.
+
+The software is designed to be run interactively, from the command line in standard Unix-like shells. The commands are designed to work when invoked from an analysis directory, like those from the template, which have the required initialization and options files in standard locations. The User can also run the software in the batch mode, though that is usually not necessary given how quickly the operations typically proceed.
 
 \subsection{Prerequisites}
 {\it Smooth Emulator} programs should run on Mac OS or Linux, but is not supported for Windows OS. The software is largely  written in C++, though there are some Python scripts for plotting results. In addition to a C++ compiler (CMake files assume you can accommodate the  C++ 20 standard), the user needs the following software installed.
 \begin{itemize}\itemsep=0pt
     \item git
-    \item CMake
+    \item CMake (version 4.x)
     \item Eigen3 (Linear Algebra Package)
     \item $^*$Python/Matplotlib (for generating plots)
     \item $^*$pybind11 (To call emulator from within Python script)
@@ -31,7 +33,7 @@ Eigen is a C++ template library for vector and matrix operations, i.e. linear al
 \end{Verbatim}
 }\vspace*{-8pt}
 
-The provided plotting scripts are written in Python using Matplotlib. Most systems typically include Python, but Matplotlib often requires installation. On some systems Matplotlib can be added via the {\tt pip} Python package manager. In other cases it can be added via the system package manager directly. Some Users may wish to call {\it Smooth Emulator} functionality from within a Python script, most likely if they have their own MCMC software but want to call a function that returns a prediction and uncertainty for the observables as a function of the model parameters. The foundation for doing this is provided in the release, but requires installing pybind11. This can also be installed via {\tt pip}. It is crucial that pybind11 be installed consistently with the version of Python being used. On a Mac, one can consistently install all the required packages from the system package manager, {\it homebrew}.
+The provided plotting scripts are written in Python using Matplotlib. Most systems typically include Python, but Matplotlib often requires installation. On some systems Matplotlib can be added via the {\tt pip} Python package manager. In other cases it can be added via the system package manager directly. Some Users may wish to call {\it Smooth Emulator} functionality from within a Python script, most likely if they have their own MCMC software, but want to call a function that returns a prediction and uncertainty for the observables as a function of the model parameters. The foundation for doing this is provided in the release, but requires installing pybind11. This can also be installed via {\tt pip}. It is crucial that pybind11 be installed consistently with the version of Python being used. On a Mac, one can consistently install all the required packages from the system package manager, {\it homebrew}.
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
 % \textcolor{darkred}{brew install python}
@@ -42,23 +44,32 @@ The provided plotting scripts are written in Python using Matplotlib. Most syste
 }\vspace*{-8pt}
 Because pybind11 installation is often fraught with compatibility problems, it is not recommended to bother with its installation unless the User wishes to call the emulator from within a Python script or from a Python notebook.
 
-A PDF viewer will be necessary to view the plots generated by the Python scripts above. Also, the software-testing script calls the PDF viewers to compare figures with previously generated ones. On the Mac, it calls Preview. For Linux it looks for either Okular or Evince. If those are not installed the User can simply view the generated PDF files later using their own viewer.
+A PDF viewer will be necessary to view the plots generated by the Python scripts above. The software-testing script calls the PDF viewers to compare figures with previously generated ones. On the Mac, it calls Preview. For Linux it looks for either Okular or Evince. If those are not installed the User can simply view the generated PDF files later using their own viewer.
 
 \subsection{Downloading the Repository and Creating Working Directories}
 
 The software requires downloading the BAND framework software repository into some directory. Should that be in the User's home directory, the User might enter
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
-% \textcolor{darkred}{git clone https://github.com/bandframework/bandframework.git}
+/Users/CarlosSmith% \textcolor{darkred}{git clone https://github.com/bandframework/bandframework.git}
 \end{Verbatim}
 }\vspace*{-8pt}
-Within the repository, there will be a directory\\{\tt /Users/CarlosSmith/bandframework/software/SmoothEmulator/}. All the relevant functionality of {\it Smooth Emulator} is contained within this directory. The User can either leave this directory in place, or make a copy to a new location. If the User plans on making changes on the underlying software and rebuilding the core libraries, it would make sense to copy this directory to a new location. If the User plans only to make edits to the short main programs (which will be relocated anyways) then the User might wish to simply use the repository version, but a {\tt git pull} command might create conflicts. Throughout the manual the phrase {\tt \$\{SMOOTH\_HOME\}} will refer to this directory. The software and CMake files for creating the {\it Smooth Emulator} libraries is stored in the {\tt \$\{SMOOTH\_HOME\}/software/} directory. Once compiled the libraries are stored in {\tt \$\{SMOOTH\_HOME\}/software/lib/}.
+Within the repository, there will be a directory\\{\tt /Users/CarlosSmith/bandframework/software/SmoothEmulator/}. All the relevant functionality of {\it Smooth Emulator} is contained within this directory. The User can either leave this directory in place, or make a copy to a new location. If the User plans on making changes on the underlying software and rebuilding the core libraries, it would make sense to copy this directory to a new location. Otherwise, the User might wish to simply use the repository version, but a {\tt git pull} command might create conflicts. Throughout the manual the phrase {\tt \$\{SMOOTH\_HOME\}} will refer to this directory. The software and CMake files for creating the {\it Smooth Emulator} libraries is stored in the {\tt \$\{SMOOTH\_HOME\}/software/} directory.
 
-The User should create a second directory from which they will store their main programs and executables. A template should be copied from the repository as well.
+If the User downloaded the {\tt bandframework} repository into their home directory, they might copy the {\it Smooth Emulator} software as follows.
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
-% \textcolor{darkred}{cp -r $\{SMOOTH_HOME\}/LocalTemplate /Users/CarlosSmith/MY_LOCAL}
+/Users/CarlosSmith% \textcolor{darkred}{cp -r bandframework/software/SmoothEmulator ./SmoothEmulator}
 \end{Verbatim}
 }\vspace*{-8pt}
-The User may choose any other name besides {\tt MY\_LOCAL}, and henceforth, {\tt\$\{SMOOTH\_LOCAL\}} will refer to this directory, including its path. {\tt\$\{SMOOTH\_LOCAL\}/software/} contains the source code and CMake files for compiling the main programs. Executables will be stored in {\tt\$\{SMOOTH\_LOCAL\}/bin/}. Because the User might wish to edit the main programs, or to add similar programs, this provides the User a space to make such edits, all while leaving an original copy of the directory in the main repository. The User may find it convenient to add {\tt \$\{SMOOTH\_LOCAL\}/bin/} to their path. The philosophy behind the structure of dividing the code into two sections is that it allows the User to devise and build simple programs making calls to {\it Smooth Emulator} libraries without altering the source code and libraries which are kept in the {\tt \$\{SMOOTH\_HOME\}/} directory structure. 
+The User should then define an environmental variable to refer to this location. 
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+% \textcolor{darkred}{export SMOOTH_HOME=/Users/CarlosSmith/SmoothEmulator}
+\end{Verbatim}
+}\vspace*{-8pt}
+If the {\tt ../bandframework/software/SmoothEmulator} directory was moved and renamed to something else, then that location should replace {\tt /Users/CarlosSmith/SmoothEmulator} above. This location gets referenced in some of the {\it Smooth Emulator} scripts, so it is recommended to copy this definition into one's {\tt .zshrc} or {\tt .bashrc} script so that one needn't redefine it. It is also recommended that the User redefine their path. For convenience, this statement should also be in the User's {\tt .zshrc} or {\tt .bashrc} file.
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+% \textcolor{darkred}{export PATH=${PATH}:$\{SMOOTH_HOME\}/bin}
+\end{Verbatim}
+}\vspace*{-8pt}
 
 The User should create a directory from which the User would perform an analysis. This is most easily accomplished by copying the analysis template directory from the {\it Smooth} distribution. For example
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
@@ -69,58 +80,45 @@ The User may choose any other name besides {\tt MY\_ANALYSIS}. Hence forth, {\tt
 
 \begin{figure}[t]
 \centerline{\includegraphics[width = 0.65\textwidth]{figs/directorystructure}}
-\caption{\label{fig:directorystructure}{\bf Directory Structure}: The User clones the repository into some location, which will be referred to as {\tt \$\{\tt SMOOTH\_HOME\}}. The User copies the {\tt LocalTemplate} and {\tt AnalysisTemplate} directories to two new locations, {\tt \$\{SMOOTH\_LOCAL\}} and {\tt \$\{MY\_ANALYSIS\}}. The User will likely make multiple copies of the analysis directory for different projects or for different analyses with different options. The main source code and compiled libraries will be built and kept within the {\tt \$\{SMOOTH\_HOME\}/} tree. Source code for simple main programs can be found in {\tt \$\{SMOOTH\_LOCAL\}/software/} and executables are stored in {\tt \$\{SMOOTH\_LOCAL\}/bin/}. The software is designed to be run from the command line in the {\tt \$\{MY\_ANALYSIS\}} directory. Data used and created by {\it Smooth Emulator} software is stored in {\tt \$\{MY\_ANALYSIS\}/smooth\_data/}.
+\caption{\label{fig:directorystructure}{\bf Directory Structure}: The User clones the repository and copies the {\it Smooth Emulator} segment into some location, which will be referred to as {\tt \$\{\tt SMOOTH\_HOME\}}. The User copies the {\tt AnalysisTemplate} directory to {\tt \$\{MY\_ANALYSIS\}}. The User will likely make multiple copies of the analysis directory for different projects or for different analyses with different options. The main source code and compiled libraries will be built and kept within the {\tt \$\{SMOOTH\_HOME\}/} tree. Executables are stored in {\tt \$\{SMOOTH\_HOME\}/bin/}. The software is designed to be run from the command line in the {\tt \$\{MY\_ANALYSIS\}} directory. Data used and created by {\it Smooth Emulator} software is stored in {\tt \$\{MY\_ANALYSIS\}/smooth\_data/}.
 }
 \end{figure}
 
-The directory structure is shown in Fig. \ref{fig:directorystructure}. As stated above, for the remainder of this manual, {\tt \$\{SMOOTH\_HOME\}/}, {\tt \$\{SMOOTH\_LOCAL\}/} and {\tt \$\{MY\_ANALYSIS\}/} will be used to denote the location of these directories. 
+The directory structure is shown in Fig. \ref{fig:directorystructure}. As stated above, for the remainder of this manual, {\tt \$\{SMOOTH\_HOME\}/} and {\tt \$\{MY\_ANALYSIS\}/} will be used to denote the location of these directories. 
 
 \subsection{Compiling the Software}
 
-First, change into software directories, then create the makefiles with CMake, then compile them.
+First, change into software directories, create the makefiles with CMake, then compile them.
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
 % \textcolor{darkred}{cd $\{SMOOTH_HOME\}/software}
 \textcolor{darkred}{$\{SMOOTH_HOME\}/software% cmake .}
 \textcolor{darkred}{$\{SMOOTH_HOME\}/software% make}
 \end{Verbatim}
 }\vspace*{-8pt}
-There seems to be a common problem that CMake misreports the path of the {\tt Eigen} installation. If the User should get an error stating that the Eigen header files cannot be found, the User can set an environmental variable to point to the correct location, e.g.
+Executables should now appear in {\tt \$\{SMOOTH\_HOME\}/bin/} and libraries are created in {\tt \$\{SMOOTH\_HOME\}/software/lib/}
+If the User plans on using the {\tt pybind11} functionality. They should perform an additional compilation.
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+% \textcolor{darkred}{cd $\{SMOOTH_HOME\}/software}
+\textcolor{darkred}{$\{SMOOTH_HOME\}/software% cd pybind_stuff}
+\textcolor{darkred}{$\{SMOOTH_HOME\}/software/pybind_stuff% cmake .}
+\textcolor{darkred}{$\{SMOOTH_HOME\}/software/pybind_stuff% make}
+\end{Verbatim}
+}\vspace*{-8pt}
+
+There seems to be a common problem that CMake misreports the path of the {\tt Eigen} installation. If the User should get an error stating that the Eigen header files cannot be found, the User can set an environmental variable to point to the correct location, e.g.,
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
 % \textcolor{darkred}{export EIGEN3_INCLUDE_DIR=/opt/homebrew/include/eigen3/}
 \end{Verbatim}
 }\vspace*{-8pt}
 The final arguments may need to be changed depending on the User's location of the packages. If the User wishes to choose a specific C++ compiler, the {\tt cmake} command should be replaced with {\tt cmake -D CMAKE\_CXX\_COMPILER=g++}, or whichever compiler is preferred. On the Mac, the pybind11 software seemed to work better with the g++ compiler than with the clang compiler.
 
-At this point all the libraries are built, but this does not include the main programs. The main programs are short, and are meant to serve as examples which the User might copy and edit at will. Before compiling, one needs to set an environmental variable so that the compilation can find the libraries needed for compilation.
-\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
-% \textcolor{darkred}{export SMOOTH_HOME=$\{SMOOTH_HOME\}}
-\end{Verbatim}
-}\vspace*{-8pt}
-Here, {\tt \$\{SMOOTH\_HOME\}} needs to be replaced with the location of the copied {\tt bandframework} git repository. If one prefers not to set an environmental variable, one can instead edit\\
-{\tt \$\{SMOOTH\_LOCAL\}/software/CMakeLists.txt}, and replace the line where the variable {\tt \$\{SMOOTH\_HOME\}} is set to the shell's environmental variable with one where it is set explicitly. Another environmental variable that will come into play if (and only if) the User compiles the Python binding software is
-\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
-% \textcolor{darkred}{export SMOOTH_LOCAL=$\{MY_LOCAL\}}
-\end{Verbatim}
-}\vspace*{-8pt}
-Here, {\tt \$\{SMOOTH\_LOCAL\}} needs to be replaced with the location of the copied {\tt ../LocalTemplate/} directory.
-
-To compile the main programs used for all the {\it Smooth Emulator} C++ programs:
-\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
-% \textcolor{darkred}{cd $\{SMOOTH_LOCAL\}/software}
-\textcolor{darkred}{$\{SMOOTH_LOCAL\}/software% cmake .}
-\textcolor{darkred}{$\{SMOOTH_LOCAL\}/software% make}
-    .
-    .
-\end{Verbatim}
-}\vspace*{-8pt}
-The {\tt cmake} command will also recompile the main libraries in {\tt \$\{SMOOTH\_HOME\}/software/} if necessary. Several source codes for main programs can be found in\\
-{\tt \$\{SMOOTH\_LOCAL\}/software/MainPrograms/}. If you build your own main programs (probably using these as examples), you can edit the {\tt CMakeList.txt} file in {\tt \$\{SMOOTH\_LOCAL\}/software/MainPrograms/}, using the existing entries as an example. The executables should now appear in {\tt \$\{SMOOTH\_LOCAL\}/bin/}. 
-
 \subsection{The {\tt \$\{MY\_ANALYSIS\}/smooth\_data} Directory}
 
 Within {\tt \$\{MY\_ANALYSIS\}/smooth\_data/} there are several sub-directories (assuming it was created from the template). The first is {\tt smooth\_data/Info/}. Information about the model parameters, and their priors is stored in {\tt smooth\_data/Info/prior\_info.txt}, and information about the observables is stored in {\tt smooth\_data/Info/observable\_info.txt}. The file \sloppypar{\tt smooth\_data/Info/experimental\_info.txt} stores information about the measurements for each observable, and is not needed for building the emulator, but is used by the MCMC investigation of the posterior. The \sloppypar{\tt smooth\_data/Options/} directory stores text files used to set options for the training-point optimization, the emulator and the MCMC programs. The {\tt smooth\_data/FullModelRuns} data has subdirectories {\tt run0/}, {\tt run1/} $\cdots$. Each subdirectory stores information describing a full model run. The file \sloppypar{\tt smooth\_data/FullModelRuns/runX/model\_parameters.txt} stores the model parameters used for run ``{\tt X}''. This file can be provided by the User, or it can be created by the training-point optimization codes. Once those files are created, it is the User's responsibility to run the full model and record the observables in {\tt smooth\_data/FullModelRuns/runX/obs.txt}. Given those observables, the User can then run the emulator software. If the User runs the MCMC software, the MCMC traces are stored as text files in {\tt smooth\_data/MCMC\_Trace/}. Examples of Python scripts for graphing using Matplotlib can be found in \sloppypar{\tt smooth\_data/figs/}.
 
-If the User wishes to perform a different analysis, perhaps using a different set of observables, it is recommended to copy {\tt MY\_ANALYSIS} directory and perform the new analysis in that location, so that the previous analysis data is not over-written.
+The {\tt smooth\_data/} directory has several other directories. The directory {\tt smooth\_data/Options} stores three text files, which also must be edited by the User. These files set options for emulation, training-point optimization and MCMC searches. Several other subdirectories are also present, but those are usually generated by the software. 
+
+If the User wishes to perform a different analysis, perhaps using a different set of observables, it is recommended to copy the {\tt MY\_ANALYSIS} directory and perform the new analysis in that location, so that the previous analysis data is not over-written.
 
 \subsection{Setting up ``Info'' files}
 The {\tt smooth\_data/Info/} directory contains three files which the User must create and edit before running any of the {\it Smooth Emulator} software. Each of these files is a simple ascii file. The User may add comments to any of the ``Info'' files by placing the {\tt \#} symbol at the beginning of the line. Only the first file, {\tt smooth\_data/Info/prior\_info.txt} is required for the training-point optimization software. That file and {\tt smooth\_data/Info/observable\_info.txt} are both necessary for emulation. All three files, including {\tt smooth\_data/Info/experimental\_info.txt}, which lists the experimental measurements of the observables used to constrain the model-parameter space, are required for running the MCMC software.

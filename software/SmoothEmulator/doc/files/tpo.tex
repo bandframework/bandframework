@@ -6,7 +6,7 @@
 \section{Generating Training Points}\label{sec:tpo}
 
 \subsection{Overview}
-The executable {\tt trainingpoint\_optiizer}, found in {\tt \$\{SMOOTH\_LOCAL\}/bin/} produces a list of points in the $n-$dimensional model-parameter space to be used for training an emulator. The points are chosen to minimize the estimate of the expected emulator uncertainty integrated over the model-parameter prior. Because the full model values are not determined at the time the training points are chosen, the estimate is based on the User's best guess for the convergence hyper-parameter $\Lambda$. 
+The executable {\tt trainingpoint\_optiizer}, found in {\tt \$\{SMOOTH\_HOME\}/bin/} produces a list of points in the $n-$dimensional model-parameter space to be used for training an emulator. The points are chosen to minimize the estimate of the expected emulator uncertainty integrated over the model-parameter prior. Because the full model values are not determined at the time the training points are chosen, the estimate is based on the User's best guess for the convergence hyper-parameter $\Lambda$. 
 
 The program first reads a simple text file that provides the names of model parameters, the range of their prior distribution and their expected relative sensitivities, {\tt smooth\_data/Info/prior\_info.txt}. Options for {\tt trainingpoint\_optimizer} are taken from a separate text file, {\tt smooth\_data/Options/tpo\_options.txt}. This enables the User to make choices, such as which algorithm to apply when generating the training points. For some algorithms, {\tt trainingpoint\_optimizer} chooses the number of training points, whereas for other options the User chooses the number. Before the emulator is built and tuned, the User is free to run the full model at additional points, or to use their own method to generate training points and forego {\tt trainingpoint\_optimizer} entirely.
 
@@ -94,22 +94,22 @@ If set to {\tt NONE} all the training points are allowed to vary in the optimiza
  
 \subsection{Running {\tt trainingpoint\_optimizer to Generate Training Points}}
 
-To run {\it Training Point Optimizer}, first make sure the program is compiled. To compile the programs, change into the {\tt \$\{SMOOTH\_LOCAL\}/main\_programs/} directory and enter the following command,
+To run {\it Training Point Optimizer}, first make sure the program is compiled. To compile the programs, change into the {\tt \$\{SMOOTH\_HOME\}/software/MainPrograms/} directory and enter the following command,
 
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
-   $\{SMOOTH_LOCAL\}/software% \textcolor{darkred}{cmake .}
-   $\{SMOOTH_LOCAL\}/software% \textcolor{darkred}{make trainingpoint_optimizer}
+   $\{SMOOTH_HOME\}/software% \textcolor{darkred}{cmake .}
+   $\{SMOOTH_HOME\}/software% \textcolor{darkred}{make trainingpoint_optimizer}
 \end{Verbatim}
 }\vspace*{-8pt}
 
 Next, change into your analysis directory and run the program.
 {\tt
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
-   $\{MY_ANALYIS\}% \textcolor{darkred}{$\{SMOOTH_LOCAL\}/bin/trainingpoint_optimizer}
+   $\{MY_ANALYIS\}% \textcolor{darkred}{$\{SMOOTH_HOME\}/bin/trainingpoint_optimizer}
 \end{Verbatim}
 }\vspace*{-8pt}
 }
-Here {\tt \$\{SMOOTH\_LOCAL\}/bin} is the path to where the User compiles the main programs into executables. 
+Here {\tt \$\{SMOOTH\_HOME\}/bin} is the path to where the User compiles the main programs into executables. 
 
 {\tt trainingpoint\_optimizer} will read parameters from the {\tt smooth\_data/Options/tpo\_options.txt} file and from the {\tt smooth\_data/Info/prior\_info.txt} files. It will then write the information about the training points in the directory {\tt smooth\_data/FullModelRuns/}. Within the directory, a sub-directory will be created for each training point, named {\tt run0/, run1/, run2/}$\cdots$. Within each subdirectory, {\tt trainingpoint\_optimizer} creates a file {\tt runI/model\_parameters.txt} for the I$^{\rm th}$ training point. For example, the {\tt run0/model\_parameters.txt} file might be
 {\tt\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
@@ -129,7 +129,7 @@ If the User desires to use their own procedure for training points, or if the Us
 There is one warning to be issued when choosing training points for tuning {\it Smooth Emulator}. You can get an error if some training point does not provide independent information from the other points, which then leads to singularities in the matrix algebra.  For example, if two of the training points were exactly the same, it would fail. In a sense, the {\tt trainingpoint\_optimizer} program chooses training points to stay as far away from this possibility as possible.
 
 \subsection{Writing Programs Accessing the Training Point Optimization Software}
-{\it Smooth Emulator Software} is organized to accommodate the User building their own main programs that incorporate the functionality. For the training-point optimization software, the software's functionality is rather simple and the User can adjust the functionality through setting options as described above. The main programs and the executables are stored in the {\tt \$\{SMOOTH\_LOCAL\}/main\_programs/} and {\tt \$\{SMOOTH\_LOCAL\}/bin/} directories respectively. The provided main program's source code, {\tt trainingpoint\_optimizer\_main.cc}, aside from the headers, is:
+{\it Smooth Emulator Software} is organized to accommodate the User building their own main programs that incorporate the functionality. For the training-point optimization software, the software's functionality is rather simple and the User can adjust the functionality through setting options as described above. The main programs and the executables are stored in the {\tt \$\{SMOOTH\_HOME\}/software/MainPrograms/} and {\tt \$\{SMOOTH\_HOME\}/bin/} directories respectively. The provided main program's source code, {\tt trainingpoint\_optimizer\_main.cc}, aside from the headers, is:
 {\tt\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
 int main()\{
    NBandSmooth::CTPO *tpo=new NBandSmooth::CTPO();

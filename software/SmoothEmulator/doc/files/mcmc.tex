@@ -3,7 +3,7 @@
 \section{Markov-Chain Monte Carlo Generation of the Posterior}\label{sec:mcmc}
 
 \subsection{Overview}
-The {\tt \$\{SMOOTH\_LOCAL\}/software/MainPrograms/} directory contains the source code for the main program, {\tt smoothy\_mcmc\_main.cc}. When compiled it creates an executable, {\tt \$\{SMOOTH\_LOCAL\}/software/bin/smoothy\_mcmc}, which then performs an MCMC analysis. This program will invoke the emulator in its exploration of the model-parameter space. It will write the trace to file and perform and record some analysis of the trace the User might find useful. Even if the User chooses a different MCMC approach then the one provided with the {\it Smooth Emulator} software, viewing the source code might prove useful in demonstrating how to invoke the emulator from within a C++ code. 
+The {\tt \$\{SMOOTH\_HOME\}/software/MainPrograms/} directory contains the source code for the main program, {\tt smoothy\_mcmc\_main.cc}. When compiled it creates an executable, {\tt \$\{SMOOTH\_HOME\}/software/bin/smoothy\_mcmc}, which then performs an MCMC analysis. This program will invoke the emulator in its exploration of the model-parameter space. It will write the trace to file and perform and record some analysis of the trace the User might find useful. Even if the User chooses a different MCMC approach then the one provided with the {\it Smooth Emulator} software, viewing the source code might prove useful in demonstrating how to invoke the emulator from within a C++ code. 
 
 \subsection{Experimental Measurement Information}
 Once the emulator is tuned and before it is applied to a Markov Chain investigation of the likelihood, the software needs to know the experimental measurement and uncertainty. That information must be entered in the {\tt smooth\_data/Info/experimental\_info.txt} file. The file should have the format:
@@ -64,7 +64,7 @@ The relevant variables are set when the CMCMC object calls the function {\tt Per
 To run the provided MCMC program, move to the analysis directory, and run the program {\tt mcmc}. Output should look something like this:
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
-$\{MY_ANALYSIS\}% \textcolor{darkred}{$\{SMOOTH_LOCAL\}/bin/mcmc}
+$\{MY_ANALYSIS\}% \textcolor{darkred}{$\{SMOOTH_HOME\}/bin/mcmc}
 At beginning of Trace, LL=-68.764478
 At end of trace, best LL=1.563806
 Best Theta=
@@ -105,7 +105,7 @@ Information about the trace is found in the files located in the directory {\tt 
 
 \subsection{Reviewing the MCMC Source Code}\label{sec:mcmcsource}
 
-Finally, we review the source code in {\tt \$\{SMOOTH\_LOCAL\}/software/main\_programs/mcmc\_main.cc}:
+Finally, we review the source code in {\tt \$\{SMOOTH\_HOME\}/software/MainPrograms/mcmc\_main.cc}:
 {\tt
 \begin{Verbatim}[commandchars=\\\{\}]
 int main()\{
