@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+import subprocess
+from subprocess import PIPE, run
 from pylab import *
 from matplotlib.colors import LogNorm
 plt.rc('text', usetex=False)
@@ -126,11 +128,21 @@ for ipanel in range (0,npanels):
 
 outputfilename='posterior.pdf'
 plt.savefig(outputfilename,format='pdf')
-plt.show()
-plt.close()
-# if you have Mac OS and want to see pdf file, comment out previous two lines and uncomment line below
-#os.system("open -a Preview "+outputfilename);
-# if you have Linux and want to see pdf file, comment out previous two lines and uncomment line below
-#os.system("okular "+outputfilename+"&");
+#plt.show()
+#plt.close()
+sbp=subprocess.run(["uname","-s"],stdout=PIPE,stderr=PIPE,universal_newlines=True)
+osname=sbp.stdout.rstrip()
+if osname=="Darwin":
+   os.system("open -a Preview "+outputfilename);
+else:
+   sbp=subprocess.run(["command","-v","okular","&> /dev/null"],stdout=PIPE,stderr=PIPE)
+   returncode=sbp.returncode
+   if returncode==0:
+      os.system("okular "+outputfilename+"&")
+   else:
+      sbp=subprocess.run(["command","-v","evince","&> /dev/null"],stdout=PIPE,stderr=PIPE)
+      returncode=sbp.returncode
+      if returncode==0:
+         os.system("evince "+outputfilename+"&")
 
 quit()
