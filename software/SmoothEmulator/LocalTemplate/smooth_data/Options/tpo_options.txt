@@ -1,0 +1,11 @@
+#LogFileName               tpolog.txt  # comment out to direct output to screen
+TPO_Method  MCQuadratic  # can be "MC", "MCSphere", "MCSimplex", "MCSimplexPlus1", "MCQuadratic", "MCSphereQuadratic"
+TPO_NTrainingPts    0   # only relevant for OptimizeMethod="MCSphere" or "MC"
+TPO_NMC  100000
+TPO_ALPHA 0.01
+TPO_LAMBDA 2.5
+TPO_RANSEED 12345
+TPO_Include_LAMBDA_Uncertainty true
+TPO_FullModelRunsDirName  smooth_data/FullModelRuns
+#TPO_ReadPoints 0,1,4-7,10,11-13,21
+#TPO_FreezePoints 0,1,4-7,10,11-13,21

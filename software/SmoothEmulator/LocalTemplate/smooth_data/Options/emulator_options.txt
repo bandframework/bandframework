@@ -1,0 +1,22 @@
+  # Location of output, comment out for interactive running
+  # LogFileName smoothlog.txt
+  SmoothEmulator_FixLambda false // If false will adjust optimize LAMBDA (false is default)
+  # Smoothness parameter to start maximizing procedure
+  SmoothEmulator_LAMBDA 2.5    // If SmoothEmulator_FixLambda is true, this fixes LAMBDA
+  #
+  # Location of training data, default is smooth_data/FullModelRuns
+  SmoothEmulator_FullModelRunsDirName smooth_data/FullModelRuns
+  #
+  # Choose which runs to use for training. Can be set to "all" or as list, e.g. 1-5,8-12,15,18
+  SmoothEmulator_TrainingPts all
+  #
+  # Below only used for testing agains full model runs not used for training.
+  # Default location of testing data is smooth_data/FullModelTestingRuns/
+  SmoothEmulator_FullModelTestingRunsDirName smooth_data/FullModelTestingRuns
+  #
+  # List of points to be used for testing, all is default, can list, e.g. 1-5,8-12,15,18
+  SmoothEmulator_TestingPts all
+  #
+  # When calculating uncertainty, include(or not) the contribution from Lambda varying
+  SmoothEmulator_INCLUDE_LAMBDA_UNCERTAINTY true
+  #
