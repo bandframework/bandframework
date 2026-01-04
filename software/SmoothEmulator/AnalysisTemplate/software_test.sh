@@ -21,8 +21,7 @@ smoothy_testattrainingpts;
 echo --------- ran smooth_testattrainingpts ---------
 smoothy_testvsfullmodel;
 echo --------- ran smoothy_testvsfullmodel ---------
-\cp -f ${SMOOTH_HOME}/software/pybind_stuff/smoothy_emulate.py .;
-python3 smoothy_emulate.py
+python3 ${SMOOTH_HOME}/software/pybind_stuff/smoothy_emulate.py
 echo --------- ran smoothy_emulate.py ---------
 smoothy_mcmc;
 echo --------- ran smoothy_mcmc ---------
