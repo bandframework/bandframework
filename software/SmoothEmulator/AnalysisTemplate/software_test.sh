@@ -2,9 +2,6 @@ thisdir=${PWD}
 cd ${SMOOTH_HOME}/software
 cmake .
 cmake
-cd ${SMOOTH_LOCAL}/software
-cmake .
-make
 echo made C++ programs
 cd pybind_stuff
 cmake .
@@ -24,7 +21,7 @@ smoothy_testattrainingpts;
 echo --------- ran smooth_testattrainingpts ---------
 smoothy_testvsfullmodel;
 echo --------- ran smoothy_testvsfullmodel ---------
-\cp -f ${SMOOTH_LOCAL}/software/pybind_stuff/smoothy_emulate.py .;
+\cp -f ${SMOOTH_HOME}/software/pybind_stuff/smoothy_emulate.py .;
 python3 smoothy_emulate.py
 echo --------- ran smoothy_emulate.py ---------
 smoothy_mcmc;
