@@ -1,4 +1,7 @@
-This directory contains examples of the application of the BAND tools, found [here](../software), to nuclear physics problems. As of v0.4.0+dev we have the following examples:
+# BAND Framework software uses
+This directory contains examples of the application of one or more BAND software tools, found [here](../software), to nuclear physics problems. As of v0.5.0+dev the following BAND Framework software uses reside here:
 
-- [Bfrescox](BFRESCOX/README.md): A BAND extension of the frescox scattering code for coupled-channels calculations that uses surmise to enable parameter estimation within frescox.
+- Bfrescox + surmise: combining the Frescox scattering code with surmise to enable Bayesian parameter estimation for coupled-channels scattering.
+
+The main BAND Framework README is [here](../README.md). 
 

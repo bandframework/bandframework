@@ -8,7 +8,7 @@ https://github.com/bandframework/bandframework/issues
 
 Release 0.5.0
 -------------
-:Date: TBD, 2025
+:Date: December 22, 2025
 
 New organization:
 
@@ -16,19 +16,28 @@ New organization:
 
 New capabilities and notable changes:
 
-- Added BAND-compatible lcgp at `v0.2.1 <https://github.com/mosesyhc/LCGP/releases/tag/v0.2.1>`_, a tool for latent component Gaussian process emulation for multivariate stochastic simulations.
-- Added BAND-compatible ModelDiscrepancy at `v1.1.0 <https://github.com/sjaiswal-tifr/ModelDiscrepancy/tree/32d7d2c46009bc8c67a86580a088fb1b747ae029>`_, an example Bayesian framework for model-data comparison that accounts for theoretical uncertainties.
-- Added BAND-compatible neutron-rich-bmm at `v0.1.0 <https://github.com/asemposki/neutron-rich-bmm/releases/tag/v0.1.0>`_, an example of Gaussian process Bayesian model mixing for the dense matter equation of state.
-- Added BAND-compatible pybmc at `v0.2.4 <https://github.com/ascsn/pybmc/releases/tag/v0.2.4>`_, a tool for performing Bayesian model combination on various predictive models.
-- Added BAND-compatible Bfrescox at `v0.0.1-alpha <https://github.com/bandframework/Bfrescox/releases/tag/v0.0.1-alpha>`_, A Python wrapper for the Frescox coupled reaction channel code.
-- Updated BAND-compatible jitr to `v2.5.1 <https://github.com/beykyle/jitr/releases/tag/v2.5.1>`_, which fixes bugs in calculating some observables; also adds mass tables, a Reaction class, many examples, and other functionality. 
-- Updated BAND-compatible rose to `v1.1.7 <https://github.com/bandframework/rose/releases/tag/v1.1.7>`_, which includes minor bug fixes.
-- Updated BAND-compatible SAMBA to `v1.2.0 <https://github.com/asemposki/SAMBA/releases/tag/v1.2.0>`_, which fixes some GP mixing bugs. 
+- added BAND-compatible LCGP at `v0.2.1 <https://github.com/mosesyhc/LCGP/releases/tag/v0.2.1>`_, a tool for latent component Gaussian process emulation for multivariate stochastic simulations.
+- added BAND-compatible ModelDiscrepancy at `v1.1.0 <https://github.com/sjaiswal-tifr/ModelDiscrepancy/releases/tag/v1.1.0>`_, an example Bayesian framework for model-data comparison that accounts for theoretical uncertainties.
+- added BAND-compatible neutron-rich-bmm at `v0.1.0 <https://github.com/asemposki/neutron-rich-bmm/releases/tag/v0.1.0>`_, an example of Gaussian process Bayesian model mixing for the dense matter equation of state.
+- added BAND-compatible pybmc at `v0.2.4 <https://github.com/ascsn/pybmc/releases/tag/v0.2.4>`_, a tool for performing Bayesian model combination on various predictive models.
+- added BAND-compatible Bfrescox at `v0.0.1-alpha <https://github.com/bandframework/Bfrescox/releases/tag/v0.0.1-alpha>`_, A Python wrapper for the Frescox coupled reaction channels code.
+- updated BAND-compatible jitr to `v2.5.1 <https://github.com/beykyle/jitr/releases/tag/v2.5.1>`_, which fixes bugs in calculating some observables; also adds mass tables, a Reaction class, many examples, and other functionality. 
+- updated BAND-compatible rose to `v1.1.7 <https://github.com/bandframework/rose/releases/tag/v1.1.7>`_, which includes minor bug fixes.
+- updated BAND-compatible SAMBA to `v1.2.1 <https://github.com/asemposki/SAMBA/releases/tag/v1.2.1>`_, which fixes some GP mixing bugs and fixes rendering of the documentation. 
 - updated BAND-compatible surmise to `v0.4.0 <https://github.com/bandframework/surmise/releases/tag/v0.4.0>`_, which improves coverage of test suite, integrates Jupyter Book usage examples, and reassigns research (not fully-tested) code.
 - updated BAND-compatible Taweret to `v1.2.0 <https://github.com/bandframework/Taweret/releases/tag/v1.2.0>`_, which updates the infrastructure and notebooks, and improves the documentation.
-- Updated BAND-compatible PUQ to `v0.1.1 <https://github.com/parallelUQ/PUQ/releases/tag/v0.1.1>`_, which extends hetGPy as a base surrogate module and includes two novel sequential design strategies for stochastic simulation models.
-- Updated BAND example BMEX to `v0.1.4 <https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.4>`_, which includes minor quality of life improvements and bug fixes.
-- Updated BAND software use case from BAND Camp 2021 to directly include Bfrescox tutorials.
+- updated BAND-compatible PUQ to `v0.1.1 <https://github.com/parallelUQ/PUQ/releases/tag/v0.1.1>`_, which extends hetGPy as a base surrogate module and includes two novel sequential design strategies for stochastic simulation models.
+- updated BAND example BMEX to `v0.1.4 <https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.4>`_, which includes minor quality of life improvements and bug fixes.
+- updated BAND software use case from BAND Camp 2021 to directly include Bfrescox tutorials.
+
+:Known issues:
+
+- We do not yet have a stated policy on the use/documentation of AI tools.
+- If one installs all BAND packages in a particular order (and in a single virtual environment, etc.), there may be an incompatibility with the Eigen dependency; fixes are being explored.
+- `Notebooks <https://github.com/bandframework/bandframework/tree/v05release/BANDsoftware_uses/Bfrescox>`_  demonstrating the use of the Frescox coupled reaction channels code in BANDsoftware_uses directory need to be updated so that they employ BAND-compatible `Bfrescox <https://github.com/bandframework/Bfrescox/releases/tag/v0.0.1-alpha>`_.
+- The bandframework repository contains different content, including Jupyter notebooks, that could be presented to the public via a single BAND framework Jupyter notebook. This might simplify reviewing since verifying that books run through could be accomplished by github actions. 
+- The `BRICK tutorial notebook <https://github.com/bandframework/bandframework/blob/v05release/examples/BRICK/tutorial/tutorial.ipynb>`_ does not run correctly unless AZURE2 is installed at the command line. However, AZURE2 at the command line is currently only available in its Linux-compatible version. Linux users who wish to run the BRICK tutorial can request access to AZURE2 `here <https://azure.nd.edu/registration.php>`_, and then install it so it runs at the command line. 
+
 
 
 Release 0.4.0
