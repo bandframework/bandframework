@@ -39,7 +39,8 @@ add_executable(trainingpoint_optimizer MainPrograms/trainingpoint_optimizer_main
 get_target_property(TARGET_INCLUDES trainingpoint_optimizer INCLUDE_DIRECTORIES)
 message(include dirs are ${INCLUDE_DIRECTORIES})
 
-add_dependencies(trainingpoint_optimizer)
+add_dependencies(trainingpoint_optimizer smooth)
+add_dependencies(trainingpoint_optimizer smoothutils)
 target_link_libraries(trainingpoint_optimizer libsmooth.a  libsmoothutils.a   ${EIGEN3_LIBRARY})
 
 #################################################
@@ -47,7 +48,8 @@ target_link_libraries(trainingpoint_optimizer libsmooth.a  libsmoothutils.a   ${
 #################################################
 set(SOURCE_FILES MainPrograms/smoothy_testattrainingpts_main.cc)
 add_executable(smoothy_testattrainingpts MainPrograms/smoothy_testattrainingpts_main.cc)
-add_dependencies(smoothy_testattrainingpts)
+add_dependencies(smoothy_testattrainingpts smooth)
+add_dependencies(smoothy_testattrainingpts smoothutils)
 target_link_libraries(smoothy_testattrainingpts libsmooth.a  libsmoothutils.a   ${EIGEN3_LIBRARY})
 
 #################################################
@@ -55,7 +57,8 @@ target_link_libraries(smoothy_testattrainingpts libsmooth.a  libsmoothutils.a   
 #################################################
 set(SOURCE_FILES MainPrograms/smoothy_testvsfullmodel_main.cc)
 add_executable(smoothy_testvsfullmodel MainPrograms/smoothy_testvsfullmodel_main.cc)
-add_dependencies(smoothy_testvsfullmodel)
+add_dependencies(smoothy_testvsfullmodel smooth)
+add_dependencies(smoothy_testvsfullmodel smoothutils)
 target_link_libraries(smoothy_testvsfullmodel libsmooth.a  libsmoothutils.a   ${EIGEN3_LIBRARY})
 
 #################################################
@@ -63,7 +66,8 @@ target_link_libraries(smoothy_testvsfullmodel libsmooth.a  libsmoothutils.a   ${
 #################################################
 set(SOURCE_FILES MainPrograms/smoothy_calcobs_main.cc)
 add_executable(smoothy_calcobs MainPrograms/smoothy_calcobs_main.cc)
-add_dependencies(smoothy_calcobs)
+add_dependencies(smoothy_calcobs smooth)
+add_dependencies(smoothy_calcobs smoothutils)
 target_link_libraries(smoothy_calcobs libsmooth.a libsmoothutils.a   ${EIGEN3_LIBRARY})
 
 #################################################
@@ -71,7 +75,8 @@ target_link_libraries(smoothy_calcobs libsmooth.a libsmoothutils.a   ${EIGEN3_LI
 #################################################
 set(SOURCE_FILES MainPrograms/smoothy_mcmc_main.cc)
 add_executable(smoothy_mcmc MainPrograms/smoothy_mcmc_main.cc)
-add_dependencies(smoothy_mcmc)
+add_dependencies(smoothy_mcmc smooth)
+add_dependencies(smoothy_mcmc smoothutils)
 target_link_libraries(smoothy_mcmc libsmooth.a libsmoothutils.a   ${EIGEN3_LIBRARY})
 
 #################################################
@@ -79,7 +84,8 @@ target_link_libraries(smoothy_mcmc libsmooth.a libsmoothutils.a   ${EIGEN3_LIBRA
 #################################################
 set(SOURCE_FILES TutorialPrograms/fakefullmodel.cc)
 add_executable(fakefullmodel TutorialPrograms/fakefullmodel.cc)
-add_dependencies(fakefullmodel)
+add_dependencies(fakefullmodel smooth)
+add_dependencies(fakefullmodel smoothutils)
 target_link_libraries(fakefullmodel
 libsmooth.a libsmoothutils.a ${EIGEN3_LIBRARY})
 
@@ -88,9 +94,9 @@ libsmooth.a libsmoothutils.a ${EIGEN3_LIBRARY})
 #################################################
 set(SOURCE_FILES TutorialPrograms/fakeinfo.cc)
 add_executable(fakeinfo TutorialPrograms/fakeinfo.cc)
-add_dependencies(fakeinfo)
-target_link_libraries(fakeinfo
-libsmooth.a libsmoothutils.a ${EIGEN3_LIBRARY})
+add_dependencies(fakeinfo smooth)
+add_dependencies(fakeinfo smooth smoothutils)
+target_link_libraries(fakeinfo libsmooth.a libsmoothutils.a ${EIGEN3_LIBRARY})
 #################################################
 
 
