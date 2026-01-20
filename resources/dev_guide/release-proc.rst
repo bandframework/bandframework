@@ -64,5 +64,8 @@ After release
 - Ensure all relevant GitHub issues are closed.
 
 - Update website to reflect existence of new release.
+  
+  - Update if necessary the list of software in framework and all software descriptions to match contents of new release.
+  - Confirm that links to different software products function and go to the correct target.
 
 - Disseminate news of new release to: FRIB-TA mailing list, JETSCAPE/X-SCAPE mailing list, other interested parties.
