@@ -1,5 +1,6 @@
 \documentclass[UserManual.tex]{subfiles}
 \begin{document}
+\begin{sloppypar}
 \section{Markov-Chain Monte Carlo Generation of the Posterior}\label{sec:mcmc}
 
 \subsection{Overview}
@@ -30,8 +31,7 @@ Correlated errors are not explicitly addressed in {\it Smooth Emulator} software
 
 \subsection{MCMC Options}
 
-Next, one needs to edit the options file 
-\sloppypar{\tt\$\{MY\_ANALYSIS\}/smooth\_data/Options/mcmc\_options.txt}. An example file is:
+Next, one needs to edit the options file {\tt\$\{MY\_ANALYSIS\}/smooth\_data/Options/mcmc\_options.txt}. An example file is:
 \vspace*{-8pt}{\tt
 \begin{Verbatim}
  # This is for the MCMC search of parameter space
@@ -176,5 +176,7 @@ class CMCMC\{
 The functionalities that are most likely to be incorporated are the functions {\tt ClearTrace(), PruneTrace(), PerformTrace(), WriteTrace(), EvaluateTrace()} and {\tt CalcLL()}. These functions are mostly self-explanatory. The function {\tt WriteTrace()} will write the two files with trace information described in Sec. \ref{subsec:mcmcrunning}. The function {\tt CalcLL(vector<double> \&theta,double \&LL)} calculates the posterior log-likelihood, {\tt LL}, for the point $\vec{\theta}$.
 
 The function {\tt EvaluateTrace()} considers the trace, assuming it has been calculated. After evaluating the trace it finds and writes the averages and covariances mentioned in Sec. \ref{subsec:mcmcrunning}. It also writes the file describing the resolving power for each observable w.r.t. the constraint of each observable. All the trace-evaluation output files are written to files in the director{\tt smooth\_data/MCMC/} directory.
+
+\end{sloppypar}
 
 \end{document}
