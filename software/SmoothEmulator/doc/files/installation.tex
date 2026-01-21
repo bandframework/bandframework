@@ -181,6 +181,25 @@ If all goes well, three pairs of matching figures  should ultimately appear.\\
 \caption{Figures created by the {\tt software\_test.sh} script. These same figures will be created by completing the tutorial in Chapter \ref{sec:tutorial}}
 \end{figure}
 
+To test the {\tt pybind11} functionality, enter the command below. The output should be:
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+$\{MY_ANALYSIS\}% \textcolor{darkred}{python3 ${SMOOTH_HOME}/software/pybind_stuff/smoothy_emulate.py}
+Adding this to path: XXX/software/lib
+X= [20. 20. 20. 20. 20. 20.]
+Y[ 0 ]= -87.52874076690921  SigmaY= 1.581866454534034
+Y[ 1 ]= -11.271353985726321  SigmaY= 0.5174129111757715
+Y[ 2 ]= 142.7366961537101  SigmaY= 0.224412945072997
+Y[ 3 ]= -75.69108719689788  SigmaY= 0.37636695243649665
+Y[ 4 ]= 77.5122131352153  SigmaY= 0.9065709798513465
+Y[ 5 ]= 58.88131815229454  SigmaY= 1.2925008270736835
+Y[ 6 ]= 134.41231285717063  SigmaY= 1.3337258303822137
+Y[ 7 ]= 137.45383706357387  SigmaY= 0.5634991046716276
+Y[ 8 ]= 5.924468079091237  SigmaY= 0.5474124140829644
+Y[ 9 ]= 106.78915673976991  SigmaY= 0.553889676442671
+\end{Verbatim}
+}\vspace*{-8pt}
+This python script called the emulator and calculated $Y$ at $X=(20,20,20,20,20,20)$. It then printed the emulated value and the uncertainty for each of 10 observables at that point. 
+
 \end{sloppypar}
 
 \end{document}

@@ -28,8 +28,8 @@ smoothy_testattrainingpts;
 echo --------- ran smoothy_testattrainingpts ---------
 smoothy_testvsfullmodel;
 echo --------- ran smoothy_testvsfullmodel ---------
-python3 ${SMOOTH_HOME}/software/pybind_stuff/smoothy_emulate.py
-echo --------- ran smoothy_emulate.py ---------
+#python3 ${SMOOTH_HOME}/software/pybind_stuff/smoothy_emulate.py
+#echo --------- ran smoothy_emulate.py ---------
 smoothy_mcmc;
 echo --------- ran smoothy_mcmc ---------
 mkdir -p figs/figdata
