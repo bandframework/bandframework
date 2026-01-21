@@ -3,7 +3,6 @@ echo "Running script to test Smooth Emulator Software. If successful, pdf images
 echo "If you are running linux, the comparison figs will automatically be generated if you have okular or evince installed"
 echo "If error messages arise and script fails, you need to see where failures occured by viewing output of this script"
 echo "If you don't have pybind working, the rest of the scripts and the comparisons should function"
-exit
 echo SMOOTH_HOME = ${SMOOTH_HOME}
 echo -------------------------------------
 thisdir=${PWD}
@@ -69,7 +68,7 @@ then
    elif command -v evince &> /dev/null
    then
       evince YvsY/YvsY_obs3.pdf &
-      evince testfigs/YvsY_obs3t.pdf &
+      evince testfigs/YvsY_obs3.pdf &
       evince posterior/posterior.pdf &
       evince testfigs/posterior.pdf &
       evince resolvingpower/RP.pdf &
