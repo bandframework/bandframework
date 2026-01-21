@@ -1,12 +1,20 @@
+#! /bin/bash
+echo "Running script to test Smooth Emulator Software. If successful, pdf images will be generated which should match those in figs/testfigs"
+echo "If you are running linux, the comparison figs will automatically be generated if you have okular or evince installed"
+echo "If error messages arise and script fails, you need to see where failures occured by viewing output of this script"
+echo "If you don't have pybind working, the rest of the scripts and the comparisons should function"
+exit
+echo SMOOTH_HOME = ${SMOOTH_HOME}
+echo -------------------------------------
 thisdir=${PWD}
 cd ${SMOOTH_HOME}/software
 cmake .
 cmake
-echo made C++ programs
+echo ------- made C++ programs ----------
 cd pybind_stuff
 cmake .
 make
-echo made pybind11 libraries
+echo ------- made pybind11 libraries ---------
 cd ${thisdir}
 rm -f -r smooth_data/FullModelRuns/run*
 rm -f -r smooth_data/FullModelTestingRuns/run*
@@ -71,7 +79,7 @@ then
       echo "You can compare figures named figs/testfigs/*_test.pdf to new figures by hand"
    fi
 else
-   echo "Script written for Linux of Mac"
+   echo "Script written for Linux or Mac"
    echo "You can compare figures named figs/testfigs/*_test.pdf to new figures by hand"
 fi
 cd ${thisdir}
