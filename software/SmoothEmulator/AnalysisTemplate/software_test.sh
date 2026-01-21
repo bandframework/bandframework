@@ -25,7 +25,7 @@ echo --------- ran trainingpoint_optimizer ---------
 fakefullmodel;
 echo --------- ran fakefullmodel ---------
 smoothy_testattrainingpts;
-echo --------- ran smooth_testattrainingpts ---------
+echo --------- ran smoothy_testattrainingpts ---------
 smoothy_testvsfullmodel;
 echo --------- ran smoothy_testvsfullmodel ---------
 python3 ${SMOOTH_HOME}/software/pybind_stuff/smoothy_emulate.py
@@ -50,21 +50,21 @@ echo --- osname=${osname}  ---
 if [ ${osname} = "Darwin" ]
 then
    open YvsY/YvsY_obs3.pdf
-   open testfigs/YvsY_obs3_test.pdf
+   open testfigs/YvsY_obs3.pdf
    open posterior/posterior.pdf
-   open testfigs/posterior_test.pdf
+   open testfigs/posterior.pdf
    open resolvingpower/RP.pdf
-   open testfigs/RP_test.pdf
+   open testfigs/RP.pdf
 elif [ osname = "Linux" ]
 then
    if command -v okular &> /dev/null
    then
       okular YvsY/YvsY_obs3.pdf &
-      okular testfigs/YvsY_obs3_test.pdf &
+      okular testfigs/YvsY_obs3.pdf &
       okular posterior/posterior.pdf &
-      okular testfigs/posterior_test.pdf &
+      okular testfigs/posterior.pdf &
       okular resolvingpower/RP.pdf &
-      okular testfigs/RP_test.pdf &
+      okular testfigs/RP.pdf &
    elif command -v evince &> /dev/null
    then
       evince YvsY/YvsY_obs3.pdf &
