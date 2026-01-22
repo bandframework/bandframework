@@ -15,7 +15,7 @@ add_custom_target(extern_smooth COMMAND make WORKING_DIRECTORY ..)
 
 message("Will Compile with " ${CMAKE_CXX_COMPILER})
 message("For different compiler enter: cmake -D CMAKE_CXX_COMPILER=YOUR_PREFERRED_COMPILER .")
-set(CMAKE_CXX_FLAGS "-W -Wall -march=native -std=c++17 -O2 -fPIC -fvisibility=hidden")
+set(CMAKE_CXX_FLAGS "-W -Wall -march=native -std=c++17 -O2 -fPIC -fvisibility=hidden -Wno-unused-result")
 set(CMAKE_MODULE_PATH "${MAIN_PROGRAM_DIR}/cmake")
 find_package(Eigen3 REQUIRED)
 include_directories(SYSTEM ../include $ENV{EIGEN3_INCLUDE_DIR})

@@ -4,7 +4,7 @@ project(msu_smooth LANGUAGES CXX)
 message("Will Compile with " ${CMAKE_CXX_COMPILER})
 message("For different compiler enter: cmake -D CMAKE_CXX_COMPILER=YOUR_PREFERRED_COMPILER .")
 
-set(CMAKE_CXX_FLAGS "-W -Wall -march=native -std=c++20 -O3 -fPIC")
+set(CMAKE_CXX_FLAGS "-W -Wall -march=native -std=c++20 -O3 -fPIC -Wno-unused-result")
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 find_package(Eigen3 REQUIRED)
