@@ -1,19 +1,14 @@
-#! /bin/bash
+#! /bin/sh
 echo "Running script to test Smooth Emulator Software. If successful, pdf images will be generated which should match those in figs/testfigs"
 echo "If you are running linux, the comparison figs will automatically be generated if you have okular or evince installed"
 echo "If error messages arise and script fails, you need to see where failures occured by viewing output of this script"
-echo "If you don't have pybind working, the rest of the scripts and the comparisons should function"
 echo SMOOTH_HOME = ${SMOOTH_HOME}
 echo -------------------------------------
 thisdir=${PWD}
 cd ${SMOOTH_HOME}/software
 cmake .
-cmake
-echo ------- made C++ programs ----------
-cd pybind_stuff
-cmake .
 make
-echo ------- made pybind11 libraries ---------
+echo ------- made C++ programs ----------
 cd ${thisdir}
 rm -f -r smooth_data/FullModelRuns/run*
 rm -f -r smooth_data/FullModelTestingRuns/run*
@@ -28,8 +23,6 @@ smoothy_testattrainingpts;
 echo --------- ran smoothy_testattrainingpts ---------
 smoothy_testvsfullmodel;
 echo --------- ran smoothy_testvsfullmodel ---------
-#python3 ${SMOOTH_HOME}/software/pybind_stuff/smoothy_emulate.py
-#echo --------- ran smoothy_emulate.py ---------
 smoothy_mcmc;
 echo --------- ran smoothy_mcmc ---------
 mkdir -p figs/figdata
