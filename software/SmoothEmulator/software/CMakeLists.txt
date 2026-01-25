@@ -37,7 +37,6 @@ set(SOURCE_FILES MainPrograms/trainingpoint_optimizer_main.cc)
 add_executable(trainingpoint_optimizer MainPrograms/trainingpoint_optimizer_main.cc)
 
 get_target_property(TARGET_INCLUDES trainingpoint_optimizer INCLUDE_DIRECTORIES)
-message(include dirs are ${INCLUDE_DIRECTORIES})
 
 add_dependencies(trainingpoint_optimizer smooth)
 add_dependencies(trainingpoint_optimizer smoothutils)
