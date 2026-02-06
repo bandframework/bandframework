@@ -65,7 +65,7 @@ After release
 
 - Update website to reflect existence of new release.
   
-  - Update if necessary the BAND framework tools list in the `software page <https://bandframework.github.io/software>`_ as well all tool descriptions in that page to match contents of new release.
+  - Update if necessary the BAND framework tools list in the `software page <https://bandframework.github.io/software>`_ as well as all tool descriptions in that page to match contents of new release.
   - Confirm that links to different BAND framework tools in the `software page <https://bandframework.github.io/software>`_ function and go to the correct target.
 
 - Disseminate news of new release to: FRIB-TA mailing list, JETSCAPE/X-SCAPE mailing list, other interested parties.
