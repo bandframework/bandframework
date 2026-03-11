@@ -15,7 +15,7 @@ As of v0.5.0+dev the following packages are present in this directory:
 - surmise (v0.4.0): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - Taweret (v1.2.0): A Python package containing multiple Bayesian Model Mixing methods.
 
-Also included are packages developed by the the BAND Framework team but are no longer maintained:
+Also included are packages that were developed by the the BAND Framework team but are no longer maintained:
 - rose (v1.1.7): A reduced-order scattering emulator.
 
 Applications of these tools to nuclear-physics problems are provided in the ["BAND software uses"](/BANDsoftware_uses) directory. 
