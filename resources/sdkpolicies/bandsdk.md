@@ -28,6 +28,7 @@ As shown in the [template](/resources/sdkpolicies/template.md) and [linked SDK c
 | 6. | Provide a BAND team-accessible repository.
 | 7. | Must allow installing, building, and linking against an outside copy of all imported software that is externally developed and maintained.
 | 8. | Have no hardwired print or IO statements that cannot be turned off.
+| 9. | If the development team no longer plans to maintain the package, A) text must be added to top-level repository README.md explaining this, and B) the last working versions of the dependencies of package should be documented (e.g. by using `numpy>=1.0.1,<2.0.0` instead of `numpy>=1.0.1` in the requirements.txt). 
 
 ### Recommended Policies
 
