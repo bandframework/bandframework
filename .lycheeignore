@@ -1,0 +1,5 @@
+# Consistently returns "Rejected status code: 429 Too Many Requests" despite
+# configuration efforts to minimize likelihood of too many requests in a short
+# period of time.  This is a well-known piece of software whose address is
+# unlikely to change or that should be easy to find otherwise.
+https://www.gnu.org/software/gsl
