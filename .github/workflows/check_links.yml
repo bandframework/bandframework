@@ -18,7 +18,7 @@ jobs:
   #
   # Frescox webpages apparently need more time or will timeout.
   #
-  # I tried having it check .ipynb files as well, but that didn't go well and I
+  # I tried having it check .ipynb files as well, but that didn't go well.  I
   # abandoned that attempt for now.
   check_links:
     runs-on: ubuntu-latest
