@@ -3,3 +3,7 @@
 # period of time.  This is a well-known piece of software whose address is
 # unlikely to change or that should be easy to find otherwise.
 https://www.gnu.org/software/gsl
+
+# failed to verify TLS certificate: invalid peer certificate: UnknownIssuer
+# Network error: SSL certificate not trusted.
+https://azure.nd.edu
