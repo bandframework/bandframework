@@ -4,7 +4,7 @@ IMPORTANT: AZURE2 must be available from the command line in the environment
 in which BRICK is run.  Currently, AZURE2 is not publicly available. 
 
 There is a link under the login prompt on the [hosting
-site](http://azure.nd.edu) where you may request an account. An account will
+site](https://azure.nd.edu) where you may request an account. An account will
 allow you to download the source code.
 
 Helpful hints:
