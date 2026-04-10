@@ -21,6 +21,9 @@ The software is designed to be run interactively, from the command line in stand
 \end{itemize}
 \vspace*{-15pt}
 ($^*$ not necessary)\\
+The User can either install all the 
+
+
 CMake is an open-source, cross-platform build system that helps automate the process of compiling and linking software projects. Hopefully, CMake will perform the needed gymnastics to find the Eigen3 installation. To install CMake, either visit the CMake website (https://cmake.org/), or use the system's package manager for the specific system. For example, on Mac OS, if one uses {\it homebrew} as a package manager, the command is
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -162,9 +165,9 @@ observable_name_N   measurement_N  exp_uncertainty_N   theory_uncertainty_N
 The observable names must be identical to, or a subset of, those from {\tt smooth\_data/Info/observable\_info.txt}. The measurements and their uncertainties are typically taken from the experimental publication. The last entry in each line is the systematical theoretical uncertainty, i.e. that arising from the physics missing from the model. For example, if the model is missing a certain bit of physics, or if that physics is described through an imperfect approximation, then one would expect the model calculations to vary from the experimental values even if the model parameters were perfectly chosen. In practice, the two uncertainties contribute as a single uncertainty, where the two are added in quadrature. 
 
 \subsection{Testing the Installation}
-The User can go to the tutorial analysis directory created by copying the template. There should be a script there, {\tt \$\{MY\_ANALYSIS\}/software\_test.sh}. This script runs all the commands used in the tutorial. This includes generating figures. The script calls a PDF viewer to open pre-made versions of the plots and compare the newly generated plots to the pre-made versions.
+The User can go to the tutorial analysis directory created by copying the template. There should be a script there, {\tt \$\{MY\_ANALYSIS\}/smoothy\_test.sh}. This script runs all the commands used in the tutorial. This includes generating figures. The script calls a PDF viewer to open pre-made versions of the plots and compare the newly generated plots to the pre-made versions.
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
-$\{MY_ANALYSIS\}% \textcolor{darkred}{smooth_test.sh}
+$\{MY_ANALYSIS\}% \textcolor{darkred}{smoothy_test.sh}
 .
 .
 \end{Verbatim}
