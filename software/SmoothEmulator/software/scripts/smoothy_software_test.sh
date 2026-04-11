@@ -29,11 +29,11 @@ echo "If error messages arise and script fails, you need to see where failures o
    \cp -f ../smooth_data/MCMC/ResolvingPower.txt figdata/
    \cp -f -r ../smooth_data/output_stuff/fullmodel_testdata figdata/
    cd YvsY
-   echo 3 | MYPYTHON YvsY.py
+   echo 3 | ${MYPYTHON} YvsY.py
    cd ../posterior
-   MYPYTHON posterior.py
+   ${MYPYTHON} posterior.py
    cd ../ResolvingPower
-   MYPYTHON RP.py
+   ${MYPYTHON} RP.py
    cd ${thisdir}
    cd figs/
    osname=`uname -s`
