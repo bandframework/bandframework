@@ -2,32 +2,26 @@
 echo "Running script to test Smooth Emulator Software. If successful, pdf images will be generated which should match those in figs/testfigs"
 echo "If you are running linux, the comparison figs will automatically be generated if you have okular or evince installed"
 echo "If error messages arise and script fails, you need to see where failures occured by viewing output of this script"
-case $# in
-0)
-	echo "Usage: pybind_test.sh  SMOOTH_HOME_PATH";
-   echo "PATH is to home directory of Smooth Installation, e.g. ../bandframework/software/SmoothEmulator"
-   echo "Script assumes installation in that directory has been performed and that programs have compiled"
-	exit 1 ;;
-*)
-   SMOOTH_HOME=$1
-   echo SMOOTH_HOME = ${SMOOTH_HOME}
+
+   SMOOTH_HOME="/Users/scottpratt/SmoothEmulator"
+   MYPYTHON=/opt/homebrew/bin/python3
+   
    thisdir=${PWD}
-   PATH=${PATH}:${SMOOTH_HOME}/bin
    echo -------------------------------------
    rm -f -r smooth_data/FullModelRuns/run*
    rm -f -r smooth_data/FullModelTestingRuns/run*
    rm -f -r smooth_data/fullmodel_testdata/*
-   fakeinfo;
-   echo --------- ran fakeinfo ---------
-   trainingpoint_optimizer;
-   echo --------- ran trainingpoint_optimizer ---------
-   fakefullmodel;
-   echo --------- ran fakefullmodel ---------
-   smoothy_testattrainingpts;
+   ${SMOOTH_HOME}/bin/smoothy_fakeinfo;
+   echo --------- ran smoothy_fakeinfo ---------
+   ${SMOOTH_HOME}/bin/smoothy_trainingpoint_optimizer;
+   echo --------- ran smoothy_trainingpoint_optimizer ---------
+   ${SMOOTH_HOME}/bin/smoothy_fakefullmodel;
+   echo --------- ran smoothy_fakefullmodel ---------
+   ${SMOOTH_HOME}/bin/smoothy_testattrainingpts;
    echo --------- ran smoothy_testattrainingpts ---------
-   smoothy_testvsfullmodel;
+   ${SMOOTH_HOME}/bin/smoothy_testvsfullmodel;
    echo --------- ran smoothy_testvsfullmodel ---------
-   smoothy_mcmc;
+   ${SMOOTH_HOME}/bin/smoothy_mcmc;
    echo --------- ran smoothy_mcmc ---------
    mkdir -p figs/figdata
    cd figs/
@@ -35,11 +29,11 @@ case $# in
    \cp -f ../smooth_data/MCMC/ResolvingPower.txt figdata/
    \cp -f -r ../smooth_data/output_stuff/fullmodel_testdata figdata/
    cd YvsY
-   echo 3 | python3 YvsY.py
+   echo 3 | MYPYTHON YvsY.py
    cd ../posterior
-   python3 posterior.py
+   MYPYTHON posterior.py
    cd ../ResolvingPower
-   python3 RP.py
+   MYPYTHON RP.py
    cd ${thisdir}
    cd figs/
    osname=`uname -s`
@@ -80,4 +74,4 @@ case $# in
    fi
    cd ${thisdir}
    echo === FINISHED SOFTWARE TEST COMMANDS ===
-esac
+

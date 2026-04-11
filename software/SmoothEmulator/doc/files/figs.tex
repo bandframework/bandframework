@@ -7,6 +7,8 @@
 \subsection{Overview}
 The {\it Smooth Emulator} distribution includes three plotting programs, all based on Pythons's Matplotlib. The first program allows the User to visualize the accuracy of the emulator by comparing emulator predictions to full-model calculations at random points not used to train the emulator. The other two plotting programs illustrate the results of the MCMC constraint of model-parameter space.
 
+Before running any of the Python scripts below, the User may wish to use {\tt pyenv} so that the desired versions of Python are called. The User might want to run {\tt python3 -- version} to ensure that the desired version of Python is being installed. If running on a Mac using {\it homebrew}, that would be {\tt /opt/homebrew/bin/python3}. For some, it might be simpler to replace the {\tt python3} command with one specifying the entire path.
+
 \subsection{Preparing the Data Files for the Plots}
 The plotting programs are contained the {\tt  \$\{MY\_ANALYSIS\}/figs/} directory. The three plotting programs are located in the three subdirectories, {\tt figs/YvsY}, {\tt figs/posterior} and {\tt figs/resolvingpower}. Before running the plotting programs, one must first create several data files and move them to the {\tt figs/figdata} directory. This directory will hold all data required to make the plots. Thus, none of the plotting functionality depends on the location of the {\tt figs/} directory, as long as the {\tt figdata/} directory is a subdirectory of the same directory as {\tt YvsY/}, {\tt posterior/} and {\tt resolvingpower/}.
 
@@ -14,7 +16,7 @@ The first data file is {\tt figdata/prior\_info.txt}. This file provides the plo
 \vspace*{-8pt}{\tt
 \begin{Verbatim}
  parameter_name_1 prior_type_1 axis_name_1
- parameter_name_2 prior_type_2 axis_name_2 
+ parameter_name_2 prior_type_2 axis_name_2
  .
 \end{Verbatim}
 }\vspace*{-8pt}
@@ -36,7 +38,7 @@ If the User wishes to plot the comparison between emulator predictions and actua
 % cp -r $\{MY_ANALYSIS\}/smooth_data/FullModelTestingRuns $\{MY_ANALYSIS\}/figs/figdata/
 \end{Verbatim}
 }\vspace*{-8pt}
-In the tutorial, that directory, and its files, are created by running  the {\tt fakefullmodel} program, which calculated the full-model values at a set of randomly-chosen points. Within that directory are separate files providing the comparison between the full-model and the emulator predictions. The files are named {\tt YvsY\_[observable-name].txt}. Here {\tt [observable-name]} must match the ascii names from {\tt figdata/observable\_info.txt}. If the calculation compares observables at $n$ points, the file format for each of the $N_{\rm obs}$ files is:
+In the tutorial, that directory, and its files, are created by running  the {\tt smoothy\_fakefullmodel} program, which calculated the full-model values at a set of randomly-chosen points. Within that directory are separate files providing the comparison between the full-model and the emulator predictions. The files are named {\tt YvsY\_[observable-name].txt}. Here {\tt [observable-name]} must match the ascii names from {\tt figdata/observable\_info.txt}. If the calculation compares observables at $n$ points, the file format for each of the $N_{\rm obs}$ files is:
 \vspace*{-8pt}{\tt
 \begin{Verbatim}
  Y1_full   Y1_emulator emulator_uncertainty_1  accuracy_1
@@ -59,7 +61,7 @@ If the User wishes to visualize the posterior by sampling the MCMC trace or if t
 To perform this comparison, one must enter the {\tt figs/YvsY/} directory and run the Python script:
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
-{\tt \$\{MY\_ANALYSIS}/figs/YvsY% \textcolor{darkred}{Python3 YvsY.py}
+{\tt \$\{MY\_ANALYSIS}/figs/YvsY% \textcolor{darkred}{python3 YvsY.py}
 --- Observables ---
 iY= 0   observable_name_0
 iY= 1   observable_name_1
@@ -94,7 +96,7 @@ It is likely the User will wish to alter the plots for their purpose. Hopefully,
 To view the posterior distribution, enter the {\tt figs/posterior/} directory and run the Python script:
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
-{\tt \$\{MY\_ANALYSIS}/figs/YvsY% \textcolor{darkred}{Python3 posterior.py}
+{\tt \$\{MY\_ANALYSIS}/figs/YvsY% \textcolor{darkred}{python3 posterior.py}
 Number of points in trace = XXX
 \end{Verbatim}
 }\vspace*{-8pt}
@@ -126,7 +128,7 @@ If there were 6 observables, this would then consider all of them. Otherwise, on
 One measure of an observable's resolving power with respect to constraining a specific model parameter is defined as the amount the posterior average of the constrained model parameter, $\langle\langle X\_i\rangle\rangle$, is likely to change given a change of the observable, $\langle\langle Y\_i\rangle\rangle$, scaled by the variance of $Y\_i$ in the prior. The MCMC analysis program created a file {\tt smooth\_data/MCMC/ResolvingPower.txt}, which the User has moved to the {\tt figs/figdata/} directory. By entering the {\tt figs/resolvingpower/} directory and running the Python script, one creates a figure showing the resolving power,
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
-{\tt \$\{MY\_ANALYSIS}/figs/YvsY% \textcolor{darkred}{Python3 RP.py}
+{\tt \$\{MY\_ANALYSIS}/figs/YvsY% \textcolor{darkred}{python3 RP.py}
  NPars= XXX NObs= XXX
 \end{Verbatim}
 }\vspace*{-8pt}

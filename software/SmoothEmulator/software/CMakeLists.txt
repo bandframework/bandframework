@@ -32,16 +32,14 @@ link_directories(lib)
 find_library(lib libsmoothutils.a)
 find_library(lib libsmooth.a)
 
-# trainingpoint_optimizer
+# smoothy_trainingpoint_optimizer
 #################################################
-set(SOURCE_FILES MainPrograms/trainingpoint_optimizer_main.cc)
-add_executable(trainingpoint_optimizer MainPrograms/trainingpoint_optimizer_main.cc)
-
-get_target_property(TARGET_INCLUDES trainingpoint_optimizer INCLUDE_DIRECTORIES)
-
-add_dependencies(trainingpoint_optimizer smooth)
-add_dependencies(trainingpoint_optimizer smoothutils)
-target_link_libraries(trainingpoint_optimizer libsmooth.a  libsmoothutils.a   ${EIGEN3_LIBRARY})
+set(SOURCE_FILES MainPrograms/smoothy_trainingpoint_optimizer_main.cc)
+add_executable(smoothy_trainingpoint_optimizer MainPrograms/smoothy_trainingpoint_optimizer_main.cc)
+get_target_property(TARGET_INCLUDES smoothy_trainingpoint_optimizer INCLUDE_DIRECTORIES)
+add_dependencies(smoothy_trainingpoint_optimizer smooth)
+add_dependencies(smoothy_trainingpoint_optimizer smoothutils)
+target_link_libraries(smoothy_trainingpoint_optimizer libsmooth.a  libsmoothutils.a   ${EIGEN3_LIBRARY})
 
 #################################################
 # smoothy_testattrainingpts
@@ -83,20 +81,20 @@ target_link_libraries(smoothy_mcmc libsmooth.a libsmoothutils.a   ${EIGEN3_LIBRA
 # fake full model
 #################################################
 set(SOURCE_FILES TutorialPrograms/fakefullmodel.cc)
-add_executable(fakefullmodel TutorialPrograms/fakefullmodel.cc)
-add_dependencies(fakefullmodel smooth)
-add_dependencies(fakefullmodel smoothutils)
-target_link_libraries(fakefullmodel
+add_executable(smoothy_fakefullmodel TutorialPrograms/fakefullmodel.cc)
+add_dependencies(smoothy_fakefullmodel smooth)
+add_dependencies(smoothy_fakefullmodel smoothutils)
+target_link_libraries(smoothy_fakefullmodel
 libsmooth.a libsmoothutils.a ${EIGEN3_LIBRARY})
 
 #################################################
 # create fake info files
 #################################################
 set(SOURCE_FILES TutorialPrograms/fakeinfo.cc)
-add_executable(fakeinfo TutorialPrograms/fakeinfo.cc)
-add_dependencies(fakeinfo smooth)
-add_dependencies(fakeinfo smooth smoothutils)
-target_link_libraries(fakeinfo libsmooth.a libsmoothutils.a ${EIGEN3_LIBRARY})
+add_executable(smoothy_fakeinfo TutorialPrograms/fakeinfo.cc)
+add_dependencies(smoothy_fakeinfo smooth)
+add_dependencies(smoothy_fakeinfo smooth smoothutils)
+target_link_libraries(smoothy_fakeinfo libsmooth.a libsmoothutils.a ${EIGEN3_LIBRARY})
 #################################################
 
 

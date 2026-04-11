@@ -3,7 +3,7 @@
 \begin{sloppypar}
 
 \section{Utility Classes}
-{\it Smooth Emulator} software employs several ``utility'' classes. These can be used for a variety of purposes, and might at times be invoked in the source code for the main programs. Thus, the User might find further explanation of these provided functionalities. Here, we present the functionalities of three such classes. The relevant header files for these classes can be found in {\tt \$\{SMOOTH\_HOME\}/software/include/msu\_smoothutils/}. The first is the {\tt CparameterMap} class. This is basically an extension of a C++ map, with some added functionality such as reading in the key/value pairs from files and to set elements with default values. These objects are used to read in the options from text files. The second class is the {\tt CLog} class. This is used for directing output to allow the User to toggle between sending output, including error messages, to a specified file rather than interactively (to the screen). The third class described here is {\tt Crandy}. This simplifies calling random number generators. Even though the User might not be writing source code where random numbers are employed, the User may wish to set the seeds for the {\tt Crandy} random number generators. 
+{\it Smooth Emulator} software employs several ``utility'' classes. These can be used for a variety of purposes, and might at times be invoked in the source code for the main programs. Thus, the User might find further explanation of these provided functionalities. Here, we present the functionalities of three such classes. The relevant header files for these classes can be found in \textit{SMOOTH\_HOME}{\tt /software/include/msu\_smoothutils/}. The first is the {\tt CparameterMap} class. This is basically an extension of a C++ map, with some added functionality such as reading in the key/value pairs from files and to set elements with default values. These objects are used to read in the options from text files. The second class is the {\tt CLog} class. This is used for directing output to allow the User to toggle between sending output, including error messages, to a specified file rather than interactively (to the screen). The third class described here is {\tt Crandy}. This simplifies calling random number generators. Even though the User might not be writing source code where random numbers are employed, the User may wish to set the seeds for the {\tt Crandy} random number generators. 
 
 \subsection{The {\tt CparameterMap} Class}\label{subsec:parameterMap}
 
@@ -40,7 +40,7 @@ All of these three classes have a {\tt CparameterMap} object. For each class the
 }\vspace*{-8pt}
 The {\tt parameterMap} objects were originally populated by reading the options files, {\tt smooth\_data/Options/*options.txt}. Thus, the options can be accessed through the names given in those files.
 
-The {\tt parameterMap} class is basically an extension of C++ maps. The header file, {\tt \$\{SMOOTH\_HOME\}/software/include/msu\_smoothutils/parametermap.h}, is:
+The {\tt parameterMap} class is basically an extension of C++ maps. The header file, \textit{SMOOTH\_HOME}{\tt /software/include/msu\_smoothutils/parametermap.h}, is:
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
 class CparameterMap : public map<string,string>\{
 public:
@@ -98,7 +98,7 @@ int main\{
 }\vspace*{-8pt}
 will write the same output to the file {\tt myoutput.txt}. If the {\tt Info()} function is replaced by {\tt Fatal()} the same behavior will occur, but writing the statement will be followed by the program exiting (according to {\tt exit(1)}). 
 
-The class definition from the header file, {\tt \$\{SMOOTH\_HOME\}/software/include/msu\_smoothutils/log.h} is
+The class definition from the header file, \textit{SMOOTH\_HOME}{\tt /software/include/msu\_smoothutils/log.h} is
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
 class CLog\{
   public:
@@ -128,7 +128,7 @@ int main\{
 \}
 \end{Verbatim}
 }\vspace*{-8pt}
-The program prints out a number between 0 and 1. One can reset the seed via {\tt randy->reset(int seed)}. The class defined in the header file, {\tt \$\{SMOOTH\_HOME\}/software/include/msu\_smoothutils/randy.h}, is 
+The program prints out a number between 0 and 1. One can reset the seed via {\tt randy->reset(int seed)}. The class defined in the header file, \textit{SMOOTH\_HOME}{\tt /software/include/msu\_smoothutils/randy.h}, is 
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
 class Crandy\{
 public:
