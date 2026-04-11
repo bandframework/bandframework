@@ -35,7 +35,7 @@ The first column is exactly the same as the original file, and the last column p
 If the User wishes to plot the comparison between emulator predictions and actual full-model values, they must move the directory {\tt smooth\_data/FullModelTestingRuns/} to the {\tt figs/figdata} directory.
 \vspace*{-8pt}{\tt
 \begin{Verbatim}
-% cp -r $\{MY_ANALYSIS\}/smooth_data/FullModelTestingRuns $\{MY_ANALYSIS\}/figs/figdata/
+% cp -r \textit{MY_ANALYSIS}/smooth_data/FullModelTestingRuns \textit{MY_ANALYSIS}/figs/figdata/
 \end{Verbatim}
 }\vspace*{-8pt}
 In the tutorial, that directory, and its files, are created by running  the {\tt smoothy\_fakefullmodel} program, which calculated the full-model values at a set of randomly-chosen points. Within that directory are separate files providing the comparison between the full-model and the emulator predictions. The files are named {\tt YvsY\_[observable-name].txt}. Here {\tt [observable-name]} must match the ascii names from {\tt figdata/observable\_info.txt}. If the calculation compares observables at $n$ points, the file format for each of the $N_{\rm obs}$ files is:
@@ -52,8 +52,8 @@ The first and second columns give the full-model and emulator values for each of
 If the User wishes to visualize the posterior by sampling the MCMC trace or if they wish to plot the resolving power extracted from the MCMC trace data, they should move the following files to the {figs/figdata/} directory.
 \vspace*{-8pt}{\tt
 \begin{Verbatim}
-% cp $\{MY_ANALYSIS\}/smooth_data/MCMC/trace_theta.txt $\{MY_ANALYSIS\}/figs/figdata/
-% cp $\{MY_ANALYSIS\}/smooth_data/MCMC/ResolvingPower.txt $\{MY_ANALYSIS\}/figs/figdata/
+% cp \textit{MY_ANALYSIS}/smooth_data/MCMC/trace_theta.txt \textit{MY_ANALYSIS}/figs/figdata/
+% cp \textit{MY_ANALYSIS}/smooth_data/MCMC/ResolvingPower.txt \textit{MY_ANALYSIS}/figs/figdata/
 \end{Verbatim}
 }\vspace*{-8pt}
 

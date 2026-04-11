@@ -97,7 +97,7 @@ If you had some existing training points and wanted to keep those, while choosin
 
 Now you can run {\tt smoothy\_trainingpoint\_optimizer}, which is meant to be run interactively. This will generate a list of coordinates in model-parameter space for each of $N_{\rm train}$ training points. Simply run the program by calling the command. 
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
-$\{MY_ANALYSIS\}% \textcolor{darkred}{\textit{SMOOTH_HOME}/bin/smoothy_trainingpoint_optimizer}
+\textit{MY_ANALYSIS}% \textcolor{darkred}{\textit{SMOOTH_HOME}/bin/smoothy_trainingpoint_optimizer}
 NTrainingpts=28, NMC=100000, LAMBDA=2.500000, ALPHA=0.010000
 Optimize_MC: at beginning: bestSigma2=0.016793
 +++ finished 1%, expected accuracy=0.0084093, success %=35.6, step size=0.0094491
@@ -127,7 +127,7 @@ Once the training points have been generated, you will need to run the full mode
 
 You need to run the program {\tt smoothy\_fakefullmodel}, which is meant to be run interactively. Running the model, 
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
-   $\{MY_ANALYSIS\}% \textcolor{darkred}{\textit{SMOOTH_HOME}/bin/smoothy_fakefullmodel}
+   \textit{MY_ANALYSIS}% \textcolor{darkred}{\textit{SMOOTH_HOME}/bin/smoothy_fakefullmodel}
    NPars=6, NObs=10
    Creating Fake Model Data for 28 Training Pts
 \end{Verbatim}

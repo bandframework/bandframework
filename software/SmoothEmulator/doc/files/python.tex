@@ -31,8 +31,8 @@ The User should now compile the software:
 The Python script must be located in a analysis directory, i.e. one where there is a {\tt smooth\_data/} directory set up in the manner required by the emulator software. An example Python script is in the \textit{SMOOTH\_HOME}{\tt /software/pybind\_stuff/} directory. It can be moved to the analysis directory.
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
-..% \textcolor{darkred}{cp \textit{SMOOTH_HOME}/software/pybind_stuff/smoothy_emulate.py $\{MY_ANALYSIS\}/}
-..% \textcolor{darkred}{cd $\{MY_ANALYSIS\}/} 
+..% \textcolor{darkred}{cp \textit{SMOOTH_HOME}/software/pybind_stuff/smoothy_emulate.py \textit{MY_ANALYSIS}/}
+..% \textcolor{darkred}{cd \textit{MY_ANALYSIS}/} 
 \end{Verbatim}
 }\vspace*{-8pt}
 If the User has defined an environment variable, \textit{SMOOTH\_HOME}{\tt }, to the parent directory of {\tt software/pybind\_stuff}, the script is ready to run. Otherwise the User needs to edit the following line from the Python script.
@@ -52,7 +52,7 @@ Here {\tt XXXXXX} is replaced by the absolute path.
 To run the script,
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
-$\{MY_ANALYSIS\}% \textcolor{darkred}{python3 \textit{SMOOTH_HOME}/software/pybind_stuff/smoothy_emulate.py}
+\textit{MY_ANALYSIS}% \textcolor{darkred}{python3 \textit{SMOOTH_HOME}/software/pybind_stuff/smoothy_emulate.py}
 Adding this to path: XXXXXX
 X= [20. 20. 20. 20. 20. 20.]
 Y[ 0 ]= 62.06376520471999  SigmaY= 0.46481585069318604
