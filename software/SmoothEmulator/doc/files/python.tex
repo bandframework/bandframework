@@ -9,50 +9,15 @@ The User might wish to call the emulator functionality from within a Python scri
 The training-point-optimization and MCMC functionality is not available in the current software. However, this may be sufficient if a User wishes to build and tune an emulator using {\it Smooth Emulator} software, then use their own MCMC python-based software to explore the model-parameter space.
 
 \subsection{Setting Up The Software}
-The binding of C++ libraries to Python is accomplished through pybind11. The pybind11 functionality can often be installed through the {\tt pip} Python package manager, but the User must be very careful that the installation is consistent with Python version being used. On a Mac, it was found that the best way to install pybind11 and python was to install all three through the system package manager, e.g. {\it homebrew}. Further, troubles on the Mac were found by using llvm/clang++, but the pybind11 software ran successfully using g++. If the User has {\it homebrew} installed, all the Python functionality can be installed with the commands:
-\vspace*{-8pt}{\tt
-\begin{Verbatim}[commandchars=\\\{\}]
-% \textcolor{darkred}{brew install python}
-% \textcolor{darkred}{brew install numpy}
-% \textcolor{darkred}{brew install python-matplotlib}
-% \textcolor{darkred}{brew install pybind11}
-\end{Verbatim}
-}\vspace*{-8pt}
-The User should now compile the software:
-\vspace*{-8pt}{\tt
-\begin{Verbatim}[commandchars=\\\{\}]
-..% \textcolor{darkred}{cd \textit{SMOOTH_HOME}/software/pybind_stuff}
-\textit{SMOOTH_HOME}/software/pybind_stuff% \textcolor{darkred}{cmake .}
-\textit{SMOOTH_HOME}/software/pybind_stuff% \textcolor{darkred}{make}
-\end{Verbatim}
-}\vspace*{-8pt}
+The binding of C++ libraries to Python is accomplished through pybind11. Due to compatibility problems with pybind11, {\it Smooth Emulator} software is compiled with version 15 of {\tt g++}. 
 
 \subsection{Editing and Running a Python Script}
-The Python script must be located in a analysis directory, i.e. one where there is a {\tt smooth\_data/} directory set up in the manner required by the emulator software. An example Python script is in the \textit{SMOOTH\_HOME}{\tt /software/pybind\_stuff/} directory. It can be moved to the analysis directory.
-\vspace*{-8pt}{\tt
-\begin{Verbatim}[commandchars=\\\{\}]
-..% \textcolor{darkred}{cp \textit{SMOOTH_HOME}/software/pybind_stuff/smoothy_emulate.py \textit{MY_ANALYSIS}/}
-..% \textcolor{darkred}{cd \textit{MY_ANALYSIS}/} 
-\end{Verbatim}
-}\vspace*{-8pt}
-If the User has defined an environment variable, \textit{SMOOTH\_HOME}{\tt }, to the parent directory of {\tt software/pybind\_stuff}, the script is ready to run. Otherwise the User needs to edit the following line from the Python script.
-\vspace*{-8pt}{\tt
-\begin{Verbatim}[commandchars=\\\{\}]
-sys.path.insert(0,os.environ['SMOOTH_HOME']+"/software/pybind_stuff")
-\end{Verbatim}
-}\vspace*{-8pt}
-The User can switch out this line for
-\vspace*{-8pt}{\tt
-\begin{Verbatim}[commandchars=\\\{\}]
-sys.path.insert(0,os."XXXXXX/software/pybind_stuff")
-\end{Verbatim}
-}\vspace*{-8pt}
-Here {\tt XXXXXX} is replaced by the absolute path.
+An example Python script, {\tt smoothy\_emulate.py}, is in the \textit{SMOOTH\_HOME}{\tt /bin} directory. 
 
 To run the script,
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
-\textit{MY_ANALYSIS}% \textcolor{darkred}{python3 \textit{SMOOTH_HOME}/software/pybind_stuff/smoothy_emulate.py}
+\textit{MY_ANALYSIS}% \textcolor{darkred}{\textit{SMOOTH_HOME}/bin/smoothy_emulate.py}
 Adding this to path: XXXXXX
 X= [20. 20. 20. 20. 20. 20.]
 Y[ 0 ]= 62.06376520471999  SigmaY= 0.46481585069318604
@@ -110,10 +75,10 @@ Y[iY]=smoothmaster.GetYOnlyFromXPython(iY,X)
 Y[iY]=smoothmaster.GetYOnlyFromThetaPython(iY,theta)
 \end{Verbatim}
 }\vspace*{-8pt}
-Hopefully, the User will find the functionality of this code to be self-explanatory. These calls should be sufficient to incorporate training and calling the emulator into any Python script.
+The vectors {\tt X[..]} reference the model parameters, whereas {\tt theta[..]} describe the scaled model parameters. The emulated observables and the corresponding emulator uncertainties are {\tt Y[..]} and {\tt SigmaY[..]}. Hopefully, the User will find the functionality of this code to be self-explanatory. These calls should be sufficient to incorporate training and calling the emulator into any Python script.
 
 \subsection{Making More Functionality Available via Python}
-The easiest way to add more functions is to edit and extend the file \textit{SMOOTH\_HOME}{\tt /software/pybind\_stuff/pybind\_main.cc}. One can see how all the functions above were defined. One can extend this to more of the functions defined in the header file \textit{SMOOTH\_HOME}{\tt /software/include/msu\_smooth/master.h}. However, one should remember that the binding cannot easily change the functionality of functions with arguments passed by reference. Thus, if the User wishes to find some variable, e.g. {\tt Z}, from some C++ function that is written in the form {\tt void ThisIsMyMethodToGetZ(double \&Z,double x,double y)}, they will instead have to write a new C++ function in the form {\tt double ThisIsMyMethodToGetZ(double x,double z)}, where the new function returns {\tt Z} rather than having it updated by the function. For example to return the emulated value and uncertainty, a function was created of the form {\tt vector<double> GetYSigmaFromXPython(int iY,vector<double> X)}. The returned vector was 2-dimensional with {\tt Y[iY]} being the first element and {\tt sigmaY[iY]} being the second element.
+The easiest way to add more functions is to edit and extend the file \textit{SMOOTH\_HOME}{\tt /software/pybind\_stuff/pybind\_main.cc}. One can see how all the functions above were defined. One can extend this to more of the functions defined in the header file \textit{SMOOTH\_HOME}{\tt /software/include/msu\_smooth/master.h}. However, the syntax is rather opaque and not for the faint of heart. One should remember that the binding cannot easily change the functionality of functions with arguments passed by reference. Thus, if the User wishes to find some variable, e.g. {\tt Z}, from some C++ function that is written in the form {\tt void ThisIsMyMethodToGetZ(double \&Z,double x,double y)}, they will instead have to write a new C++ function in the form {\tt double ThisIsMyMethodToGetZ(double x,double z)}, where the new function returns {\tt Z} rather than having it updated by the function. For example to return the emulated value and uncertainty, a function was created of the form {\tt vector<double> GetYSigmaFromXPython(int iY,vector<double> X)}. The returned vector was 2-dimensional with {\tt Y[iY]} being the first element and {\tt sigmaY[iY]} being the second element.
 
 \end{sloppypar}
 \end{document}

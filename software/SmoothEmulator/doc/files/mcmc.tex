@@ -4,7 +4,7 @@
 \section{Markov-Chain Monte Carlo Generation of the Posterior}\label{sec:mcmc}
 
 \subsection{Overview}
-The {\tt \$\{SMOOTH\_HOME\}/software/MainPrograms/} directory contains the source code for the main program, {\tt smoothy\_mcmc\_main.cc}. When compiled it creates an executable, {\tt \$\{SMOOTH\_HOME\}/software/bin/smoothy\_mcmc}, which then performs an MCMC analysis. This program will invoke the emulator in its exploration of the model-parameter space. It will write the trace to file and perform and record some analysis of the trace the User might find useful. Even if the User chooses a different MCMC approach then the one provided with the {\it Smooth Emulator} software, viewing the source code might prove useful in demonstrating how to invoke the emulator from within a C++ code. 
+The \textit{SMOOTH\_HOME}{\tt /software/MainPrograms/} directory contains the source code for the main program, {\tt smoothy\_mcmc\_main.cc}. When compiled it creates an executable, \textit{SMOOTH\_HOME}{\tt /software/bin/smoothy\_mcmc}, which then performs an MCMC analysis. This program will invoke the emulator in its exploration of the model-parameter space. It will write the trace to file and perform and record some analysis of the trace the User might find useful. Even if the User chooses a different MCMC approach then the one provided with the {\it Smooth Emulator} software, viewing the source code might prove useful in demonstrating how to invoke the emulator from within a C++ code. 
 
 \subsection{Experimental Measurement Information}
 Once the emulator is tuned and before it is applied to a Markov Chain investigation of the likelihood, the software needs to know the experimental measurement and uncertainty. That information must be entered in the {\tt smooth\_data/Info/experimental\_info.txt} file. The file should have the format:
@@ -27,7 +27,7 @@ LL&=&-\sum_{I}\frac{(Y_{I,{\rm exp}}-Y_{I,{\rm emu}})^{2}}{2\sigma_{I,{\rm tot}}
 \end{eqnarray*}
 The likelihood behaves as $e^{LL}$. This form presumes that the uncertainties are Gaussian and that the uncertainties for the various observables are independent. The last term above derives from the normalization factor for the Gaussian. One can view \href{smoothdraft.pdf}{\tt smoothdraft.pdf} for more details.
 
-Correlated errors are not explicitly addressed in {\it Smooth Emulator} software. However, one can always add additional model parameters that describe contributions to multiple observables due to some unknown factors, such as an experimental efficiency or some neglected physics. This can be a convenient and sound perspective from which one can incorporate both experimental and theoretical systematic uncertainties. Sometimes such parameters are called ``nuisance'' parameters, because they usually describe effects that are not of direct interest to the reader, but do impact the degree to which one might constrain the parameters of greater interest. However, the moniker ``nuisance'' can be rather unfortunate  because although some parameter might be a nuisance to one scientist, e.g. the efficiency of the detector, that same parameter might represent the life's work on another scientist, who might find the constraint of such a parameter of great interest. Nuisance and non-nuisance parameters are treated on equal footings.
+Correlated errors are not explicitly addressed in {\it Smooth Emulator} software. However, one can always add additional model parameters that describe contributions to multiple observables due to some unknown factors, such as an experimental efficiency or some neglected physics. This can be a convenient and sound perspective from which one can incorporate both experimental and theoretical systematic uncertainties. For example, if all the masses measured by some experiment have a contribution to their uncertainties that either moves all of them up or down together, that contribution can be treated as an unknown model parameter, $\delta m$. This model parameter is simply added to all the other masses. From the Bayesian perspective, the model is trying to describe what the experiment will measure, not the ``true'' value, hence adding $\delta m$ is part of the model. Sometimes such parameters are called ``nuisance'' parameters, because they usually describe effects that are not of direct interest to the reader, but do impact the degree to which one might constrain the parameters of greater interest. However, the moniker ``nuisance'' can be rather unfortunate  because although some parameter might be a nuisance to one scientist, e.g. the efficiency of the detector, that same parameter might represent the life's work and passion of another scientist, who might find the constraint of such a parameter of great interest. Nuisance and non-nuisance parameters are treated on equal footings.
 
 \subsection{MCMC Options}
 
@@ -50,13 +50,13 @@ As was the case with {\it Smooth Emulator}, each option has a default value. The
 \subsubsection{{\tt LogFileName (if commented out will write to screen)}}
 To run interactively, leave this line commented out. Otherwise, output will be directed to the designated file.
 \subsubsection{{\tt MCMC\_METROPOLIS\_STEPSIZE (default 0.05)}}
-Metropolis algorithms require taking random steps in $\vec{\theta}$ space. If the steps are small, it takes longer to explore the space, but if the steps are very long, the success rate of the Metropolis steps becomes low. Maximum efficiency occurs when the Metropolis success rate, which is provided during running, is near 50\%. Rates of 20\% or 80\% are also fine, but if the rate is only a few percent, the User should reduce the parameter, and if the success rate becomes close to 100\%, the User should increase the parameter.
+Metropolis algorithms require taking random steps in $\vec{\theta}$ space. If the steps are small, it takes longer to explore the space, but if the steps are very long, the success rate of the Metropolis steps becomes low. Maximum efficiency occurs when the Metropolis success rate, which is provided during running, is near 50\%. Rates of 20\% or 80\% are also fine, but if the rate is only a few percent, the User should reduce the parameter, and if the success rate becomes close to 100\%, the User should increase the parameter. If the acceptance rate is outside this range, the MCMC procedure will still provide a correct representation of the poster, but is might require more points to do so.
 \subsubsection{{\tt MCMC\_IGNORE\_EMULATOR\_ERROR (default false)}}
 If this flag is set to {\tt true} the emulator uncertainty will be ignored. This significantly increases the speed of the MCMC procedure, but should not be done if the emulator error is significant.
 \subsubsection{{\tt MCMC\_RANSEED (default 12345)}}
 Sets seed for random number generator.
 \subsubsection{{\tt MCMC\_NBURN, MCMC\_NTRACE, MCMC\_NSKIP (no defaults)}}
-These are different than the other options in that they do correspond to any member of the {\tt CMCMC} class. Instead, they are simply stored by {\tt CparameterMap} object of the {\tt CMCMC} class for convenience. The variables describe the number of random steps to be taken during the burn-in stage (where the trace is not being recorded), the number of steps in the trace to be recorded once the burn-in stage has ended, and the number of steps between recorded steps. Because successive steps are highly correlated it makes sense to not record every step. For example, if the Metropolis success rate is 50\%, then half the points are identical to the previous point.
+These are different than the other options in that they do not correspond to any member of the {\tt CMCMC} class. Instead, they are simply stored by the {\tt CparameterMap} object of the {\tt CMCMC} class for convenience. The variables describe the number of random steps to be taken during the burn-in stage (where the trace is not being recorded), the number of steps in the trace to be recorded once the burn-in stage has ended, and the number of steps between recorded steps. Because successive steps are highly correlated it makes sense to not record every step. For example, if the Metropolis success rate is 50\%, then half the points are identical to the previous point.
 
 The relevant variables are set when the CMCMC object calls the function {\tt PerformTrace(int Ntrace,int Nskip)} in the main program. When writing a main program, the User can set {\tt Ntrace} or {\tt Nskip} through the parameter map, which is a member of the {\tt CMCMC class}. This is illustrated below in Chapter \ref{sec:mcmcsource}, where the source code for the main MCMC program is described. The User can always simply call the {\tt PerformTrace} function with whatever arguments they wish and never use the options stored in the parameter map. The parameter map functionality is described in Sec. \ref{subsec:parameterMap}.
 
@@ -64,7 +64,7 @@ The relevant variables are set when the CMCMC object calls the function {\tt Per
 To run the provided MCMC program, move to the analysis directory, and run the program {\tt mcmc}. Output should look something like this:
 \vspace*{-8pt}{\tt
 \begin{Verbatim}[commandchars=\\\{\}]
-\textit{MY_ANALYSIS}% \textcolor{darkred}{$\{SMOOTH_HOME\}/bin/smoothy_mcmc}
+\textit{MY_ANALYSIS}% \textcolor{darkred}{\textit{SMOOTH_HOME}/bin/smoothy_mcmc}
 At beginning of Trace, LL=-68.764478
 At end of trace, best LL=1.563806
 Best Theta=
@@ -105,7 +105,7 @@ Information about the trace is found in the files located in the directory {\tt 
 
 \subsection{Reviewing the MCMC Source Code}\label{sec:mcmcsource}
 
-Finally, we review the source code in {\tt \$\{SMOOTH\_HOME\}/software/MainPrograms/mcmc\_main.cc}:
+Finally, we review the source code in \textit{SMOOTH\_HOME}{\tt /software/MainPrograms/mcmc\_main.cc}:
 {\tt
 \begin{Verbatim}[commandchars=\\\{\}]
 int main()\{
@@ -137,7 +137,7 @@ If one has previously trained the emulator, one can use the known value of $\Lam
 
 \subsection{The MCMC header file}
 
-In the main repository one can find a header file, {\tt \$\{SMOOTH\_HOME\}/software/inlude/msu\_smooth/mcmc.h}. Perusing this file is a good way to understand the provided functionality of the CMCMC class. 
+In the main repository one can find a header file, \textit{SMOOTH\_HOME}{\tt /software/inlude/msu\_smooth/mcmc.h}. Perusing this file is a good way to understand the provided functionality of the CMCMC class. 
 {\tt
 \begin{Verbatim}[commandchars=\\\{\}]
 class CMCMC\{
