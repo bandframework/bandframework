@@ -12,7 +12,7 @@ The easiest way to get an installation of PUQ is to follow the guidance at the [
 
 We demonstrate our sequential strategy using a nuclear physics model to predict differential cross sections as a function of angle. The angular cross sections vary with different parametrizations of the optical potential, which are inputs to the reaction code ``frescox``. ``frescox`` generates cross sections for angles ranging from 0° to 180°. This case study focuses on elastic scattering data from the 48Ca(n,n)48Ca  reaction to find the optimal parametrization of the optical potential. We illustrate how ``PUQ`` and ``frescox`` work together through an example.
 
-Further details on this problem, including a benchmark comparing various acquisition functions and parallel implementations, can be found in Section 8.3 of the paper by [Sürer, Plumlee, and Wild, 2024](https://www.tandfonline.com/doi/abs/10.1080/00401706.2023.2246157?src=&journalCode=utch20).
+Further details on this problem, including a benchmark comparing various acquisition functions and parallel implementations, can be found in Section 8.3 of the paper by [Sürer, Plumlee, and Wild, 2024](https://doi.org/10.1080/00401706.2023.2246157).
 
 After installing ``PUQ``, ``frescox`` must also be installed to collect data using the sequential procedure. Additional notes on obtaining and building ``frescox`` can be found in the [Bfrescox README](/BANDsoftware_uses/Bfrescox/README.md).
 
