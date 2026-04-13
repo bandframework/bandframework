@@ -55,9 +55,9 @@ Before training the emulator, one must first run the full model at a given set o
    observable_name_n   ALPHA_N
 \end{Verbatim}
 }\vspace*{-8pt}
-The observable names should be simple strings, without spaces. Here, the values of {\tt ALPHA\_i} represent the point-by-point uncertainties inherent to the full-model calculations. If there is no such uncertainty, i.e. if you reran the full model with the same model parameters, you would always get the exact same value, then the values for {\tt ALPHA\_i} should be zero. If you think the point-by-point uncertainty is $\sigma_{pp}$, and given that the typical strength of the function is $\sigma_A$, one would set {\tt ALPHA\_i} to $\sigma_{pp}/\sigma_A$.
+The observable names should be simple strings, without spaces. Here, the values of {\tt ALPHA\_i} represent the point-by-point uncertainties inherent to the full-model calculations. If there is no such uncertainty, i.e. if you reran the full model with the same model parameters, you would always get the exact same value, then the values for {\tt ALPHA\_i} should be zero. If you think the point-by-point uncertainty is $\sigma_{pp}$, and given that the characteristic variation of the function through the prior is $\sigma_A$, one would set {\tt ALPHA\_i} to $\sigma_{pp}/\sigma_A$. In other words, {\tt ALPHA\_i} represents the ratio of the point-by-point noise to the variation throughout the prior. 
 
-\item A file listing the names of the model parameters and their priors. This file is {\tt smooth\_data/Info/prior\_info.txt}. The file format is:\\
+\item A file lists the names of the model parameters and their priors. This file is {\tt smooth\_data/Info/prior\_info.txt}. The file format is:\\
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
    parameter_name_1  prior_type_1 xmin_1/centroid_1  xmax_1/Rgauss_1  ss_1
    parameter_name_2  prior_type_2 xmin_2/centroid_2  xmin_2/Rgauss_2  ss_2
@@ -87,6 +87,7 @@ observable_name_1 y2
 .
 \end{Verbatim}
 }\vspace*{-8pt}
+The observable names must be the same as those described in {\tt smooth\_data/Info/observable\_info.txt}.
 
 \end{enumerate}
 
@@ -106,7 +107,7 @@ observable_name_1 y2
   # Choose which runs to use for training. Can be set to "all" or as list, e.g. 1-5,8-12,15,18
   SmoothEmulator_TrainingPts all
   #
-  # Below only used for testing agains full model runs not used for training.
+  # Below only used for testing against full model runs not used for training.
   # Default location of testing data is smooth_data/FullModelTestingRuns/
   SmoothEmulator_FullModelTestingRunsDirName smooth_data/FullModelTestingRuns
   #

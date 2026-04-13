@@ -4,7 +4,7 @@
 
 \subsection{Overview}
 
-After setting the locations of the training points in model-parameter space, as described in Chapter \ref{sec:tpo}, it is the responsibility of the User to run the full model at those points and record the values of all the observables for each point. Only then can the {\it Smooth Emulator} software proceed to the next step of tuning the emulator. Training data for a specific model run generated from a specific point in model-parameter space is stored in a unique directory. 
+After setting the locations of the training points in model-parameter space, as described in Chapter \ref{sec:tpo}, it is the responsibility of the User to run the full model at those points and record the values of all the observables for each point. Only then can {\it Smooth Emulator} software proceed to the next step of tuning the emulator. Training data for a specific model run generated from a specific point in model-parameter space is stored in a unique directory. 
 
 \subsection{Format for Training Data}
 
@@ -26,7 +26,7 @@ observable_name_3  Y3
 .
 \end{Verbatim}
 }\vspace*{-8pt}
-The names must match those listed in {\tt smooth\_data/Info/observable\_info.txt}, as described in Chapter \ref{sec:emulator}. The observable values are calculated by the full model for the model-parameter values listed in the corresponding {\tt model\_parameters.txt} file in the same directory.
+The names must match those listed in {\tt smooth\_data/Info/observable\_info.txt}, as described in Chapter \ref{sec:emulator}. The observable values, $Y1,Y2,\cdots$, are calculated by the full model for the model-parameter values listed in the corresponding {\tt model\_parameters.txt} file in the same directory.
 
 Once the observable files are produced for each of the full model runs, the User can then proceed to build and tune an emulator.
 
