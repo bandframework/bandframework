@@ -2,7 +2,7 @@
 
 ## About
 
-BRICK is a Python layer around [AZURE2](http://azure.nd.edu). It provides
+BRICK is a Python layer around [AZURE2](https://azure.nd.edu). It provides
 the functionality to sample R-matrix parameters that are typically fit.
 
 ## Workflow
