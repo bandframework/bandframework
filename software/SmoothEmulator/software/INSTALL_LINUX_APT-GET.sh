@@ -1,6 +1,7 @@
 #!/bin/bash
 SMOOTHHOME=`echo ${PWD} | awk '{print substr($1,1,length($1)-9)}'`
 MYPYTHON=/usr/bin/python3
+mkdir -p ../bin
 
 oldstring="REPLACEMEWITHSMOOTHHOME"
 sed -e "s|${oldstring}|${SMOOTHHOME}|g" scripts/smoothy_emulate.py > scripts/smoothy_emulate.py.tmp
