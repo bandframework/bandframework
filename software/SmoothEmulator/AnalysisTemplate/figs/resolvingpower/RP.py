@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+import shutil
 import subprocess
 from subprocess import PIPE, run
 from pylab import *
@@ -89,16 +90,15 @@ sbp=subprocess.run(["uname","-s"],stdout=PIPE,stderr=PIPE,universal_newlines=Tru
 osname=sbp.stdout.rstrip()
 
 if osname=="Darwin":
-   os.system("open -a Preview "+outputfilename);
+  os.system("open -a Preview "+outputfilename);
 else:
-   sbp=subprocess.run(["command","-v","okular","&> /dev/null"],stdout=PIPE,stderr=PIPE)
-   returncode=sbp.returncode
-   if returncode==0:
-      os.system("okular "+outputfilename+"&")
-   else:
-      sbp=subprocess.run(["command","-v","evince","&> /dev/null"],stdout=PIPE,stderr=PIPE)
-      returncode=sbp.returncode
-      if returncode==0:
-         os.system("evince "+outputfilename+"&")
+  executable_exists = shutil.which("okular")
+  if executable_exists:
+    os.system("okular "+outputfilename+"&")
+  else:
+    executable_exists = shutil.which("evince")
+    if executable_exists:
+      os.system("evince "+outputfilename+"&")
+
          
 quit()

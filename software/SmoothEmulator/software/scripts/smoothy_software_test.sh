@@ -6,7 +6,10 @@ echo "If error messages arise and script fails, you need to see where failures o
    SMOOTH_HOME="REPLACEMEWITHSMOOTHHOME"
    MYPYTHON=REPLACEMEWITHPYTHON
    
-   thisdir=${PWD}
+   analdir=${PWD}
+   mkdir -p figs/figdata
+   figsdir=${analdir}/figs
+   
    echo -------------------------------------
    rm -f -r smooth_data/FullModelRuns/run*
    rm -f -r smooth_data/FullModelTestingRuns/run*
@@ -23,19 +26,19 @@ echo "If error messages arise and script fails, you need to see where failures o
    echo --------- ran smoothy_testvsfullmodel ---------
    ${SMOOTH_HOME}/bin/smoothy_mcmc;
    echo --------- ran smoothy_mcmc ---------
-   mkdir -p figs/figdata
-   cd figs/
+
+   cd ${figsdir}
    \cp -f ../smooth_data/MCMC/trace_theta.txt figdata/
    \cp -f ../smooth_data/MCMC/ResolvingPower.txt figdata/
    \cp -f -r ../smooth_data/output_stuff/fullmodel_testdata figdata/
    cd YvsY
    echo 3 | ${MYPYTHON} YvsY.py
-   cd ../posterior
+   cd ${figsdir}/posterior
    ${MYPYTHON} posterior.py
-   cd ../ResolvingPower
+   cd ${figsdir}/resolvingpower
    ${MYPYTHON} RP.py
-   cd ${thisdir}
-   cd figs/
+   
+   cd ${figsdir}
    osname=`uname -s`
    echo --- osname=${osname}  ---
    if [ ${osname} = "Darwin" ]
@@ -46,23 +49,23 @@ echo "If error messages arise and script fails, you need to see where failures o
       open testfigs/posterior.pdf
       open resolvingpower/RP.pdf
       open testfigs/RP.pdf
-   elif [ osname = "Linux" ]
+   elif [ ${osname} = "Linux" ]
    then
-   if command -v okular &> /dev/null
-   then
-         okular YvsY/YvsY_obs3.pdf &
+      if command -v okular &> /dev/null
+      then
+         #okular YvsY/YvsY_obs3.pdf &
          okular testfigs/YvsY_obs3.pdf &
-         okular posterior/posterior.pdf &
+         #okular posterior/posterior.pdf &
          okular testfigs/posterior.pdf &
-         okular resolvingpower/RP.pdf &
+         #okular resolvingpower/RP.pdf &
          okular testfigs/RP.pdf &
       elif command -v evince &> /dev/null
       then
-         evince YvsY/YvsY_obs3.pdf &
+         #evince YvsY/YvsY_obs3.pdf &
          evince testfigs/YvsY_obs3.pdf &
-         evince posterior/posterior.pdf &
+         #evince posterior/posterior.pdf &
          evince testfigs/posterior.pdf &
-         evince resolvingpower/RP.pdf &
+         #evince resolvingpower/RP.pdf &
          evince testfigs/RP.pdf &
       else
          echo "Need to install okular or evince pdf viewers for this script to work"
@@ -72,6 +75,6 @@ echo "If error messages arise and script fails, you need to see where failures o
       echo "Script written for Linux or Mac"
       echo "You can compare figures named figs/testfigs/*_test.pdf to new figures by hand"
    fi
-   cd ${thisdir}
+   cd ${analdir}
    echo === FINISHED SOFTWARE TEST COMMANDS ===
 
