@@ -39,10 +39,10 @@ if dpkg -s python3-numpy  >/dev/null 2>&1; then
 else
    sudo apt-get install python3-numpy
 fi
-if dpkg -s python-matplotlib  >/dev/null 2>&1; then
-   sudo apt-get upgrade python-matplotlib
+if dpkg -s python3-matplotlib  >/dev/null 2>&1; then
+   sudo apt-get upgrade python3-matplotlib
 else
-   sudo apt-get install python-matplotlib
+   sudo apt-get install python3-matplotlib
 fi
 if dpkg -s python3-pybind11  >/dev/null 2>&1; then
    sudo apt-get upgrade python3-pybind11
