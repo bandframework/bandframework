@@ -54,12 +54,12 @@ if dpkg -s pybind11-dev  >/dev/null 2>&1; then
 else
    sudo apt-get install pybind11-dev
 fi
-cmake . -D EIGEN3_INCLUDE_DIR=/usr/include/eigen3  -D CMAKE_CXX_COMPILER=/usr/bin/g++-11
+cmake . -D CMAKE_VERSION=3.2 -D EIGEN3_INCLUDE_DIR=/usr/include/eigen3  -D CMAKE_CXX_COMPILER=/usr/bin/g++-11
 make
 
 thisdir=${PWD}
 cd pybind_stuff
-cmake . -D EIGEN3_INCLUDE_DIR=/usr/include/eigen3  -D CMAKE_CXX_COMPILER=/usr/bin/g++-11
+cmake . -D CMAKE_VERSION=3.2 -D EIGEN3_INCLUDE_DIR=/usr/include/eigen3  -D CMAKE_CXX_COMPILER=/usr/bin/g++-11
 make
 cd ${thisdir}
 exit;

@@ -54,12 +54,12 @@ if `command -v /opt/homebrew/bin/brew >/dev/null 2>&1`; then
    else
       /opt/homebrew/bin/brew install pybind11
    fi
-   cmake . -D EIGEN3_INCLUDE_DIR=/opt/homebrew/include/eigen3  -D CMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-15
+   cmake . -D CMAKE_VERSION=4.0 -D EIGEN3_INCLUDE_DIR=/opt/homebrew/include/eigen3  -D CMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-15
    make
 fi
    thisdir=${PWD}
    cd pybind_stuff
-   cmake . -D EIGEN3_INCLUDE_DIR=/opt/homebrew/include/eigen3  -D CMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-15
+   cmake . -D CMAKE_VERSION_MAC=4.0 -D EIGEN3_INCLUDE_DIR=/opt/homebrew/include/eigen3  -D CMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-15
    make
    cd ${thisdir}   
 exit;

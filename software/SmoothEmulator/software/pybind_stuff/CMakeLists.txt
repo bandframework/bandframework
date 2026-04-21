@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+cmake_minimum_required(VERSION ${CMAKE_VERSION} FATAL_ERROR)
 set(CMAKE_VERBOSE_MAKEFILE on)
 project(emulator_smooth CXX)
 set (MAIN_PROGRAM_DIR "../main_programs")
@@ -14,7 +14,7 @@ message("For different compiler enter: cmake -D CMAKE_CXX_COMPILER=YOUR_PREFERRE
 set(CMAKE_CXX_FLAGS "-W -Wall -march=native -std=c++17 -O2 -fPIC -fvisibility=hidden -Wno-unused-result")
 set(CMAKE_MODULE_PATH "${MAIN_PROGRAM_DIR}/cmake")
 find_package(Eigen3 REQUIRED)
-include_directories(SYSTEM ../include $ENV{EIGEN3_INCLUDE_DIR})
+include_directories(SYSTEM ../include ${EIGEN3_INCLUDE_DIR})
 link_directories(../lib)
 
 find_library(../lib libsmooth.a)
