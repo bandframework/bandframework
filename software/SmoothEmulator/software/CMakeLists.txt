@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 project(msu_smooth LANGUAGES CXX)
 
 message("Will Compile with " ${CMAKE_CXX_COMPILER})

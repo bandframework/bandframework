@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 set(CMAKE_VERBOSE_MAKEFILE on)
 project(emulator_smooth CXX)
 set (MAIN_PROGRAM_DIR "../main_programs")
@@ -6,10 +6,6 @@ set (FAKEFULLMODEL_DIR "../fakefullmodels")
 #set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "$ENV{PWD}/../bin")
 set (CMAKE_LIBRARY_OUTPUT_DIRECTORY "../lib")
 set (PYBIND11_FINDPYTHON ON)
-SET(EIGEN3_INCLUDE_DIR "$ENV{EIGEN3_INCLUDE_DIR}" )
-IF( NOT EIGEN3_INCLUDE_DIR )
-    MESSAGE( FATAL_ERROR "Please point the environment variable EIGEN3_INCLUDE_DIR to the include directory of your Eigen3 installation.")
-ENDIF()
 
 add_custom_target(extern_smooth COMMAND make WORKING_DIRECTORY ..)
 

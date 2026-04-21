@@ -14,10 +14,10 @@ chmod +x ../bin/smoothy_emulate.py
 chmod +x ../bin/smoothy_software_test.sh
 
 sudo apt-get update
-if dpkg -s g++-15 >/dev/null 2>&1; then
-   sudo apt-get upgrade g++-15
+if dpkg -s g++-11 >/dev/null 2>&1; then
+   sudo apt-get upgrade g++-11
 else
-   sudo apt-get install g++-15
+   sudo apt-get install g++-11
 fi
 if dpkg -s cmake >/dev/null 2>&1; then
    sudo apt-get upgrade cmake
@@ -54,12 +54,12 @@ if dpkg -s pybind11-dev  >/dev/null 2>&1; then
 else
    sudo apt-get install pybind11-dev
 fi
-cmake . -D EIGEN3_INCLUDE_DIR=/opt/homebrew/include/eigen3  -D CMAKE_CXX_COMPILER=/usr/bin/g++-15
+cmake . -D EIGEN3_INCLUDE_DIR=/usr/include/eigen3  -D CMAKE_CXX_COMPILER=/usr/bin/g++-11
 make
 
 thisdir=${PWD}
 cd pybind_stuff
-cmake . -D EIGEN3_INCLUDE_DIR=/usr/include/eigen3  -D CMAKE_CXX_COMPILER=/usr/bin/g++-15
+cmake . -D EIGEN3_INCLUDE_DIR=/usr/include/eigen3  -D CMAKE_CXX_COMPILER=/usr/bin/g++-11
 make
 cd ${thisdir}
 exit;
