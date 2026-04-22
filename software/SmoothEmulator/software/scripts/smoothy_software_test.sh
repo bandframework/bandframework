@@ -4,7 +4,8 @@ echo "If you are running linux, the comparison figs will automatically be genera
 echo "If error messages arise and script fails, you need to see where failures occured by viewing output of this script"
 
    SMOOTH_HOME="REPLACEMEWITHSMOOTHHOME"
-   MYPYTHON=REPLACEMEWITHPYTHON
+   MYPYTHON="REPLACEMEWITHMYPYTHON"
+   MYPDFPREVIEWER="REPLACEWITHMYPDFPREVIEWER"
    
    analdir=${PWD}
    mkdir -p figs/figdata
@@ -43,34 +44,14 @@ echo "If error messages arise and script fails, you need to see where failures o
    echo --- osname=${osname}  ---
    if [ ${osname} = "Darwin" ]
    then
-      open YvsY/YvsY_obs3.pdf
       open testfigs/YvsY_obs3.pdf
-      open posterior/posterior.pdf
       open testfigs/posterior.pdf
-      open resolvingpower/RP.pdf
       open testfigs/RP.pdf
    elif [ ${osname} = "Linux" ]
    then
-      if command -v okular &> /dev/null
-      then
-         #okular YvsY/YvsY_obs3.pdf &
-         okular testfigs/YvsY_obs3.pdf &
-         #okular posterior/posterior.pdf &
-         okular testfigs/posterior.pdf &
-         #okular resolvingpower/RP.pdf &
-         okular testfigs/RP.pdf &
-      elif command -v evince &> /dev/null
-      then
-         #evince YvsY/YvsY_obs3.pdf &
-         evince testfigs/YvsY_obs3.pdf &
-         #evince posterior/posterior.pdf &
-         evince testfigs/posterior.pdf &
-         #evince resolvingpower/RP.pdf &
-         evince testfigs/RP.pdf &
-      else
-         echo "Need to install okular or evince pdf viewers for this script to work"
-         echo "You can compare figures named figs/testfigs/*_test.pdf to new figures by hand"
-      fi
+      ${MYPDFVIEWER} testfigs/YvsY_obs3.pdf &
+      ${MYPDFVIEWER} testfigs/posterior.pdf &
+      ${MYPDFVIEWER} testfigs/RP.pdf &
    else
       echo "Script written for Linux or Mac"
       echo "You can compare figures named figs/testfigs/*_test.pdf to new figures by hand"
