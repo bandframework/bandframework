@@ -5,8 +5,8 @@ echo "=== The apt-get package installer will request su priveleges to install pa
 SMOOTH_GCC_VERSION=11
 SMOOTHHOME=`echo ${PWD} | awk '{print substr($1,1,length($1)-9)}'`
 MYPYTHON=/usr/bin/python3
-#MYPDFPREVIEWER=okular
-PDFPREVIEWER=evince
+MYPDFPREVIEWER=okular
+#PDFPREVIEWER=evince
 mkdir -p ../bin
 nthreads=`nproc`
 nthreads=`expr ${nthreads} - 2`
