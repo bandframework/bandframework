@@ -2,6 +2,8 @@
 SMOOTHHOME=`echo ${PWD} | awk '{print substr($1,1,length($1)-9)}'`
 MYPYTHON=/usr/bin/python3
 mkdir -p ../bin
+nthreads=`nproc`
+nthreads=`expr ${nthreads} - 2`
 
 oldstring="REPLACEMEWITHSMOOTHHOME"
 sed -e "s|${oldstring}|${SMOOTHHOME}|g" scripts/smoothy_emulate.py > scripts/smoothy_emulate.py.tmp
@@ -56,11 +58,11 @@ else
    sudo apt-get install pybind11-dev
 fi
 cmake . -D CMAKE_VERSION=3.2 -D EIGEN3_INCLUDE_DIR=/usr/include/eigen3  -D CMAKE_CXX_COMPILER=/usr/bin/g++-11
-make
+make -j ${nthreads}
 
 thisdir=${PWD}
 cd pybind_stuff
 cmake . -D CMAKE_VERSION=3.2 -D EIGEN3_INCLUDE_DIR=/usr/include/eigen3  -D CMAKE_CXX_COMPILER=/usr/bin/g++-11
-make
+make -j ${nthreads}
 cd ${thisdir}
 exit;

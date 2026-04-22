@@ -2,6 +2,8 @@
 SMOOTHHOME=`echo ${PWD} | awk '{print substr($1,1,length($1)-9)}'`
 MYPYTHON=/opt/homebrew/bin/python3
 mkdir -p ../bin
+nthreads=`nproc`
+nthreads=`expr ${nthreads} - 2`
 
 oldstring="REPLACEMEWITHSMOOTHHOME"
 sed -e "s|${oldstring}|${SMOOTHHOME}|g" scripts/smoothy_emulate.py > scripts/smoothy_emulate.py.tmp
@@ -56,11 +58,11 @@ if `command -v /opt/homebrew/bin/brew >/dev/null 2>&1`; then
       /opt/homebrew/bin/brew install pybind11
    fi
    cmake . -D CMAKE_VERSION=4.0 -D EIGEN3_INCLUDE_DIR=/opt/homebrew/include/eigen3  -D CMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-15
-   make
+   make -j ${nthreads}
 fi
    thisdir=${PWD}
    cd pybind_stuff
    cmake . -D CMAKE_VERSION_MAC=4.0 -D EIGEN3_INCLUDE_DIR=/opt/homebrew/include/eigen3  -D CMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-15
-   make
+   make -j ${nthreads}
    cd ${thisdir}   
 exit;
