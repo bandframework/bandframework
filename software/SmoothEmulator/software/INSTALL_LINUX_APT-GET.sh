@@ -1,5 +1,5 @@
 #!/bin/bash
-echo  "=== NOTE: This script will install (if not already installed) cmake (version 4.x or higher), Eigen, python3, numpy, matplotlib, pybind11, okular and g++-${SMOOTH_GCC_VERSION) ==="
+echo  "=== NOTE: This script will install (if not already installed) cmake (version 4.x or higher), Eigen, python3, numpy, matplotlib, pybind11, okular and g++-11 ==="
 echo "=== You can easily change the g++ version by editing this script (line 5) or the pdf previewer from okular to evince (line 8) ==="
 echo "=== The apt-get package installer will request su priveleges to install packages in /usr/... so you may wish to review this script in case you think there might be a conflict with updating any existing software"
 SMOOTH_GCC_VERSION=11
@@ -26,7 +26,7 @@ chmod +x ../bin/smoothy_emulate.py
 chmod +x ../bin/smoothy_software_test.sh
 
 sudo apt-get update
-if dpkg -s g++-${SMOOTH_GCC_VERSION) >/dev/null 2>&1; then
+if dpkg -s g++-${SMOOTH_GCC_VERSION} >/dev/null 2>&1; then
    sudo apt-get upgrade g++-${SMOOTH_GCC_VERSION}
 else
    sudo apt-get install g++-${SMOOTH_GCC_VERSION}
