@@ -26,10 +26,10 @@ if ! `command -v /opt/homebrew/bin/brew >/dev/null 2>&1`; then
 fi
 if `command -v /opt/homebrew/bin/brew >/dev/null 2>&1`; then
    /opt/homebrew/bin/brew update
-   if /opt/homebrew/bin/brew list gcc@15 >/dev/null 2>&1; then
-      /opt/homebrew/bin/brew upgrade gcc@15
+   if /opt/homebrew/bin/brew list gcc@${SMOOTH_GCC_VERSION} >/dev/null 2>&1; then
+      /opt/homebrew/bin/brew upgrade gcc@${SMOOTH_GCC_VERSION}
    else
-      /opt/homebrew/bin/brew install gcc@15
+      /opt/homebrew/bin/brew install gcc@${SMOOTH_GCC_VERSION}
    fi
    if /opt/homebrew/bin/brew list cmake >/dev/null 2>&1; then
       /opt/homebrew/bin/brew upgrade cmake
