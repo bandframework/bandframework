@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION ${CMAKE_VERSION} FATAL_ERROR)
 project(msu_smooth LANGUAGES CXX)
 
 message("Will Compile with " ${CMAKE_CXX_COMPILER})
-message("For different compiler enter: cmake -D CMAKE_CXX_COMPILER=YOUR_PREFERRED_COMPILER")
-message("If CMake cannot find Eigen3 location: cmake -D EIGEN3_INCLUDE_DIR=your_location_of_eigen_files")
 
 set(CMAKE_CXX_FLAGS "-W -Wall -march=native -std=c++20 -O3 -fPIC -Wno-unused-result")
 
