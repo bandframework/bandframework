@@ -5,8 +5,8 @@ echo "=== The apt-get package installer will request su priveleges to install pa
 SMOOTH_GCC_VERSION=11
 SMOOTHHOME=`echo ${PWD} | awk '{print substr($1,1,length($1)-9)}'`
 MYPYTHON=/usr/bin/python3
-MYPDFPREVIEWER=okular
-#PDFPREVIEWER=evince
+#MYPDFPREVIEWER=okular
+PDFPREVIEWER=evince
 mkdir -p ../bin
 nthreads=`nproc`
 nthreads=`expr ${nthreads} - 2`
@@ -66,10 +66,10 @@ if dpkg -s pybind11-dev  >/dev/null 2>&1; then
 else
    sudo apt-get install pybind11-dev
 fi
-if dpkg -s okular  >/dev/null 2>&1; then
-   sudo okular upgrade okular
+if dpkg -s ${MYPDFPREVIEWER}  >/dev/null 2>&1; then
+   sudo ${MYPDFPREVIEWER} upgrade ${MYPDFPREVIEWER}
 else
-   sudo apt-get install okular
+   sudo apt-get install ${MYPDFPREVIEWER}
 fi
 cmake . -D CMAKE_VERSION=3.2 -D EIGEN3_INCLUDE_DIR=/usr/include/eigen3  -D CMAKE_CXX_COMPILER=/usr/bin/g++-${SMOOTH_GCC_VERSION}
 make -j ${nthreads}
