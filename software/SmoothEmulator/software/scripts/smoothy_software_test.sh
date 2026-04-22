@@ -49,9 +49,9 @@ echo "If error messages arise and script fails, you need to see where failures o
       open testfigs/RP.pdf
    elif [ ${osname} = "Linux" ]
    then
-      ${MYPDFVIEWER} testfigs/YvsY_obs3.pdf &
-      ${MYPDFVIEWER} testfigs/posterior.pdf &
-      ${MYPDFVIEWER} testfigs/RP.pdf &
+      ${MYPDFPREVIEWER} testfigs/YvsY_obs3.pdf &
+      ${MYPDFPREVIEWER} testfigs/posterior.pdf &
+      ${MYPDFPREVIEWER} testfigs/RP.pdf &
    else
       echo "Script written for Linux or Mac"
       echo "You can compare figures named figs/testfigs/*_test.pdf to new figures by hand"
