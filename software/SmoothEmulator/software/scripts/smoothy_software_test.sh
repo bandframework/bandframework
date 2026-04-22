@@ -3,9 +3,9 @@ echo "Running script to test Smooth Emulator Software. If successful, pdf images
 echo "If you are running linux, the comparison figs will automatically be generated if you have okular or evince installed"
 echo "If error messages arise and script fails, you need to see where failures occured by viewing output of this script"
 
-   SMOOTH_HOME="REPLACEMEWITHSMOOTHHOME"
-   MYPYTHON="REPLACEMEWITHMYPYTHON"
-   MYPDFPREVIEWER="REPLACEWITHMYPDFPREVIEWER"
+   SMOOTH_HOME=REPLACEMEWITHSMOOTHHOME
+   MYPYTHON=REPLACEMEWITHMYPYTHON
+   MYPDFPREVIEWER=REPLACEWITHMYPDFPREVIEWER
    
    analdir=${PWD}
    mkdir -p figs/figdata

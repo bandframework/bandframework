@@ -9,11 +9,11 @@ mkdir -p ../bin
 nthreads=`nproc`
 nthreads=`expr ${nthreads} - 2`
 
-oldstring="REPLACEMEWITHSMOOTHHOME"
+oldstring=REPLACEMEWITHSMOOTHHOME
 sed -e "s|${oldstring}|${SMOOTHHOME}|g" scripts/smoothy_emulate.py > scripts/smoothy_emulate.py.tmp
 sed -e "s|${oldstring}|${SMOOTHHOME}|g" scripts/smoothy_software_test.sh > scripts/smoothy_software_test.sh.tmp
 
-oldstring="REPLACEMEWITHMYPYTHON"
+oldstring=REPLACEMEWITHMYPYTHON
 sed -e "s|${oldstring}|${MYPYTHON}|g" scripts/smoothy_emulate.py.tmp > ../bin/smoothy_emulate.py
 sed -e "s|${oldstring}|${MYPYTHON}|g" scripts/smoothy_software_test.sh.tmp > ../bin/smoothy_software_test.sh
 

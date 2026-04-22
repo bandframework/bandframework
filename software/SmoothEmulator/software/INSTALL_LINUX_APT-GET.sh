@@ -21,6 +21,7 @@ sed -e "s|${oldstring}|${MYPDFPREVIEWER}|g" scripts/smoothy_software_test.sh.tmp
 oldstring="REPLACEMEWITHMYPYTHON"
 sed -e "s|${oldstring}|${MYPYTHON}|g" scripts/smoothy_emulate.py.tmp > ../bin/smoothy_emulate.py
 sed -e "s|${oldstring}|${MYPYTHON}|g" scripts/smoothy_software_test.sh.tmp2 > ../bin/smoothy_software_test.sh
+exit;
 
 chmod +x ../bin/smoothy_emulate.py
 chmod +x ../bin/smoothy_software_test.sh
