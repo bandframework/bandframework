@@ -9,7 +9,6 @@ MYPDFPREVIEWER=okular
 #PDFPREVIEWER=evince
 mkdir -p ../bin
 nthreads=`nproc`
-nthreads=`expr ${nthreads} - 2`
 
 oldstring="REPLACEMEWITHSMOOTHHOME"
 sed -e "s|${oldstring}|${SMOOTHHOME}|g" scripts/smoothy_emulate.py > scripts/smoothy_emulate.py.tmp
