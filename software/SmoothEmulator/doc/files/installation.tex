@@ -5,7 +5,7 @@
 \section{Installation and Getting Started}\label{sec:installation}
 
 \subsection{Overview}
-This section describes how to download and install {\it Smooth Emulator} software. The software is downloaded as part of the BAND git repository. {\it Smooth Emulator} software is all contained within a single directory of that repository. Once downloaded, the {\it Smooth Emulator} portion of the software can be copied to a location of the User's choosing. The source code in that directory can then be compiled. For performing analyses, the User should copy a directory from the distribution, which then serves as a template. A separate directory should be copied for each analysis. The source code is split into different directories. One set of codes is used to produce libraries. Other codes are the main programs, which tend to be simple short programs, which then make calls to the libraries. These short main programs are designed so that they can be copied and altered to address the User's needs. The template analysis directory also serves as as starting point for the tutorial described in Chapter \ref{sec:tutorial}.
+This section describes how to download and install {\it Smooth Emulator} software. The software can either be downloaded as part of the BAND git repository or copied from the BAND website, {\tt https://bandframework.github.io}. {\it Smooth Emulator} software is all contained within a single directory of that repository. Once downloaded, the {\it Smooth Emulator} portion of the software can be copied to a location of the User's choosing. The source code in that directory can then be compiled. For performing analyses, the User should copy a directory from the distribution, which then serves as a template. A separate directory should be copied for each analysis. The source code is split into different directories. One set of codes is used to produce libraries. Other codes are the main programs, which tend to be simple short programs, which then make calls to the libraries. These short main programs are designed so that they can be copied and altered to address the User's needs. The template analysis directory also serves as as starting point for the tutorial described in Chapter \ref{sec:tutorial}.
 
 The software is designed to be run interactively, from the command line in standard Unix-like shells. The commands are designed to work when invoked from an analysis directory, like those from the template, which have the required initialization and options files in standard locations. The User can also run the software in the batch mode, though that is usually not necessary given how quickly the operations typically proceed.
 
@@ -29,19 +29,22 @@ On a Mac, the software is all installed in the {/opt/homebrew/..} tree, and inst
 
 \subsection{Downloading the Repository and Creating Working Directories}\label{subsec:download}
 
+\noindent{\bf Method I: (downloading the Git Repository)}\\
 The software requires downloading the BAND framework software repository into some directory. Should that be in the User's home directory, the User might enter
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
-/Users/CarlosSmith% \textcolor{darkred}{git clone https://github.com/bandframework/bandframework.git}
+/Users/CarlosSmith% \textcolor{darkred}{git clone https://github.com/bandframework/SmoothEmulator.git}
 \end{Verbatim}
 }\vspace*{-8pt}
-Within the repository, there will be a directory\\{\tt /Users/CarlosSmith/bandframework/software/SmoothEmulator/}. All the relevant functionality of {\it Smooth Emulator} is contained within this directory. The User can either leave this directory in place, or make a copy to a new location. If the User plans on making changes on the underlying software and rebuilding the core libraries, it would make sense to copy this directory to a new location, so as to maintain an original copy that might be updated through {\tt git}. Otherwise, the User might wish to simply use the repository version, but a {\tt git pull} command might create conflicts. Throughout the manual the phrase \textit{SMOOTH\_HOME} will refer to this directory. The software and CMake files for creating the {\it Smooth Emulator} libraries is stored in the \textit{SMOOTH\_HOME}{\tt /software/} directory.
+Within the repository, there will be a directory\\{\tt /Users/CarlosSmith/bandframework/software/SmoothEmulator/}. All the relevant functionality of {\it Smooth Emulator} is contained within this directory. The User can either leave this directory in place, or move it to a new location. If the User plans on making changes on the underlying software and rebuilding the core libraries, it would make sense to copy this directory to a new location, so as to maintain an original copy that might be updated through {\tt git}. Otherwise, the User might wish to simply use the repository version, but a {\tt git pull} command might create conflicts. Throughout the manual the phrase \textit{SMOOTH\_HOME} will refer to this directory. The software and CMake files for creating the {\it Smooth Emulator} libraries are stored in the \textit{SMOOTH\_HOME}{\tt /software/} directory.
 
-If the User downloaded the {\tt bandframework} repository into their home directory, they might copy the {\it Smooth Emulator} software as follows.
+\noindent{\bf Method II: (downloading the tarball)}\\
+To avoid using Git, one can download a single file by visiting {\tt https://github.com/bandframework/?????}, then downloading {\tt SmoothEmulator\_VX.tar.gz}. The User may then decompress the file,
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
-/Users/CarlosSmith% \textcolor{darkred}{cp -r bandframework/software/SmoothEmulator \textit{SMOOTH_HOME}}
+/Users/CarlosSmith% \textcolor{darkred}{gunzip SmoothEmulator_V1.x.tar.gz}
+/Users/CarlosSmith% \textcolor{darkred}{tar -xf SmoothEmulator_V1.x.tar}
 \end{Verbatim}
 }\vspace*{-8pt}
-After copying to the new location, the User may delete the original repository, {\tt ../bandframework/..}.
+This will create the directory {\tt /Users/CarlosSmith/SmoothEmulator}. This directory may be placed anywhere according to the User's preference and will be referred to throughout this manual by the phrase {\tt SMOOTH\_HOME}. The software and CMake files for creating the {\it Smooth Emulator} libraries are stored in the \textit{SMOOTH\_HOME}{\tt /software/} directory.
 
 For convenience, the User may wish to add the executable directory to their path by placing the following line in their {\tt .zshrc} or {\tt .bashrc} file.
 \vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
