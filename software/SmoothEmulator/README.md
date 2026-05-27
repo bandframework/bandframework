@@ -1,4 +1,4 @@
-# smooth emulator and simplex sampler software
+# smooth emulator software
 
 Authors: Scott Pratt, Oleh Savchuk, Eren Erdogan, Ekaksh Kataria
 
