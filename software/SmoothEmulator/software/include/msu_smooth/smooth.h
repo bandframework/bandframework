@@ -6,7 +6,10 @@
 #include <vector>
 #include <array>
 #include <fstream>
-#include "msu_smoothutils/commonutils.h"
+#include "msu_smoothutils/parametermap.h"
+#include "msu_smoothutils/misc.h"
+#include "msu_smoothutils/randy.h"
+#include "msu_smoothutils/log.h"
 #include <list>
 
 using namespace std;
@@ -22,6 +25,7 @@ namespace NBandSmooth{
 		vector<vector<unsigned int>> IPar;
 		vector<unsigned int> dupfactor;
 		vector<unsigned int> rank;
+		bool UseRFactor;
 
 		CSmooth();
 		CSmooth(unsigned int NPars_Set,unsigned int maxrank);

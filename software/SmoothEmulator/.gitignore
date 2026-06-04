@@ -10,5 +10,6 @@
 **/*.log
 **/*.out
 **/*.toc
+**/bin/**
 ekaksh
 ekaksh/**

@@ -1,5 +1,6 @@
 #include "msu_smooth/modelparinfo.h"
 NBandSmooth::CPriorInfo* NBandSmooth::CModelParameters::priorinfo=NULL;
+double NBandSmooth::CModelParameters::GSCALE=sqrt(3.0);
 unsigned int NBandSmooth::CModelParameters::NModelPars=0;
 
 using namespace std;
@@ -13,7 +14,7 @@ CModelParameters::CModelParameters(){
 
 void CModelParameters::TranslateX_to_Theta(){
 	//for min, max range
-	double sigmax,xbar,root3=sqrt(3.0);
+	double sigmax,xbar;
 	unsigned int ipar;
 
 	for(ipar=0;ipar<NModelPars;ipar++){
@@ -23,28 +24,26 @@ void CModelParameters::TranslateX_to_Theta(){
 		else if(priorinfo->type[ipar]=="gaussian"){
 			xbar=priorinfo->xmin[ipar];
 			sigmax=priorinfo->xmax[ipar];
-			Theta[ipar]=(X[ipar]-xbar)/(sigmax*root3);
+			Theta[ipar]=(X[ipar]-xbar)/(sigmax*GSCALE);
 		}
 		else{
 			CLog::Fatal("Cannot translate X to Theta because type = "+priorinfo->type[ipar]+" is not recognized\n");
 		}
-		Theta[ipar]*=priorinfo->ThetaScale[ipar];
 	}
 }
 
 void CModelParameters::TranslateTheta_to_X(){
-	double sigmax,xbar,tscale,root3=sqrt(3.0);
+	double sigmax,xbar;
 	unsigned int ipar;
 
 	for(ipar=0;ipar<NModelPars;ipar++){
-		tscale=priorinfo->ThetaScale[ipar];
 		if(priorinfo->type[ipar]=="uniform"){
-			X[ipar]=priorinfo->xmin[ipar]+0.5*(1.0+Theta[ipar]/tscale)*(priorinfo->xmax[ipar]-priorinfo->xmin[ipar]);
+			X[ipar]=priorinfo->xmin[ipar]+0.5*(1.0+Theta[ipar])*(priorinfo->xmax[ipar]-priorinfo->xmin[ipar]);
 		}
 		else if(priorinfo->type[ipar]=="gaussian"){
 			xbar=priorinfo->xmin[ipar];
 			sigmax=priorinfo->xmax[ipar];
-			X[ipar]=xbar+root3*sigmax*Theta[ipar]/tscale;
+			X[ipar]=xbar+GSCALE*sigmax*Theta[ipar];
 		}
 		else{
 			CLog::Fatal("Cannot translate Theta to X because type = "+priorinfo->type[ipar]+" is not recognized\n");
@@ -68,9 +67,9 @@ void CModelParameters::Write(string filename){
 	unsigned int ipar;
 	filename="smooth_data/"+filename;
 	FILE *fptr=fopen(filename.c_str(),"w");
-	fprintf(fptr,"#                   parname    X       Theta\n");
+	fprintf(fptr,"#   parname        X      Theta\n");
 	for(ipar=0;ipar<NModelPars;ipar++){
-		fprintf(fptr,"%24s %12.5e %12.5e\n",
+		fprintf(fptr,"%24s %12.5e, theta=%12.5e\n",
 		priorinfo->parname[ipar].c_str(),X[ipar],Theta[ipar]);
 	}
 	fclose(fptr);
