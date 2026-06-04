@@ -11,12 +11,13 @@ double CSmooth::CalcY(vector<double> &A,double LAMBDA,vector<double> &theta){
 	for(ic=0;ic<NCoefficients;ic++){
 		term=A[ic]*sqrt(double(dupfactor[ic])/double(factorial[rank[ic]]));
 		for(ir=0;ir<rank[ic];ir++){
-			term*=theta[IPar[ic][ir]]/LAMBDA;
+			unsigned int ipar=IPar[ic][ir];
+			term*=theta[ipar]/LAMBDA;
 		}
 		answer+=term;
 	}
 	answer*=rfactor;
-  return answer;
+	return answer;
 }
 
 double CSmooth::CalcY_Remainder(vector<double> &A,double LAMBDA,vector<double> &theta,unsigned int NTrainingPts){

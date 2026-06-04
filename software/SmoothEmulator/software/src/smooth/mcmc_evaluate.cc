@@ -1,19 +1,12 @@
 #include <complex>
 #include "msu_smooth/master.h"
 #include "msu_smooth/mcmc.h"
-#include "msu_smoothutils/log.h"
 using namespace std;
 using namespace NBandSmooth;
 using namespace NMSUUtils;
 
 void CMCMC::EvaluateTrace(){
 	unsigned int itrace,ipar,jpar,ntrace=trace.size();
-	bool UsePCA=master->UsePCA;
-	CPCA *pca=NULL;
-	if(UsePCA){
-			pca=new CPCA();
-			pca->ReadTransformationInfo();
-	}
 	NObs=master->observableinfo->NObservables;
 	vector<double> thetabar,YRMS;
 	FILE *fptr;
@@ -43,43 +36,26 @@ void CMCMC::EvaluateTrace(){
 	SigmaYEmulator.resize(NObs);
 	for(iobs=0;iobs<NObs;iobs++)
 		SigmaYEmulator[iobs]=0.0;
-
-	if(UsePCA){
-		Z.resize(NObs);
-		Zbar.resize(NObs);
-		SigmaZEmulator.resize(NObs);
-	}
 	
 	for(ipar=0;ipar<NPars;ipar++){
 		thetabar[ipar]=0.0;
 	}
 	for(iobs=0;iobs<NObs;iobs++){
 		Ybar[iobs]=0.0;
-		if(UsePCA)	
-			Zbar[iobs]=0.0;
 	}
 	
 	for(itrace=0;itrace<ntrace;itrace++){
 		if(IGNORE_EMULATOR_ERROR){
-			master->CalcAllYOnly(trace[itrace],Y);
+			master->GetAllYOnlyFromTheta(trace[itrace],Y);
 		}
 		else{
-			master->CalcAllY(trace[itrace],Y,SigmaYEmulator);
-		}
-		if(UsePCA){
-			for(iobs=0;iobs<NObs;iobs++){
-				SigmaZEmulator[iobs]=SigmaYEmulator[iobs];
-				Z[iobs]=Y[iobs];
-			}
-			pca->TransformZtoY(Z,SigmaZEmulator,Y,SigmaYEmulator);
+			master->GetAllYFromTheta(trace[itrace],Y,SigmaYEmulator);
 		}
 		for(ipar=0;ipar<NPars;ipar++){
 			thetabar[ipar]+=trace[itrace][ipar];
 		}
 		for(iobs=0;iobs<NObs;iobs++){
 			Ybar[iobs]+=Y[iobs];
-			if(UsePCA)
-				Zbar[iobs]+=Z[iobs];
 		}
 		for(ipar=0;ipar<NPars;ipar++){
 			for(jpar=0;jpar<NPars;jpar++){
@@ -111,8 +87,6 @@ void CMCMC::EvaluateTrace(){
 	
 	for(iobs=0;iobs<NObs;iobs++){
 		Ybar[iobs]=Ybar[iobs]/double(ntrace);
-		if(UsePCA)
-			Zbar[iobs]=Zbar[iobs]/double(ntrace);
 		for(jobs=0;jobs<NObs;jobs++){
 			CovYY(iobs,jobs)=CovYY(iobs,jobs)/double(ntrace);
 		}
@@ -172,15 +146,14 @@ void CMCMC::EvaluateTrace(){
 	modpars.priorinfo=master->priorinfo;
 	modpars.SetTheta(thetabar);
 	modpars.TranslateTheta_to_X();
-	string command="mkdir -p smooth_data/mcmc_trace";
+	string command="mkdir -p smooth_data/MCMC";
 	system(command.c_str());
-	modpars.Write("mcmc_trace/xbar_thetabar.txt");
+	modpars.Write("MCMC/xbar_thetabar.txt");
 	
-	fptr=fopen("smooth_data/mcmc_trace/CovThetaTheta.txt","w");
+	fptr=fopen("smooth_data/MCMC/CovThetaTheta.txt","w");
 	for(ipar=0;ipar<NPars;ipar++){
 		SigmaString.clear();
 		for(jpar=0;jpar<NPars;jpar++){
-			CovThetaTheta(ipar,jpar)=CovThetaTheta(ipar,jpar)-thetabar[ipar]*thetabar[jpar];
 			snprintf(cc,CLog::CHARLENGTH,"%12.5e ",CovThetaTheta(ipar,jpar));
 			SigmaString=SigmaString+cc;
 		}
@@ -189,7 +162,7 @@ void CMCMC::EvaluateTrace(){
 	}
 	fclose(fptr);
 	
-	fptr=fopen("smooth_data/mcmc_trace/ResolvingPower.txt","w");
+	fptr=fopen("smooth_data/MCMC/ResolvingPower.txt","w");
 	for(ipar=0;ipar<NPars;ipar++){
 		for(iobs=0;iobs<NObs;iobs++){
 			fprintf(fptr,"%12.5e ",RP(ipar,iobs));
@@ -203,14 +176,14 @@ void CMCMC::EvaluateTrace(){
 	evecs=esolver.eigenvectors();
 	vector<double> evalnorm;
 	evalnorm.resize(NPars);
-	fptr=fopen("smooth_data/mcmc_trace/CovThetaTheta_eigenvals.txt","w");
+	fptr=fopen("smooth_data/MCMC/CovThetaTheta_eigenvals.txt","w");
 	for(ipar=0;ipar<NPars;ipar++){
 		evalnorm[ipar]=sqrt(fabs(real(evals(ipar))));
 		fprintf(fptr,"%15.8e\n",evalnorm[ipar]);
 	}
 	fclose(fptr);
 	
-	fptr=fopen("smooth_data/mcmc_trace/CovThetaTheta_eigenvecs.txt","w");
+	fptr=fopen("smooth_data/MCMC/CovThetaTheta_eigenvecs.txt","w");
 	for(ipar=0;ipar<NPars;ipar++){
 		SigmaString.clear();
 		for(jpar=0;jpar<NPars;jpar++){
@@ -221,5 +194,4 @@ void CMCMC::EvaluateTrace(){
 		fprintf(fptr,"%s",SigmaString.c_str());
 	}
 	fclose(fptr);
-	
 }

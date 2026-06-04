@@ -1,4 +1,4 @@
-#include "msu_smoothutils/log.h"
+#include "msu_smoothutils/commonutils.h"
 using namespace NMSUUtils;
 
 string CLog::logfilename="log.txt";
@@ -8,12 +8,9 @@ FILE *CLog::fptr=NULL;
 using namespace std;
 
 void CLog::Init(string &logfilename_in){
-	INTERACTIVE=true;
-	logfilename=logfilename_in;
-	if(logfilename!="INTERACTIVE"){
-		INTERACTIVE=false;
-		fptr=fopen(logfilename.c_str(),"w");
-	}
+   logfilename=logfilename_in;
+   INTERACTIVE=false;
+   fptr=fopen(logfilename.c_str(),"w");
 }
 
 void CLog::Init(char *logfilename_in){

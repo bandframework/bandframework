@@ -1,0 +1,174 @@
+\documentclass[UserManual.tex]{subfiles}
+\begin{document}
+\begin{sloppypar}
+
+\section{Utility Classes}
+{\it Smooth Emulator} software employs several ``utility'' classes. These can be used for a variety of purposes, and might at times be invoked in the source code for the main programs. Thus, the User might find further explanation of these provided functionalities. Here, we present the functionalities of three such classes. The relevant header files for these classes can be found in \textit{SMOOTH\_HOME}{\tt /software/include/msu\_smoothutils/}. The first is the {\tt CparameterMap} class. This is basically an extension of a C++ map, with some added functionality such as reading in the key/value pairs from files and to set elements with default values. These objects are used to read in the options from text files. The second class is the {\tt CLog} class. This is used for directing output to allow the User to toggle between sending output, including error messages, to a specified file rather than interactively (to the screen). The third class described here is {\tt Crandy}. This simplifies calling random number generators. Even though the User might not be writing source code where random numbers are employed, the User may wish to set the seeds for the {\tt Crandy} random number generators. 
+
+\subsection{The {\tt CparameterMap} Class}\label{subsec:parameterMap}
+
+It is common that the user will wish to either extract or set parameter that correspond to the various options inherent to those classes. This is done through an object in each of these classes that stores such parameters. These objects are defined by the {\tt CparameterMap} class, and as the name implies, this class provides map-like functionality. 
+
+For example, if the User wishes to write programs that change options during the running, they can use the parameterMap class, which has an object within the {\tt CTPO} class, {\tt tpo->parmap}. For example, the User could set {\tt LAMBDA=3.0} by adding the following line to the main program:
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+    .
+   tpo->parmap.set("TPO_LAMBDA",3.0);
+    .
+\end{Verbatim}
+}\vspace*{-8pt}
+This creates a key-value pair, where the key is the string {\tt TPO\_LAMBDA} and the value is 3.0.
+If the User wanted to have the program report the current value, they could add a line, e.g.,
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+    .
+   int NMC=tpo->parmap.getI("TPO_NMC",0);
+    .
+\end{Verbatim}
+}\vspace*{-8pt}
+Here the first argument is the key. The second argument is the default value, which will be used if the map does not include the given string.
+There are similar objects in the {\tt MCMC} class. The User may have created one of these objects, e.g.,
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+	NBandSmooth::CTPO *tpo=new CTPO();
+	NBandSmooth::CSmoothMaster smoothmaster;
+	NBandSmooth::CMCMC mcmc(&smoothmaster);
+\end{Verbatim}
+}\vspace*{-8pt}
+All of these three classes have a {\tt CparameterMap} object. For each class the relevant options files are read and the parameter maps are populated during the instantiation. The User can then set or access members of the class through the objects {\tt parmap} member. For example:
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+	double Lambda=smoothmaster.parmap->getD("SmoothEmulator_LAMBDA",2.5);
+	double stepsize=mcmc.parmap.getD("MCMC_METROPOLIS_STEPSIZE",0.06);
+\end{Verbatim}
+}\vspace*{-8pt}
+The {\tt parameterMap} objects were originally populated by reading the options files, {\tt smooth\_data/Options/*options.txt}. Thus, the options can be accessed through the names given in those files.
+
+The {\tt parameterMap} class is basically an extension of C++ maps. The header file, \textit{SMOOTH\_HOME}{\tt /software/include/msu\_smoothutils/parametermap.h}, is:
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+class CparameterMap : public map<string,string>\{
+public:
+  bool getB(string ,bool);
+  int getI(string ,int);
+  long long int getLongI(string ,long long int);
+  string getS(string ,string);
+  double getD(string ,double);
+  vector< double > getV(string, string);
+  vector< string > getVS(string, string);
+  vector< vector< double > > getM(string);
+  vector< vector< double > > getM(string, double);
+  void set(string, double);
+  void set(string, int);
+  void set(string, unsigned int);
+  void set(string, long long int);
+  void set(string, bool);
+  void set(string, string);
+  void set(string, char*);
+  void set(string, vector< double >);
+  void set(string, vector< string >);
+  void set(string, vector< vector< double > >);
+  void ReadParsFromFile(const char *filename);
+  void ReadParsFromFile(string filename);
+  void PrintPars();
+  char *message;
+\}
+\end{Verbatim}
+}\vspace*{-8pt}
+The first argument of most of the ``{\tt set}'' methods specifies the key in the map, and the second is the value to be set. For the ``{\tt get}'' methods, the first value is the key and the second is the value to be used should the key not exist in the map. The methods {\tt getB,~getI,~getLongI,~getS} and {\tt getD} return booleans, integers, strings or doubles. The software does have the capability to set and find vectors, but that shouldn't be necessary in this instance. All the options listed for {\tt Smooth Emulator} software are set using this functionality.
+
+\subsection{The {\tt CLog} Class}\label{subsec:CLog}
+This object has only static members, so there is only a single {\tt CLog} object in a program. If {\tt CLog::INTERACTIVE} is set to {\tt true} (the default) anything the program writes through the {\tt CLog} object will be sent to the screen. Otherwise, the output will be sent to the file defined by the string {\tt CLog::logfilename}. There are three basic functions, {\tt CLog::Init(string filename)}, which sets the output filename (if not interactive), {\tt CLog::Info(string message)} and {\tt CLog::Fatal(string message)}. For example if one writes the program:
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+#include "msu_smoothutils/commonutils.h"
+using namespace NBandSmooth;
+int main\{
+	double x=3;
+	CLog::Info("x="+to_string(3));
+	return 0;
+\}
+\end{Verbatim}
+}\vspace*{-8pt}
+the program will write {\tt x=3} to the screen. As another example, the program
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+#include "msu_smoothutils/commonutils.h"
+using namespace NBandSmooth;
+int main\{
+  CLog::Init("myoutput.txt");
+  double x=3;
+  CLog::Info("x="+to_string(3));
+  return 0;
+\}
+\end{Verbatim}
+}\vspace*{-8pt}
+will write the same output to the file {\tt myoutput.txt}. If the {\tt Info()} function is replaced by {\tt Fatal()} the same behavior will occur, but writing the statement will be followed by the program exiting (according to {\tt exit(1)}). 
+
+The class definition from the header file, \textit{SMOOTH\_HOME}{\tt /software/include/msu\_smoothutils/log.h} is
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+class CLog\{
+  public:
+    static bool INTERACTIVE;
+    static string logfilename;
+    static FILE *fptr;
+    static void Init(char *logfilename_in);
+    static void Init(string &logfilename_in);
+    static void Info(string message);
+    static void Fatal(string message);
+    static const int CHARLENGTH=300; // ignore if using only strings
+\};
+\end{Verbatim}
+}\vspace*{-8pt}
+Single messages should be less than 300 characters. 
+
+\subsection{The {\tt Crandy} Class}\label{subsec:Crandy}
+As the name suggests this object assists with the generation of random numbers with various distributions. A simple example of the class is:
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+#include "msu_smoothutils/commonutils.h"
+using namespace NBandSmooth;
+int main\{
+  Crandy *randy=new Crandy(12345);
+  double x=randy->ran();
+  printf("x=%g{\textbackslash}n",x);
+  return 0;
+\}
+\end{Verbatim}
+}\vspace*{-8pt}
+The program prints out a number between 0 and 1. One can reset the seed via {\tt randy->reset(int seed)}. The class defined in the header file, \textit{SMOOTH\_HOME}{\tt /software/include/msu\_smoothutils/randy.h}, is 
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+class Crandy\{
+public:
+  Crandy(int iseed);
+  int seed;
+  double threshold,netprob;
+  double ran();
+  double ran_gauss(); // return x propto exp(-x^2/2), <x^2> = 1
+  void ran_gauss2(double &g1,double &g2);
+  double ran_exp(); // return x propto exp(-x)
+  double ran_lorentzian(); // return x propto 1/(1+4x^2), i.e. multiply by full width
+  double ran_invcosh();    // return x propto 1/cosh(x), <x^2> = PI^2/4.
+  void reset(int iseed);
+  int poisson();
+  void set_mean(double mu);  // For Poisson Dist
+  void increase_threshold();
+  void increment_netprob(double delN);
+  bool test_threshold(double delprob);
+  //std::mt19937 mt;   // 32 bit
+  std::mt19937_64 mt;   // 64 bit
+  std::uniform_real_distribution<double> ranu;
+  std::normal_distribution<double> rang;
+  std::poisson_distribution<int> ranp;
+\};
+\end{Verbatim}
+}\vspace*{-8pt}
+Some of these functions are self-explanatory. For the purpose of emulation, the User is most likely to wish to reset the seeds.
+
+In {\it Smooth Emulator} software the classes {\tt CTPO} (for training point optimization) and {\tt CMCMC} (for MCMC) have their own {\tt Crandy} pointers. The User can then access the random number functionality in such cases with lines such as 
+\vspace*{-8pt}{\tt \begin{Verbatim}[commandchars=\\\{\}]
+int main\{
+  .
+  CTPO tpo;
+  .
+  double x=tpo.randy->ran();
+  .
+\}
+\end{Verbatim}
+}\vspace*{-8pt}
+
+
+\end{sloppypar}
+\end{document}

@@ -1,0 +1,1 @@
+For detailed directions for the plotting directions, see Chapter 9 of the Smooth Emulator User Manual.
