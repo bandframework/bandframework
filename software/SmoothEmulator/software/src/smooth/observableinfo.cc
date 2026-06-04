@@ -33,7 +33,6 @@ string CObservableInfo::GetName(unsigned int i){
 
 void CObservableInfo::ReadObservableInfo(string filename){
 	char dummy[200];
-	double alpharead;
 	name_map.clear();
 	observable_name.clear();
 	NObservables=0;
@@ -45,8 +44,6 @@ void CObservableInfo::ReadObservableInfo(string filename){
 				observable_name.push_back(string(dummy));
 				name_map.insert(pair<string,int>(observable_name[NObservables],NObservables));
 				NObservables+=1;
-				fscanf(fptr,"%lf",&alpharead);
-				ALPHA.push_back(alpharead);
 				fgets(dummy,200,fptr);
 			}
 			else{

@@ -6,7 +6,7 @@
 #include <vector>
 #include <array>
 #include <fstream>
-#include "msu_smoothutils/commonutils.h"
+#include "msu_smoothutils/misc.h"
 #include <vector>
 #include <map>
 
@@ -16,16 +16,15 @@ namespace NBandSmooth{
 	public:
 		CObservableInfo(string filename);
 		unsigned int NObservables;
-      void ReadObservableInfo(string filename);
-      void ReadExperimentalInfo(string filename);
-      vector<double> YExp,SigmaExp;
-      vector<string> observable_name;
-      vector<double> ALPHA; // point-by-point uncertainty of model
-      string GetName(unsigned int iposition);  // finds name give position
-      void PrintInfo();
-      unsigned int GetIPosition(string obsname);  // finds position given name of observable
-   private:
+		vector<string> observable_name;
+		vector<double> SigmaA0; // representative spread of coefficients
 		map<string,unsigned int> name_map;
+		unsigned int GetIPosition(string obsname);  // finds position given name of observable
+		string GetName(unsigned int iposition);  // finds name give position
+		void ReadObservableInfo(string filename);
+		void ReadExperimentalInfo(string filename);
+		vector<double> YExp,SigmaExp;
+		void PrintInfo();
 	};
 
 };

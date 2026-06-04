@@ -1,7 +1,7 @@
 #ifndef __parametermap_H__
 #define __parametermap_H__
 
-//#include "msu_smoothutils/commondefs.h"
+#include "msu_smoothutils/commondefs.h"
 
 using namespace std;
 namespace NMSUUtils{

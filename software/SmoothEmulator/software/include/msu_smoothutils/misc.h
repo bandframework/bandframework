@@ -1,5 +1,7 @@
 #ifndef __INCLUDE_MISC_H_
 #define __INCLUDE_MISC_H_
+#include "msu_smoothutils/commondefs.h"
+
 using namespace std;
 namespace NMSUUtils{
 

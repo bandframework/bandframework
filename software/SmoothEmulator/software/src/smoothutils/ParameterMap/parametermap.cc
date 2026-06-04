@@ -1,4 +1,5 @@
-#include "msu_smoothutils/commonutils.h"
+#include "msu_smoothutils/parametermap.h" 
+#include "msu_smoothutils/log.h"
 using namespace NMSUUtils;
 
 //Returns an integer from the map.

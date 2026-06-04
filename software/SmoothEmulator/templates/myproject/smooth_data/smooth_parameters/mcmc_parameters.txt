@@ -1,0 +1,11 @@
+ # This is for the MCMC search of parameter space
+ # (not for the emulator tuning)
+ #LogFileName mcmclog.txt # comment out for interactive running
+ MCMC_LANGEVIN false
+ MCMC_METROPOLIS_STEPSIZE 0.04
+ MCMC_LANGEVIN_STEPSIZE 0.5
+ MCMC_NBURN  10000
+ MCMC_NTRACE 100000
+ MCMC_NSKIP  10
+ MCMC_IGNORE_EMULATOR_ERROR false
+ RANDY_SEED  12345

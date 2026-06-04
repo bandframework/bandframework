@@ -1,0 +1,127 @@
+\documentclass[UserManual.tex]{subfiles}
+\begin{document}
+\setcounter{section}{5}
+\section{Emulating Principal Components}\label{sec:pca}
+
+{\bf User Beware: the PCA software is under development and is far from being fully tested. Explore at your own risk.}
+
+\subsection{Overview}
+
+Rather than emulating all observables, it can be more efficient to emulate a handful of principal components. After generating the training-point data, one can run the {\tt pca\_calctransformation} program included with the distribution. This will create files that shadow those used to emulate the observables. This will create a file {\tt PCA\_Info/observable\_info.txt} which shadows the  {\tt Info/observable\_info.txt}. The difference is that the observables will be named {\tt z1,z2}$\cdots$. In each run directory, alongside the {\tt obs.txt} files, there will be a {\tt obs\_pca.txt} file. Finally, there will be a file {\tt PCA\_Info/tranformation\_info.txt} file that contains all the information and matrices required to perform the basis transformation. If the parameter {\tt Use\_PCA} is set to {\tt true}, the emulator will use the PCA files above instead of the observable files. The emulator will then store the Taylor coefficients in the directory {\tt coefficients\_pca/} rather than in {\tt coefficients/}. 
+
+
+\subsection{Compiling and Running the PCA Programs}
+To get an idea of the capabilities and functionality of the PCA elements of the {\it Smooth Emulator} Distribution, one can view the sample main program,\\
+{\tt \$\{MY\_LOCAL\}/main\_programs/pca\_calctransformation\_main.cc}:
+{\tt\begin{verbatim}
+int main() {
+  CparameterMap parmap;
+  NBandSmooth::PCA *pca = new NBandSmooth::PCA(&parmap);
+  pca->CalcTransformationInfo();
+}
+\end{verbatim}}
+To compile the program,
+{\tt\begin{verbatim}
+${MY_LOCAL}/main_programs% make pca_calctransformation
+\end{verbatim}}
+Before running one needs to have set up the usual files defining the training points, e.g. running {\it Simplex Sampler}, and running the full model at the training points. One can now run the program that creates files containing all the observable information, but translated into PCA components:
+{\tt\begin{verbatim}
+${MY_PROJECT}% ${MY_LOCAL}/bin/pca_calctransformation
+\end{verbatim}}
+One can check the directory {\tt \$\{MY\_PROJECT\}/PCA\_Info/} to make sure that one sees the files\\{\tt experimental\_info.txt}, {\tt observable\_info.txt} and {\tt transformation\_info.txt}. The latter file includes the transformation information so that one can readily translate from the nominal observables to the PCA components.
+
+Before performing the tuning, one needs to edit the {\tt parameters/emulator\_parameters.txt} file and change the parameter {\tt SmoothEmulator\_UsePCA} to {\tt true}. The output when tuning the emulator should look something like:
+{\tt\begin{verbatim}
+${MY_PROJECT}% ${MY_LOCAL}/bin/smoothy_tune
+ ---- Tuning for z0 ----
+ ---- Tuning for z1 ----
+ ---- Tuning for z2 ----
+ ---- Tuning for z3 ----
+ ---- Tuning for z4 ----
+\end{verbatim}} \vspace*{-16pt}
+\hspace*{35pt}$\vdots$
+
+The Taylor-expansion coefficients for the PCA observables are in the directory {\tt \$\{MY\_PROJECT\}/coefficients\_pca/}. 
+
+Another example program for PCA analysis is {\tt \$\{MY\_LOCAL\}/main\_programs/pca\_readinfo\_calcy\_main.cc}:
+{\tt\begin{verbatim}
+ int main() {
+	CparameterMap parmap;
+    NBandSmooth::PCA *pca = new NBandSmooth::PCA(&parmap);
+    pca->ReadTransformationInfo();
+    
+	vector<double> Z,Y,SigmaZ_emulator,SigmaY_emulator;
+	Z.resize(pca->Nobs);
+	Y.resize(pca->Nobs);
+	SigmaZ_emulator.resize(pca->Nobs);
+	SigmaY_emulator.resize(pca->Nobs);
+	printf("---- Start with these values of Z ----\n");
+	for(unsigned int iobs=0;iobs<pca->Nobs;iobs++){
+		Z[iobs]=iobs;
+		printf("Z[%u]=%g\n",iobs,Z[iobs]);
+	}
+	printf("---- Translated values of Y ----\n");
+	SigmaZ_emulator[0]=SigmaZ_emulator[1]=SigmaZ_emulator[2]=SigmaZ_emulator[3]=SigmaZ_emulator[4]=SigmaZ_emulator[5]=1.0;	
+	pca->TransformZtoY(Z,SigmaZ_emulator,Y,SigmaY_emulator);
+	for(unsigned int iobs=0;iobs<pca->Nobs;iobs++){
+		printf("%10.5f %10.5f\n",Y[iobs],SigmaY_emulator[iobs]);
+	}
+	printf("---- (Re)Translated values of Z ----\n");
+	pca->TransformYtoZ(Y,SigmaY_emulator,Z,SigmaZ_emulator);
+	for(unsigned int iobs=0;iobs<pca->Nobs;iobs++){
+		printf("%10.5f %10.5f\n",Z[iobs],SigmaZ_emulator[iobs]);
+	}
+	printf("---- Retranslated values of Z should match original and SigmaZ should all be unity ----\n");
+ }
+\end{verbatim}}
+This program illustrates how one can insert the PCA transformations into another program. After defining the {\tt pca} object, the program reads in the transformation information with the {\tt pca->ReadTransformationInfo()} command. The remainder of the program simply test the transformation by  making a fake vector of the $Z$ (PCA) components, then translating them to $Y$ (observable) values and then back. The original values for $Z[i]$ are set to $0,1,2,\cdots$, which should then match the values after translating back and forth as illustrated. 
+
+To compile the program:
+{\tt\begin{verbatim}
+${MY_LOCAL}/main_programs% make pca_readinfo_calcy
+\end{verbatim}}
+Running the program:
+{\tt\begin{verbatim}
+${MY_PROJECT}% ${MY_LOCAL}/bin/pca_readinfo_calcy
+ ---- Start with these values of Z ----
+Z[0]=0
+Z[1]=1
+Z[2]=2
+Z[3]=3
+Z[4]=4
+Z[5]=5
+---- Translated values of Y and SigmaY ----
+  -2.09833   24.99999
+  -1.03694   33.33329
+  -0.26087   41.66668
+  -5.36371    0.16667
+   3.49439    0.08333
+   2.91093    0.08333
+---- (Re)Translated values of Z and SigmaZ ----
+   0.00000    1.00000
+   1.00000    1.00000
+   2.00000    1.00000
+   3.00000    1.00000
+   4.00000    1.00000
+   5.00000    1.00000
+---- Retranslated values of Z should match original and SigmaZ should all be unity ----
+\end{verbatim}}
+Note that for the PCA observables the scaling ensures they all have the same uncertainty, 1.0. 
+
+\subsection{PCA Parameters (not model parameters!)}
+The PCA programs uses parameter that are prefixed with {\bf SmoothEmulator}. One would typically use the same parameter file as used for running {\it Smooth Emulator}. The relevant parameters are:
+\begin{enumerate}\itemsep=0pt
+\item {\bf SmoothEmultor\_UsePCA}\\
+If one wishes to emulate the PCA observables, i.e. those that are linear combinations of the real observables, this should be set to true. One must then be sure to have run the PCA decomposition programs first. 
+\item {\bf SmoothEmulator\_ModelRunDirName} and {\bf SmoothEmulator\_TrainingPts} should be set the same as used by {\it Smooth Emulator}.
+\item {\bf SmoothEmulator\_PCAMinVariance}\\
+This tells the emulator to not emulate PCA observables where the corresponding eigen value to the $\langle \delta Y_a/\sigma_a\delta Y_b/\sigma_b\rangle$ matrix are below this amount. For such variables the emulated value of $Z_a$ is simply set to zero.
+\end{enumerate}
+
+\subsection{Performing MCMC search with PCA components}
+Once the parameter {\tt SmoothEmultor\_UsePCA} is set to {\tt true} and the parameter\\{\tt SmoothEmulator\_PCAMinVariance} is set to be greater than zero, the MCMC procedure should work in the MCMC programs. Both these parameters are set in the {\tt Info/emulator\_parameters.txt} file. For example, if {\tt SmoothEmulator\_PCAMinVariance} is set to 0.01, then the emulator will not bother emulating any PCA observable where, in the training set, $\langle\delta Z_a\delta Z_a\rangle$ is less than 0.01. Given that the PCA variables are scaled by their uncertainties, this then ignores PCA observables that vary less than one percent of their uncertanty.
+
+The User should be warned again that all this functionality is not yet fully tested.
+
+
+\end{document} 
