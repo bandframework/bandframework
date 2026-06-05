@@ -126,6 +126,7 @@ github
 github's
 githubusercontent
 hastings
+homebrew
 htm
 html
 http
@@ -163,6 +164,7 @@ numpy
 nunes
 odell
 ohio
+Oleh
 ozgesurer
 parMOO
 parallelUQ
@@ -184,6 +186,7 @@ repo
 reproducibility
 rst
 runtime
+Savchuk
 scikit
 scipy
 sdk
@@ -211,6 +214,7 @@ undoc
 unreferenced
 url
 usp
+UserManual
 utah
 wordpress
 wp
