@@ -20,7 +20,7 @@ Before release
 - Ensure that links and references have been updated (e.g., no occurrences of ``privateband``).
 
 - Version number is updated wherever it appears and ``+dev`` suffix is removed
-  (in `README.md </README.md>`_ and possibly in `CHANGELOG.rst </CHANGELOG.rst>`_).
+  (in `README.md </README.md>`_, `AUTHORS </AUTHORS>`_, `bandsdk.md </resources/sdkpolicies/bandsdk.md>`_, `examples </examples/README.md>`_, `software </software/README.md>`_, `BANDsoftware_uses </BANDsoftware_uses/README.md>`_, and possibly in `CHANGELOG.rst </CHANGELOG.rst>`_).
 
 - Check `README.md </README.md>`_ *Citing bandframework* for correctness (e.g., ensure that author list matches `AUTHORS </AUTHORS>`_).
 
@@ -64,5 +64,8 @@ After release
 - Ensure all relevant GitHub issues are closed.
 
 - Update website to reflect existence of new release.
+  
+  - Update if necessary the BAND framework tools list in the `software page <https://bandframework.github.io/software>`_ as well as all tool descriptions in that page to match contents of new release.
+  - Confirm that links to different BAND framework tools in the `software page <https://bandframework.github.io/software>`_ function and go to the correct target.
 
 - Disseminate news of new release to: FRIB-TA mailing list, JETSCAPE/X-SCAPE mailing list, other interested parties.

@@ -2,7 +2,7 @@
 
 Bfrescox is a BAND integration combining statistical calibration capabilities with the frescox reaction code specifically for Continuum Discretized Coupled Channel (CDCC) calculations.
 
-A [BAND SDK v0.2 Community Policy](/resources/sdkpolicies/bandsdk.md) compatibility documentation for frescox is contained in [frescoxbandsdk.md](/software/Bfrescox/frescoxbandsdk.md).
+A [BAND SDK v0.2 Community Policy](/resources/sdkpolicies/bandsdk.md) compatibility documentation for frescox is contained in [frescoxbandsdk.md](/BANDsoftware_uses/Bfrescox/frescoxbandsdk.md).
 
 
 ## frescox Installation
@@ -57,6 +57,6 @@ In order to install `frescox`:
 
 ## Bfrescox Tutorials
 
-In order to verify the code works as expected and perform Bayesian calibration, please see [Tutorial I](/software/Bfrescox/Tutorial_I/tutorial1.rst).
+In order to verify the code works as expected and perform Bayesian calibration, please see [Tutorial I](/BANDsoftware_uses/Bfrescox/Tutorial_I/tutorial1.rst).
 
-A tutorial that uses an interactive colab notebook and that was featured at BAND Camp 2021 is available in [BANDCamp21.rst](/software/Bfrescox/Tutorial_I/BANDCamp21.rst).
+A tutorial that uses an interactive colab notebook and that was featured at BAND Camp 2021 is available in [BANDCamp21.rst](/BANDsoftware_uses/Bfrescox/Tutorial_I/BANDCamp21.rst).

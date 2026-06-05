@@ -1,0 +1,33 @@
+name: Check Links
+env:
+  CLONE_PATH: ${{ github.workspace }}
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  # Limit network activity concurrency to try to avoid hitting rate limit
+  # rejections (Error 429):
+  # * https://lychee.cli.rs/troubleshooting/rate-limits/#reduce-the-number-of-concurrent-requests
+  #
+  # lychee checks links to local files provided with paths relative to repo's
+  # root, but needs help resolving those.
+  # * https://lychee.cli.rs/recipes/root-dir/
+  #
+  # Frescox webpages apparently need more time or will timeout.
+  #
+  # I tried having it check .ipynb files as well, but that didn't go well.  I
+  # abandoned that attempt for now.
+  check_links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Lychee likes looking at links
+        id:   lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --root-dir $CLONE_PATH --max-concurrency 1 --timeout 30 --verbose --no-progress './**/*.md' './**/*.html' './**/*.rst'
+          fail: true
+          failIfEmpty: true
