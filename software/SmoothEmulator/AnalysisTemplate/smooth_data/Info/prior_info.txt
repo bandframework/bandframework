@@ -1,0 +1,7 @@
+# par_name  dist_type  xmin/centroid  xmax/width  SensitivityScale
+   par0 gaussian 0 100  1.00000
+   par1 uniform -100 100  1.00000
+   par2 gaussian 0 100  1.00000
+   par3 uniform -100 100  1.00000
+   par4 gaussian 0 100  1.00000
+   par5 uniform -100 100  1.00000

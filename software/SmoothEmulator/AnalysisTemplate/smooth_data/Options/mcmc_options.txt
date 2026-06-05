@@ -1,0 +1,10 @@
+# This is for the MCMC search of parameter space
+ # (not for the emulator tuning)
+ #LogFileName smoothlog.txt # comment out for interactive running
+ # If success rate approaches zero, reduce MCMC_METROPOLIS_STEPSIZE, if it approaches 1.0, increase it
+ MCMC_METROPOLIS_STEPSIZE 0.06
+ MCMC_IGNORE_EMULATOR_ERROR false
+ MCMC_RANSEED  12345
+ MCMC_NBURN 10000
+ MCMC_NSKIP 5
+ MCMC_NTRACE 100000

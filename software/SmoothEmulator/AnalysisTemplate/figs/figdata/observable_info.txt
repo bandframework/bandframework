@@ -1,0 +1,10 @@
+obs0  $Y_0$
+obs1  $Y_1$
+obs2  $Y_2$
+obs3  $Y_3$
+obs4  $Y_4$
+obs5  $Y_5$
+obs6  $Y_6$
+obs7  $Y_7$
+obs8  $Y_8$
+obs9  $Y_9$

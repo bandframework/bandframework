@@ -1,0 +1,11 @@
+# ObservableName   ALPHA
+   obs0 0
+   obs1 0
+   obs2 0
+   obs3 0
+   obs4 0
+   obs5 0
+   obs6 0
+   obs7 0
+   obs8 0
+   obs9 0

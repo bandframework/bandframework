@@ -1,0 +1,6 @@
+   par0 gaussian $\theta_0$
+   par1 uniform  $\theta_1$
+   par2 gaussian $\theta_2$
+   par3 uniform  $\theta_3$
+   par4 gaussian $\theta_4$
+   par5 uniform  $\theta_5$

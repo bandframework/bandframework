@@ -53,6 +53,7 @@ NN
 NumPy
 Nunes
 OAC
+Oleh
 Özge
 Ozge
 PCGP
@@ -77,6 +78,7 @@ SCAPE
 SDK
 SURmise
 SaMBA
+Savchuk
 SciPy
 SmoothEmulator
 SmoothEmulatorSDK
@@ -85,6 +87,7 @@ TBD
 Taweret
 Taweretbandsdk
 UQ
+UserManual
 Viens
 X-SCAPE
 aMWOoGvY
@@ -140,6 +143,7 @@ github
 github's
 githubusercontent
 hastings
+homebrew
 hetGPy
 htm
 html

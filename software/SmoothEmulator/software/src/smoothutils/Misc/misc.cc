@@ -1,5 +1,4 @@
-#include "msu_smoothutils/misc.h"
-#include "msu_smoothutils/log.h"
+#include "msu_smoothutils/commonutils.h"
 using namespace NMSUUtils;
 
 bool Misc::comparestrings(char *s1,char *s2){
