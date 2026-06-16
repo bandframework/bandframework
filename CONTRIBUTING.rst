@@ -19,7 +19,7 @@ and interacting with us to ensure that your effort is well-directed.
 
 To contribute a package to the BAND Framework, please see the `BAND Software Development Kit (SDK) </resources/sdkpolicies/bandsdk.md>`_, which includes requirements and recommendations. 
 
-
+If you have contrbuted a package, but have decided to cease maintaining it, you can find instructions `here </resources/dev_guide/component-sunsetting-proc.rst>`_ on how to sunset your software contribution. 
 
 Authorship
 ----------
