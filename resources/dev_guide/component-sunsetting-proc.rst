@@ -7,4 +7,4 @@ If the development team no longer plans to maintain the package:
  2. The last working versions of the dependencies of package should be documented (e.g. by using `numpy>=1.0.1,<2.0.0` instead of `numpy>=1.0.1` in the requirements.txt). 
 
 As part of the BAND Framework release process, the team conducting the release will then inventory all BAND components, with the goal of
-listing the ones that are not being actively maintained, see bandframework/resources/release-proc.rst.
+listing the ones that are not being actively maintained, see https://github.com/bandframework/bandframework/blob/main/resources/dev_guide/release-proc.rst
