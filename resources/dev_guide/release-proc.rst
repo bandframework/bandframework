@@ -28,6 +28,8 @@ Before release
 
 - Check `sdkpolicies README </resources/sdkpolicies/README.md>`_ for correctness (e.g., ensure that each software in the release has a working link for its SDK compliance, also note any differences in the version of the SDK that each package lists versus the version at `bandsdk.md </resources/sdkpolicies/bandsdk.md>`_).
 
+- Inventory all BAND components to list the ones that are not being actively maintained, this should be documented in each such component's  main README.md file, as per resources/dev_guide/component-sunsetting-proc.rst.
+
 - Tests are run with source to be released (this may iterate):
 
   - Online CI (GitHub Actions) tests must pass.
