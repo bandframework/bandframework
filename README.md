@@ -138,3 +138,6 @@ Please also cite any of the underlying BAND Framework packages you employ, each 
 For more information, please see the [BAND framework website](https://bandframework.github.io/). 
 
 Our [release process](resources/dev_guide/release-proc.rst) is also provided.
+
+## Acknowledgment
+The BAND Framework is supported by the National Science Foundation [Cyberinfrastructure for Sustained Scientific Innovation program](https://www.nsf.gov/funding/opportunities/cssi-cyberinfrastructure-sustained-scientific-innovation) under grant OAC-2004601.
