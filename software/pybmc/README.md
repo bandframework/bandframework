@@ -4,7 +4,7 @@ pybmc is a Python package for performing Bayesian Model Combination (BMC) on var
 
 A [BAND SDK v0.2 Community Policy](/resources/sdkpolicies/bandsdk.md) compatibility documentation for pybmc is contained in [pybmc-bandsdk.md](/software/pybmc/pybmc-bandsdk.md).
 
-The version of pybmc adopted for the BAND Framework is v0.2.4, found [here](https://github.com/ascsn/pybmc/tree/v0.2.4).
+The version of pybmc adopted for the BAND Framework is v0.3.0, found [here](https://github.com/ascsn/pybmc/tree/v0.3.0).
 
 ## pybmc Installation
 
@@ -31,4 +31,4 @@ pip install -e .
 
 ## pybmc Examples
 
-For a simple example of the package in action, check the Usage section of the documentation [here](https://ascsn.github.io/pybmc/usage/#1-load-and-prepare-data). For an interactive notebook of the same procedure, you can load [this file](https://github.com/ascsn/pybmc/blob/v0.2.4/pybmc/test.ipynb) locally or in any Jupyter environment.
+For a simple example of the package in action, check the Usage section of the documentation [here](https://ascsn.github.io/pybmc/usage/#1-load-and-prepare-data). For an interactive notebook of the same procedure, you can load [this file](https://github.com/ascsn/pybmc/blob/v0.3.0/pybmc/test.ipynb) locally or in any Jupyter environment.
