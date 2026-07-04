@@ -1,4 +1,4 @@
-Sunsetting elements of the BAND software Framework
+Sunsetting support for elements of the BAND software Framework
 ===============
 The main purpose of this document is to provide guidance to BAND software authors who wish to cease maintaining their code. 
 
