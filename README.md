@@ -38,7 +38,7 @@ The BAND Framework's software tools can be found in [software/](/software/).
 As of version 0.5.0+dev, the following tools are included:
 - Bfrescox ([v0.0.1-alpha](https://github.com/bandframework/Bfrescox/releases/tag/v0.0.1-alpha )): A Python wrapper for the Frescox coupled reaction channel code.
 - jitr ([v2.5.1](https://github.com/beykyle/jitr/releases/tag/v2.5.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
-- LCGP ([v1.0.1](https://github.com/mosesyhc/lcgp/releases/tag/v1.0.1 )): A Gaussian process surrogate model for emulating stochastic simulation outputs, with and without replications.
+- LCGP ([v1.0.1](https://github.com/mosesyhc/lcgp/releases/tag/1.0.1 )): A Gaussian process surrogate model for emulating stochastic simulation outputs, with and without replications.
 - parMOO ([v0.4.1](https://github.com/parmoo/parmoo/releases/tag/v0.4.1 )): A Python library for parallel multiobjective simulation optimization.
 - PUQ ([v0.1.1](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.1 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
 - pybmc ([v0.2.4](https://github.com/ascsn/pybmc/releases/tag/v0.2.4 )): A Python package for performing Bayesian model combination on various predictive models.
