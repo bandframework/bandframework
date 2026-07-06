@@ -60,7 +60,7 @@ The following [examples](/examples/) are included in version 0.5.0+dev:
 - SaMBA ([v1.2.1](https://github.com/asemposki/SAMBA/releases/tag/v1.2.1 )): The Sandbox for Mixing via Bayesian Analysis.
 
 Past projects that are no longer maintained but still may be of interest include:
-- rose ([v1.1.7](https://github.com/bandframework/rose/releases/tag/v1.1.7 )): A reduced-order scattering emulator.
+- rose ([v1.1.8](https://github.com/bandframework/rose/releases/tag/v1.1.8 )): A reduced-order scattering emulator.
 
 
 ## Downloading and using the BAND Framework

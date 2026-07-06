@@ -16,7 +16,7 @@ As of v0.5.0+dev the following packages are present in this directory:
 - Taweret (v1.2.0): A Python package containing multiple Bayesian Model Mixing methods.
 
 Also included are packages that were developed by the the BAND Framework team but are no longer maintained:
-- rose (v1.1.7): A reduced-order scattering emulator.
+- rose (v1.1.8): A reduced-order scattering emulator.
 
 Applications of these tools to nuclear-physics problems are provided in the ["BAND software uses"](/BANDsoftware_uses) directory. 
 
