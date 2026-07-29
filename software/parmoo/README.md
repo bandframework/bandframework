@@ -78,8 +78,8 @@ ParMOO's online documentation:
     title       = {{ParMOO}: {P}ython Library for Parallel Multiobjective Simulation Optimization},
     author      = {Chang, Tyler H. and Wild, Stefan M. and Dickinson, Hyrum},
     institution = {Argonne National Laboratory},
-    number      = {Version 0.4.1},
-    year        = {2024},
+    number      = {Version 0.5.1},
+    year        = {2026},
     url         = {https://parmoo.readthedocs.io/en/latest}
 }
 ```
@@ -87,13 +87,16 @@ ParMOO's online documentation:
 Our design principles paper:
 
 ```
-@techreport{ParMOODesign24,
+@article{ParMOODesign26,
     title = {Designing a Framework for Solving Multiobjective Simulation Optimization Problems},
     author = {Tyler H. Chang and Stefan M. Wild},
-    institution = {arXiv},
-    number = {2304.06881},
-    year = {2024},
-    url = {https://arxiv.org/abs/2304.06881},
+    journal = {INFORMS Journal on Computing},
+    volume = {38},
+    number = {1},
+    pages = {269--294},
+    year = {2026},
+    doi = {10.1287/ijoc.2023.0250},
+    arxivnumber = {2304.06881}
 }
 ```
 
