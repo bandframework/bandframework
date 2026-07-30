@@ -45,7 +45,7 @@ As of version 0.5.0+dev, the following tools are included:
 - [SmoothEmulator](/software/SmoothEmulator): A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
 - surmise ([v0.4.0](https://github.com/bandframework/surmise/releases/tag/v0.4.0 )): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - Taweret ([v1.2.0](https://github.com/bandframework/Taweret/releases/tag/v1.2.0 )): A Python package containing multiple Bayesian Model Mixing methods.
-- rose ([v1.1.8](https://github.com/bandframework/rose/releases/tag/v1.1.8 )): A reduced-order scattering emulator. Note: no longer maintained, see [software/rose/README.md](software/rose/README.md) for details.
+- rose ([v1.1.8](https://github.com/bandframework/rose/releases/tag/v1.1.8 )): A reduced-order scattering emulator. Note: no longer maintained, see [software/rose/README.md](https://github.com/bandframework/rose/blob/v1.1.8/README.md) for details.
 
 
 As of version 0.5.0+dev, [BANDsoftware_uses/](/BANDsoftware_uses/) contains the following examples of the application of one or more of the above BAND software tools to nuclear physics problems:
