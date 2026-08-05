@@ -7,7 +7,7 @@ Details on citing the current version of the BAND Framework can be found in the 
 **Website:** https://github.com/bandframework/OpenBT \
 **Contact:** mpratola@iu.edu, jcyannotty@gmail.com \
 **Icon:** https://github.com/bandframework/OpenBT/blob/main/docs/images/openbt_logo_rect.png \
-**Description:**  OpenBT implements a variety of Bayesian tree models, including regression, model mixing, sensitivity analysis and multiobjective optimization.  It is built around a C++ codebase along with Python and R interfaces.
+**Description:**  OpenBT implements a variety of Bayesian tree models, including regression, model mixing, sensitivity analysis and multiobjective optimization.  It is built around a C++ code base along with Python and R interfaces.
 
 ### Mandatory Policies
 
@@ -18,7 +18,7 @@ Details on citing the current version of the BAND Framework can be found in the 
 | 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. |Full| The README exists and clearly refers users to the User Guides for information on testing an installation. |
 | 3. | Provide a documented, reliable way to contact the development team. |Full| The OpenBT team can be contacted via the listed author emails or via the public issues page on GitHub. |
 | 4. | Come with an open-source license. |Full| Uses the MIT license. |
-| 5. | Provide a runtime API to return the current version number of the software. |Partial| Users of the Python package can retrieve the current version using `openbt.__version__`. To be added in a future release of the C++ CLI and R package. |
+| 5. | Provide a runtime API to return the current version number of the software. |Partial| Users of the Python package can retrieve the current version using `openbt.__version__`. To be added in a future release of the C++ command line tools and R package. |
 | 6. | Provide a BAND team-accessible repository. |Full| https://github.com/bandframework/OpenBT |
 | 7. | Must allow installing, building, and linking against an outside copy of all imported software that is externally developed and maintained. |Full| The only external dependency for the C++ package is Eigen; the Meson build allows linking to a user-provided Eigen install or will install Eigen itself if no installation is detected during build. |
 | 8. | Have no hardwired print or IO statements that cannot be turned off. |Partial| Building with Meson option `verbose=false` limits hardwired print statements. |
