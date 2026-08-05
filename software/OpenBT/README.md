@@ -21,5 +21,5 @@ are provided in the project's [landing
 page](https://github.com/bandframework/OpenBT).
 
 The [BAND SDK v0.2 Community Policy](/resources/sdkpolicies/bandsdk.md)
-compatibility documentation for OpentBT is provided in
+compatibility documentation for OpenBT is provided in
 [OpenBTbandsdk.md](/software/OpenBT/OpenBTbandsdk.md).
