@@ -3,7 +3,7 @@ OpenBT is an extensible software project managed in a dedicated [bandframework
 repository](https://github.com/bandframework/OpenBT) that implements a variety
 of Bayesian tree models for scientific and industry applications, including
 regression, model mixing, sensitivity analysis and multiobjective optimization.
-It is also provides functionality to the Trees mixing interface of the Taweret
+It also provides functionality to the Trees mixing interface of the Taweret
 software package.
 
 The heart of OpenBT is a set of C++ tools that can be used directly *via* the
@@ -16,7 +16,7 @@ Please refer to our [User Guides](https://openbt.readthedocs.io) for more
 information about installing, testing, and using the different OpenBT software
 tools.
 
-Details regarding support, contributing, copyright, license, and citing OpenBT
+General details such as support, contributing, copyright, license, and citing OpenBT
 are provided in the project's [landing
 page](https://github.com/bandframework/OpenBT).
 
