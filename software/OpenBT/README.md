@@ -4,7 +4,7 @@ repository](https://github.com/bandframework/OpenBT) that implements a variety
 of Bayesian tree models for scientific and industry applications, including
 regression, model mixing, sensitivity analysis and multiobjective optimization.
 It also provides functionality to the Trees mixing interface of the Taweret
-software package.
+software package, which is also part of the BAND framework.
 
 The heart of OpenBT is a set of C++ tools that can be used directly *via* the
 command line or indirectly through the ``openbt`` Python package or ``RopenBT``
