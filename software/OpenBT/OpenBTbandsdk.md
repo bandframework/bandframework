@@ -14,7 +14,7 @@ Details on citing the current version of the BAND Framework can be found in the 
 **BAND SDK**
 | # | Policy                 |Support| Notes                   |
 |---|-----------------------|-------|-------------------------|
-| 1. | Support BAND community GNU Autoconf, CMake, or other build options. |Full| The C++ package is built via Meson, while the Python package can be built and installed using pip.  The R package is installed from within R using the R CRAN "remote" package, which installs directly from the github repo. [M1 details](#m1-details) |
+| 1. | Support BAND community GNU Autoconf, CMake, or other build options. |Full| The C++ package is built via Meson, while the Python package can be built and installed using pip.  The R package is installed from within R using the R CRAN "remotes" package, which installs directly from the github repo. [M1 details](#m1-details) |
 | 2. | Have a README file in the top directory that states a specific set of testing procedures for a user to verify the software was installed and run correctly. |Full| The README exists and clearly refers users to the User Guides for information on testing an installation. |
 | 3. | Provide a documented, reliable way to contact the development team. |Full| The OpenBT team can be contacted via the listed author emails or via the public issues page on GitHub. |
 | 4. | Come with an open-source license. |Full| Uses the MIT license. |
