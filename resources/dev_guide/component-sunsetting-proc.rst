@@ -2,8 +2,8 @@ Sunsetting support for elements of the BAND software framework
 ===============
 The main purpose of this document is to provide guidance to BAND software authors who wish to cease maintaining their code. 
 
-The sunsetting process has two main goals:
- 1. To limit incorrect usage of the package by explicitly communicating that the package will no longer be maintained via all means that users might find the package
+**The sunsetting process has two main goals:**
+ 1. To limit incorrect usage of the package by explicitly communicating–by all means through which users might find the package–that the package will no longer be maintained.
  2. To clearly communicate in official BAND framework documentation that the package to sunset was a part of the framework but is no longer maintained.
 
 As an example of satisfying the first goal, consider a development team that no longer plans to maintain their Python package, which is publicly available on PyPI.  Some sensible steps to communicate responsibly and effectively with the user community are to
@@ -18,6 +18,6 @@ As an example of satisfying the first goal, consider a development team that no 
 
 Hopefully, the steps needed to sunset non-Python projects can be derived from the previous example.  In such cases, please add final details here to help others with this process.
 
-The second goal will be achieved as a natural part of a subsequent release of the BAND framework.  In particular,
+**The second goal** will be achieved as a natural part of a subsequent release of the BAND framework.  In particular,
 as dictated by the `BAND Framework release process <https://github.com/bandframework/bandframework/blob/main/resources/dev_guide/release-proc.rst>`_, the team conducting the release will inventory all BAND components with the goal of
 listing separately all packages that are no longer actively maintained.
