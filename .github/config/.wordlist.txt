@@ -88,6 +88,7 @@ Savchuk
 SciPy
 SmoothEmulator
 SmoothEmulatorSDK
+Sunsetting
 Sürer
 TBD
 Taweret
@@ -238,7 +239,7 @@ subdirectory
 submodule
 submoduled
 submodules
-Sunsetting
+sunsetting
 surero
 surmisebandsdk
 svg
