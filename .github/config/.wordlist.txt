@@ -13,6 +13,7 @@ CDCC
 CHANGELOG
 CMake
 COVID
+CRAN
 CSV
 Coauthorship
 Conda
@@ -48,12 +49,16 @@ MERCHANTABILITY
 ModelDiscrepancy
 MOOP
 MPI
+MPICH
 MPIExecutor
 NN
 NumPy
 Nunes
 OAC
 Oleh
+OpenBT
+OpenBT's
+OpenBTbandsdk
 Özge
 Ozge
 PCGP
@@ -73,6 +78,7 @@ QGP
 Quickstart
 README
 Repo
+Ropenbt
 SAMBAbandsdk
 SCAPE
 SDK
@@ -142,6 +148,7 @@ germain
 github
 github's
 githubusercontent
+gmail
 hastings
 homebrew
 hetGPy
@@ -156,6 +163,8 @@ intel
 io
 ipynb
 isotonic
+iu
+jcyannotty
 jgehrcke
 jitr
 jitrbandsdk
@@ -173,6 +182,7 @@ mlbayeswoodbury
 mkdocs
 mosesyhc
 mplumlee
+mpratola
 msu
 multiobjective
 namespace
@@ -183,6 +193,7 @@ nunes
 odell
 observables
 ohio
+openbt
 orthogonalization
 ozgesurer
 parMOO
@@ -207,6 +218,7 @@ qj
 quickstart
 reStructuredText
 readthedocs
+rect
 repo
 reproducibility
 rosebandsdk
