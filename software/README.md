@@ -8,7 +8,7 @@ As of v0.5.0+dev the following packages are present in this directory.
 
 - Bfrescox (v0.0.1-alpha): A Python wrapper for the Frescox coupled reaction channel code.
 - jitr (v2.5.1): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
-- LCGP (v0.2.1): A Gaussian process surrogate model for emulating stochastic simulation outputs.
+- LCGP (v1.1.1): A Gaussian process surrogate model for emulating stochastic simulation outputs.
 - parMOO (v0.4.1): A Python library for parallel multiobjective simulation optimization.
 - PUQ (v0.1.1): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
 - pybmc (v0.2.4): A Python package for performing Bayesian model combination on various predictive models.
