@@ -1,0 +1,22 @@
+# Everything the demo notebook needs, for pip/venv users.  Mirrors
+# pyproject.toml, which is the source of truth; for the exact versions in
+# uv.lock run `uv export --format requirements-txt --no-hashes`.
+#
+# Nothing here requires a Fortran compiler, MPI, or a cluster -- the expensive
+# CDCC campaign has already been run and its outputs ship in data/.
+#
+# Needs Python 3.10-3.13 (surmise 0.4.0 has wheels for those only).  Lower
+# bounds are the versions this was developed and tested against (Python 3.12).
+# surmise is pinned exactly: 0.4.0 is the release the notebook's numbers were
+# produced with, and its GP fitting details have changed on the development
+# branch since.
+
+numpy>=2.1,<3
+scipy>=1.14,<2
+matplotlib>=3.9
+corner>=2.2
+surmise==0.4.0
+
+# to run the notebook itself
+jupyterlab>=4.0
+ipykernel>=6.0

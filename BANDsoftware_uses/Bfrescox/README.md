@@ -1,62 +1,101 @@
-# Bfrescox 
+# Emulating and calibrating a nuclear breakup reaction
 
-Bfrescox is a BAND integration combining statistical calibration capabilities with the frescox reaction code specifically for Continuum Discretized Coupled Channel (CDCC) calculations.
+A self-contained demonstration of Bayesian calibration of an expensive physics simulator,
+end to end: **design → simulator outputs → Gaussian-process emulator → validation → MCMC →
+posterior predictions → coverage**.
 
-A [BAND SDK v0.2 Community Policy](/resources/sdkpolicies/bandsdk.md) compatibility documentation for frescox is contained in [frescoxbandsdk.md](/BANDsoftware_uses/Bfrescox/frescoxbandsdk.md).
+Reproduces Sürer, Nunes, Plumlee & Wild, *Phys. Rev. C* **106**, 024607 (2022), using
+[surmise](https://github.com/bandframework/surmise) for the emulation and calibration and
+[bfrescoxpro](https://github.com/bandframework/Bfrescox) for the underlying CDCC reaction
+model.
 
+## Quick start
 
-## frescox Installation
+Needs Python 3.10–3.13.
 
-This section describes how to install `frescox` to run a scattering code for
-coupled-channels calculations
+**uv** 
 
-`frescox` is publicly available at the repo https://github.com/LLNL/Frescox; more detailed documentation for earlier versions of `frescox` can be found at http://www.fresco.org.uk
-
-In order to install `frescox`:
-
-- Clone or download the repo  https://github.com/LLNL/Frescox to your machine
-
-- Go to directory `Frescox/source`, in which you will find a `makefile` 
-
-- Open `makefile` and remove one of comment prefix `#`s between lines 39-60 to select the appropriate machine type
-
-  - `MACH=i386` and `MACH=intel` have been BAND tested for macOS and intel machines
-
-- To compile `frescox`, go to `Frescox/source` and issue the following from your terminal:
-
-```python
-  make
-  make install
-  make clean
+```bash
+uv sync
+OMP_NUM_THREADS=1 uv run jupyter lab breakup_calibration_demo.ipynb
 ```
-  - If you obtain an error running `make`:
-  
-    - In line 69, there is an `include fx$(MACH).def` to include a definition file in the source directory for the previously selected machine architecture; you may find that running the commands below produces an error such as 
-`makefile:69: .def: No such file or directory`
 
-      - If this `include` does not work for your machine, comment out `include` by adding a `#` prefix, and then copy all lines in `fx$(MACH).def` (for your specified `MACH` above) to the `makefile` starting from the line where `include` is commented out
+Add `--python 3.12` to `uv sync` to force the interpreter the notebook was produced with.
 
-      - As an example if you select `MACH=i386` on lines 39-60, then you should copy all lines in `fxi386.def` file to the `makefile`
+**conda / mamba**
 
-    - In line 72 (of the original, unedited `makefile`), there is a line `LOCAL = f14$(MACH)`; you may find that you need to edit this line (e.g., because you receive a `fatal error: no input files; unwilling to write output files`)
+```bash
+mamba env create -f environment.yml        # or: conda env create -f environment.yml
+conda activate breakup-demo
+OMP_NUM_THREADS=1 jupyter lab breakup_calibration_demo.ipynb
+```
 
-      - If this line does not work with your architecture, replace `$(MACH)` in this line with your `MACH` defined above
+**pip / venv**
 
-      - As an example, if you have `MACH=i386`, then replace `LOCAL = f14$(MACH)` with `LOCAL = f14i386`
+```bash
+python3.12 -m venv .venv                   # any of python3.10 .. python3.13
+source .venv/bin/activate
+pip install -r requirements.txt
+OMP_NUM_THREADS=1 jupyter lab breakup_calibration_demo.ipynb
+```
 
-  - If you obtain an error `No such file or directory` running `make install`:
-  
-    - It assumed that the directory `$(HOME)/binw` exists; if it does not, you will need to create this directory (and probably the `MACH`-specific directory within it). Alternatively, you can replace references in `makefile` to `$(HOME)/binw` to point to whatever location in which you want the frescox executables to reside.
+On Debian/Ubuntu `python -m venv` fails silently (no `pip`, no `activate`) unless
+`python3-venv` is installed: `sudo apt install python3-venv`.
 
-- To verify you have successfully compiled `frescox`, go to `Frescox/test` directory from your terminal and run one of the tests provided in that directory
+The notebook runs in about five minutes on a laptop — it reads the pre-computed simulator
+outputs in `data/` and never invokes the physics code.
 
-  - As an example, type `frescox < lane20.nin > lane20.out` to run a test with input file `lane20.nin`, and the output file is written to `lane20.out`
-  
-  - If you obtain an error such as `frescox: command not found`, this means that the `frescox` executable is not in your path. You should add the location of this executable (see above reference to a subdirectory of `$(HOME)/binw`)
+`OMP_NUM_THREADS=1` matters. The MCMC does $10^5$ small GP evaluations, and the OpenBLAS that
+ships with the numpy wheels (PyPI and conda-forge alike) spreads each one across every core.
+On an 8-core machine that made the MCMC cell take 12 minutes instead of 2; the whole notebook
+went from 17 minutes to 2.5. If you forget, nothing breaks — it is just slow.
 
+## What is here
 
-## Bfrescox Tutorials
+```
+breakup_calibration_demo.ipynb   the demo
+pyproject.toml                   what the notebook needs (source of truth)
+uv.lock                          exact versions, for `uv sync`
+environment.yml                  the same, for conda / mamba
+requirements.txt                 the same, for pip / venv
+data/
+  training.npz                   500 design points x 45 observables
+  mock_data.npz                  simulator at the truth parameters + 10% noise
+  design.csv                     the 500-point Latin hypercube design
+model/                           the expensive half -- NOT run by the demo
+  cdcc_angular.template          frescox input, angular model space (134 states)
+  cdcc_energy.template           frescox input, energy model space (141 states)
+  run_design_point.py            run one design point, or assemble the .npz
+requirements-model.txt           extra dependencies for model/
+```
 
-In order to verify the code works as expected and perform Bayesian calibration, please see [Tutorial I](/BANDsoftware_uses/Bfrescox/Tutorial_I/tutorial1.rst).
+## The problem
 
-A tutorial that uses an interactive colab notebook and that was featured at BAND Camp 2021 is available in [BANDCamp21.rst](/BANDsoftware_uses/Bfrescox/Tutorial_I/BANDCamp21.rst).
+$^8$B is a proton halo nucleus — a proton bound to a $^7$Be core by only 137 keV. Fired at
+a $^{208}$Pb target at 80 MeV/nucleon it breaks up, and the cross sections depend on four
+parameters of the $^7$Be–$p$ interaction: a Coulomb radius, a Woods-Saxon radius and
+diffuseness, and a spin-orbit depth. The task is to infer them from the breakup data.
+
+A single CDCC evaluation costs about **65 core-hours**, and MCMC needs $10^5$ of them. So a
+500-point design was computed once (~32,500 core-hours on an HPC cluster), a Gaussian
+process was fitted to it, and the MCMC runs against the GP.
+
+The "data" are the simulator at known parameter values plus 10% noise, so the posterior can
+be checked against a right answer.
+
+## Regenerating the training data
+
+`data/training.npz` is pre-computed. To rebuild it you need a Fortran compiler, an MPI
+implementation, and a large machine:
+
+```bash
+pip install -r requirements.txt -r requirements-model.txt    # or: uv sync --extra model
+BFRESCOX_USE_MPI=enabled BFRESCOX_USE_OPENMP=enabled BFRESCOX_USE_LAPACK=enabled \
+  pip install -v "git+https://github.com/bandframework/Bfrescox.git#subdirectory=bfrescoxpro_pypkg"
+
+python model/run_design_point.py --index 0 --ranks 32    # one point, ~2 h on 32 ranks
+python model/run_design_point.py --assemble              # samples/ -> data/training.npz
+```
+
+In practice this is a SLURM array over `--index 0..499`. Each task is idempotent and uses
+its own working directory, so a partial run can be resumed by re-submitting the gaps.

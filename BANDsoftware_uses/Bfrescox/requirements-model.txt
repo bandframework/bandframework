@@ -1,0 +1,23 @@
+# Additional requirements for model/run_design_point.py -- the CDCC half.
+#
+# NOT needed to run the demo.  One design point costs roughly 65 core-hours,
+# and the shipped data/training.npz is 500 of them.  This exists so the
+# pipeline is reproducible end to end, not so it can be re-run casually.
+#
+# Install on top of requirements.txt:
+#     pip install -r requirements.txt -r requirements-model.txt
+# or, with uv:
+#     uv sync --extra model
+#
+# bfrescoxpro builds an internal frescox binary with Meson at install time, so
+# it needs a Fortran compiler and (for MPI) an MPI implementation.  Build it
+# with MPI enabled:
+#     BFRESCOX_USE_MPI=enabled BFRESCOX_USE_OPENMP=enabled \
+#     BFRESCOX_USE_LAPACK=enabled pip install -v \
+#       "git+https://github.com/bandframework/Bfrescox.git#subdirectory=bfrescoxpro_pypkg"
+# Note the env var is BFRESCOX_USE_OPENMP; the Bfrescox docs say
+# BFRESCOX_USE_OMP, which its setup.py does not read.
+
+-r requirements.txt
+meson>=1.6.0
+ninja
