@@ -51,7 +51,7 @@ As of version 0.5.0+dev, the following tools are included:
 
 
 As of version 0.5.0+dev, [BANDsoftware_uses/](/BANDsoftware_uses/) contains the following examples of the application of one or more of the above BAND software tools to nuclear physics problems:
-- [Bfrescox + surmise](/BANDsoftware_uses/Bfrescox): combining the Frescox scattering code with surmise to enable Bayesian parameter estimation for coupled-channels scattering.
+- [Bfrescox + surmise](/BANDsoftware_uses/Bfrescox): combining the Frescox scattering code with surmise to enable Bayesian parameter estimation for breakup reactions.
   
 The following [examples](/examples/) are included in version 0.5.0+dev:
 - BMEX ([v0.1.4](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.4 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
