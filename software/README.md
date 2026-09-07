@@ -5,7 +5,7 @@ This contains the core software tools for the BAND Framework. The main BAND Fram
 referenced therein, before attempting to contribute to this directory.**
 
 As of v0.5.0+dev the following packages are present in this directory:
-- Bfrescox (v0.0.1-alpha): A Python wrapper for the Frescox coupled reaction channel code.
+- Bfrescox (v0.0.2-alpha): A Python wrapper for the Frescox coupled reaction channel code.
 - jitr (v2.5.1): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
 - LCGP (v1.1.1): A Gaussian process surrogate model for emulating stochastic simulation outputs.
 - mooGP (v1.0.0): Surrogate model for vector-valued (multi-output) functions with a multi-output orthogonal Gaussian process.
