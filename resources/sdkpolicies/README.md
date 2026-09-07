@@ -18,6 +18,7 @@ Examples of completed SDK policy compatibility documents include:
 -  [jitrbandsdk.md](https://github.com/beykyle/jitr/blob/main/jitrbandsdk.md)
 -  [lcgp-bandsdk.md](https://github.com/mosesyhc/LCGP/blob/main/lcgp-bandsdk.md)
 -  [MD-bandsdk.md](https://github.com/sjaiswal-tifr/ModelDiscrepancy/blob/main/MD-bandsdk.md)
+-  [moogp-sdk.md](https://github.com/evancbarnett/mooGP/blob/main/bandframework-moogp-sdk.md)
 -  [neutron-rich-bmm_bandsdk.md](https://github.com/asemposki/neutron-rich-bmm/blob/main/neutron-rich-bmm_bandsdk.md)
 -  [nsat-bandsdk.md](https://github.com/cdrischler/nuclear_saturation/blob/main/nsat-bandsdk.md)
 -  [OpenBTbandsdk.md](/software/OpenBT/OpenBTbandsdk.md)

@@ -39,6 +39,7 @@ As of version 0.5.0+dev, the following tools are included:
 - Bfrescox ([v0.0.1-alpha](https://github.com/bandframework/Bfrescox/releases/tag/v0.0.1-alpha )): A Python wrapper for the Frescox coupled reaction channel code.
 - jitr ([v2.5.1](https://github.com/beykyle/jitr/releases/tag/v2.5.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
 - LCGP ([v1.1.1](https://github.com/mosesyhc/lcgp/releases/tag/1.1.1 )): A Gaussian process surrogate model for emulating stochastic simulation outputs.
+- mooGP ([v1.0.0](https://github.com/evancbarnett/mooGP/releases/tag/1.0.0)): Surrogate model for vector-valued (multi-output) functions with a multi-output orthogonal Gaussian process.
 - OpenBT ([v1.2.0](https://github.com/bandframework/OpenBT/releases/tag/v1.2.0)): C++, Python, and R packages implementing Bayesian tree models, including regression, model mixing, sensitivity analysis and multiobjective optimization.
 - parMOO ([v0.5.1](https://github.com/parmoo/parmoo/releases/tag/v0.5.1 )): A Python library for parallel multiobjective simulation optimization.
 - PUQ ([v0.1.1](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.1 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
@@ -104,7 +105,7 @@ Please use the following to cite the BAND Framework:
 
     @techreport{bandframework,
         title       = {{BANDFramework: An} Open-Source Framework for {Bayesian} Analysis of Nuclear Dynamics},
-        author      = {Kyle Beyer and Landon Buskirk and Manuel Catacora Rios and Moses Y.-H. Chan and Tyler H. Chang and Troy Dasher 
+        author      = {Evan C. Barnett and Kyle Beyer and Landon Buskirk and Manuel Catacora Rios and Moses Y.-H. Chan and Tyler H. Chang and Troy Dasher 
         and Richard James DeBoer and Christian Drischler and Richard J. Furnstahl and Pablo Giuliani and Kyle Godbey 
         and Edbert Handjaja and Kevin Ingles and Sunil Jaiswal and An Le and Dananjaya Liyanage and Filomena M. Nunes
         and Daniel Odell and David O'Gara and Jared O'Neal and Daniel R. Phillips and Matthew Plumlee
