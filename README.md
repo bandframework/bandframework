@@ -37,7 +37,7 @@ BAND Framework elements are of three main types:
 The BAND Framework's software tools can be found in [software/](/software/). 
 As of version 0.5.0+dev, the following tools are included:
 - Bfrescox ([v0.0.1-alpha](https://github.com/bandframework/Bfrescox/releases/tag/v0.0.1-alpha )): A Python wrapper for the Frescox coupled reaction channel code.
-- jitr ([v3.0](https://github.com/beykyle/jitr/releases/tag/v2.5.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
+- jitr ([v3.0.1](https://github.com/beykyle/jitr/releases/tag/v2.5.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
 - LCGP ([v1.1.1](https://github.com/mosesyhc/lcgp/releases/tag/1.1.1 )): A Gaussian process surrogate model for emulating stochastic simulation outputs.
 - OpenBT ([v1.2.0](https://github.com/bandframework/OpenBT/releases/tag/v1.2.0)): C++, Python, and R packages implementing Bayesian tree models, including regression, model mixing, sensitivity analysis and multiobjective optimization.
 - parMOO ([v0.5.1](https://github.com/parmoo/parmoo/releases/tag/v0.5.1 )): A Python library for parallel multiobjective simulation optimization.

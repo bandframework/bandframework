@@ -6,7 +6,7 @@ referenced therein, before attempting to contribute to this directory.**
 
 As of v0.5.0+dev the following packages are present in this directory:
 - Bfrescox (v0.0.1-alpha): A Python wrapper for the Frescox coupled reaction channel code.
-- jitr (v3.0): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
+- jitr (v3.0.1): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
 - LCGP (v1.1.1): A Gaussian process surrogate model for emulating stochastic simulation outputs.
 - OpenBT (v1.2.0): C++, Python, and R packages implementing Bayesian tree models, including regression, model mixing, sensitivity analysis and multiobjective optimization.
 - parMOO (v0.5.1): A Python library for parallel multiobjective simulation optimization.
