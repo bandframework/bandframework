@@ -4,7 +4,7 @@ To suggest changes to these requirements or obtain more information, please cont
 
 Details on citing the current version of the BAND Framework can be found in the [README](https://github.com/bandframework/bandframework).
 
-**Website:** https://github.com/bandframework/SmoothEmulator
+**Website:** https://github.com/bandframework/SmoothEmulator \
 **Contact:** For assistance contact Scott Pratt (prattsc@msu.edu) \
 **Icon:** N/a \
 **Description:**  SmoothEmulator evaluates training points, fits a smooth emulator, and provides ways to explore a parameter space based on this emulator. 
