@@ -43,7 +43,7 @@ As of version 0.5.0+dev, the following tools are included:
 - OpenBT ([v1.2.0](https://github.com/bandframework/OpenBT/releases/tag/v1.2.0)): C++, Python, and R packages implementing Bayesian tree models, including regression, model mixing, sensitivity analysis and multiobjective optimization.
 - parMOO ([v0.5.1](https://github.com/parmoo/parmoo/releases/tag/v0.5.1 )): A Python library for parallel multiobjective simulation optimization.
 - PUQ ([v0.1.1](https://github.com/parallelUQ/PUQ/releases/tag/v0.1.1 )): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
-- pybmc ([v0.2.4](https://github.com/ascsn/pybmc/releases/tag/v0.2.4 )): A Python package for performing Bayesian model combination on various predictive models.
+- pybmc ([v0.4.1](https://github.com/ascsn/pybmc/releases/tag/v0.4.1 )): A Python package for performing Bayesian model combination on various predictive models.
 - [SmoothEmulator](/software/SmoothEmulator): A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
 - surmise ([v0.4.0](https://github.com/bandframework/surmise/releases/tag/v0.4.0 )): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - Taweret ([v1.2.0](https://github.com/bandframework/Taweret/releases/tag/v1.2.0 )): A Python package containing multiple Bayesian Model Mixing methods.
