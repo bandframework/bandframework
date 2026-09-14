@@ -15,7 +15,7 @@ As of v0.5.0+dev the following packages are present in this directory:
 - pybmc (v0.2.4): A Python package for performing Bayesian model combination on various predictive models.
 - SmoothEmulator: A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
 - surmise (v0.4.0): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
-- Taweret (v1.2.0): A Python package containing multiple Bayesian Model Mixing methods.
+- Taweret (v1.3.0): A Python package containing multiple Bayesian Model Mixing methods.
 - rose (v1.1.8): A reduced-order scattering emulator. Note: no longer maintained, see [rose/README.md](https://github.com/bandframework/rose/blob/v1.1.8/README.md) for details.
 
 Applications of these tools to nuclear-physics problems are provided in the ["BAND software uses"](/BANDsoftware_uses) directory. 
