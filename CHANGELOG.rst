@@ -6,6 +6,17 @@ Below are the release notes for all bandframework releases.
 May reference issues on:
 https://github.com/bandframework/bandframework/issues
 
+
+Release 1.0.0
+-------------
+:Date: TBD
+
+New capabilities and notable changes:
+
+- updated BAND-compatible pybmc at `v0.4.1 <https://github.com/ascsn/pybmc/releases/tag/v0.4.1>`_, a tool for performing Bayesian model combination on various predictive models.
+
+
+
 Release 0.5.0
 -------------
 :Date: December 22, 2025

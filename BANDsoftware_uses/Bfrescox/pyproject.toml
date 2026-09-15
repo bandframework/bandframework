@@ -1,0 +1,40 @@
+# Dependencies for the demo notebook.  This file is the source of truth;
+# requirements.txt and environment.yml mirror it for pip/venv and conda users.
+#
+# Nothing here requires a Fortran compiler, MPI, or a cluster -- the expensive
+# CDCC campaign has already been run and its outputs ship in data/.
+
+[project]
+name = "breakup-calibration-demo"
+version = "0.1.0"
+description = "Emulating and calibrating a nuclear breakup reaction (surmise + bfrescoxpro)"
+readme = "README.md"
+# surmise 0.4.0 ships compiled wheels for CPython 3.10-3.13 only.
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    # Lower bounds are the versions this was developed and tested against
+    # (Python 3.12).  surmise itself further pins numpy<2.2 and scipy<1.15.
+    "numpy>=2.1,<3",
+    "scipy>=1.14,<2",
+    "matplotlib>=3.9",
+    "corner>=2.2",
+    # Pinned exactly: 0.4.0 is the release the notebook's numbers were produced
+    # with, and its GP fitting details have changed on the development branch.
+    "surmise==0.4.0",
+    # to run the notebook itself
+    "jupyterlab>=4.0",
+    "ipykernel>=6.0",
+]
+
+[project.optional-dependencies]
+# Build-time dependencies for bfrescoxpro, the CDCC half in model/.  NOT needed
+# to run the demo.  bfrescoxpro itself is installed by hand because it needs
+# BFRESCOX_USE_* environment variables at build time -- see the README.
+model = [
+    "meson>=1.6.0",
+    "ninja",
+]
+
+[tool.uv]
+# Not an installable package: `uv sync` installs the dependencies only.
+package = false
