@@ -138,6 +138,7 @@ deuteron
 dev
 directbayes
 directbayeswoodbury
+discretized
 docstrings
 dodell
 edu
