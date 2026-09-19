@@ -25,4 +25,4 @@ provides a tutorial.
 
 The [BAND SDK v0.2 Community Policy](/resources/sdkpolicies/bandsdk.md)
 compatibility documentation for Smooth Emulator is provided in
-[SmoothEmulatorSDK.md](/software/SmoothEmulator/SmoothEmulatorbandsdk.md).
+[SmoothEmulatorbandsdk.md](/software/SmoothEmulator/SmoothEmulatorbandsdk.md).
