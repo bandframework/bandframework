@@ -1,14 +1,28 @@
-# smooth emulator software
+# Smooth Emulator
 
-Authors: Scott Pratt, Oleh Savchuk, Eren Erdogan, Ekaksh Kataria
+Smooth Emulator is a software project managed in a dedicated [bandframework
+repository](https://github.com/bandframework/SmoothEmulator) that can be used to
+emulate full models that are *smooth*.  Given a
+* model to emulate,
+* its list of model parameters,
+* the relative importance of the parameters, and
+* a description of their priors,
 
-To install, go to the ./software/ directory and enter
-% INSTALL_MAC.sh
-or
-% INSTALL_LINUX_APT-GET.sh
-depending on whether you are installing on a Mac or on Linux. 
+Smooth Emulator provides an optimal set of training points in the model's space.
+The software constructs and tunes emulators for each observable of interest
+using the model values and uncertainties derived from the training set.  The
+project provides a Markov chain Monte Carlo sampler that can be used with the
+emulators and combined with experimental results and uncertainties to acquire a
+set of samples in the model's parameter space that are consistent with the
+posterior distribution.
 
-The Mac script will install some standard packages (specific C++ compilers...) through the homebrew program. That software will be located in the /opt/homebrew/ directory. 
-The Linux script will install the corresponding packages using apt-get. If you wish to use a different package manager, or if you wish to change which version of the various packages is installed, you can edit the script.
+While Smooth Emulator is implemented in C++, a Python binding is also provided.
 
-Detailed installation directions and descriptions can be found in the user manual, (./doc/UserManual.pdf).
+Please refer to the [User
+Manual](https://github.com/bandframework/SmoothEmulator/blob/main/doc/UserManual.pdf)
+for detailed descriptions and installation directions.  The User Manual also
+provides a tutorial.
+
+The [BAND SDK v0.2 Community Policy](/resources/sdkpolicies/bandsdk.md)
+compatibility documentation for Smooth Emulator is provided in
+[SmoothEmulatorSDK.md](/software/SmoothEmulator/SmoothEmulatorSDK.md).
