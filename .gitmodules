@@ -31,3 +31,6 @@
 [submodule "software/Bfrescox"]
 	path = software/Bfrescox
 	url = https://github.com/bandframework/Bfrescox.git
+[submodule "BANDsoftware_uses/breakup-calibration-demo"]
+	path = BANDsoftware_uses/breakup-calibration-demo
+	url = https://github.com/beykyle/breakup-calibration-demo

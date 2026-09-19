@@ -14,7 +14,6 @@ Examples of completed SDK policy compatibility documents include:
 -  [BMEX-bandsdk.md](/examples/BMEX/BMEX-bandsdk.md)
 -  [brickbandsdk.md](/examples/BRICK/brickbandsdk.md)
 -  [bfrescoxbandsdk.md](https://github.com/bandframework/Bfrescox/blob/main/Bfrescoxbandsdk.md)
--  [frescoxbandsdk.md](/BANDsoftware_uses/Bfrescox/frescoxbandsdk.md)
 -  [jitrbandsdk.md](https://github.com/beykyle/jitr/blob/main/jitrbandsdk.md)
 -  [lcgp-bandsdk.md](https://github.com/mosesyhc/LCGP/blob/main/lcgp-bandsdk.md)
 -  [MD-bandsdk.md](https://github.com/sjaiswal-tifr/ModelDiscrepancy/blob/main/MD-bandsdk.md)
