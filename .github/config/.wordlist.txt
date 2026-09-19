@@ -94,7 +94,7 @@ SaMBA
 Savchuk
 SciPy
 SmoothEmulator
-SmoothEmulatorSDK
+SmoothEmulatorbandsdk
 Sunsetting
 Sürer
 TBD
