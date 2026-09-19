@@ -1,5 +1,7 @@
 # Smooth Emulator
 
+Authors: Scott Pratt, Oleh Savchuk, Eren Erdogan, Ekaksh Kataria
+
 Smooth Emulator is a software project managed in a dedicated [bandframework
 repository](https://github.com/bandframework/SmoothEmulator) that can be used to
 emulate full models that are *smooth*.  Given a
