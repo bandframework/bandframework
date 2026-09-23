@@ -27,6 +27,6 @@ Examples of completed SDK policy compatibility documents include:
 -  [QGP_Bayesbandsdk.md](https://github.com/danOSU/QGP_Bayes/blob/main/QGP_Bayesbandsdk.md)
 -  [rosebandsdk.md](https://github.com/bandframework/rose/blob/main/rosebandsdk.md)
 -  [SAMBAbandsdk.md](https://github.com/asemposki/SAMBA/blob/main/SAMBAbandsdk.md)
--  [SmoothEmulatorSDK.md](/software/SmoothEmulator/SmoothEmulatorSDK.md)
+-  [SmoothEmulatorbandsdk.md](/software/SmoothEmulator/SmoothEmulatorbandsdk.md)
 -  [surmisebandsdk.md](https://github.com/bandframework/surmise/blob/main/surmisebandsdk.md)
 -  [Taweretbandsdk.md](https://github.com/bandframework/Taweret/blob/main/Taweretbandsdk.md)
