@@ -34,3 +34,6 @@
 [submodule "BANDsoftware_uses/breakup-calibration-demo"]
 	path = BANDsoftware_uses/breakup-calibration-demo
 	url = https://github.com/beykyle/breakup-calibration-demo
+[submodule "software/mooGP"]
+    path = software/mooGP
+	url = https://github.com/evancbarnett/mooGP
