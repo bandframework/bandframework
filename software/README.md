@@ -14,7 +14,7 @@ As of v0.5.0+dev the following packages are present in this directory:
 - PUQ (v0.1.1): A Python package for generating experimental designs tailored for uncertainty quantification and featuring parallel implementations.
 - pybmc (v0.2.4): A Python package for performing Bayesian model combination on various predictive models.
 - Smooth Emulator (v1.0.0-beta): A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
-- surmise (v0.4.0): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
+- surmise (v1.0.0): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - Taweret (v1.3.0): A Python package containing multiple Bayesian Model Mixing methods.
 - rose (v1.1.8): A reduced-order scattering emulator. Note: no longer maintained, see [rose/README.md](https://github.com/bandframework/rose/blob/v1.1.8/README.md) for details.
 
