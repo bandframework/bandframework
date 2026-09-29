@@ -9,5 +9,5 @@ As of version 0.5.0+dev this directory includes the following examples:
 - neutron-rich-bmm (v0.1.0): A Gaussian process Bayesian model mixing approach for microscopic constraints for the equation of state and structure of neutron stars.
 - nuclear_saturation: A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 - QGP_Bayes: A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP.
+- rose (v1.1.8): A reduced-order scattering emulator. Note: no longer maintained, see [rose/README.md](https://github.com/bandframework/rose/blob/v1.1.8/README.md) for details.
 - SaMBA (v1.2.1): The Sandbox for Mixing via Bayesian Analysis.
-

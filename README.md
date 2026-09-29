@@ -47,7 +47,6 @@ As of version 0.5.0+dev, the following tools are included:
 - Smooth Emulator ([v1.0.0-beta](https://github.com/bandframework/SmoothEmulator/releases/tag/v1.0.0-beta)): A simplex sampler, emulator trainer, and MCMC explorer that employs a smooth emulator.
 - surmise ([v1.0.0](https://github.com/bandframework/surmise/releases/tag/v1.0.0 )): A surrogate model interface for calibration, uncertainty quantification, and sensitivity analysis.
 - Taweret ([v1.3.0](https://github.com/bandframework/Taweret/releases/tag/v1.3.0 )): A Python package containing multiple Bayesian Model Mixing methods.
-- rose ([v1.1.8](https://github.com/bandframework/rose/releases/tag/v1.1.8 )): A reduced-order scattering emulator. Note: no longer maintained, see [software/rose/README.md](https://github.com/bandframework/rose/blob/v1.1.8/README.md) for details.
 
 
 As of version 0.5.0+dev, [BANDsoftware_uses/](/BANDsoftware_uses/) contains the following examples of the application of one or more of the above BAND software tools to nuclear physics problems:
@@ -59,6 +58,7 @@ The following [examples](/examples/) are included in version 0.5.0+dev:
 - neutron-rich-bmm ([v0.1.0](https://github.com/asemposki/neutron-rich-bmm/releases/tag/v0.1.0 )): An example of Gaussian process Bayesian model mixing for the dense matter equation of state.
 - [nuclear_saturation](https://github.com/cdrischler/nuclear_saturation/tree/c4cfa45a1180b2739e217102d7380736d6844a11): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 - [QGP_Bayes](https://github.com/danOSU/QGP_Bayes/tree/4b3e2364f87a29ad2469f2b072053420fdaac8e9): A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP.
+- rose ([v1.1.8](https://github.com/bandframework/rose/releases/tag/v1.1.8 )): A reduced-order scattering emulator. Note: no longer maintained, see [examples/rose/README.md](https://github.com/bandframework/rose/blob/v1.1.8/README.md) for details.
 - SaMBA ([v1.2.1](https://github.com/asemposki/SAMBA/releases/tag/v1.2.1 )): The Sandbox for Mixing via Bayesian Analysis.
 
 ## Downloading and using the BAND Framework
