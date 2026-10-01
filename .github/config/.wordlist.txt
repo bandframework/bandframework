@@ -65,6 +65,7 @@ OpenBLAS
 OpenBT
 OpenBT's
 OpenBTbandsdk
+OpenBTMixing
 Özge
 Ozge
 PCGP
@@ -83,6 +84,7 @@ PyPI
 QGP
 Quickstart
 README
+RNG
 Repo
 Ropenbt
 SAMBAbandsdk
