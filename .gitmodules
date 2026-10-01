@@ -5,7 +5,7 @@
 	path = software/Taweret
 	url = https://github.com/bandframework/Taweret
 [submodule "software/rose"]
-	path = software/rose
+	path = examples/rose
 	url = https://github.com/bandframework/rose.git
 [submodule "software/jitr"]
 	path = software/jitr
