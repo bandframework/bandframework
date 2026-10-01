@@ -9,13 +9,31 @@ https://github.com/bandframework/bandframework/issues
 
 Release 1.0.0
 -------------
-:Date: TBD
+:Date: October 2, 2026
+
+New organization:
+
+- Smooth Emulator moved to its own `repository <https://github.com/bandframework/SmoothEmulator>`_
+- rose deprecated at `v1.1.8 <https://github.com/bandframework/rose/releases/tag/v1.1.8>`_ and reclassified as an example
 
 New capabilities and notable changes:
 
-- updated BAND-compatible pybmc at `v0.4.1 <https://github.com/ascsn/pybmc/releases/tag/v0.4.1>`_, a tool for performing Bayesian model combination on various predictive models.
+- updated BAND-compatible Bfrescox at `v0.0.2-alpha <https://github.com/bandframework/Bfrescox/releases/tag/v0.0.2-alpha>`_, .
+- updated BAND-compatible jitr to `v3.0.1 <https://github.com/beykyle/jitr/releases/tag/v3.0.1>`_, . 
+- updated BAND-compatible LCGP at `vl.1.1 <https://github.com/mosesyhc/lcgp/releases/tag/1.1.1>`_, .
+- added BAND-compatible mooGP at `v1.0.0 <https://github.com/evancbarnett/mooGP/releases/tag/1.0.0>`_, A Gaussian process surrogate model for emulating stochastic simulation outputs.
+- added BAND-compatible OpenBT at `v1.2.0 <https://github.com/bandframework/OpenBT/releases/tag/v1.2.0>`_, C++, Python, and R packages implementing Bayesian tree models, including regression, model mixing, sensitivity analysis and multiobjective optimization.
+- updated BAND-compatible parMOO to `v0.5.1 <https://github.com/parmoo/parmoo/releases/tag/v0.5.1>`_, .
+- updated BAND-compatible pybmc at `v0.4.1 <https://github.com/ascsn/pybmc/releases/tag/v0.4.1>`_, .
+- updated BAND-compatible Smooth Emulator to `v1.0.0-beta <https://github.com/bandframework/SmoothEmulator/releases/tag/v1.0.0-beta>`_, . 
+- updated BAND-compatible surmise to `v1.0.0 <https://github.com/bandframework/surmise/releases/tag/v1.0.0>`_, .
+- updated BAND-compatible Taweret to `v1.3.0 <https://github.com/bandframework/Taweret/releases/tag/v1.3.0>`_, .
 
+:Known issues:
 
+- We do not yet have a stated policy on the use/documentation of AI tools.
+- The bandframework repository contains different content, including Jupyter notebooks, that could be presented to the public via a single BAND framework Jupyter notebook. This might simplify reviewing since verifying that books run through could be accomplished by github actions. 
+- The `BRICK tutorial notebook <https://github.com/bandframework/bandframework/blob/v05release/examples/BRICK/tutorial/tutorial.ipynb>`_ does not run correctly unless AZURE2 is installed at the command line. However, AZURE2 at the command line is currently only available in its Linux-compatible version. Linux users who wish to run the BRICK tutorial can request access to AZURE2 `here <https://azure.nd.edu>`_, and then install it so it runs at the command line. 
 
 Release 0.5.0
 -------------
