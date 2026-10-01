@@ -13,8 +13,8 @@ Release 1.0.0
 
 New organization:
 
-- Smooth Emulator moved to its own `repository <https://github.com/bandframework/SmoothEmulator>`_
 - rose deprecated at `v1.1.8 <https://github.com/bandframework/rose/releases/tag/v1.1.8>`_ and reclassified as an example
+- Smooth Emulator moved to its own `repository <https://github.com/bandframework/SmoothEmulator>`_
 
 New capabilities and notable changes:
 
