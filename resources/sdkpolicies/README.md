@@ -8,6 +8,7 @@ To be listed as a BAND Framework software package, we require that BAND software
 
 A parallel [directory](/resources/dev_guide) contains a basic development guide with:
 - [Instructions for adding submodules for packages hosted elsewhere](/resources/dev_guide/git_instructions_for_submodules.md)
+- [Instructions for sunsetting BAND framework software](/resources/dev_guide/component-sunsetting-proc.rst)
 - The BAND [release process](/resources/dev_guide/release-proc.rst)
 
 Examples of completed SDK policy compatibility documents include:
