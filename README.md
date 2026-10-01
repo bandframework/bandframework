@@ -112,8 +112,8 @@ Please use the following to cite the BAND Framework:
         and Matthew T. Pratola and Scott Pratt and Oleh Savchuk and Alexandra C. Semposki and \"Ozge S\"urer and 
         Stefan M. Wild and John C. Yannotty},
         institution = {},
-        number      = {Version 0.5.0+dev},
-        year        = {2025},
+        number      = {Version 1.0.0},
+        year        = {2026},
         url         = {https://github.com/bandframework/bandframework}
     }
     
