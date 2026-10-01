@@ -19,7 +19,7 @@ New organization:
 New capabilities and notable changes:
 
 - updated BAND-compatible Bfrescox at `v0.0.2-alpha <https://github.com/bandframework/Bfrescox/releases/tag/v0.0.2-alpha>`_, which officially integrates template functionality and provides more examples.
-- updated BAND-compatible jitr to `v3.0.1 <https://github.com/beykyle/jitr/releases/tag/v3.0.1>`_, which. 
+- updated BAND-compatible jitr to `v3.0.1 <https://github.com/beykyle/jitr/releases/tag/v3.0.1>`_, which provides significant interface, physics, and feature updates, as well as a new documentation website. 
 - updated BAND-compatible LCGP at `v1.1.1 <https://github.com/mosesyhc/lcgp/releases/tag/1.1.1>`_, which extends the stochastic emulator to train on data with replications.
 - added BAND-compatible mooGP at `v1.0.0 <https://github.com/evancbarnett/mooGP/releases/tag/1.0.0>`_, A Gaussian process surrogate model for emulating stochastic simulation outputs.
 - added BAND-compatible OpenBT at `v1.2.0 <https://github.com/bandframework/OpenBT/releases/tag/v1.2.0>`_, C++, Python, and R packages implementing Bayesian tree models, including regression, model mixing, sensitivity analysis and multiobjective optimization.  A subset of this was originally included in BAND as a backend to Taweret.
