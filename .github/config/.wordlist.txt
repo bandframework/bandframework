@@ -162,8 +162,9 @@ github's
 githubusercontent
 gmail
 hastings
-homebrew
+heteroscedastic
 hetGPy
+homebrew
 htm
 html
 http
