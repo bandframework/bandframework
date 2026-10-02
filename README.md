@@ -1,7 +1,7 @@
 ![BAND](resources/BAND_logo_v2.png)
 
 # BAND Framework
-This contains the primary public repository for the [BAND framework project](https://bandframework.github.io/), which is supported by the National Science Foundation [Cyberinfrastructure for Sustained Scientific Innovation program](https://www.nsf.gov/funding/opportunities/cssi-cyberinfrastructure-sustained-scientific-innovation) under grant OAC-2004601.
+This contains the primary public repository for the [BAND framework project](https://bandframework.github.io/), which is supported by the National Science Foundation [Cyberinfrastructure Systems for Scientific Innovation program](https://www.nsf.gov/funding/opportunities/cssi-cyberinfrastructure-sustained-scientific-innovation) under grant OAC-2004601.
 
 ## Goals
 
@@ -141,4 +141,4 @@ For more information, please see the [BAND framework website](https://bandframew
 Our [release process](/resources/dev_guide/release-proc.rst) is also provided.
 
 ## Acknowledgment
-The BAND Framework is supported by the National Science Foundation [Cyberinfrastructure for Sustained Scientific Innovation program](https://www.nsf.gov/funding/opportunities/cssi-cyberinfrastructure-sustained-scientific-innovation) under grant OAC-2004601.
+The BAND Framework is supported by the National Science Foundation [Cyberinfrastructure Systems for Scientific Innovation program](https://www.nsf.gov/funding/opportunities/cssi-cyberinfrastructure-sustained-scientific-innovation) under grant OAC-2004601.
