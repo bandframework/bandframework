@@ -1,14 +1,12 @@
 ![BAND](resources/BAND_logo_v2.png)
 
 # BAND Framework
-This contains the primary public repository for the [BAND framework project](https://bandframework.github.io/). 
+This contains the primary public repository for the [BAND framework project](https://bandframework.github.io/), which is supported by the National Science Foundation [Cyberinfrastructure Systems for Scientific Innovation program](https://www.nsf.gov/funding/opportunities/cssi-cyberinfrastructure-sustained-scientific-innovation) under grant OAC-2004601.
 
 ## Goals
 
 The Bayesian Analysis for Nuclear Dynamics (BAND) software Framework provides tools and examples that 
 facilitate principled Uncertainty Quantification in Nuclear Physics. 
-
-This framework is funded by the NSF Office of Advanced Cyberinfrastructure, Cyberinfrastructure for Sustained Scientific Innovation program, under grant OAC-2004601.
 
 We provide tools and examples that demonstrate how
 - emulation of computationally expensive models,
@@ -35,7 +33,7 @@ BAND Framework elements are of three main types:
 - BAND examples: these are stand-alone notebooks or code that provide examples of principled Bayesian uncertainty quantification. They are constructed to solve a particular nuclear physics problem. They do not use any of the BAND software tools, but contain software that BAND Framework users may wish to adapt to other scientific contexts. 
 
 The BAND Framework's software tools can be found in [software/](/software/). 
-As of version 0.5.0+dev, the following tools are included:
+As of version 1.0.0, the following tools are included:
 - Bfrescox ([v0.0.2-alpha](https://github.com/bandframework/Bfrescox/releases/tag/v0.0.2-alpha )): A Python wrapper for the Frescox coupled reaction channel code.
 - jitr ([v3.0.1](https://github.com/beykyle/jitr/releases/tag/v3.0.1 )): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
 - LCGP ([v1.1.1](https://github.com/mosesyhc/lcgp/releases/tag/1.1.1 )): A Gaussian process surrogate model for emulating stochastic simulation outputs.
@@ -49,29 +47,30 @@ As of version 0.5.0+dev, the following tools are included:
 - Taweret ([v1.3.0](https://github.com/bandframework/Taweret/releases/tag/v1.3.0 )): A Python package containing multiple Bayesian Model Mixing methods.
 
 
-As of version 0.5.0+dev, [BANDsoftware_uses/](/BANDsoftware_uses/) contains the following examples of the application of one or more of the above BAND software tools to nuclear physics problems:
-- [breakup-calibration-demo](/BANDsoftware_uses/breakup-calibration-demo): combines Bfrescox and surmise to use the Frescox scattering code for Bayesian inference of the ⟨8B|7Be+p⟩ Asymptotic Normalization Coefficient with continuum discretized coupled-channels model of the 8B breakup reaction.
+As of version 1.0.0, [BANDsoftware_uses/](/BANDsoftware_uses/) contains the following examples of the application of one or more of the above BAND software tools to nuclear physics problems:
+- [breakup-calibration-demo](https://github.com/beykyle/breakup-calibration-demo/tree/3a7ea565dec1b0495258fb599a7d3f844f668902): combines Bfrescox and surmise to use the Frescox scattering code for Bayesian inference of the ⟨8B|7Be+p⟩ Asymptotic Normalization Coefficient with continuum discretized coupled-channels model of the 8B breakup reaction.
 
-The following [examples](/examples/) are included in version 0.5.0+dev:
+The following [examples](/examples/) are included in version 1.0.0:
 - BMEX ([v0.1.4](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.4 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - [BRICK](/examples/BRICK): The Bayesian R-matrix Inference Code Kit, designed to facilitate extraction of R-matrix parameters from experimental data.
 - ModelDiscrepancy ([v1.1.0](https://github.com/sjaiswal-tifr/ModelDiscrepancy/releases/tag/v1.1.0 )): A Bayesian framework for model-data comparison that accounts for theoretical uncertainties.
-- neutron-rich-bmm ([v0.1.0](https://github.com/asemposki/neutron-rich-bmm/releases/tag/v0.1.0 )): An example of Gaussian process Bayesian model mixing for the dense matter equation of state.
-- [nuclear_saturation](https://github.com/cdrischler/nuclear_saturation/tree/c4cfa45a1180b2739e217102d7380736d6844a11): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
+- neutron-rich-bmm ([v0.1.0](https://github.com/asemposki/neutron-rich-bmm/releases/tag/v0.1.0 )): A Gaussian process Bayesian model mixing approach for microscopic constraints for the equation of state and structure of neutron stars. 
+- [nuclear_saturation](https://github.com/cdrischler/nuclear_saturation/tree/06cf466c2ab5f6e1fccafc18807c7dd99aff05c7): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 - [QGP_Bayes](https://github.com/danOSU/QGP_Bayes/tree/4b3e2364f87a29ad2469f2b072053420fdaac8e9): A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP.
 - rose ([v1.1.8](https://github.com/bandframework/rose/releases/tag/v1.1.8 )): A reduced-order scattering emulator.
 - SaMBA ([v1.2.1](https://github.com/asemposki/SAMBA/releases/tag/v1.2.1 )): The Sandbox for Mixing via Bayesian Analysis.
 
 ## Downloading and using the BAND Framework
 
-You are free to use any pieces of the BAND Framework that will advance your own research. Please cite the framework and the original BAND paper, as detailed below under "Citing the BAND Framework".
+You are free to use any pieces of the BAND Framework that will advance your own research. Please cite the framework, the original BAND paper, and all BAND tools used as detailed below under "Citing the BAND Framework".
 
 ## Submodules
 
 The bandframework repository currently includes some dependencies via git submodules. Currently, submodules are employed in the directories:
 
-* [examples/](examples/)
-* [software/](software/)
+* [BANDsoftware_uses/](/BANDsoftware_uses/)
+* [examples/](/examples/)
+* [software/](/software/)
 
 As a consequence, when cloning bandframework, the submodules can be retrieved automatically via
 - `git clone --recursive` (in place of the usual `git clone`)
@@ -89,7 +88,7 @@ Note that submodules work on modern git (i.e., version >= 2.38.0).
 
 ## Contributing to the BAND Framework
 
-BAND welcomes contributions to the BAND Framework in a variety of forms; please see [CONTRIBUTING](CONTRIBUTING.rst).
+BAND welcomes contributions to the BAND Framework in a variety of forms; please see [CONTRIBUTING](/CONTRIBUTING.rst).
 
 The BAND Framework maintains a [BAND Software Development Kit (SDK)](/resources/sdkpolicies/bandsdk.md) that includes requirements and recommendations for contributing a package to the BAND Framework. 
 
@@ -104,16 +103,17 @@ All code included in the BAND Framework is open source, with the particular form
 Please use the following to cite the BAND Framework:
 
     @techreport{bandframework,
-        title       = {{BANDFramework: An} Open-Source Framework for {Bayesian} Analysis of Nuclear Dynamics},
-        author      = {Evan C. Barnett and Kyle Beyer and Landon Buskirk and Manuel Catacora Rios and Moses Y.-H. Chan and Tyler H. Chang and Troy Dasher 
-        and Richard James DeBoer and Christian Drischler and Richard J. Furnstahl and Pablo Giuliani and Kyle Godbey 
-        and Edbert Handjaja and Kevin Ingles and Sunil Jaiswal and An Le and Dananjaya Liyanage and Filomena M. Nunes
-        and Daniel Odell and David O'Gara and Jared O'Neal and Daniel R. Phillips and Matthew Plumlee
-        and Matthew T. Pratola and Scott Pratt and Oleh Savchuk and Alexandra C. Semposki and \"Ozge S\"urer and 
-        Stefan M. Wild and John C. Yannotty},
+        title       = {{BAND Framework: An} Open-Source Framework for {Bayesian} Analysis of Nuclear Dynamics},
+        author      = {Pranav Agarwal and Evan C. Barnett and Kyle Beyer and Landon Buskirk and Manuel Catacora Rios
+        and Moses Y.-H. Chan and Tyler H. Chang and Troy Dasher and Richard James DeBoer and Christian Drischler
+        and Eren Erdogan and Richard J. Furnstahl and Pablo Giuliani and Kyle Godbey and Edbert Handjaja
+        and Kevin Ingles and Sunil Jaiswal and Ekaksh Kataria and Bailey Knight and Sudhanva Lalit and An Le
+        and Dananjaya Liyanage and Filomena M. Nunes and Daniel Odell and David O'Gara and Jared O'Neal
+        and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and Scott Pratt and Oleh Savchuk
+        and Alexandra C. Semposki and \"Ozge S\"urer and  Stefan M. Wild and John C. Yannotty},
         institution = {},
-        number      = {Version 0.5.0+dev},
-        year        = {2025},
+        number      = {Version 1.0.0},
+        year        = {2026},
         url         = {https://github.com/bandframework/bandframework}
     }
     
@@ -133,12 +133,12 @@ If possible, please also cite the original BAND Framework paper:
         year = "2021"
     }
 
-Please also cite any of the underlying BAND Framework packages you employ, each of which includes citation or documentation information.
+Please also review the documentation of all BAND tools that you use so you are cognizant of how the authors of each tool would like you to credit their work.
 
 ## Resources
 For more information, please see the [BAND framework website](https://bandframework.github.io/). 
 
-Our [release process](resources/dev_guide/release-proc.rst) is also provided.
+Our [release process](/resources/dev_guide/release-proc.rst) is also provided.
 
 ## Acknowledgment
-The BAND Framework is supported by the National Science Foundation [Cyberinfrastructure for Sustained Scientific Innovation program](https://www.nsf.gov/funding/opportunities/cssi-cyberinfrastructure-sustained-scientific-innovation) under grant OAC-2004601.
+The BAND Framework is supported by the National Science Foundation [Cyberinfrastructure Systems for Scientific Innovation program](https://www.nsf.gov/funding/opportunities/cssi-cyberinfrastructure-sustained-scientific-innovation) under grant OAC-2004601.
