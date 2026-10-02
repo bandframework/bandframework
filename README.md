@@ -1,14 +1,12 @@
 ![BAND](resources/BAND_logo_v2.png)
 
 # BAND Framework
-This contains the primary public repository for the [BAND framework project](https://bandframework.github.io/). 
+This contains the primary public repository for the [BAND framework project](https://bandframework.github.io/), which is supported by the National Science Foundation [Cyberinfrastructure for Sustained Scientific Innovation program](https://www.nsf.gov/funding/opportunities/cssi-cyberinfrastructure-sustained-scientific-innovation) under grant OAC-2004601.
 
 ## Goals
 
 The Bayesian Analysis for Nuclear Dynamics (BAND) software Framework provides tools and examples that 
 facilitate principled Uncertainty Quantification in Nuclear Physics. 
-
-This framework is funded by the NSF Office of Advanced Cyberinfrastructure, Cyberinfrastructure for Sustained Scientific Innovation program, under grant OAC-2004601.
 
 We provide tools and examples that demonstrate how
 - emulation of computationally expensive models,
