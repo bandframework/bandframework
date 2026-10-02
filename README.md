@@ -48,7 +48,7 @@ As of version 1.0.0, the following tools are included:
 
 
 As of version 1.0.0, [BANDsoftware_uses/](/BANDsoftware_uses/) contains the following examples of the application of one or more of the above BAND software tools to nuclear physics problems:
-- [breakup-calibration-demo](/BANDsoftware_uses/breakup-calibration-demo): combines Bfrescox and surmise to use the Frescox scattering code for Bayesian inference of the ⟨8B|7Be+p⟩ Asymptotic Normalization Coefficient with continuum discretized coupled-channels model of the 8B breakup reaction.
+- [breakup-calibration-demo](https://github.com/beykyle/breakup-calibration-demo/tree/3a7ea565dec1b0495258fb599a7d3f844f668902): combines Bfrescox and surmise to use the Frescox scattering code for Bayesian inference of the ⟨8B|7Be+p⟩ Asymptotic Normalization Coefficient with continuum discretized coupled-channels model of the 8B breakup reaction.
 
 The following [examples](/examples/) are included in version 1.0.0:
 - BMEX ([v0.1.4](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.4 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
