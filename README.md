@@ -105,12 +105,13 @@ Please use the following to cite the BAND Framework:
 
     @techreport{bandframework,
         title       = {{BANDFramework: An} Open-Source Framework for {Bayesian} Analysis of Nuclear Dynamics},
-        author      = {Evan C. Barnett and Kyle Beyer and Landon Buskirk and Manuel Catacora Rios and Moses Y.-H. Chan and Tyler H. Chang and Troy Dasher 
-        and Richard James DeBoer and Christian Drischler and Eren Erdogan and Richard J. Furnstahl and Pablo Giuliani and Kyle Godbey 
-        and Edbert Handjaja and Kevin Ingles and Sunil Jaiswal and Ekaksh Kataria and An Le and Dananjaya Liyanage and Filomena M. Nunes
-        and Daniel Odell and David O'Gara and Jared O'Neal and Daniel R. Phillips and Matthew Plumlee
-        and Matthew T. Pratola and Scott Pratt and Oleh Savchuk and Alexandra C. Semposki and \"Ozge S\"urer and 
-        Stefan M. Wild and John C. Yannotty},
+        author      = {Pranav Agarwal and Evan C. Barnett and Kyle Beyer and Landon Buskirk and Manuel Catacora Rios
+        and Moses Y.-H. Chan and Tyler H. Chang and Troy Dasher and Richard James DeBoer and Christian Drischler
+        and Eren Erdogan and Richard J. Furnstahl and Pablo Giuliani and Kyle Godbey  and Edbert Handjaja
+        and Kevin Ingles and Sunil Jaiswal and Ekaksh Kataria and Bailey Knight and Sudhanva Lalit and An Le
+        and Dananjaya Liyanage and Filomena M. Nunes and Daniel Odell and David O'Gara and Jared O'Neal
+        and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and Scott Pratt and Oleh Savchuk
+        and Alexandra C. Semposki and \"Ozge S\"urer and  Stefan M. Wild and John C. Yannotty},
         institution = {},
         number      = {Version 1.0.0},
         year        = {2026},
