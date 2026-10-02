@@ -64,14 +64,15 @@ The following [examples](/examples/) are included in version 1.0.0:
 
 ## Downloading and using the BAND Framework
 
-You are free to use any pieces of the BAND Framework that will advance your own research. Please cite the framework and the original BAND paper, as detailed below under "Citing the BAND Framework".  Please also review the documentation of all BAND tools that you use so you are cognizant of how the authors of each tool would like you to credit their work.
+You are free to use any pieces of the BAND Framework that will advance your own research. Please cite the framework, the original BAND paper, and all BAND tools used as detailed below under "Citing the BAND Framework".
 
 ## Submodules
 
 The bandframework repository currently includes some dependencies via git submodules. Currently, submodules are employed in the directories:
 
-* [examples/](examples/)
-* [software/](software/)
+* [BANDsoftware_uses/](/BANDsoftware_uses/)
+* [examples/](/examples/)
+* [software/](/software/)
 
 As a consequence, when cloning bandframework, the submodules can be retrieved automatically via
 - `git clone --recursive` (in place of the usual `git clone`)
@@ -89,7 +90,7 @@ Note that submodules work on modern git (i.e., version >= 2.38.0).
 
 ## Contributing to the BAND Framework
 
-BAND welcomes contributions to the BAND Framework in a variety of forms; please see [CONTRIBUTING](CONTRIBUTING.rst).
+BAND welcomes contributions to the BAND Framework in a variety of forms; please see [CONTRIBUTING](/CONTRIBUTING.rst).
 
 The BAND Framework maintains a [BAND Software Development Kit (SDK)](/resources/sdkpolicies/bandsdk.md) that includes requirements and recommendations for contributing a package to the BAND Framework. 
 
@@ -134,12 +135,12 @@ If possible, please also cite the original BAND Framework paper:
         year = "2021"
     }
 
-Please also cite any of the underlying BAND Framework packages you employ, each of which includes citation or documentation information.
+Please also review the documentation of all BAND tools that you use so you are cognizant of how the authors of each tool would like you to credit their work.
 
 ## Resources
 For more information, please see the [BAND framework website](https://bandframework.github.io/). 
 
-Our [release process](resources/dev_guide/release-proc.rst) is also provided.
+Our [release process](/resources/dev_guide/release-proc.rst) is also provided.
 
 ## Acknowledgment
 The BAND Framework is supported by the National Science Foundation [Cyberinfrastructure for Sustained Scientific Innovation program](https://www.nsf.gov/funding/opportunities/cssi-cyberinfrastructure-sustained-scientific-innovation) under grant OAC-2004601.
