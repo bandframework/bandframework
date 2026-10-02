@@ -9,7 +9,7 @@ https://github.com/bandframework/bandframework/issues
 
 Release 1.0.0
 -------------
-:Date: October 2, 2026
+:Date: October 3, 2026
 
 New organization:
 
@@ -30,7 +30,7 @@ New capabilities and notable changes:
 - updated BAND-compatible surmise to `v1.0.0 <https://github.com/bandframework/surmise/releases/tag/v1.0.0>`_, which improves user control of RNG usage, improves sampler integration, and fixes bugs.
 - updated BAND-compatible Taweret to `v1.3.0 <https://github.com/bandframework/Taweret/releases/tag/v1.3.0>`_, which introduces Gaussian process model mixing and uses OpenBT instead of the deprecated OpenBTMixing package.
 
-- BANDsoftware_uses now includes rebuilt example that shows how new `BFrescoX and surmise can be combined to perform calibration of a breakup reaction <https://github.com/beykyle/breakup-calibration-demo>`_.
+- BANDsoftware_uses now includes rebuilt example that shows how `BFrescoX and surmise can be combined to perform calibration of a breakup reaction <https://github.com/beykyle/breakup-calibration-demo/tree/3a7ea565dec1b0495258fb599a7d3f844f668902>`_.
 
 :Known issues:
 
