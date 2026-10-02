@@ -64,7 +64,7 @@ The following [examples](/examples/) are included in version 1.0.0:
 
 ## Downloading and using the BAND Framework
 
-You are free to use any pieces of the BAND Framework that will advance your own research. Please cite the framework and the original BAND paper, as detailed below under "Citing the BAND Framework".
+You are free to use any pieces of the BAND Framework that will advance your own research. Please cite the framework and the original BAND paper, as detailed below under "Citing the BAND Framework".  Please also review the documentation of all BAND tools that you use so you are cognizant of how the authors of each tool would like you to credit their work.
 
 ## Submodules
 
@@ -104,7 +104,7 @@ All code included in the BAND Framework is open source, with the particular form
 Please use the following to cite the BAND Framework:
 
     @techreport{bandframework,
-        title       = {{BANDFramework: An} Open-Source Framework for {Bayesian} Analysis of Nuclear Dynamics},
+        title       = {{BAND Framework: An} Open-Source Framework for {Bayesian} Analysis of Nuclear Dynamics},
         author      = {Pranav Agarwal and Evan C. Barnett and Kyle Beyer and Landon Buskirk and Manuel Catacora Rios
         and Moses Y.-H. Chan and Tyler H. Chang and Troy Dasher and Richard James DeBoer and Christian Drischler
         and Eren Erdogan and Richard J. Furnstahl and Pablo Giuliani and Kyle Godbey and Edbert Handjaja

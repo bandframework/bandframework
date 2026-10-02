@@ -53,7 +53,7 @@ As shown in the [template](/resources/sdkpolicies/template.md) and [linked SDK c
 Please use the following to cite the BAND Framework:
 
     @techreport{bandframework,
-        title       = {{BANDFramework: An} Open-Source Framework for {Bayesian} Analysis of Nuclear Dynamics},
+        title       = {{BAND Framework: An} Open-Source Framework for {Bayesian} Analysis of Nuclear Dynamics},
         author      = {Pranav Agarwal and Evan C. Barnett and Kyle Beyer and Landon Buskirk and Manuel Catacora Rios
         and Moses Y.-H. Chan and Tyler H. Chang and Troy Dasher and Richard James DeBoer and Christian Drischler
         and Eren Erdogan and Richard J. Furnstahl and Pablo Giuliani and Kyle Godbey and Edbert Handjaja
