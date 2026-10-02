@@ -30,13 +30,12 @@ New capabilities and notable changes:
 - updated BAND-compatible surmise to `v1.0.0 <https://github.com/bandframework/surmise/releases/tag/v1.0.0>`_, which improves user control of RNG usage, improves sampler integration, and fixes bugs.
 - updated BAND-compatible Taweret to `v1.3.0 <https://github.com/bandframework/Taweret/releases/tag/v1.3.0>`_, which introduces Gaussian process model mixing and uses OpenBT instead of the deprecated OpenBTMixing package.
 
-- BANDsoftware_uses now includes rebuilt example that shows how new `BFrescoX and surmise can be combined to perform calibration of a breakup reaction <https://github.com/beykyle/breakup-calibration-demo>`_
+- BANDsoftware_uses now includes rebuilt example that shows how new `BFrescoX and surmise can be combined to perform calibration of a breakup reaction <https://github.com/beykyle/breakup-calibration-demo>`_.
 
 :Known issues:
 
 - We do not yet have a stated policy on the use/documentation of AI tools.
 - The bandframework repository contains different content, including Jupyter notebooks, that could be presented to the public via a single BAND framework Jupyter notebook. This might simplify reviewing since verifying that books run through could be accomplished by github actions. 
-- The `BRICK tutorial notebook <https://github.com/bandframework/bandframework/blob/v05release/examples/BRICK/tutorial/tutorial.ipynb>`_ does not run correctly unless AZURE2 is installed at the command line. However, AZURE2 at the command line is currently only available in its Linux-compatible version. Linux users who wish to run the BRICK tutorial can request access to AZURE2 `here <https://azure.nd.edu>`_, and then install it so it runs at the command line. 
 
 Release 0.5.0
 -------------
