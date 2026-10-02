@@ -55,7 +55,7 @@ The following [examples](/examples/) are included in version 1.0.0:
 - [BRICK](/examples/BRICK): The Bayesian R-matrix Inference Code Kit, designed to facilitate extraction of R-matrix parameters from experimental data.
 - ModelDiscrepancy ([v1.1.0](https://github.com/sjaiswal-tifr/ModelDiscrepancy/releases/tag/v1.1.0 )): A Bayesian framework for model-data comparison that accounts for theoretical uncertainties.
 - neutron-rich-bmm ([v0.1.0](https://github.com/asemposki/neutron-rich-bmm/releases/tag/v0.1.0 )): An example of Gaussian process Bayesian model mixing for the dense matter equation of state.
-- [nuclear_saturation](https://github.com/cdrischler/nuclear_saturation/tree/c4cfa45a1180b2739e217102d7380736d6844a11): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
+- [nuclear_saturation](https://github.com/cdrischler/nuclear_saturation/tree/06cf466c2ab5f6e1fccafc18807c7dd99aff05c7): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 - [QGP_Bayes](https://github.com/danOSU/QGP_Bayes/tree/4b3e2364f87a29ad2469f2b072053420fdaac8e9): A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP.
 - rose ([v1.1.8](https://github.com/bandframework/rose/releases/tag/v1.1.8 )): A reduced-order scattering emulator.
 - SaMBA ([v1.2.1](https://github.com/asemposki/SAMBA/releases/tag/v1.2.1 )): The Sandbox for Mixing via Bayesian Analysis.
