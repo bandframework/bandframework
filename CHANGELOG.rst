@@ -15,7 +15,7 @@ New organization:
 
 - rose deprecated at `v1.1.8 <https://github.com/bandframework/rose/releases/tag/v1.1.8>`_ and reclassified as an example
 - Smooth Emulator moved to its own `repository <https://github.com/bandframework/SmoothEmulator>`_
-- BANDsoftware_uses now includes rebuilt example that shows how new `BFrescoX and surmise can be combined to perform calibration of a breakup reaction <https://github.com/beykyle/breakup-calibration-demo>`_
+
 
 New capabilities and notable changes:
 
@@ -29,6 +29,8 @@ New capabilities and notable changes:
 - updated BAND-compatible Smooth Emulator to `v1.0.0-beta <https://github.com/bandframework/SmoothEmulator/releases/tag/v1.0.0-beta>`_, with bug fixes and clarification of documentation. 
 - updated BAND-compatible surmise to `v1.0.0 <https://github.com/bandframework/surmise/releases/tag/v1.0.0>`_, which improves user control of RNG usage, improves sampler integration, and fixes bugs.
 - updated BAND-compatible Taweret to `v1.3.0 <https://github.com/bandframework/Taweret/releases/tag/v1.3.0>`_, which introduces Gaussian process model mixing and uses OpenBT instead of the deprecated OpenBTMixing package.
+
+- BANDsoftware_uses now includes rebuilt example that shows how new `BFrescoX and surmise can be combined to perform calibration of a breakup reaction <https://github.com/beykyle/breakup-calibration-demo>`_
 
 :Known issues:
 
