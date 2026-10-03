@@ -36,6 +36,25 @@ BAND's Design and Oversight Committee (DOC) will do their best to notice when co
 Coauthorship is expected to persist in all future releases, with new contributors being appended to the list of authors. If contributors decline to be listed as coauthors, they will be acknowledged in the repository, manual, and release notes.
 
 
+Guidelines for AI/LLM-Assisted Contributions
+---------------------------------------------
+
+* **Remain accountable for all your outputs and decisions.**
+  Individuals remain fully responsible and accountable for the accuracy, quality, appropriateness, and consequences of their work. Use of AI does not transfer this responsibility to the AI model, agent, or other tool.
+* **Understand your work.**
+  Regardless of how code or other repo content was produced, this project requires that authors illustrate a thorough understanding of any proposed changes. You must review such code/content line-by-line; it is your responsibility to ensure that it is correct, and that it does not breach copyright. Always critically engage with AI outputs, do not trust them implicitly. AI-assisted code, analysis, and artifacts must be tested and validated at a level appropriate to their impact. Authors are responsible for ensuring that generated code is correct, secure, maintainable, non-obfuscated, appropriately scoped, documented, and reproducible where relevant. Please ask questions of maintainers and reviewers when in doubt.
+* **Disclose AI-generated or AI-assisted work.**
+  If content in a branch was generated with AI/LLM tools then PRs associated with that branch must clearly indicate which files contain AI-generated content, and the extent of such content in the files that do contain it. (If this information was given in commit messages to the branch, it is acceptable for the PR to refer reviewers to those messages.)
+* **AI review of PRs is not a substitute for human review.**
+  All PRs must be reviewed by a human reviewer. An LLM review may be used in addition to a human reviewer since this can help spot issues that a human may have missed, but this should not be the sole reviewer. The human reviewer should remain accountable and responsible for the review feedback or comments.
+* **Proprietary or personal information must not be sent to AI tools.**
+  For this project, proprietary or personal information should never be sent to code generators or AI tools.
+* **These AI principles apply to BAND Framework submodules too.**
+  When submodule content in the Framework is added or updated, the PR that does this should state AI use and affirm accountability in accord with the principles stated here.
+* **Be transparent, assume goodwill, and share what you learn.**
+  Contributors should be open about relevant AI use, disclose details of AI use as appropriate to the project, engage constructively with colleagues, and share experiences and lessons learned with the project.
+
+
 Contributions
 -------------
 

@@ -1,19 +1,19 @@
 ![BAND](resources/BAND_logo_v2.png)
 
 # BAND Framework
-This contains the primary public repository for the [BAND framework project](https://bandframework.github.io/), which is supported by the National Science Foundation [Cyberinfrastructure Systems for Scientific Innovation program](https://www.nsf.gov/funding/opportunities/cssi-cyberinfrastructure-sustained-scientific-innovation) under grant OAC-2004601.
+This is the public repository for the [BAND framework project](https://bandframework.github.io/), which provides tools and examples for principled uncertainty quantification (UQ) in nuclear physics. The BAND Framework is supported by the National Science Foundation [Cyberinfrastructure Systems for Scientific Innovation program](https://www.nsf.gov/funding/opportunities/cssi-cyberinfrastructure-sustained-scientific-innovation) under grant OAC-2004601.
 
 ## Goals
 
 The Bayesian Analysis for Nuclear Dynamics (BAND) software Framework provides tools and examples that 
-facilitate principled Uncertainty Quantification in Nuclear Physics. 
+facilitate principled uncertainty quantification (UQ) in nuclear physics. 
 
 We provide tools and examples that demonstrate how
 - emulation of computationally expensive models,
 - model calibration, and
 - Bayesian model mixing
 
-can be combined in order to provide a full accounting of the uncertainties in Nuclear Physics models–-including model
+can be combined in order to provide a full accounting of the uncertainties in nuclear physics models, including model
 uncertainty.
 
 These tools are designed to:
@@ -54,7 +54,7 @@ The following [examples](/examples/) are included in version 1.0.0:
 - BMEX ([v0.1.4](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.4 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - [BRICK](/examples/BRICK): The Bayesian R-matrix Inference Code Kit, designed to facilitate extraction of R-matrix parameters from experimental data.
 - ModelDiscrepancy ([v1.1.0](https://github.com/sjaiswal-tifr/ModelDiscrepancy/releases/tag/v1.1.0 )): A Bayesian framework for model-data comparison that accounts for theoretical uncertainties.
-- neutron-rich-bmm ([v0.1.0](https://github.com/asemposki/neutron-rich-bmm/releases/tag/v0.1.0 )): A Gaussian process Bayesian model mixing approach for microscopic constraints for the equation of state and structure of neutron stars. 
+- [neutron-rich-bmm](https://github.com/asemposki/neutron-rich-bmm/tree/fbc19ac09dfe4e79c79160594f129c5aeb21ba25): A Gaussian process Bayesian model mixing approach for microscopic constraints for the equation of state and structure of neutron stars. 
 - [nuclear_saturation](https://github.com/cdrischler/nuclear_saturation/tree/06cf466c2ab5f6e1fccafc18807c7dd99aff05c7): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 - [QGP_Bayes](https://github.com/danOSU/QGP_Bayes/tree/4b3e2364f87a29ad2469f2b072053420fdaac8e9): A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP.
 - rose ([v1.1.8](https://github.com/bandframework/rose/releases/tag/v1.1.8 )): A reduced-order scattering emulator.
@@ -82,7 +82,7 @@ If you have already cloned the repository, the following modified `git` commands
 - `git submodule update --init software/surmise`
   (variant of the previous item, in case you want to only get the surmise submodule)
 
-In each BAND Framework release, the hash for a particular submodule is set to a specific commit of the associated software element. While serious bug fixes in a submodule will occasion a new BAND Framework release, some pieces of software may extend functionality without the tag here in the framework being updated. To ensure you are using the version of submoduled software appropriate for your research application, you should consult the release history of that piece of software. 
+In each BAND Framework release, the hash for a particular submodule is set to a specific commit of the associated software element. While serious bug fixes in a submodule will occasion a new BAND Framework release, some pieces of software may extend functionality without the tag here in the framework being updated. To ensure you are using the version of submodule-managed software appropriate for your research application, you should consult the release history of that piece of software. 
 
 Note that submodules work on modern git (i.e., version >= 2.38.0).
 
@@ -110,7 +110,7 @@ Please use the following to cite the BAND Framework:
         and Kevin Ingles and Sunil Jaiswal and Ekaksh Kataria and Bailey Knight and Sudhanva Lalit and An Le
         and Dananjaya Liyanage and Filomena M. Nunes and Daniel Odell and David O'Gara and Jared O'Neal
         and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and Scott Pratt and Oleh Savchuk
-        and Alexandra C. Semposki and \"Ozge S\"urer and  Stefan M. Wild and John C. Yannotty},
+        and Alexandra C. Semposki and \"Ozge S\"urer and Stefan M. Wild and John C. Yannotty},
         institution = {},
         number      = {Version 1.0.0},
         year        = {2026},
@@ -120,7 +120,9 @@ Please use the following to cite the BAND Framework:
 If possible, please also cite the original BAND Framework paper:
 
     @article{Phillips:2020dmw,
-        author = "Phillips, D. R. and others",
+        author = {Daniel R. Phillips and Richard J. Furnstahl and Ulrich Heinz and Tapabrata Maiti and Witold Nazarewicz and
+                  Filomena M. Nunes and Matthew Plumlee and Matthew T. Pratola and Scott Pratt and Frederi G. Viens and
+                  Stefan M. Wild},
         title = "{Get on the BAND Wagon: A Bayesian Framework for Quantifying Model Uncertainties in Nuclear Dynamics}",
         eprint = "2012.07704",
         archivePrefix = "arXiv",

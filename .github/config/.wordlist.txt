@@ -1,14 +1,12 @@
 ArXiv
 Autoconf
 BAND's
-BANDCamp
 BANDsoftware
 BMC
 BMEX
 BRICK's
 Bayesbandsdk
 Bfrescox
-Bingham
 CDCC
 CHANGELOG
 CMake
@@ -46,7 +44,7 @@ Kataria
 LAPACK
 LHS
 LLNL
-Loeppky
+LLM
 MCMC
 MERCHANTABILITY
 ModelDiscrepancy
@@ -61,7 +59,6 @@ Nunes
 OAC
 OPENMP
 Oleh
-OpenBLAS
 OpenBT
 OpenBT's
 OpenBTbandsdk
@@ -72,6 +69,7 @@ PCGP
 PCGPwM
 PCGPwMatComp
 PDFs
+PRs
 PTLMC
 PUQ
 PYTHONPATH
@@ -91,7 +89,6 @@ SAMBAbandsdk
 SCAPE
 SDK
 SLURM
-SURmise
 SaMBA
 Savchuk
 SciPy
@@ -136,7 +133,6 @@ dataset
 datasets
 de
 dec
-deuteron
 dev
 directbayes
 directbayeswoodbury
@@ -197,7 +193,6 @@ mkdocs
 moogp
 mooGP
 mosesyhc
-mplumlee
 mpratola
 msu
 multiobjective
@@ -250,11 +245,9 @@ sexualized
 sfresco
 simulationpost
 socio
-softwaredocumentation
 subdirectories
 subdirectory
 submodule
-submoduled
 submodules
 sunsetting
 surero
