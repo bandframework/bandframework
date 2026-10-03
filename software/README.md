@@ -4,7 +4,7 @@ This contains the core software tools for the BAND Framework. The main BAND Fram
 **Read [CONTRIBUTING](/CONTRIBUTING.rst), and the [bandframework/resources/bandsdk](/resources/sdkpolicies/) 
 referenced therein, before attempting to contribute to this directory.**
 
-As of v1.0.0 the following packages are present in this directory:
+As of v1.0.0+dev the following packages are present in this directory:
 - Bfrescox (v0.0.2-alpha): A Python wrapper for the Frescox coupled reaction channel code.
 - jitr (v3.0.1): A Python package containing a Lagrange mesh R-matrix solver for parametric reaction model calibration.
 - LCGP (v1.1.1): A Gaussian process surrogate model for emulating stochastic simulation outputs.
