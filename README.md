@@ -54,7 +54,7 @@ The following [examples](/examples/) are included in version 1.0.0:
 - BMEX ([v0.1.4](https://github.com/massexplorer/bmex-masses/releases/tag/v0.1.4 )): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - [BRICK](/examples/BRICK): The Bayesian R-matrix Inference Code Kit, designed to facilitate extraction of R-matrix parameters from experimental data.
 - ModelDiscrepancy ([v1.1.0](https://github.com/sjaiswal-tifr/ModelDiscrepancy/releases/tag/v1.1.0 )): A Bayesian framework for model-data comparison that accounts for theoretical uncertainties.
-- neutron-rich-bmm ([v0.1.0](https://github.com/asemposki/neutron-rich-bmm/releases/tag/v0.1.0 )): A Gaussian process Bayesian model mixing approach for microscopic constraints for the equation of state and structure of neutron stars. 
+- [neutron-rich-bmm](https://github.com/asemposki/neutron-rich-bmm/tree/fbc19ac09dfe4e79c79160594f129c5aeb21ba25): A Gaussian process Bayesian model mixing approach for microscopic constraints for the equation of state and structure of neutron stars. 
 - [nuclear_saturation](https://github.com/cdrischler/nuclear_saturation/tree/06cf466c2ab5f6e1fccafc18807c7dd99aff05c7): A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 - [QGP_Bayes](https://github.com/danOSU/QGP_Bayes/tree/4b3e2364f87a29ad2469f2b072053420fdaac8e9): A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP.
 - rose ([v1.1.8](https://github.com/bandframework/rose/releases/tag/v1.1.8 )): A reduced-order scattering emulator.
