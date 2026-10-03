@@ -27,7 +27,7 @@ Details on citing the current version of the BAND Framework can be found in the 
 
 | # | Policy                 |Support| Notes                   |
 |---|------------------------|-------|-------------------------|
-|**R1.**| Have a public repository. |Partial| Repository indicated above is publicly available. |
+|**R1.**| Have a public repository. |Full| Repository indicated above is publicly available. |
 |**R2.**| Free all system resources acquired as soon as they are no longer needed. |Not Checked| On todo list. |
 |**R3.**| Provide a mechanism to export ordered list of library dependencies. |None| Not planned, beyond what CMake reports. |
 |**R4.**| Document versions of packages that it works with or depends upon, preferably in machine-readable form.  |Full| Only package needed is Eigen, CMake sets version. |
