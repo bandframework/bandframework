@@ -28,6 +28,8 @@ Before release
 
 - Check `sdkpolicies README </resources/sdkpolicies/README.md>`_ for correctness (e.g., ensure that each software in the release has a working link for its SDK compliance, also note any differences in the version of the SDK that each package lists versus the version at `bandsdk.md </resources/sdkpolicies/bandsdk.md>`_).
 
+- Inventory all BAND components to list the ones that are not being actively maintained, this should be documented in each such component's  main README.md file, as per `component-sunsetting-proc.rst </resources/dev_guide/component-sunsetting-proc.rst>`_.
+
 - Tests are run with source to be released (this may iterate):
 
   - Online CI (GitHub Actions) tests must pass.
@@ -64,5 +66,8 @@ After release
 - Ensure all relevant GitHub issues are closed.
 
 - Update website to reflect existence of new release.
+  
+  - Update if necessary the BAND framework tools list in the `software page <https://bandframework.github.io/software>`_ as well as all tool descriptions in that page to match contents of new release.
+  - Confirm that links to different BAND framework tools in the `software page <https://bandframework.github.io/software>`_ function and go to the correct target.
 
 - Disseminate news of new release to: FRIB-TA mailing list, JETSCAPE/X-SCAPE mailing list, other interested parties.

@@ -8,24 +8,26 @@ To be listed as a BAND Framework software package, we require that BAND software
 
 A parallel [directory](/resources/dev_guide) contains a basic development guide with:
 - [Instructions for adding submodules for packages hosted elsewhere](/resources/dev_guide/git_instructions_for_submodules.md)
+- [Instructions for sunsetting BAND framework software](/resources/dev_guide/component-sunsetting-proc.rst)
 - The BAND [release process](/resources/dev_guide/release-proc.rst)
 
 Examples of completed SDK policy compatibility documents include:
 -  [BMEX-bandsdk.md](/examples/BMEX/BMEX-bandsdk.md)
 -  [brickbandsdk.md](/examples/BRICK/brickbandsdk.md)
 -  [bfrescoxbandsdk.md](https://github.com/bandframework/Bfrescox/blob/main/Bfrescoxbandsdk.md)
--  [frescoxbandsdk.md](/BANDsoftware_uses/Bfrescox/frescoxbandsdk.md)
 -  [jitrbandsdk.md](https://github.com/beykyle/jitr/blob/main/jitrbandsdk.md)
 -  [lcgp-bandsdk.md](https://github.com/mosesyhc/LCGP/blob/main/lcgp-bandsdk.md)
 -  [MD-bandsdk.md](https://github.com/sjaiswal-tifr/ModelDiscrepancy/blob/main/MD-bandsdk.md)
+-  [moogp-sdk.md](https://github.com/evancbarnett/mooGP/blob/main/bandframework-moogp-sdk.md)
 -  [neutron-rich-bmm_bandsdk.md](https://github.com/asemposki/neutron-rich-bmm/blob/main/neutron-rich-bmm_bandsdk.md)
 -  [nsat-bandsdk.md](https://github.com/cdrischler/nuclear_saturation/blob/main/nsat-bandsdk.md)
+-  [OpenBTbandsdk.md](/software/OpenBT/OpenBTbandsdk.md)
 -  [parmoo-bandsdk.md](/software/parmoo/parmoo-bandsdk.md)
 -  [PUQ-bandsdk.md](/software/PUQ/PUQ-bandsdk.md)
 -  [pybmc-bandsdk.md](/software/pybmc/pybmc-bandsdk.md)
 -  [QGP_Bayesbandsdk.md](https://github.com/danOSU/QGP_Bayes/blob/main/QGP_Bayesbandsdk.md)
 -  [rosebandsdk.md](https://github.com/bandframework/rose/blob/main/rosebandsdk.md)
 -  [SAMBAbandsdk.md](https://github.com/asemposki/SAMBA/blob/main/SAMBAbandsdk.md)
--  [SmoothEmulatorSDK.md](/software/SmoothEmulator/SmoothEmulatorSDK.md)
+-  [SmoothEmulatorbandsdk.md](/software/SmoothEmulator/SmoothEmulatorbandsdk.md)
 -  [surmisebandsdk.md](https://github.com/bandframework/surmise/blob/main/surmisebandsdk.md)
 -  [Taweretbandsdk.md](https://github.com/bandframework/Taweret/blob/main/Taweretbandsdk.md)

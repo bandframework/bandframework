@@ -6,6 +6,38 @@ Below are the release notes for all bandframework releases.
 May reference issues on:
 https://github.com/bandframework/bandframework/issues
 
+
+Release 1.0.0
+-------------
+:Date: October 3, 2026
+
+New organization:
+
+- rose deprecated at `v1.1.8 <https://github.com/bandframework/rose/releases/tag/v1.1.8>`_ and reclassified as an example
+- Smooth Emulator moved to its own `repository <https://github.com/bandframework/SmoothEmulator>`_
+
+
+New capabilities and notable changes:
+
+- updated BAND-compatible Bfrescox at `v0.0.2-alpha <https://github.com/bandframework/Bfrescox/releases/tag/v0.0.2-alpha>`_, which officially integrates template functionality and provides more examples.
+- updated BAND-compatible jitr to `v3.0.1 <https://github.com/beykyle/jitr/releases/tag/v3.0.1>`_, which provides significant interface, physics, and feature updates, as well as a new documentation website. 
+- updated BAND-compatible LCGP at `v1.1.1 <https://github.com/mosesyhc/lcgp/releases/tag/1.1.1>`_, which extends the stochastic emulator to train on data with replications.
+- added BAND-compatible mooGP at `v1.0.0 <https://github.com/evancbarnett/mooGP/releases/tag/1.0.0>`_, A Gaussian process surrogate model for emulating stochastic simulation outputs.
+- added BAND-compatible OpenBT at `v1.2.0 <https://github.com/bandframework/OpenBT/releases/tag/v1.2.0>`_, C++, Python, and R packages implementing Bayesian tree models, including regression, model mixing, sensitivity analysis and multiobjective optimization.  A subset of this was originally included in BAND as a backend to Taweret.
+- updated BAND-compatible parMOO to `v0.5.1 <https://github.com/parmoo/parmoo/releases/tag/v0.5.1>`_, which improves the `MOOP` class and makes other internal changes, including to the unit tests.
+- updated BAND-compatible pybmc at `v0.4.1 <https://github.com/ascsn/pybmc/releases/tag/v0.4.1>`_, which adds heteroscedastic error models, a package-wide seeded RNG for reproducible sampling, as well as fixes to the simplex sampler and evaluation routines.
+- updated BAND-compatible Smooth Emulator to `v1.0.0-beta <https://github.com/bandframework/SmoothEmulator/releases/tag/v1.0.0-beta>`_, with bug fixes and clarification of documentation. 
+- updated BAND-compatible surmise to `v1.0.0 <https://github.com/bandframework/surmise/releases/tag/v1.0.0>`_, which improves user control of RNG usage, improves sampler integration, and fixes bugs.
+- updated BAND-compatible Taweret to `v1.3.0 <https://github.com/bandframework/Taweret/releases/tag/v1.3.0>`_, which introduces Gaussian process model mixing and uses OpenBT instead of the deprecated OpenBTMixing package.
+- added `guidelines <CONTRIBUTING.rst>`_ on AI/LLM use and Framework contributions.
+- added `guidance </resources/dev_guide/component-sunsetting-proc.rst>`_ on how developers who wish to no longer maintain their software should indicate that within the Framework. 
+
+- BANDsoftware_uses now includes rebuilt example that shows how `Updated BFrescoX and surmise can be combined to perform calibration of a breakup reaction <https://github.com/beykyle/breakup-calibration-demo/tree/3a7ea565dec1b0495258fb599a7d3f844f668902>`_.
+
+:Known issues:
+
+- The bandframework repository contains different content, including Jupyter notebooks, that could be presented to the public via a single BAND framework Jupyter notebook. This might simplify reviewing since verifying that books run through could be accomplished by github actions. 
+
 Release 0.5.0
 -------------
 :Date: December 22, 2025
