@@ -29,7 +29,8 @@ New capabilities and notable changes:
 - updated BAND-compatible Smooth Emulator to `v1.0.0-beta <https://github.com/bandframework/SmoothEmulator/releases/tag/v1.0.0-beta>`_, with bug fixes and clarification of documentation. 
 - updated BAND-compatible surmise to `v1.0.0 <https://github.com/bandframework/surmise/releases/tag/v1.0.0>`_, which improves user control of RNG usage, improves sampler integration, and fixes bugs.
 - updated BAND-compatible Taweret to `v1.3.0 <https://github.com/bandframework/Taweret/releases/tag/v1.3.0>`_, which introduces Gaussian process model mixing and uses OpenBT instead of the deprecated OpenBTMixing package.
-- added guidelines on AI/LLM use and Framework contributions
+- added guidelines on AI/LLM use and Framework contributions to Contributing.
+- added resources/dev_guide/component-sunsetting-proc.rst to provide guidance on how developers who wish to no longer maintain their software should indicate that within the Framework. 
 
 - BANDsoftware_uses now includes rebuilt example that shows how `Updated BFrescoX and surmise can be combined to perform calibration of a breakup reaction <https://github.com/beykyle/breakup-calibration-demo/tree/3a7ea565dec1b0495258fb599a7d3f844f668902>`_.
 
