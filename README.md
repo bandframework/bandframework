@@ -120,7 +120,9 @@ Please use the following to cite the BAND Framework:
 If possible, please also cite the original BAND Framework paper:
 
     @article{Phillips:2020dmw,
-        author = "Phillips, D. R. and others",
+        author = {Daniel R. Phillips and Richard J. Furnstahl and Ulrich Heinz and Tapabrata Maiti and Witold Nazarewicz and
+                  Filomena M. Nunes and Matthew Plumlee and Matthew T. Pratola and Scott Pratt and Frederi G. Viens and
+                  Stefan M. Wild},
         title = "{Get on the BAND Wagon: A Bayesian Framework for Quantifying Model Uncertainties in Nuclear Dynamics}",
         eprint = "2012.07704",
         archivePrefix = "arXiv",
