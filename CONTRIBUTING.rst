@@ -49,8 +49,8 @@ Guidelines for AI/LLM-Assisted Contributions
   All PRs must be reviewed by a human reviewer. An LLM review may be used in addition to a human reviewer since this can help spot issues that a human may have missed, but this should not be the sole reviewer. The human reviewer should remain accountable and responsible for the review feedback or comments.
 * **Proprietary or personal information must not be sent to AI tools.**
   For this project, proprietary or personal information should never be sent to code generators or AI tools.
-* **These AI principles apply to BAND Framework submodules too**
-  When submodule-content in the Framework is added or updated, the PR that does this should state AI use and affirm accountability in accord with the principles stated here.
+* **These AI principles apply to BAND Framework submodules too.**
+  When submodule content in the Framework is added or updated, the PR that does this should state AI use and affirm accountability in accord with the principles stated here.
 * **Be transparent, assume goodwill, and share what you learn.**
   Contributors should be open about relevant AI use, disclose details of AI use as appropriate to the project, engage constructively with colleagues, and share experiences and lessons learned with the project.
 
