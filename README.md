@@ -1,19 +1,19 @@
 ![BAND](resources/BAND_logo_v2.png)
 
 # BAND Framework
-This contains the primary public repository for the [BAND framework project](https://bandframework.github.io/), which is supported by the National Science Foundation [Cyberinfrastructure Systems for Scientific Innovation program](https://www.nsf.gov/funding/opportunities/cssi-cyberinfrastructure-sustained-scientific-innovation) under grant OAC-2004601.
+This is the public repository for the [BAND framework project](https://bandframework.github.io/), which provides tools and examples for principled uncertainty quantification (UQ) in nuclear physics. The BAND Framework is supported by the National Science Foundation [Cyberinfrastructure Systems for Scientific Innovation program](https://www.nsf.gov/funding/opportunities/cssi-cyberinfrastructure-sustained-scientific-innovation) under grant OAC-2004601.
 
 ## Goals
 
 The Bayesian Analysis for Nuclear Dynamics (BAND) software Framework provides tools and examples that 
-facilitate principled Uncertainty Quantification in Nuclear Physics. 
+facilitate principled uncertainty quantification (UQ) in nuclear physics. 
 
 We provide tools and examples that demonstrate how
 - emulation of computationally expensive models,
 - model calibration, and
 - Bayesian model mixing
 
-can be combined in order to provide a full accounting of the uncertainties in Nuclear Physics models–-including model
+can be combined in order to provide a full accounting of the uncertainties in nuclear physics models, including model
 uncertainty.
 
 These tools are designed to:
@@ -82,7 +82,7 @@ If you have already cloned the repository, the following modified `git` commands
 - `git submodule update --init software/surmise`
   (variant of the previous item, in case you want to only get the surmise submodule)
 
-In each BAND Framework release, the hash for a particular submodule is set to a specific commit of the associated software element. While serious bug fixes in a submodule will occasion a new BAND Framework release, some pieces of software may extend functionality without the tag here in the framework being updated. To ensure you are using the version of submoduled software appropriate for your research application, you should consult the release history of that piece of software. 
+In each BAND Framework release, the hash for a particular submodule is set to a specific commit of the associated software element. While serious bug fixes in a submodule will occasion a new BAND Framework release, some pieces of software may extend functionality without the tag here in the framework being updated. To ensure you are using the version of submodule-managed software appropriate for your research application, you should consult the release history of that piece of software. 
 
 Note that submodules work on modern git (i.e., version >= 2.38.0).
 
@@ -110,7 +110,7 @@ Please use the following to cite the BAND Framework:
         and Kevin Ingles and Sunil Jaiswal and Ekaksh Kataria and Bailey Knight and Sudhanva Lalit and An Le
         and Dananjaya Liyanage and Filomena M. Nunes and Daniel Odell and David O'Gara and Jared O'Neal
         and Daniel R. Phillips and Matthew Plumlee and Matthew T. Pratola and Scott Pratt and Oleh Savchuk
-        and Alexandra C. Semposki and \"Ozge S\"urer and  Stefan M. Wild and John C. Yannotty},
+        and Alexandra C. Semposki and \"Ozge S\"urer and Stefan M. Wild and John C. Yannotty},
         institution = {},
         number      = {Version 1.0.0},
         year        = {2026},
