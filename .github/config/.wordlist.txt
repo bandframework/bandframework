@@ -10,6 +10,7 @@ Bfrescox
 CDCC
 CHANGELOG
 CMake
+CONTRIBUTING
 COVID
 CRAN
 CSV
@@ -219,6 +220,7 @@ prattsc
 pre
 preprint
 privateband
+proc
 ptemcee
 puq
 py
