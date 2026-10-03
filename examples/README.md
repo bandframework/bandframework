@@ -6,7 +6,7 @@ As of version 1.0.0 this directory includes the following examples:
 - BMEX (v0.1.4): A web application for exploring quantified theoretical model predictions of nuclear masses and related quantities.
 - BRICK: The Bayesian R-matrix Inference Code Kit, designed to facilitate extraction of R-matrix parameters from experimental data.
 - ModelDiscrepancy (v1.1.0): A Bayesian framework for model-data comparison that accounts for theoretical uncertainties.
-- neutron-rich-bmm (v0.1.0): A Gaussian process Bayesian model mixing approach for microscopic constraints for the equation of state and structure of neutron stars.
+- neutron-rich-bmm: A Gaussian process Bayesian model mixing approach for microscopic constraints for the equation of state and structure of neutron stars.
 - nuclear_saturation: A Bayesian mixture model approach to quantifying the empirical nuclear saturation point.
 - QGP_Bayes: A tutorial on the use of JETSCAPE_SIMS tools to infer parameters of the QGP.
 - rose (v1.1.8): A reduced-order scattering emulator.
