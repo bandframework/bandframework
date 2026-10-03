@@ -30,6 +30,7 @@ New capabilities and notable changes:
 - updated BAND-compatible surmise to `v1.0.0 <https://github.com/bandframework/surmise/releases/tag/v1.0.0>`_, which improves user control of RNG usage, improves sampler integration, and fixes bugs.
 - updated BAND-compatible Taweret to `v1.3.0 <https://github.com/bandframework/Taweret/releases/tag/v1.3.0>`_, which introduces Gaussian process model mixing and uses OpenBT instead of the deprecated OpenBTMixing package.
 - added guidelines on AI/LLM use and Framework contributions
+- added resources/dev_guide/component-sunsetting-proc.rst to explain to developers who wish to cease maintaining their software how they should indicate that within their Framework contributions
 
 - BANDsoftware_uses now includes rebuilt example that shows how `Updated BFrescoX and surmise can be combined to perform calibration of a breakup reaction <https://github.com/beykyle/breakup-calibration-demo/tree/3a7ea565dec1b0495258fb599a7d3f844f668902>`_.
 
